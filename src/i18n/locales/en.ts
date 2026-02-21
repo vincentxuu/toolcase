@@ -37,6 +37,9 @@ const en = {
   tool_unicode: 'Unicode Converter',
   tool_unicode_desc: 'Encode and decode Unicode characters',
 
+  // Related
+  related_tools_title: 'Related Tools',
+
   // Common
   btn_format: 'Format',
   btn_copy: 'Copy',

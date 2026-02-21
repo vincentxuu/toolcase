@@ -13,7 +13,7 @@ export default function RelatedTools({ current, locale }: { current: string; loc
   return (
     <section style={{ marginTop: '3rem' }}>
       <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-        {locale === 'en' ? 'Related Tools' : '相關工具'}
+        {t.related_tools_title}
       </h2>
       <div
         style={{

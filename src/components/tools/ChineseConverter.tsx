@@ -79,12 +79,6 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
   const [output, setOutput] = useState('')
   const [direction, setDirection] = useState<'s2t' | 't2s'>('s2t')
 
-  const handleConvert = useCallback(() => {
-    if (!input.trim()) return
-    const result = direction === 's2t' ? convertText(input, S2T) : convertText(input, T2S)
-    setOutput(result)
-  }, [input, direction])
-
   const handleSwap = useCallback(() => {
     setDirection((d) => (d === 's2t' ? 't2s' : 's2t'))
     setInput(output)

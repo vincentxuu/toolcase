@@ -13,8 +13,6 @@ export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(text)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
     } catch {
       // fallback
       const ta = document.createElement('textarea')
@@ -23,9 +21,9 @@ export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied
       ta.select()
       document.execCommand('copy')
       document.body.removeChild(ta)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
     }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }, [text])
 
   return (

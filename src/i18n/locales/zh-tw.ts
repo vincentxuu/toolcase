@@ -37,6 +37,9 @@ const zhTw = {
   tool_unicode: 'Unicode 轉換器',
   tool_unicode_desc: '編碼與解碼 Unicode 字元',
 
+  // Related
+  related_tools_title: '相關工具',
+
   // Common
   btn_format: '格式化',
   btn_copy: '複製',
