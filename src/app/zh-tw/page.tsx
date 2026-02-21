@@ -1,14 +1,11 @@
 import { getDictionary } from '@/i18n/get-dict'
-import { tools } from '@/lib/tools-config'
+import { tools, categories } from '@/lib/tools-config'
 import ToolCard from '@/components/shared/ToolCard'
 
 type DictKey = keyof ReturnType<typeof getDictionary>
 
 export default function ZhTwHomePage() {
   const t = getDictionary('zh-tw')
-
-  const devTools = tools.filter((tool) => tool.category === 'dev')
-  const textTools = tools.filter((tool) => tool.category === 'text')
 
   return (
     <div className="tool-container">
@@ -38,7 +35,7 @@ export default function ZhTwHomePage() {
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
           <div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>7+</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{tools.length}+</div>
             <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{t.stat_tools}</div>
           </div>
           <div>
@@ -52,41 +49,36 @@ export default function ZhTwHomePage() {
         </div>
       </section>
 
-      {/* Developer Tools */}
-      <section style={{ marginTop: '3rem' }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>{t.cat_dev}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-          {devTools.map((tool) => (
-            <ToolCard
-              key={tool.slug}
-              slug={tool.slug}
-              name={t[tool.nameKey as DictKey] as string}
-              description={t[tool.descKey as DictKey] as string}
-              icon={tool.icon}
-              locale="zh-tw"
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Text Tools */}
-      {textTools.length > 0 && (
-        <section style={{ marginTop: '3rem' }}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>{t.cat_text}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-            {textTools.map((tool) => (
-              <ToolCard
-                key={tool.slug}
-                slug={tool.slug}
-                name={t[tool.nameKey as DictKey] as string}
-                description={t[tool.descKey as DictKey] as string}
-                icon={tool.icon}
-                locale="zh-tw"
-              />
-            ))}
-          </div>
-        </section>
-      )}
+      {/* All Categories */}
+      {categories.map((cat) => {
+        const catTools = tools.filter((tool) => tool.category === cat.key)
+        if (catTools.length === 0) return null
+        return (
+          <section key={cat.key} style={{ marginTop: '3rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
+              {t[cat.labelKey as DictKey] as string}
+            </h2>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '1rem',
+              }}
+            >
+              {catTools.map((tool) => (
+                <ToolCard
+                  key={tool.slug}
+                  slug={tool.slug}
+                  name={t[tool.nameKey as DictKey] as string}
+                  description={t[tool.descKey as DictKey] as string}
+                  icon={tool.icon}
+                  locale="zh-tw"
+                />
+              ))}
+            </div>
+          </section>
+        )
+      })}
     </div>
   )
 }
