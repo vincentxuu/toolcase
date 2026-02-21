@@ -147,6 +147,62 @@ export const tools: ToolConfig[] = [
     descKey: 'tool_password_desc',
     icon: 'shield',
   },
+  {
+    slug: 'length-converter',
+    category: 'units',
+    nameKey: 'tool_length',
+    descKey: 'tool_length_desc',
+    icon: 'ruler',
+  },
+  {
+    slug: 'weight-converter',
+    category: 'units',
+    nameKey: 'tool_weight',
+    descKey: 'tool_weight_desc',
+    icon: 'weight',
+  },
+  {
+    slug: 'temperature-converter',
+    category: 'units',
+    nameKey: 'tool_temperature',
+    descKey: 'tool_temperature_desc',
+    icon: 'thermometer',
+  },
+  {
+    slug: 'area-converter',
+    category: 'units',
+    nameKey: 'tool_area',
+    descKey: 'tool_area_desc',
+    icon: 'square',
+  },
+  {
+    slug: 'volume-converter',
+    category: 'units',
+    nameKey: 'tool_volume',
+    descKey: 'tool_volume_desc',
+    icon: 'beaker',
+  },
+  {
+    slug: 'speed-converter',
+    category: 'units',
+    nameKey: 'tool_speed',
+    descKey: 'tool_speed_desc',
+    icon: 'gauge',
+  },
+  {
+    slug: 'data-size-converter',
+    category: 'units',
+    nameKey: 'tool_datasize',
+    descKey: 'tool_datasize_desc',
+    icon: 'hard-drive',
+  },
+  {
+    slug: 'time-converter',
+    category: 'units',
+    nameKey: 'tool_timeunit',
+    descKey: 'tool_timeunit_desc',
+    icon: 'timer',
+  },
 ]
 
 export const categories = [

@@ -19,6 +19,14 @@ import {
   Calculator,
   Cake,
   Shield,
+  Ruler,
+  Weight,
+  Thermometer,
+  Square,
+  Beaker,
+  Gauge,
+  HardDrive,
+  Timer,
   type LucideProps,
 } from 'lucide-react'
 
@@ -43,6 +51,14 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   calculator: Calculator,
   cake: Cake,
   shield: Shield,
+  ruler: Ruler,
+  weight: Weight,
+  thermometer: Thermometer,
+  square: Square,
+  beaker: Beaker,
+  gauge: Gauge,
+  'hard-drive': HardDrive,
+  timer: Timer,
 }
 
 export default function ToolIcon({ name, size = 28 }: { name: string; size?: number }) {
