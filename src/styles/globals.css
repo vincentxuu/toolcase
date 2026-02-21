@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-card: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-text: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-border: #334155;
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+    --color-card: #1e293b;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.tool-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.tool-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  resize: vertical;
+}
+
+.tool-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+}
