@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import ToolIcon from '@/components/shared/ToolIcon'
 
 interface ToolCardProps {
   slug: string
@@ -34,7 +35,7 @@ export default function ToolCard({ slug, name, description, icon, locale }: Tool
         e.currentTarget.style.boxShadow = 'none'
       }}
     >
-      <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>{icon}</div>
+      <div style={{ marginBottom: '0.5rem' }}><ToolIcon name={icon} size={28} /></div>
       <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.25rem' }}>{name}</h3>
       <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', margin: 0 }}>{description}</p>
     </Link>

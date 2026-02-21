@@ -2,11 +2,11 @@ import en from './locales/en'
 import zhTw from './locales/zh-tw'
 import type { Locale } from './config'
 
-type Dictionary = Record<string, string>
+type Dictionary = { readonly [K in keyof typeof en]: string }
 
 const dictionaries: Record<Locale, Dictionary> = {
-  en: en as unknown as Dictionary,
-  'zh-tw': zhTw as unknown as Dictionary,
+  en,
+  'zh-tw': zhTw,
 }
 
 export function getDictionary(locale: Locale): Dictionary {

@@ -1,5 +1,5 @@
 import { getDictionary } from '@/i18n/get-dict'
-import { tools, categories } from '@/lib/tools-config'
+import { tools } from '@/lib/tools-config'
 import ToolCard from '@/components/shared/ToolCard'
 
 type DictKey = keyof ReturnType<typeof getDictionary>

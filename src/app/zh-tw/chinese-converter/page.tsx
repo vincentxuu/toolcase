@@ -50,6 +50,8 @@ export default function ChineseConverterPageZhTw() {
           copied: '已複製！',
           clear: '清除',
           swap: '交換',
+          uploadFile: '上傳檔案',
+          downloadFile: '下載',
           inputPlaceholder: '在此輸入中文文字...',
           outputPlaceholder: '轉換後的文字會顯示在這裡...',
           charCount: '個字元',

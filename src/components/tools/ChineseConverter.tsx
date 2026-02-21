@@ -1,5 +1,6 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
+import { Upload, Download } from 'lucide-react'
 import CopyButton from '@/components/shared/CopyButton'
 
 interface ChineseConverterProps {
@@ -10,6 +11,8 @@ interface ChineseConverterProps {
     copied: string
     clear: string
     swap: string
+    uploadFile: string
+    downloadFile: string
     inputPlaceholder: string
     outputPlaceholder: string
     charCount: string
@@ -70,6 +73,8 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
     copied: labels?.copied ?? 'Copied!',
     clear: labels?.clear ?? 'Clear',
     swap: labels?.swap ?? 'Swap',
+    uploadFile: labels?.uploadFile ?? 'Upload File',
+    downloadFile: labels?.downloadFile ?? 'Download',
     inputPlaceholder: labels?.inputPlaceholder ?? 'Enter Chinese text here...',
     outputPlaceholder: labels?.outputPlaceholder ?? 'Converted text will appear here...',
     charCount: labels?.charCount ?? 'characters',
@@ -78,18 +83,41 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [direction, setDirection] = useState<'s2t' | 't2s'>('s2t')
-
-  const handleConvert = useCallback(() => {
-    if (!input.trim()) return
-    const result = direction === 's2t' ? convertText(input, S2T) : convertText(input, T2S)
-    setOutput(result)
-  }, [input, direction])
+  const [fileName, setFileName] = useState('')
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleSwap = useCallback(() => {
     setDirection((d) => (d === 's2t' ? 't2s' : 's2t'))
     setInput(output)
     setOutput(input)
   }, [input, output])
+
+  const handleFileUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setFileName(file.name)
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+      const text = ev.target?.result as string
+      setInput(text)
+      const result = direction === 's2t' ? convertText(text, S2T) : convertText(text, T2S)
+      setOutput(result)
+    }
+    reader.readAsText(file)
+    e.target.value = ''
+  }, [direction])
+
+  const handleDownload = useCallback(() => {
+    if (!output) return
+    const ext = fileName ? fileName.replace(/^(.+)\.[^.]+$/, '$1') + '_converted.txt' : 'converted.txt'
+    const blob = new Blob([output], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = ext
+    a.click()
+    URL.revokeObjectURL(url)
+  }, [output, fileName])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -107,8 +135,30 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
           {l.toSimplified} (繁→簡)
         </button>
         <button className="btn-secondary" onClick={handleSwap}>{l.swap} ⇄</button>
-        <button className="btn-secondary" onClick={() => { setInput(''); setOutput('') }}>{l.clear}</button>
+        <button className="btn-secondary" onClick={() => { setInput(''); setOutput(''); setFileName('') }}>{l.clear}</button>
+        <button className="btn-secondary" onClick={() => fileInputRef.current?.click()}>
+          <Upload size={14} style={{ marginRight: '0.25rem', verticalAlign: 'middle' }} />
+          {l.uploadFile}
+        </button>
+        {output && (
+          <button className="btn-secondary" onClick={handleDownload}>
+            <Download size={14} style={{ marginRight: '0.25rem', verticalAlign: 'middle' }} />
+            {l.downloadFile}
+          </button>
+        )}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".txt,.csv,.md,.html,.xml,.json,.srt,.ass,.vtt,.log"
+          style={{ display: 'none' }}
+          onChange={handleFileUpload}
+        />
       </div>
+      {fileName && (
+        <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+          {fileName}
+        </div>
+      )}
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
         <div>
