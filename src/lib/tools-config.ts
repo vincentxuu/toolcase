@@ -56,6 +56,55 @@ export const tools: ToolConfig[] = [
     descKey: 'tool_unicode_desc',
     icon: 'binary',
   },
+  {
+    slug: 'mortgage-calculator',
+    category: 'finance',
+    nameKey: 'tool_mortgage',
+    descKey: 'tool_mortgage_desc',
+    icon: 'house',
+  },
+  {
+    slug: 'compound-interest-calculator',
+    category: 'finance',
+    nameKey: 'tool_compound',
+    descKey: 'tool_compound_desc',
+    icon: 'trending-up',
+  },
+  {
+    slug: 'loan-calculator',
+    category: 'finance',
+    nameKey: 'tool_loan',
+    descKey: 'tool_loan_desc',
+    icon: 'banknote',
+  },
+  {
+    slug: 'credit-card-calculator',
+    category: 'finance',
+    nameKey: 'tool_creditcard',
+    descKey: 'tool_creditcard_desc',
+    icon: 'credit-card',
+  },
+  {
+    slug: 'savings-calculator',
+    category: 'finance',
+    nameKey: 'tool_savings',
+    descKey: 'tool_savings_desc',
+    icon: 'piggy-bank',
+  },
+  {
+    slug: 'roi-calculator',
+    category: 'finance',
+    nameKey: 'tool_roi',
+    descKey: 'tool_roi_desc',
+    icon: 'percent',
+  },
+  {
+    slug: 'retirement-calculator',
+    category: 'finance',
+    nameKey: 'tool_retirement',
+    descKey: 'tool_retirement_desc',
+    icon: 'umbrella',
+  },
 ]
 
 export const categories = [

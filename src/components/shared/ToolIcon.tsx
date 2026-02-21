@@ -6,6 +6,13 @@ import {
   CalendarClock,
   Languages,
   Binary,
+  House,
+  TrendingUp,
+  Banknote,
+  CreditCard,
+  PiggyBank,
+  Percent,
+  Umbrella,
   type LucideProps,
 } from 'lucide-react'
 
@@ -17,6 +24,13 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   'calendar-clock': CalendarClock,
   languages: Languages,
   binary: Binary,
+  house: House,
+  'trending-up': TrendingUp,
+  banknote: Banknote,
+  'credit-card': CreditCard,
+  'piggy-bank': PiggyBank,
+  percent: Percent,
+  umbrella: Umbrella,
 }
 
 export default function ToolIcon({ name, size = 28 }: { name: string; size?: number }) {
