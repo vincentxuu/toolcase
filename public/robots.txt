@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://toolcase.cc
+
+# Sitemaps
+Sitemap: https://toolcase.cc/sitemap.xml
