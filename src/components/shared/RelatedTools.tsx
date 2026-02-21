@@ -2,6 +2,7 @@ import { tools } from '@/lib/tools-config'
 import { getDictionary } from '@/i18n/get-dict'
 import type { Locale } from '@/i18n/config'
 import Link from 'next/link'
+import ToolIcon from '@/components/shared/ToolIcon'
 
 type DictKey = keyof ReturnType<typeof getDictionary>
 
@@ -34,7 +35,7 @@ export default function RelatedTools({ current, locale }: { current: string; loc
               color: 'var(--color-text)',
             }}
           >
-            <span style={{ fontSize: '1.25rem', marginRight: '0.5rem' }}>{tool.icon}</span>
+            <span style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}><ToolIcon name={tool.icon} size={20} /></span>
             <span style={{ fontWeight: 500 }}>{t[tool.nameKey as DictKey]}</span>
           </Link>
         ))}
