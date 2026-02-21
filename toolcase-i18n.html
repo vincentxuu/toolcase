@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toolcase — Free Online Tools for Everyone</title>
+  <meta name="description"
+    content="Free online tools: JSON formatter, QR code generator, calculators, image tools, unit converters and more. Fast, clean, no signup required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --font-sans: 'Instrument Sans', 'Noto Sans TC', 'Noto Sans JP', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --bg-primary: #FAFAF9;
+      --bg-secondary: #FFFFFF;
+      --bg-tertiary: #F5F5F4;
+      --text-primary: #1C1917;
+      --text-secondary: #57534E;
+      --text-tertiary: #A8A29E;
+      --border: #E7E5E4;
+      --border-hover: #D6D3D1;
+      --accent: #E85D04;
+      --accent-soft: #FFF1E6;
+      --accent-hover: #DC580D;
+      --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.04);
+      --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0C0A09;
+      --bg-secondary: #1C1917;
+      --bg-tertiary: #292524;
+      --text-primary: #FAFAF9;
+      --text-secondary: #A8A29E;
+      --text-tertiary: #78716C;
+      --border: #292524;
+      --border-hover: #44403C;
+      --accent: #FB923C;
+      --accent-soft: #1C1206;
+      --accent-hover: #F97316;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .icon-sm {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* === NAV === */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 40px;
+      padding: 0 16px 0 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .search-icon-wrap {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .search-kbd {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      pointer-events: none;
+      font-weight: 500;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+
+    .nav-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Language dropdown */
+    .lang-wrap {
+      position: relative;
+    }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      min-width: 160px;
+      overflow: hidden;
+      z-index: 200;
+    }
+
+    .lang-dropdown.open {
+      display: block;
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-sans);
+    }
+
+    .lang-option:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .lang-option.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .lang-option .check {
+      margin-left: auto;
+      opacity: 0;
+    }
+
+    .lang-option.active .check {
+      opacity: 1;
+    }
+
+    /* === HERO === */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent), #D97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    /* === CATEGORIES === */
+    .categories {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .category {
+      margin-bottom: 48px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cat-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      color: var(--text-secondary);
+    }
+
+    .cat-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .cat-count {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      background: var(--bg-tertiary);
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .tool-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .tool-card:hover .t-icon {
+      background: var(--accent);
+      color: white;
+    }
+
+    .t-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+
+    .t-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .t-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .t-desc {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .t-arrow {
+      color: var(--text-tertiary);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s;
+      display: flex;
+    }
+
+    .tool-card:hover .t-arrow {
+      opacity: 1;
+      transform: translateX(0);
+      color: var(--accent);
+    }
+
+    .badge-new {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-tertiary);
+    }
+
+    .no-results .icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+    }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .search-box {
+        width: 160px;
+      }
+
+      .search-kbd {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 24px 40px;
+      }
+
+      .hero-stats {
+        gap: 32px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-left {
+        justify-content: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .search-box {
+        display: none;
+      }
+
+      .nav-inner {
+        padding: 0 16px;
+      }
+
+      .hero {
+        padding: 36px 16px 32px;
+      }
+
+      .categories {
+        padding: 0 16px 60px;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .hero h1 {
+      animation: fadeInUp 0.5s ease 0.1s both;
+    }
+
+    .hero p {
+      animation: fadeInUp 0.5s ease 0.2s both;
+    }
+
+    .hero-stats {
+      animation: fadeInUp 0.5s ease 0.3s both;
+    }
+
+    .category {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .category:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .category:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .category:nth-child(3) {
+      animation-delay: 0.35s;
+    }
+
+    .category:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .category:nth-child(5) {
+      animation-delay: 0.45s;
+    }
+
+    .category:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+
+    .category:nth-child(7) {
+      animation-delay: 0.55s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SVG sprite (hidden) for reusable icons -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" />
+      <line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24">
+      <polyline points="9 18 15 12 9 6" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <polyline points="20 6 9 17 4 12" />
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24">
+      <path
+        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24">
+      <line x1="12" y1="1" x2="12" y2="23" />
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+    </symbol>
+    <symbol id="i-image" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
+    </symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </symbol>
+    <symbol id="i-bar" viewBox="0 0 24 24">
+      <path d="M2 20h20" />
+      <path d="M5 20V8.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V20" />
+      <path d="M10 20V4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V20" />
+      <path d="M15 20v-8.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V20" />
+    </symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+      <line x1="9" y1="9" x2="9.01" y2="9" />
+      <line x1="15" y1="9" x2="15.01" y2="9" />
+    </symbol>
+    <!-- Tool icons -->
+    <symbol id="i-json" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h12" />
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <polyline points="4 17 10 11 4 5" />
+      <line x1="12" y1="19" x2="20" y2="19" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </symbol>
+    <symbol id="i-trending" viewBox="0 0 24 24">
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+      <polyline points="17 6 23 6 23 12" />
+    </symbol>
+    <symbol id="i-card" viewBox="0 0 24 24">
+      <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+      <line x1="1" y1="10" x2="23" y2="10" />
+    </symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24">
+      <polyline points="17 1 21 5 17 9" />
+      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+      <polyline points="7 23 3 19 7 15" />
+      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path
+        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" />
+      <rect x="14" y="3" width="7" height="7" />
+      <rect x="3" y="14" width="7" height="7" />
+      <rect x="14" y="14" width="3" height="3" />
+      <rect x="18" y="14" width="3" height="3" />
+      <rect x="14" y="18" width="3" height="3" />
+      <rect x="18" y="18" width="3" height="3" />
+    </symbol>
+    <symbol id="i-compress" viewBox="0 0 24 24">
+      <polyline points="4 14 10 14 10 20" />
+      <polyline points="20 10 14 10 14 4" />
+      <line x1="14" y1="10" x2="21" y2="3" />
+      <line x1="3" y1="21" x2="10" y2="14" />
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24">
+      <path d="m5 8 6 6" />
+      <path d="m4 14 6-6 2-3" />
+      <path d="M2 5h12" />
+      <path d="M7 2h1" />
+      <path d="m22 22-5-10-5 10" />
+      <path d="M14 18h6" />
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+    </symbol>
+    <symbol id="i-type" viewBox="0 0 24 24">
+      <polyline points="4 7 4 4 20 4 20 7" />
+      <line x1="9" y1="20" x2="15" y2="20" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+    </symbol>
+    <symbol id="i-columns" viewBox="0 0 24 24">
+      <rect x="2" y="3" width="8" height="18" rx="1" />
+      <rect x="14" y="3" width="8" height="18" rx="1" />
+    </symbol>
+    <symbol id="i-key" viewBox="0 0 24 24">
+      <path
+        d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
+    </symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24">
+      <path d="M2 12h20" />
+      <path d="M6 8v8" />
+      <path d="M18 8v8" />
+    </symbol>
+    <symbol id="i-weight" viewBox="0 0 24 24">
+      <circle cx="12" cy="5" r="3" />
+      <path
+        d="M6.5 8a2 2 0 0 0-1.905 1.46L2.1 18.23A2 2 0 0 0 4 21h16a2 2 0 0 0 1.925-2.54L19.4 9.46A2 2 0 0 0 17.48 8Z" />
+    </symbol>
+    <symbol id="i-thermo" viewBox="0 0 24 24">
+      <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+    </symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 9h18" />
+      <path d="M9 3v18" />
+    </symbol>
+    <symbol id="i-db" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+    </symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24">
+      <circle cx="13.5" cy="6.5" r="2.5" />
+      <circle cx="17.5" cy="10.5" r="2.5" />
+      <circle cx="8.5" cy="7.5" r="2.5" />
+      <circle cx="6.5" cy="12.5" r="2.5" />
+      <path
+        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+    </symbol>
+    <symbol id="i-percent" viewBox="0 0 24 24">
+      <line x1="19" y1="5" x2="5" y2="19" />
+      <circle cx="6.5" cy="6.5" r="2.5" />
+      <circle cx="17.5" cy="17.5" r="2.5" />
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+      <line x1="7" y1="7" x2="7.01" y2="7" />
+    </symbol>
+    <symbol id="i-alarm" viewBox="0 0 24 24">
+      <circle cx="12" cy="13" r="8" />
+      <path d="M12 9v4l2 2" />
+      <path d="M5 3L2 6" />
+      <path d="M22 6l-3-3" />
+    </symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    </symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+      <line x1="6" y1="1" x2="6" y2="4" />
+      <line x1="10" y1="1" x2="10" y2="4" />
+      <line x1="14" y1="1" x2="14" y2="4" />
+    </symbol>
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+    </symbol>
+    <symbol id="i-piggy" viewBox="0 0 24 24">
+      <path
+        d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2" />
+      <path d="M2 9.1C1.9 8 3 7 4 7" />
+      <circle cx="12.5" cy="11.5" r=".5" />
+    </symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24">
+      <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+      <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+      <line x1="6" y1="2" x2="6" y2="4" />
+      <line x1="10" y1="2" x2="10" y2="4" />
+      <line x1="14" y1="2" x2="14" y2="4" />
+    </symbol>
+    <symbol id="i-feather" viewBox="0 0 24 24">
+      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+      <line x1="16" y1="8" x2="2" y2="22" />
+      <line x1="17.5" y1="15" x2="9" y2="15" />
+    </symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24">
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+    </symbol>
+  </svg>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <div class="logo-mark"><svg class="icon" style="stroke:white">
+            <use href="#i-wrench" />
+          </svg></div>
+        <div class="logo-text">Eazy<span>Kit</span></div>
+      </a>
+      <div class="nav-actions">
+        <div class="search-box">
+          <span class="search-icon-wrap"><svg class="icon icon-sm">
+              <use href="#i-search" />
+            </svg></span>
+          <input type="text" id="searchInput" oninput="filterTools()" data-i18n-placeholder="search_placeholder">
+          <span class="search-kbd">⌘K</span>
+        </div>
+        <!-- Language -->
+        <div class="lang-wrap">
+          <button class="nav-btn" onclick="toggleLang()" id="langBtn" aria-label="Language">
+            <svg class="icon">
+              <use href="#i-globe" />
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button class="lang-option active" onclick="setLang('en')">
+              <span>EN</span> English
+              <svg class="icon icon-sm check">
+                <use href="#i-check" />
+              </svg>
+            </button>
+            <button class="lang-option" onclick="setLang('zh-TW')">
+              <span>繁</span> 繁體中文
+              <svg class="icon icon-sm check">
+                <use href="#i-check" />
+              </svg>
+            </button>
+            <button class="lang-option" onclick="setLang('zh-CN')">
+              <span>简</span> 简体中文
+              <svg class="icon icon-sm check">
+                <use href="#i-check" />
+              </svg>
+            </button>
+            <button class="lang-option" onclick="setLang('ja')">
+              <span>JP</span> 日本語
+              <svg class="icon icon-sm check">
+                <use href="#i-check" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Theme -->
+        <button class="nav-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg class="icon" id="themeIconLight">
+            <use href="#i-moon" />
+          </svg>
+          <svg class="icon" id="themeIconDark" style="display:none">
+            <use href="#i-sun" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <svg class="icon icon-sm">
+        <use href="#i-bolt" />
+      </svg>
+      <span data-i18n="hero_badge"></span>
+    </div>
+    <h1><span data-i18n="hero_title_1"></span><br><span class="gradient" data-i18n="hero_title_2"></span></h1>
+    <p data-i18n="hero_desc"></p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">65+</div>
+        <div class="stat-label" data-i18n="stat_tools"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">0</div>
+        <div class="stat-label" data-i18n="stat_signup"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">&lt;1s</div>
+        <div class="stat-label" data-i18n="stat_load"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="toolsContainer">
+
+    <!-- Developer Tools -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-code" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_dev"></div>
+        <div class="cat-count">7</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/json-formatter" class="tool-card" data-name="JSON Formatter Validator 格式化 驗證 フォーマッター">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-json" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_json"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_json_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/jwt-decoder" class="tool-card" data-name="JWT Decoder Token 解碼 デコーダー">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-lock" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_jwt"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_jwt_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/cron-expression-generator" class="tool-card" data-name="Cron Expression Generator 排程 クーロン">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-clock" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_cron"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_cron_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/timestamp-converter" class="tool-card" data-name="Timestamp Converter 時間戳 タイムスタンプ">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-calendar" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_ts"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_ts_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/unicode-converter" class="tool-card" data-name="Unicode Converter 字元 ユニコード">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-globe" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_unicode"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_unicode_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/base64" class="tool-card" data-name="Base64 Encode Decode 編碼 エンコード">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-terminal" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_base64"></div>
+            <div class="t-desc" data-i18n="tool_base64_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/hash-generator" class="tool-card" data-name="Hash Generator MD5 SHA 雜湊 ハッシュ">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-shield" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_hash"></div>
+            <div class="t-desc" data-i18n="tool_hash_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Finance -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-dollar" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_finance"></div>
+        <div class="cat-count">7</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/mortgage-calculator" class="tool-card" data-name="Mortgage Calculator 房貸 住宅ローン">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-home" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_mortgage"></div>
+            <div class="t-desc" data-i18n="tool_mortgage_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/compound-interest" class="tool-card" data-name="Compound Interest 複利 複利計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-trending" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_compound"></div>
+            <div class="t-desc" data-i18n="tool_compound_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/loan-calculator" class="tool-card" data-name="Loan Calculator 貸款 ローン計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-card" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_loan"></div>
+            <div class="t-desc" data-i18n="tool_loan_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/savings-calculator" class="tool-card" data-name="Savings Calculator 存款 貯金計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-piggy" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_savings"></div>
+            <div class="t-desc" data-i18n="tool_savings_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/retirement-calculator" class="tool-card" data-name="Retirement Calculator 退休 退職金">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-users" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_retire"></div>
+            <div class="t-desc" data-i18n="tool_retire_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/currency-converter" class="tool-card" data-name="Currency Converter 匯率 為替レート">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-repeat" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_currency"></div>
+            <div class="t-desc" data-i18n="tool_currency_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/percentage-calculator" class="tool-card" data-name="Percentage Calculator 百分比 パーセント">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-percent" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_percent"></div>
+            <div class="t-desc" data-i18n="tool_percent_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Health -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-activity" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_health"></div>
+        <div class="cat-count">4</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/bmi-calculator" class="tool-card" data-name="BMI Calculator 身體質量指數 BMI計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-feather" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_bmi"></div>
+            <div class="t-desc" data-i18n="tool_bmi_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/tdee-calculator" class="tool-card" data-name="TDEE BMR Calculator 基礎代謝 基礎代謝量">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-activity" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_tdee"></div>
+            <div class="t-desc" data-i18n="tool_tdee_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/calorie-calculator" class="tool-card" data-name="Calorie Calculator 熱量 カロリー計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-cup" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_calorie"></div>
+            <div class="t-desc" data-i18n="tool_calorie_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/due-date-calculator" class="tool-card" data-name="Due Date Calculator 預產期 出産予定日">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-heart" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_duedate"></div>
+            <div class="t-desc" data-i18n="tool_duedate_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Image & File -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-image" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_image"></div>
+        <div class="cat-count">5</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/qr-code-generator" class="tool-card" data-name="QR Code Generator 二維碼 QRコード">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-qr" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_qr"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_qr_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/image-compressor" class="tool-card" data-name="Image Compressor 圖片壓縮 画像圧縮">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-compress" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_imgcomp"></div>
+            <div class="t-desc" data-i18n="tool_imgcomp_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/image-converter" class="tool-card" data-name="Image Converter 圖片轉換 画像変換 PNG JPG WebP">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-repeat" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_imgconv"></div>
+            <div class="t-desc" data-i18n="tool_imgconv_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/pdf-merge" class="tool-card" data-name="PDF Merge Split 合併 拆分 結合 分割">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-file" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_pdf"></div>
+            <div class="t-desc" data-i18n="tool_pdf_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/image-to-pdf" class="tool-card" data-name="Image to PDF 圖片轉PDF 画像PDF変換">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-download" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_img2pdf"></div>
+            <div class="t-desc" data-i18n="tool_img2pdf_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-edit" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_text"></div>
+        <div class="cat-count">5</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/chinese-converter" class="tool-card" data-name="簡繁轉換 Chinese Converter 中国語変換">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-lang" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name"><span data-i18n="tool_chinese"></span><span class="badge-new">NEW</span></div>
+            <div class="t-desc" data-i18n="tool_chinese_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/word-counter" class="tool-card" data-name="Word Counter 字數計算 文字数カウント">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-pen" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_wordcount"></div>
+            <div class="t-desc" data-i18n="tool_wordcount_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/case-converter" class="tool-card" data-name="Case Converter 大小寫 大文字小文字">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-type" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_case"></div>
+            <div class="t-desc" data-i18n="tool_case_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/diff-checker" class="tool-card" data-name="Diff Checker 文字比對 テキスト比較">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-columns" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_diff"></div>
+            <div class="t-desc" data-i18n="tool_diff_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/password-generator" class="tool-card" data-name="Password Generator 密碼產生 パスワード生成">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-key" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_password"></div>
+            <div class="t-desc" data-i18n="tool_password_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Units -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-bar" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_units"></div>
+        <div class="cat-count">6</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/length-converter" class="tool-card" data-name="Length Converter 長度 長さ cm inch">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-ruler" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_length"></div>
+            <div class="t-desc" data-i18n="tool_length_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/weight-converter" class="tool-card" data-name="Weight Converter 重量 重さ kg lb">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-weight" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_weight"></div>
+            <div class="t-desc" data-i18n="tool_weight_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/temperature-converter" class="tool-card" data-name="Temperature Converter 溫度 温度 Celsius">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-thermo" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_temp"></div>
+            <div class="t-desc" data-i18n="tool_temp_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/area-converter" class="tool-card" data-name="Area Converter 坪 面積 坪數換算 面積変換">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-grid" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_area"></div>
+            <div class="t-desc" data-i18n="tool_area_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/data-size-converter" class="tool-card" data-name="Data Size Converter 資料大小 データサイズ KB MB GB">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-db" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_data"></div>
+            <div class="t-desc" data-i18n="tool_data_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/color-converter" class="tool-card" data-name="Color Converter 色碼 カラーコード HEX RGB">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-palette" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_color"></div>
+            <div class="t-desc" data-i18n="tool_color_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Everyday -->
+    <div class="category">
+      <div class="category-header">
+        <div class="cat-icon"><svg class="icon">
+            <use href="#i-smile" />
+          </svg></div>
+        <div class="cat-title" data-i18n="cat_everyday"></div>
+        <div class="cat-count">4</div>
+      </div>
+      <div class="tools-grid">
+        <a href="/age-calculator" class="tool-card" data-name="Age Calculator 年齡 年齢計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-user" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_age"></div>
+            <div class="t-desc" data-i18n="tool_age_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/discount-calculator" class="tool-card" data-name="Discount Calculator 折扣 割引計算">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-tag" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_discount"></div>
+            <div class="t-desc" data-i18n="tool_discount_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/countdown-timer" class="tool-card" data-name="Countdown Timer 倒數計時 カウントダウン">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-alarm" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_countdown"></div>
+            <div class="t-desc" data-i18n="tool_countdown_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+        <a href="/random-number" class="tool-card" data-name="Random Number Generator 隨機數 乱数生成">
+          <div class="t-icon"><svg class="icon">
+              <use href="#i-dice" />
+            </svg></div>
+          <div class="t-info">
+            <div class="t-name" data-i18n="tool_random"></div>
+            <div class="t-desc" data-i18n="tool_random_desc"></div>
+          </div>
+          <div class="t-arrow"><svg class="icon icon-sm">
+              <use href="#i-chev" />
+            </svg></div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="no-results" id="noResults">
+    <svg class="icon">
+      <use href="#i-search" />
+    </svg>
+    <p data-i18n="no_results"></p>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <svg class="icon icon-sm" style="color:var(--accent)">
+        <use href="#i-coffee" />
+      </svg>
+      <span data-i18n="footer_text"></span>
+    </div>
+    <div class="footer-links">
+      <a href="/about" data-i18n="footer_about"></a>
+      <a href="/privacy" data-i18n="footer_privacy"></a>
+      <a href="/terms" data-i18n="footer_terms"></a>
+      <a href="https://github.com" target="_blank"><svg class="icon icon-sm">
+          <use href="#i-github" />
+        </svg> GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    // ============ i18n LOCALES ============
+    const locales = {
+      en: {
+        search_placeholder: "Search tools...",
+        hero_badge: "100% Free — No signup required",
+        hero_title_1: "Online tools,",
+        hero_title_2: "ridiculously fast.",
+        hero_desc: "Developer tools, calculators, image processors, converters — everything you need, nothing you don't.",
+        stat_tools: "Free Tools", stat_signup: "Signups Needed", stat_load: "Load Time",
+        cat_dev: "Developer Tools", cat_finance: "Finance Calculators", cat_health: "Health & Fitness",
+        cat_image: "Image & File Tools", cat_text: "Text Tools", cat_units: "Unit Converters", cat_everyday: "Everyday Tools",
+        tool_json: "JSON Formatter", tool_json_desc: "Format, validate & beautify JSON",
+        tool_jwt: "JWT Decoder", tool_jwt_desc: "Decode & inspect JWT tokens",
+        tool_cron: "Cron Generator", tool_cron_desc: "Visual cron expression builder",
+        tool_ts: "Timestamp Converter", tool_ts_desc: "Unix ↔ human-readable time",
+        tool_unicode: "Unicode Converter", tool_unicode_desc: "Character ↔ Unicode code point",
+        tool_base64: "Base64 Encode/Decode", tool_base64_desc: "Encode & decode Base64 strings",
+        tool_hash: "Hash Generator", tool_hash_desc: "MD5, SHA-1, SHA-256, SHA-512",
+        tool_mortgage: "Mortgage Calculator", tool_mortgage_desc: "Monthly payment & amortization",
+        tool_compound: "Compound Interest", tool_compound_desc: "See your investment grow",
+        tool_loan: "Loan Calculator", tool_loan_desc: "Auto, personal & student loans",
+        tool_savings: "Savings Calculator", tool_savings_desc: "Plan your savings goals",
+        tool_retire: "Retirement Calculator", tool_retire_desc: "Plan for retirement",
+        tool_currency: "Currency Converter", tool_currency_desc: "Real-time exchange rates",
+        tool_percent: "Percentage Calculator", tool_percent_desc: "What is X% of Y?",
+        tool_bmi: "BMI Calculator", tool_bmi_desc: "Body Mass Index",
+        tool_tdee: "TDEE Calculator", tool_tdee_desc: "Daily energy expenditure",
+        tool_calorie: "Calorie Calculator", tool_calorie_desc: "Daily calorie needs",
+        tool_duedate: "Due Date Calculator", tool_duedate_desc: "Estimated delivery date",
+        tool_qr: "QR Code Generator", tool_qr_desc: "Custom QR codes with logo",
+        tool_imgcomp: "Image Compressor", tool_imgcomp_desc: "Compress images in browser",
+        tool_imgconv: "Image Converter", tool_imgconv_desc: "PNG ↔ JPG ↔ WebP ↔ AVIF",
+        tool_pdf: "PDF Merge / Split", tool_pdf_desc: "Combine or split PDF files",
+        tool_img2pdf: "Image to PDF", tool_img2pdf_desc: "Convert images to PDF",
+        tool_chinese: "簡繁轉換", tool_chinese_desc: "Simplified ↔ Traditional Chinese",
+        tool_wordcount: "Word Counter", tool_wordcount_desc: "Count words & characters",
+        tool_case: "Case Converter", tool_case_desc: "UPPER, lower, Title, camelCase",
+        tool_diff: "Diff Checker", tool_diff_desc: "Compare two texts",
+        tool_password: "Password Generator", tool_password_desc: "Generate secure passwords",
+        tool_length: "Length Converter", tool_length_desc: "cm, m, km, inch, feet, mile",
+        tool_weight: "Weight Converter", tool_weight_desc: "kg, g, lb, oz, stone",
+        tool_temp: "Temperature Converter", tool_temp_desc: "°C ↔ °F ↔ K",
+        tool_area: "Area / 坪數換算", tool_area_desc: "m², ft², 坪, acre, hectare",
+        tool_data: "Data Size Converter", tool_data_desc: "B, KB, MB, GB, TB",
+        tool_color: "Color Converter", tool_color_desc: "HEX ↔ RGB ↔ HSL",
+        tool_age: "Age Calculator", tool_age_desc: "Exact age from birthday",
+        tool_discount: "Discount Calculator", tool_discount_desc: "Final price after discount",
+        tool_countdown: "Countdown Timer", tool_countdown_desc: "Count down to any date",
+        tool_random: "Random Number", tool_random_desc: "Generate random numbers",
+        no_results: "No tools found. Try a different search term.",
+        footer_text: "© 2026 toolcase. Built with coffee and simplicity.",
+        footer_about: "About", footer_privacy: "Privacy", footer_terms: "Terms",
+      },
+      "zh-TW": {
+        search_placeholder: "搜尋工具...",
+        hero_badge: "100% 免費 — 不需要註冊",
+        hero_title_1: "線上工具，",
+        hero_title_2: "快到不可思議。",
+        hero_desc: "開發者工具、計算機、圖片處理、轉換器 — 你需要的都在這裡，多餘的一個都沒有。",
+        stat_tools: "免費工具", stat_signup: "不需註冊", stat_load: "載入時間",
+        cat_dev: "開發者工具", cat_finance: "財務計算機", cat_health: "健康與體適能",
+        cat_image: "圖片與檔案工具", cat_text: "文字工具", cat_units: "單位換算", cat_everyday: "日常工具",
+        tool_json: "JSON 格式化", tool_json_desc: "格式化、驗證與美化 JSON",
+        tool_jwt: "JWT 解碼器", tool_jwt_desc: "解碼與檢視 JWT Token",
+        tool_cron: "Cron 產生器", tool_cron_desc: "視覺化 Cron 表達式建構",
+        tool_ts: "時間戳轉換", tool_ts_desc: "Unix 時間戳 ↔ 可讀時間",
+        tool_unicode: "Unicode 轉換器", tool_unicode_desc: "字元 ↔ Unicode 碼位",
+        tool_base64: "Base64 編碼/解碼", tool_base64_desc: "Base64 字串編解碼",
+        tool_hash: "雜湊產生器", tool_hash_desc: "MD5, SHA-1, SHA-256, SHA-512",
+        tool_mortgage: "房貸計算機", tool_mortgage_desc: "月付金額與攤還計畫",
+        tool_compound: "複利計算機", tool_compound_desc: "看你的投資如何成長",
+        tool_loan: "貸款計算機", tool_loan_desc: "汽車、個人與學生貸款",
+        tool_savings: "存款計算機", tool_savings_desc: "規劃你的儲蓄目標",
+        tool_retire: "退休金計算機", tool_retire_desc: "規劃退休計畫",
+        tool_currency: "匯率轉換器", tool_currency_desc: "即時匯率查詢",
+        tool_percent: "百分比計算機", tool_percent_desc: "X 的 Y% 是多少？",
+        tool_bmi: "BMI 計算機", tool_bmi_desc: "身體質量指數",
+        tool_tdee: "TDEE 計算機", tool_tdee_desc: "每日總消耗熱量",
+        tool_calorie: "熱量計算機", tool_calorie_desc: "每日所需熱量",
+        tool_duedate: "預產期計算機", tool_duedate_desc: "預估分娩日期",
+        tool_qr: "QR Code 產生器", tool_qr_desc: "自訂 QR Code + 嵌入 Logo",
+        tool_imgcomp: "圖片壓縮", tool_imgcomp_desc: "在瀏覽器內壓縮圖片",
+        tool_imgconv: "圖片格式轉換", tool_imgconv_desc: "PNG ↔ JPG ↔ WebP ↔ AVIF",
+        tool_pdf: "PDF 合併 / 拆分", tool_pdf_desc: "合併或拆分 PDF 檔案",
+        tool_img2pdf: "圖片轉 PDF", tool_img2pdf_desc: "將圖片轉為 PDF",
+        tool_chinese: "簡繁轉換", tool_chinese_desc: "簡體 ↔ 繁體中文轉換",
+        tool_wordcount: "字數計算器", tool_wordcount_desc: "計算字數與字元數",
+        tool_case: "大小寫轉換", tool_case_desc: "大寫、小寫、標題、駝峰式",
+        tool_diff: "文字比對", tool_diff_desc: "比較兩段文字差異",
+        tool_password: "密碼產生器", tool_password_desc: "產生安全密碼",
+        tool_length: "長度轉換", tool_length_desc: "公分、公尺、英吋、英尺、英里",
+        tool_weight: "重量轉換", tool_weight_desc: "公斤、磅、盎司",
+        tool_temp: "溫度轉換", tool_temp_desc: "°C ↔ °F ↔ K",
+        tool_area: "坪數換算", tool_area_desc: "平方公尺、坪、英畝、公頃",
+        tool_data: "資料大小轉換", tool_data_desc: "B, KB, MB, GB, TB",
+        tool_color: "色碼轉換器", tool_color_desc: "HEX ↔ RGB ↔ HSL",
+        tool_age: "年齡計算機", tool_age_desc: "從生日計算精確年齡",
+        tool_discount: "折扣計算機", tool_discount_desc: "打折後的最終價格",
+        tool_countdown: "倒數計時器", tool_countdown_desc: "倒數到任何日期",
+        tool_random: "隨機數產生器", tool_random_desc: "產生隨機數字",
+        no_results: "找不到工具。請換個關鍵字試試。",
+        footer_text: "© 2026 toolcase. 用咖啡和簡約主義打造。",
+        footer_about: "關於", footer_privacy: "隱私權", footer_terms: "使用條款",
+      },
+      "zh-CN": {
+        search_placeholder: "搜索工具...",
+        hero_badge: "100% 免费 — 无需注册",
+        hero_title_1: "在线工具，",
+        hero_title_2: "快到不可思议。",
+        hero_desc: "开发者工具、计算器、图片处理、转换器 — 你需要的都在这里。",
+        stat_tools: "免费工具", stat_signup: "无需注册", stat_load: "加载时间",
+        cat_dev: "开发者工具", cat_finance: "财务计算器", cat_health: "健康与健身",
+        cat_image: "图片与文件工具", cat_text: "文本工具", cat_units: "单位换算", cat_everyday: "日常工具",
+        tool_json: "JSON 格式化", tool_json_desc: "格式化、验证与美化 JSON",
+        tool_jwt: "JWT 解码器", tool_jwt_desc: "解码与检查 JWT Token",
+        tool_cron: "Cron 生成器", tool_cron_desc: "可视化 Cron 表达式构建",
+        tool_ts: "时间戳转换", tool_ts_desc: "Unix 时间戳 ↔ 可读时间",
+        tool_unicode: "Unicode 转换器", tool_unicode_desc: "字符 ↔ Unicode 码位",
+        tool_base64: "Base64 编码/解码", tool_base64_desc: "Base64 字符串编解码",
+        tool_hash: "哈希生成器", tool_hash_desc: "MD5, SHA-1, SHA-256, SHA-512",
+        tool_mortgage: "房贷计算器", tool_mortgage_desc: "月供金额与还款计划",
+        tool_compound: "复利计算器", tool_compound_desc: "查看你的投资增长",
+        tool_loan: "贷款计算器", tool_loan_desc: "汽车、个人与学生贷款",
+        tool_savings: "存款计算器", tool_savings_desc: "规划你的储蓄目标",
+        tool_retire: "退休金计算器", tool_retire_desc: "规划退休计划",
+        tool_currency: "汇率转换器", tool_currency_desc: "实时汇率查询",
+        tool_percent: "百分比计算器", tool_percent_desc: "X 的 Y% 是多少？",
+        tool_bmi: "BMI 计算器", tool_bmi_desc: "身体质量指数",
+        tool_tdee: "TDEE 计算器", tool_tdee_desc: "每日总消耗热量",
+        tool_calorie: "热量计算器", tool_calorie_desc: "每日所需热量",
+        tool_duedate: "预产期计算器", tool_duedate_desc: "预估分娩日期",
+        tool_qr: "二维码生成器", tool_qr_desc: "自定义二维码 + 嵌入 Logo",
+        tool_imgcomp: "图片压缩", tool_imgcomp_desc: "在浏览器内压缩图片",
+        tool_imgconv: "图片格式转换", tool_imgconv_desc: "PNG ↔ JPG ↔ WebP ↔ AVIF",
+        tool_pdf: "PDF 合并 / 拆分", tool_pdf_desc: "合并或拆分 PDF 文件",
+        tool_img2pdf: "图片转 PDF", tool_img2pdf_desc: "将图片转为 PDF",
+        tool_chinese: "简繁转换", tool_chinese_desc: "简体 ↔ 繁体中文转换",
+        tool_wordcount: "字数统计", tool_wordcount_desc: "统计字数与字符数",
+        tool_case: "大小写转换", tool_case_desc: "大写、小写、标题、驼峰式",
+        tool_diff: "文本对比", tool_diff_desc: "对比两段文本差异",
+        tool_password: "密码生成器", tool_password_desc: "生成安全密码",
+        tool_length: "长度转换", tool_length_desc: "厘米、米、英寸、英尺、英里",
+        tool_weight: "重量转换", tool_weight_desc: "千克、磅、盎司",
+        tool_temp: "温度转换", tool_temp_desc: "°C ↔ °F ↔ K",
+        tool_area: "面积转换", tool_area_desc: "平方米、平方英尺、英亩、公顷",
+        tool_data: "数据大小转换", tool_data_desc: "B, KB, MB, GB, TB",
+        tool_color: "颜色转换器", tool_color_desc: "HEX ↔ RGB ↔ HSL",
+        tool_age: "年龄计算器", tool_age_desc: "从生日计算精确年龄",
+        tool_discount: "折扣计算器", tool_discount_desc: "打折后的最终价格",
+        tool_countdown: "倒计时器", tool_countdown_desc: "倒计时到任何日期",
+        tool_random: "随机数生成器", tool_random_desc: "生成随机数字",
+        no_results: "没有找到工具。请换个关键字试试。",
+        footer_text: "© 2026 toolcase. 用咖啡和极简主义打造。",
+        footer_about: "关于", footer_privacy: "隐私", footer_terms: "条款",
+      },
+      ja: {
+        search_placeholder: "ツールを検索...",
+        hero_badge: "100% 無料 — 登録不要",
+        hero_title_1: "オンラインツール、",
+        hero_title_2: "驚くほど速い。",
+        hero_desc: "開発者ツール、計算機、画像処理、変換ツール — 必要なものだけ。",
+        stat_tools: "無料ツール", stat_signup: "登録不要", stat_load: "読込時間",
+        cat_dev: "開発者ツール", cat_finance: "金融計算機", cat_health: "健康＆フィットネス",
+        cat_image: "画像＆ファイルツール", cat_text: "テキストツール", cat_units: "単位変換", cat_everyday: "日常ツール",
+        tool_json: "JSON フォーマッター", tool_json_desc: "JSONの整形・検証・美化",
+        tool_jwt: "JWT デコーダー", tool_jwt_desc: "JWTトークンの解析",
+        tool_cron: "Cron ジェネレーター", tool_cron_desc: "ビジュアルCron式ビルダー",
+        tool_ts: "タイムスタンプ変換", tool_ts_desc: "Unix ↔ 人間が読める時間",
+        tool_unicode: "Unicode 変換", tool_unicode_desc: "文字 ↔ Unicodeコードポイント",
+        tool_base64: "Base64 エンコード/デコード", tool_base64_desc: "Base64文字列の変換",
+        tool_hash: "ハッシュ生成", tool_hash_desc: "MD5, SHA-1, SHA-256, SHA-512",
+        tool_mortgage: "住宅ローン計算機", tool_mortgage_desc: "月々の返済額と返済計画",
+        tool_compound: "複利計算機", tool_compound_desc: "投資の成長をシミュレーション",
+        tool_loan: "ローン計算機", tool_loan_desc: "自動車・個人・学生ローン",
+        tool_savings: "貯金計算機", tool_savings_desc: "貯蓄目標の計画",
+        tool_retire: "退職金計算機", tool_retire_desc: "退職計画",
+        tool_currency: "為替レート変換", tool_currency_desc: "リアルタイム為替レート",
+        tool_percent: "パーセント計算機", tool_percent_desc: "XのY%はいくら？",
+        tool_bmi: "BMI 計算機", tool_bmi_desc: "ボディマス指数",
+        tool_tdee: "TDEE 計算機", tool_tdee_desc: "1日の総消費カロリー",
+        tool_calorie: "カロリー計算機", tool_calorie_desc: "1日の必要カロリー",
+        tool_duedate: "出産予定日計算", tool_duedate_desc: "出産予定日の推定",
+        tool_qr: "QRコード生成", tool_qr_desc: "ロゴ付きカスタムQRコード",
+        tool_imgcomp: "画像圧縮", tool_imgcomp_desc: "ブラウザで画像を圧縮",
+        tool_imgconv: "画像変換", tool_imgconv_desc: "PNG ↔ JPG ↔ WebP ↔ AVIF",
+        tool_pdf: "PDF 結合 / 分割", tool_pdf_desc: "PDFファイルの結合・分割",
+        tool_img2pdf: "画像→PDF変換", tool_img2pdf_desc: "画像をPDFに変換",
+        tool_chinese: "簡繁変換", tool_chinese_desc: "簡体字 ↔ 繁体字の変換",
+        tool_wordcount: "文字数カウント", tool_wordcount_desc: "単語数・文字数を計算",
+        tool_case: "大文字小文字変換", tool_case_desc: "大文字・小文字・タイトル",
+        tool_diff: "テキスト比較", tool_diff_desc: "2つのテキストを比較",
+        tool_password: "パスワード生成", tool_password_desc: "安全なパスワードを生成",
+        tool_length: "長さ変換", tool_length_desc: "cm, m, km, inch, feet, mile",
+        tool_weight: "重さ変換", tool_weight_desc: "kg, g, lb, oz, stone",
+        tool_temp: "温度変換", tool_temp_desc: "°C ↔ °F ↔ K",
+        tool_area: "面積変換", tool_area_desc: "m², ft², 坪, acre, hectare",
+        tool_data: "データサイズ変換", tool_data_desc: "B, KB, MB, GB, TB",
+        tool_color: "カラー変換", tool_color_desc: "HEX ↔ RGB ↔ HSL",
+        tool_age: "年齢計算機", tool_age_desc: "誕生日から正確な年齢を計算",
+        tool_discount: "割引計算機", tool_discount_desc: "割引後の最終価格",
+        tool_countdown: "カウントダウン", tool_countdown_desc: "任意の日付までカウントダウン",
+        tool_random: "乱数生成", tool_random_desc: "ランダムな数字を生成",
+        no_results: "ツールが見つかりません。別のキーワードをお試しください。",
+        footer_text: "© 2026 toolcase. コーヒーとシンプルさで作られました。",
+        footer_about: "概要", footer_privacy: "プライバシー", footer_terms: "利用規約",
+      }
+    };
+
+    // ============ i18n ENGINE ============
+    function applyLang(lang) {
+      const t = locales[lang] || locales.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key]) el.placeholder = t[key];
+      });
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang === 'zh-TW' ? 'zh-Hant' : lang === 'zh-CN' ? 'zh-Hans' : lang;
+
+      // Update active state in dropdown
+      document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+      document.querySelector(`.lang-option[onclick="setLang('${lang}')"]`)?.classList.add('active');
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+      document.getElementById('langDropdown').classList.remove('open');
+    }
+
+    function toggleLang() {
+      document.getElementById('langDropdown').classList.toggle('open');
+    }
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.lang-wrap')) {
+        document.getElementById('langDropdown').classList.remove('open');
+      }
+    });
+
+    // ============ THEME ============
+    function toggleTheme() {
+      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      document.getElementById('themeIconLight').style.display = next === 'light' ? 'block' : 'none';
+      document.getElementById('themeIconDark').style.display = next === 'dark' ? 'block' : 'none';
+      localStorage.setItem('theme', next);
+    }
+
+    // ============ SEARCH ============
+    function filterTools() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      let total = 0;
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const desc = card.querySelector('.t-desc')?.textContent.toLowerCase() || '';
+        const match = !q || name.includes(q) || desc.includes(q);
+        card.style.display = match ? 'flex' : 'none';
+        if (match) total++;
+      });
+      document.querySelectorAll('.category').forEach(cat => {
+        const has = Array.from(cat.querySelectorAll('.tool-card')).some(c => c.style.display !== 'none');
+        cat.style.display = has ? 'block' : 'none';
+      });
+      document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+    }
+
+    // ============ INIT ============
+    (function init() {
+      // Theme
+      const st = localStorage.getItem('theme');
+      if (st) {
+        document.documentElement.setAttribute('data-theme', st);
+        document.getElementById('themeIconLight').style.display = st === 'light' ? 'block' : 'none';
+        document.getElementById('themeIconDark').style.display = st === 'dark' ? 'block' : 'none';
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('themeIconLight').style.display = 'none';
+        document.getElementById('themeIconDark').style.display = 'block';
+      }
+
+      // Language — detect from localStorage, then browser
+      const sl = localStorage.getItem('lang');
+      if (sl) { applyLang(sl); }
+      else {
+        const bl = navigator.language || 'en';
+        if (bl.startsWith('zh-TW') || bl.startsWith('zh-Hant')) applyLang('zh-TW');
+        else if (bl.startsWith('zh')) applyLang('zh-CN');
+        else if (bl.startsWith('ja')) applyLang('ja');
+        else applyLang('en');
+      }
+
+      // ⌘K shortcut
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          document.getElementById('searchInput')?.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
