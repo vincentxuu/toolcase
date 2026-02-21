@@ -50,6 +50,8 @@ const zhTw = {
   tool_roi_desc: '計算 ROI 與年化報酬率',
   tool_retirement: '退休金計算器',
   tool_retirement_desc: '考慮通膨的退休金規劃',
+  tool_tax: '薪資所得稅計算器',
+  tool_tax_desc: '估算美國聯邦所得稅與稅率級距明細',
   tool_bmi: 'BMI 計算器',
   tool_bmi_desc: '即時計算你的身體質量指數',
   tool_tdee: 'TDEE / BMR 計算器',

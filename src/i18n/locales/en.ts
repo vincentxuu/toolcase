@@ -50,6 +50,8 @@ const en = {
   tool_roi_desc: 'Calculate return on investment & annualized ROI',
   tool_retirement: 'Retirement Calculator',
   tool_retirement_desc: 'Plan retirement with inflation-adjusted projections',
+  tool_tax: 'Tax Calculator',
+  tool_tax_desc: 'Estimate US federal income tax with bracket breakdown',
   tool_bmi: 'BMI Calculator',
   tool_bmi_desc: 'Calculate your Body Mass Index instantly',
   tool_tdee: 'TDEE / BMR Calculator',

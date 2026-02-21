@@ -106,6 +106,13 @@ export const tools: ToolConfig[] = [
     icon: 'umbrella',
   },
   {
+    slug: 'tax-calculator',
+    category: 'finance',
+    nameKey: 'tool_tax',
+    descKey: 'tool_tax_desc',
+    icon: 'receipt',
+  },
+  {
     slug: 'bmi-calculator',
     category: 'health',
     nameKey: 'tool_bmi',
