@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'toolcase — Free Online Tools for Everyone',
@@ -19,11 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar locale="en" />
-        {children}
-        <Footer locale="en" />
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
