@@ -244,10 +244,54 @@ export const tools: ToolConfig[] = [
   { slug: 'social-media-counter', category: 'text', nameKey: 'tool_socialcount', descKey: 'tool_socialcount_desc', icon: 'message-square' },
   { slug: 'emoji-search', category: 'text', nameKey: 'tool_emoji', descKey: 'tool_emoji_desc', icon: 'smile' },
   { slug: 'meta-tag-generator', category: 'dev', nameKey: 'tool_metatag', descKey: 'tool_metatag_desc', icon: 'code' },
+
+  // --- New tools ---
+  // Tier S: High traffic + pure frontend
+  { slug: 'uuid-generator', category: 'dev', nameKey: 'tool_uuid', descKey: 'tool_uuid_desc', icon: 'scan' },
+  { slug: 'color-palette-generator', category: 'css', nameKey: 'tool_colorpalette', descKey: 'tool_colorpalette_desc', icon: 'paintbrush' },
+  { slug: 'image-resizer', category: 'image', nameKey: 'tool_imageresize', descKey: 'tool_imageresize_desc', icon: 'scaling' },
+  { slug: 'favicon-generator', category: 'dev', nameKey: 'tool_favicon', descKey: 'tool_favicon_desc', icon: 'app-window' },
+  { slug: 'json-to-typescript', category: 'dev', nameKey: 'tool_jsontots', descKey: 'tool_jsontots_desc', icon: 'file-type' },
+  { slug: 'html-entity-encoder', category: 'dev', nameKey: 'tool_htmlentity', descKey: 'tool_htmlentity_desc', icon: 'code-xml' },
+  { slug: 'gradient-generator', category: 'css', nameKey: 'tool_gradient', descKey: 'tool_gradient_desc', icon: 'blend' },
+  { slug: 'ip-address-lookup', category: 'dev', nameKey: 'tool_iplookup', descKey: 'tool_iplookup_desc', icon: 'globe' },
+
+  // Tier A: Developer tools
+  { slug: 'code-minifier', category: 'dev', nameKey: 'tool_minifier', descKey: 'tool_minifier_desc', icon: 'minimize-2' },
+  { slug: 'code-beautifier', category: 'dev', nameKey: 'tool_beautifier', descKey: 'tool_beautifier_desc', icon: 'maximize-2' },
+  { slug: 'sql-formatter', category: 'dev', nameKey: 'tool_sql', descKey: 'tool_sql_desc', icon: 'database' },
+  { slug: 'slug-generator', category: 'dev', nameKey: 'tool_slug', descKey: 'tool_slug_desc', icon: 'text-cursor-input' },
+  { slug: 'http-status-codes', category: 'dev', nameKey: 'tool_httpstatus', descKey: 'tool_httpstatus_desc', icon: 'info' },
+  { slug: 'bcrypt-generator', category: 'dev', nameKey: 'tool_bcrypt', descKey: 'tool_bcrypt_desc', icon: 'lock' },
+  { slug: 'user-agent-parser', category: 'dev', nameKey: 'tool_useragent', descKey: 'tool_useragent_desc', icon: 'monitor-smartphone' },
+  { slug: 'markdown-to-html', category: 'dev', nameKey: 'tool_md2html', descKey: 'tool_md2html_desc', icon: 'file-code-2' },
+
+  // Tier B: CSS visual tools
+  { slug: 'box-shadow-generator', category: 'css', nameKey: 'tool_boxshadow', descKey: 'tool_boxshadow_desc', icon: 'layers' },
+  { slug: 'border-radius-generator', category: 'css', nameKey: 'tool_borderradius', descKey: 'tool_borderradius_desc', icon: 'circle' },
+  { slug: 'glassmorphism-generator', category: 'css', nameKey: 'tool_glassmorphism', descKey: 'tool_glassmorphism_desc', icon: 'sparkles' },
+  { slug: 'css-clip-path-generator', category: 'css', nameKey: 'tool_clippath', descKey: 'tool_clippath_desc', icon: 'scissors' },
+  { slug: 'css-flexbox-playground', category: 'css', nameKey: 'tool_flexbox', descKey: 'tool_flexbox_desc', icon: 'layout' },
+  { slug: 'css-grid-generator', category: 'css', nameKey: 'tool_cssgrid', descKey: 'tool_cssgrid_desc', icon: 'grid-3x3' },
+
+  // Tier C: Other tools
+  { slug: 'barcode-generator', category: 'everyday', nameKey: 'tool_barcode', descKey: 'tool_barcode_desc', icon: 'scan-barcode' },
+  { slug: 'text-to-handwriting', category: 'text', nameKey: 'tool_handwriting', descKey: 'tool_handwriting_desc', icon: 'pen-tool' },
+  { slug: 'image-watermark', category: 'image', nameKey: 'tool_watermark', descKey: 'tool_watermark_desc', icon: 'stamp' },
+  { slug: 'pomodoro-timer', category: 'everyday', nameKey: 'tool_pomodoro', descKey: 'tool_pomodoro_desc', icon: 'alarm-clock' },
+  { slug: 'invoice-generator', category: 'finance', nameKey: 'tool_invoice', descKey: 'tool_invoice_desc', icon: 'receipt-text' },
+
+  // Tier D: Crypto / Encoding tools
+  { slug: 'text-encrypt-decrypt', category: 'dev', nameKey: 'tool_encrypt', descKey: 'tool_encrypt_desc', icon: 'shield-check' },
+  { slug: 'rsa-key-generator', category: 'dev', nameKey: 'tool_rsa', descKey: 'tool_rsa_desc', icon: 'key' },
+  { slug: 'integer-base-converter', category: 'dev', nameKey: 'tool_intbase', descKey: 'tool_intbase_desc', icon: 'hash' },
+  { slug: 'jwt-encoder', category: 'dev', nameKey: 'tool_jwtenc', descKey: 'tool_jwtenc_desc', icon: 'ticket' },
+  { slug: 'toml-converter', category: 'dev', nameKey: 'tool_toml', descKey: 'tool_toml_desc', icon: 'braces' },
 ]
 
 export const categories = [
   { key: 'dev', labelKey: 'cat_dev' },
+  { key: 'css', labelKey: 'cat_css' },
   { key: 'finance', labelKey: 'cat_finance' },
   { key: 'health', labelKey: 'cat_health' },
   { key: 'image', labelKey: 'cat_image' },
