@@ -13,6 +13,12 @@ import {
   PiggyBank,
   Percent,
   Umbrella,
+  HeartPulse,
+  Flame,
+  Baby,
+  Calculator,
+  Cake,
+  Shield,
   type LucideProps,
 } from 'lucide-react'
 
@@ -31,6 +37,12 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   'piggy-bank': PiggyBank,
   percent: Percent,
   umbrella: Umbrella,
+  'heart-pulse': HeartPulse,
+  flame: Flame,
+  baby: Baby,
+  calculator: Calculator,
+  cake: Cake,
+  shield: Shield,
 }
 
 export default function ToolIcon({ name, size = 28 }: { name: string; size?: number }) {

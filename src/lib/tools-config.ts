@@ -105,6 +105,48 @@ export const tools: ToolConfig[] = [
     descKey: 'tool_retirement_desc',
     icon: 'umbrella',
   },
+  {
+    slug: 'bmi-calculator',
+    category: 'health',
+    nameKey: 'tool_bmi',
+    descKey: 'tool_bmi_desc',
+    icon: 'heart-pulse',
+  },
+  {
+    slug: 'tdee-calculator',
+    category: 'health',
+    nameKey: 'tool_tdee',
+    descKey: 'tool_tdee_desc',
+    icon: 'flame',
+  },
+  {
+    slug: 'due-date-calculator',
+    category: 'health',
+    nameKey: 'tool_duedate',
+    descKey: 'tool_duedate_desc',
+    icon: 'baby',
+  },
+  {
+    slug: 'percentage-calculator',
+    category: 'everyday',
+    nameKey: 'tool_percentage',
+    descKey: 'tool_percentage_desc',
+    icon: 'calculator',
+  },
+  {
+    slug: 'age-calculator',
+    category: 'everyday',
+    nameKey: 'tool_age',
+    descKey: 'tool_age_desc',
+    icon: 'cake',
+  },
+  {
+    slug: 'password-generator',
+    category: 'dev',
+    nameKey: 'tool_password',
+    descKey: 'tool_password_desc',
+    icon: 'shield',
+  },
 ]
 
 export const categories = [

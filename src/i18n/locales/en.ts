@@ -50,6 +50,18 @@ const en = {
   tool_roi_desc: 'Calculate return on investment & annualized ROI',
   tool_retirement: 'Retirement Calculator',
   tool_retirement_desc: 'Plan retirement with inflation-adjusted projections',
+  tool_bmi: 'BMI Calculator',
+  tool_bmi_desc: 'Calculate your Body Mass Index instantly',
+  tool_tdee: 'TDEE / BMR Calculator',
+  tool_tdee_desc: 'Calculate daily calorie needs & basal metabolic rate',
+  tool_duedate: 'Due Date Calculator',
+  tool_duedate_desc: 'Estimate pregnancy due date & track progress',
+  tool_percentage: 'Percentage Calculator',
+  tool_percentage_desc: 'Calculate percentages, ratios & percentage change',
+  tool_age: 'Age Calculator',
+  tool_age_desc: 'Calculate exact age in years, months & days',
+  tool_password: 'Password Generator',
+  tool_password_desc: 'Generate strong, random passwords instantly',
 
   // Related
   related_tools_title: 'Related Tools',

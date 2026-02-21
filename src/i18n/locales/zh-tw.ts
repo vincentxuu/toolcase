@@ -50,6 +50,18 @@ const zhTw = {
   tool_roi_desc: '計算 ROI 與年化報酬率',
   tool_retirement: '退休金計算器',
   tool_retirement_desc: '考慮通膨的退休金規劃',
+  tool_bmi: 'BMI 計算器',
+  tool_bmi_desc: '即時計算你的身體質量指數',
+  tool_tdee: 'TDEE / BMR 計算器',
+  tool_tdee_desc: '計算每日所需熱量與基礎代謝率',
+  tool_duedate: '預產期計算器',
+  tool_duedate_desc: '估算預產期並追蹤懷孕進度',
+  tool_percentage: '百分比計算器',
+  tool_percentage_desc: '計算百分比、比例與百分比變化',
+  tool_age: '年齡計算器',
+  tool_age_desc: '精確計算年齡（年、月、日）',
+  tool_password: '密碼產生器',
+  tool_password_desc: '即時產生強度高的隨機密碼',
 
   // Related
   related_tools_title: '相關工具',
