@@ -331,6 +331,12 @@ export const tools: ToolConfig[] = [
 
   // Video / Social Media
   { slug: 'social-video-speed', category: 'image', nameKey: 'tool_videospeed', descKey: 'tool_videospeed_desc', icon: 'fast-forward' },
+
+  // --- Wave 4: New tools ---
+  { slug: 'currency-converter', category: 'finance', nameKey: 'tool_currency', descKey: 'tool_currency_desc', icon: 'dollar-sign' },
+  { slug: 'ai-token-counter', category: 'dev', nameKey: 'tool_aitoken', descKey: 'tool_aitoken_desc', icon: 'bot' },
+  { slug: 'taiwan-id-validator', category: 'everyday', nameKey: 'tool_taiwanid', descKey: 'tool_taiwanid_desc', icon: 'id-card' },
+  { slug: 'lunar-calendar-converter', category: 'everyday', nameKey: 'tool_lunar', descKey: 'tool_lunar_desc', icon: 'moon' },
 ]
 
 export const categories = [
