@@ -1,5 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
+import { pinyin } from 'pinyin-pro'
 
 interface AddressTranslatorProps {
   labels?: {
@@ -91,14 +92,23 @@ const DISTRICT_MAP: Record<string, string> = {
   '大樹區': 'Dashu Dist.', '旗山區': 'Qishan Dist.', '美濃區': 'Meinong Dist.',
 }
 
-// Common road/lane/alley suffixes
+// Chinese number mapping
+const CHINESE_NUM_MAP: Record<string, string> = {
+  '一': '1', '二': '2', '三': '3', '四': '4', '五': '5',
+  '六': '6', '七': '7', '八': '8', '九': '9', '十': '10',
+  '零': '0'
+}
+
+// Common road/lane/alley suffixes (order matters!)
+// Process floor/room before number to avoid "517號7樓" becoming "No. 5177樓"
 const ROAD_SUFFIX_MAP: [RegExp, string][] = [
-  [/(\d+)巷/g, 'Ln. $1'],
-  [/(\d+)弄/g, 'Aly. $1'],
-  [/(\d+)號/g, 'No. $1'],
-  [/(\d+)樓/g, '$1F'],
+  [/(\d+)段/g, ' Sec. $1'],
+  [/(\d+)巷/g, ' Ln. $1'],
+  [/(\d+)弄/g, ' Aly. $1'],
+  [/(\d+)樓之(\d+)/g, ' $1F-$2'],  // Must come before 號 and 樓
+  [/(\d+)樓/g, ' $1F'],
+  [/(\d+)號/g, ' No. $1'],  // Process after floor to avoid merging
   [/之(\d+)/g, '-$1'],
-  [/(\d+)段/g, 'Sec. $1'],
 ]
 
 const ROAD_MAP: Record<string, string> = {
@@ -142,16 +152,83 @@ function translateAddress(input: string): string {
   // Process the remaining part (road, number, floor, etc.)
   let roadPart = remaining.trim()
 
-  // Apply number-based replacements
-  for (const [re, replacement] of ROAD_SUFFIX_MAP) {
-    roadPart = roadPart.replace(re, replacement)
-  }
+  // Extract road name before numbers and suffixes
+  // Match pattern: [路名][路/街/大道等][數字部分]
+  const roadMatch = roadPart.match(/^(.+?)(路|街|大道|大路)(.*)$/)
 
-  // Split and reverse parts for English address order
-  // Try to identify road name - use Wade-Giles / Hanyu Pinyin as placeholder
-  let roadEn = roadPart
-  for (const [cn, en] of Object.entries(ROAD_MAP)) {
-    roadEn = roadEn.replace(new RegExp(cn, 'g'), ` ${en}`)
+  let roadEn = ''
+  if (roadMatch) {
+    const roadName = roadMatch[1] // 路名 (e.g., "虎林", "重慶南", "中山北")
+    const roadType = roadMatch[2] // 路/街等
+    let numberPart = roadMatch[3] // 號碼部分
+
+    // Convert road name to pinyin with proper capitalization
+    const roadNamePinyin = pinyin(roadName, {
+      toneType: 'none',
+      type: 'array'
+    }).map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')
+
+    // Convert Chinese numbers to Arabic numbers
+    for (const [cn, num] of Object.entries(CHINESE_NUM_MAP)) {
+      numberPart = numberPart.replace(new RegExp(cn, 'g'), num)
+    }
+
+    // Process number part (段, 巷, 弄, 號, 樓 etc.)
+    let numberPartEn = numberPart
+    for (const [re, replacement] of ROAD_SUFFIX_MAP) {
+      numberPartEn = numberPartEn.replace(re, replacement)
+    }
+
+    // Build road part: "Hulin St." or "Sec. 1, Chongqing S. Rd."
+    const roadTypeEn = ROAD_MAP[roadType] || roadType
+
+    // Extract components using regex to preserve "No. 123" together
+    const orderedParts: string[] = []
+
+    // Extract floor (e.g., "7F-7" or "7F")
+    const floorMatch = numberPartEn.match(/(\d+F(?:-\d+)?)/)
+    if (floorMatch) orderedParts.push(floorMatch[1])
+
+    // Extract number (e.g., "No. 517")
+    const noMatch = numberPartEn.match(/(No\.\s*\d+)/)
+    if (noMatch) orderedParts.push(noMatch[1])
+
+    // Extract lane (e.g., "Ln. 123")
+    const lnMatch = numberPartEn.match(/(Ln\.\s*\d+)/)
+    if (lnMatch) orderedParts.push(lnMatch[1])
+
+    // Extract alley (e.g., "Aly. 45")
+    const alyMatch = numberPartEn.match(/(Aly\.\s*\d+)/)
+    if (alyMatch) orderedParts.push(alyMatch[1])
+
+    // Extract section (e.g., "Sec. 1")
+    const secMatch = numberPartEn.match(/(Sec\.\s*\d+)/)
+    if (secMatch) orderedParts.push(secMatch[1])
+
+    // Combine: ordered parts + road name + road type
+    // e.g., "7F-7, No. 57, Hulin St."
+    const parts: string[] = []
+    if (orderedParts.length > 0) {
+      parts.push(orderedParts.join(', '))
+    }
+    parts.push(`${roadNamePinyin} ${roadTypeEn}`)
+
+    roadEn = parts.join(', ')
+  } else {
+    // Fallback: no clear road pattern, apply basic replacements
+    let roadPartTemp = roadPart
+
+    // Apply number-based replacements
+    for (const [re, replacement] of ROAD_SUFFIX_MAP) {
+      roadPartTemp = roadPartTemp.replace(re, replacement)
+    }
+
+    // Replace road suffixes
+    for (const [cn, en] of Object.entries(ROAD_MAP)) {
+      roadPartTemp = roadPartTemp.replace(new RegExp(cn, 'g'), ` ${en}`)
+    }
+
+    roadEn = roadPartTemp
   }
 
   // Build English address (reverse order: number, road, district, city, postal)
