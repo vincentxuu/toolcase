@@ -287,6 +287,50 @@ export const tools: ToolConfig[] = [
   { slug: 'integer-base-converter', category: 'dev', nameKey: 'tool_intbase', descKey: 'tool_intbase_desc', icon: 'hash' },
   { slug: 'jwt-encoder', category: 'dev', nameKey: 'tool_jwtenc', descKey: 'tool_jwtenc_desc', icon: 'ticket' },
   { slug: 'toml-converter', category: 'dev', nameKey: 'tool_toml', descKey: 'tool_toml_desc', icon: 'braces' },
+
+  // --- Wave 3: General-user high-traffic tools ---
+  // Everyday
+  { slug: 'online-notepad', category: 'everyday', nameKey: 'tool_notepad', descKey: 'tool_notepad_desc', icon: 'notebook' },
+  { slug: 'typing-speed-test', category: 'everyday', nameKey: 'tool_typing', descKey: 'tool_typing_desc', icon: 'keyboard' },
+  { slug: 'wifi-qr-generator', category: 'everyday', nameKey: 'tool_wifiqr', descKey: 'tool_wifiqr_desc', icon: 'wifi' },
+  { slug: 'roman-numeral-converter', category: 'everyday', nameKey: 'tool_roman', descKey: 'tool_roman_desc', icon: 'list-ordered' },
+  { slug: 'gpa-calculator', category: 'everyday', nameKey: 'tool_gpa', descKey: 'tool_gpa_desc', icon: 'graduation-cap' },
+  { slug: 'electricity-calculator', category: 'everyday', nameKey: 'tool_electricity', descKey: 'tool_electricity_desc', icon: 'zap' },
+  { slug: 'fuel-cost-calculator', category: 'everyday', nameKey: 'tool_fuelcost', descKey: 'tool_fuelcost_desc', icon: 'fuel' },
+  { slug: 'unit-price-calculator', category: 'everyday', nameKey: 'tool_unitprice', descKey: 'tool_unitprice_desc', icon: 'bar-chart-3' },
+  { slug: 'timezone-converter', category: 'everyday', nameKey: 'tool_timezone', descKey: 'tool_timezone_desc', icon: 'globe' },
+  { slug: 'digital-signature-pad', category: 'everyday', nameKey: 'tool_signature', descKey: 'tool_signature_desc', icon: 'pen-line' },
+  { slug: 'screen-recorder', category: 'everyday', nameKey: 'tool_screenrecord', descKey: 'tool_screenrecord_desc', icon: 'video' },
+  { slug: 'scientific-calculator', category: 'everyday', nameKey: 'tool_scicalc', descKey: 'tool_scicalc_desc', icon: 'calculator' },
+
+  // Text
+  { slug: 'fancy-text-generator', category: 'text', nameKey: 'tool_fancytext', descKey: 'tool_fancytext_desc', icon: 'wand-2' },
+  { slug: 'text-repeater', category: 'text', nameKey: 'tool_textrepeat', descKey: 'tool_textrepeat_desc', icon: 'repeat' },
+  { slug: 'morse-code-translator', category: 'text', nameKey: 'tool_morse', descKey: 'tool_morse_desc', icon: 'radio' },
+  { slug: 'number-to-words', category: 'text', nameKey: 'tool_num2words', descKey: 'tool_num2words_desc', icon: 'book-open' },
+
+  // Dev
+  { slug: 'binary-text-converter', category: 'dev', nameKey: 'tool_binarytext', descKey: 'tool_binarytext_desc', icon: 'binary' },
+  { slug: 'chmod-calculator', category: 'dev', nameKey: 'tool_chmod', descKey: 'tool_chmod_desc', icon: 'terminal' },
+  { slug: 'ip-subnet-calculator', category: 'dev', nameKey: 'tool_ipsubnet', descKey: 'tool_ipsubnet_desc', icon: 'network' },
+  { slug: 'json-path-finder', category: 'dev', nameKey: 'tool_jsonpath', descKey: 'tool_jsonpath_desc', icon: 'folder-search' },
+
+  // CSS & Design
+  { slug: 'color-blindness-simulator', category: 'css', nameKey: 'tool_colorblind', descKey: 'tool_colorblind_desc', icon: 'eye-off' },
+  { slug: 'css-text-shadow-generator', category: 'css', nameKey: 'tool_textshadow', descKey: 'tool_textshadow_desc', icon: 'heading' },
+
+  // Image
+  { slug: 'aspect-ratio-calculator', category: 'image', nameKey: 'tool_aspectratio', descKey: 'tool_aspectratio_desc', icon: 'frame' },
+  { slug: 'svg-to-png-converter', category: 'image', nameKey: 'tool_svg2png', descKey: 'tool_svg2png_desc', icon: 'file-output' },
+  { slug: 'webp-converter', category: 'image', nameKey: 'tool_webp', descKey: 'tool_webp_desc', icon: 'image-plus' },
+
+  // Units
+  { slug: 'shoe-size-converter', category: 'units', nameKey: 'tool_shoesize', descKey: 'tool_shoesize_desc', icon: 'footprints' },
+  { slug: 'energy-converter', category: 'units', nameKey: 'tool_energy', descKey: 'tool_energy_desc', icon: 'battery-charging' },
+  { slug: 'pressure-converter', category: 'units', nameKey: 'tool_pressure', descKey: 'tool_pressure_desc', icon: 'arrow-down-up' },
+
+  // Video / Social Media
+  { slug: 'social-video-speed', category: 'image', nameKey: 'tool_videospeed', descKey: 'tool_videospeed_desc', icon: 'fast-forward' },
 ]
 
 export const categories = [
