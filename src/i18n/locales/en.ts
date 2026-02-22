@@ -272,6 +272,8 @@ const en = {
   tool_energy_desc: 'Convert between joules, calories, kWh and BTU',
   tool_pressure: 'Pressure Converter',
   tool_pressure_desc: 'Convert between Pa, bar, PSI, atm and mmHg',
+  tool_videospeed: 'Social Video Speed',
+  tool_videospeed_desc: 'Speed up videos to fit social media time limits',
 
   // Categories (new)
   cat_css: 'CSS & Design Tools',

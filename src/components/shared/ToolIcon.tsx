@@ -117,6 +117,7 @@ import {
   BatteryCharging,
   ArrowDownUp,
   BookOpen,
+  FastForward,
   type LucideProps,
 } from 'lucide-react'
 
@@ -239,6 +240,7 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   'battery-charging': BatteryCharging,
   'arrow-down-up': ArrowDownUp,
   'book-open': BookOpen,
+  'fast-forward': FastForward,
 }
 
 export default function ToolIcon({ name, size = 28 }: { name: string; size?: number }) {

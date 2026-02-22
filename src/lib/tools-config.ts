@@ -328,6 +328,9 @@ export const tools: ToolConfig[] = [
   { slug: 'shoe-size-converter', category: 'units', nameKey: 'tool_shoesize', descKey: 'tool_shoesize_desc', icon: 'footprints' },
   { slug: 'energy-converter', category: 'units', nameKey: 'tool_energy', descKey: 'tool_energy_desc', icon: 'battery-charging' },
   { slug: 'pressure-converter', category: 'units', nameKey: 'tool_pressure', descKey: 'tool_pressure_desc', icon: 'arrow-down-up' },
+
+  // Video / Social Media
+  { slug: 'social-video-speed', category: 'image', nameKey: 'tool_videospeed', descKey: 'tool_videospeed_desc', icon: 'fast-forward' },
 ]
 
 export const categories = [

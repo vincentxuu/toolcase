@@ -272,6 +272,8 @@ const zhTw = {
   tool_energy_desc: '在焦耳、卡路里、千瓦時和 BTU 之間轉換',
   tool_pressure: '壓力轉換器',
   tool_pressure_desc: '在帕斯卡、巴、PSI、大氣壓和毫米汞柱之間轉換',
+  tool_videospeed: '社群影片快轉',
+  tool_videospeed_desc: '加速影片以符合社群媒體時間限制',
 
   // Categories (new)
   cat_css: 'CSS 與設計工具',
