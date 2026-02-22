@@ -337,6 +337,26 @@ export const tools: ToolConfig[] = [
   { slug: 'ai-token-counter', category: 'dev', nameKey: 'tool_aitoken', descKey: 'tool_aitoken_desc', icon: 'bot' },
   { slug: 'taiwan-id-validator', category: 'everyday', nameKey: 'tool_taiwanid', descKey: 'tool_taiwanid_desc', icon: 'id-card' },
   { slug: 'lunar-calendar-converter', category: 'everyday', nameKey: 'tool_lunar', descKey: 'tool_lunar_desc', icon: 'moon' },
+
+  // --- Taiwan Tax & Insurance Reference Tables ---
+  { slug: 'tw-income-tax-brackets', category: 'finance', nameKey: 'tool_tw_income_tax', descKey: 'tool_tw_income_tax_desc', icon: 'table' },
+  { slug: 'tw-salary-withholding-tax', category: 'finance', nameKey: 'tool_tw_withholding', descKey: 'tool_tw_withholding_desc', icon: 'file-spreadsheet' },
+  { slug: 'tw-estate-tax', category: 'finance', nameKey: 'tool_tw_estate_tax', descKey: 'tool_tw_estate_tax_desc', icon: 'landmark' },
+  { slug: 'tw-gift-tax', category: 'finance', nameKey: 'tool_tw_gift_tax', descKey: 'tool_tw_gift_tax_desc', icon: 'gift' },
+  { slug: 'tw-house-tax', category: 'finance', nameKey: 'tool_tw_house_tax', descKey: 'tool_tw_house_tax_desc', icon: 'house' },
+  { slug: 'tw-land-value-tax', category: 'finance', nameKey: 'tool_tw_land_tax', descKey: 'tool_tw_land_tax_desc', icon: 'map-pin' },
+  { slug: 'tw-securities-tax', category: 'finance', nameKey: 'tool_tw_securities_tax', descKey: 'tool_tw_securities_tax_desc', icon: 'bar-chart-2' },
+  { slug: 'tw-vehicle-license-tax', category: 'finance', nameKey: 'tool_tw_vehicle_tax', descKey: 'tool_tw_vehicle_tax_desc', icon: 'car' },
+  { slug: 'tw-fuel-tax', category: 'finance', nameKey: 'tool_tw_fuel_tax', descKey: 'tool_tw_fuel_tax_desc', icon: 'fuel' },
+  { slug: 'tw-nhi-premium', category: 'finance', nameKey: 'tool_tw_nhi', descKey: 'tool_tw_nhi_desc', icon: 'heart-pulse' },
+  { slug: 'tw-labor-insurance', category: 'finance', nameKey: 'tool_tw_labor_ins', descKey: 'tool_tw_labor_ins_desc', icon: 'hard-hat' },
+  { slug: 'tw-labor-pension', category: 'finance', nameKey: 'tool_tw_labor_pension', descKey: 'tool_tw_labor_pension_desc', icon: 'piggy-bank' },
+  { slug: 'tw-national-pension', category: 'finance', nameKey: 'tool_tw_national_pension', descKey: 'tool_tw_national_pension_desc', icon: 'users' },
+  { slug: 'tw-occupational-accident-insurance', category: 'finance', nameKey: 'tool_tw_occupational', descKey: 'tool_tw_occupational_desc', icon: 'shield-alert' },
+  { slug: 'tw-supplementary-nhi-premium', category: 'finance', nameKey: 'tool_tw_supp_nhi', descKey: 'tool_tw_supp_nhi_desc', icon: 'plus-circle' },
+  { slug: 'tw-minimum-wage', category: 'finance', nameKey: 'tool_tw_min_wage', descKey: 'tool_tw_min_wage_desc', icon: 'badge-dollar-sign' },
+  { slug: 'tw-tax-deductions', category: 'finance', nameKey: 'tool_tw_deductions', descKey: 'tool_tw_deductions_desc', icon: 'list-checks' },
+  { slug: 'tw-retirement-income-tax', category: 'finance', nameKey: 'tool_tw_retirement_tax', descKey: 'tool_tw_retirement_tax_desc', icon: 'wallet' },
 ]
 
 export const categories = [

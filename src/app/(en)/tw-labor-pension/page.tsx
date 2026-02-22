@@ -1,0 +1,20 @@
+import { Metadata } from 'next'
+import TwLaborPension from '@/components/tools/TwLaborPension'
+import RelatedTools from '@/components/shared/RelatedTools'
+
+export const metadata: Metadata = {
+  title: 'Taiwan Labor Pension Contribution Table - Monthly Grades | toolcase',
+  description: 'Taiwan labor pension (new system) contribution table with wage grades and employer 6% mandatory contribution amounts. Includes voluntary contribution info.',
+  alternates: { canonical: 'https://toolcase.cc/tw-labor-pension', languages: { en: 'https://toolcase.cc/tw-labor-pension', 'zh-Hant-TW': 'https://toolcase.cc/zh-tw/tw-labor-pension' } },
+}
+
+export default function Page() {
+  return (
+    <div className="tool-container">
+      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan Labor Pension</h1>
+      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Taiwan labor pension contribution table for 2024 (ROC year 113). Look up wage grades and employer/voluntary contribution amounts.</p>
+      <TwLaborPension labels={{ title: 'Labor Pension Contribution Table', desc: 'Year 2024 (ROC 113)', grade: 'Grade', wageGrade: 'Monthly Contribution Wage', employerContrib: 'Employer Contribution (6%)', voluntaryContrib: 'Voluntary Contribution (0–6%)', quickLookup: 'Quick Lookup', monthlySalary: 'Monthly Salary', yourGrade: 'Your Grade', monthlyEmployer: 'Monthly Employer Contribution', annualEmployer: 'Annual Employer Contribution', voluntaryNote: 'Voluntary Contribution Info' }} />
+      <RelatedTools current="tw-labor-pension" locale="en" />
+    </div>
+  )
+}

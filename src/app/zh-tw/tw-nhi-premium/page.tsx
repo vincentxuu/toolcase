@@ -1,0 +1,20 @@
+import { Metadata } from 'next'
+import TwNhiPremium from '@/components/tools/TwNhiPremium'
+import RelatedTools from '@/components/shared/RelatedTools'
+
+export const metadata: Metadata = {
+  title: '健保投保級距表 - 全民健保保費查詢 | toolcase',
+  description: '全民健康保險投保金額分級表，輸入月薪即可查詢適用級距與每月自付保費金額。',
+  alternates: { canonical: 'https://toolcase.cc/zh-tw/tw-nhi-premium', languages: { en: 'https://toolcase.cc/tw-nhi-premium', 'zh-Hant-TW': 'https://toolcase.cc/zh-tw/tw-nhi-premium' } },
+}
+
+export default function Page() {
+  return (
+    <div className="tool-container">
+      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>健保投保級距表</h1>
+      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>全民健康保險投保金額分級表，輸入月薪即可查詢適用級距與每月自付保費。費率5.17%，被保險人自付30%。</p>
+      <TwNhiPremium />
+      <RelatedTools current="tw-nhi-premium" locale="zh-tw" />
+    </div>
+  )
+}
