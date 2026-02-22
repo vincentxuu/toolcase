@@ -275,6 +275,16 @@ const en = {
   tool_videospeed: 'Social Video Speed',
   tool_videospeed_desc: 'Speed up videos to fit social media time limits',
 
+  // Wave 4: New tools
+  tool_currency: 'Currency Converter',
+  tool_currency_desc: 'Convert between world currencies with live exchange rates',
+  tool_aitoken: 'AI Token Counter',
+  tool_aitoken_desc: 'Count tokens and estimate API costs for GPT, Claude & Gemini',
+  tool_taiwanid: 'Taiwan ID Validator',
+  tool_taiwanid_desc: 'Validate Taiwan business IDs and national ID numbers',
+  tool_lunar: 'Lunar Calendar Converter',
+  tool_lunar_desc: 'Convert between solar and lunar (Chinese) calendar dates',
+
   // Categories (new)
   cat_css: 'CSS & Design Tools',
 

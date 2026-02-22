@@ -275,6 +275,16 @@ const zhTw = {
   tool_videospeed: '社群影片快轉',
   tool_videospeed_desc: '加速影片以符合社群媒體時間限制',
 
+  // Wave 4: 新工具
+  tool_currency: '匯率轉換器',
+  tool_currency_desc: '使用即時匯率在全球貨幣之間轉換',
+  tool_aitoken: 'AI Token 計算器',
+  tool_aitoken_desc: '計算 Token 數量並估算 GPT、Claude、Gemini 的 API 費用',
+  tool_taiwanid: '台灣證號驗證器',
+  tool_taiwanid_desc: '驗證台灣統一編號與身分證字號',
+  tool_lunar: '農曆國曆轉換',
+  tool_lunar_desc: '在國曆和農曆（陰曆）日期之間轉換',
+
   // Categories (new)
   cat_css: 'CSS 與設計工具',
 

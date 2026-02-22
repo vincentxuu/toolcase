@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 interface DueDateCalculatorProps {
   labels?: {
@@ -46,11 +46,17 @@ export default function DueDateCalculator({ labels }: DueDateCalculatorProps) {
     disclaimer: labels?.disclaimer ?? 'This tool is for informational purposes only. Please consult your healthcare provider for accurate medical advice.',
   }
 
-  const today = new Date()
-  const defaultLmp = new Date(today)
-  defaultLmp.setDate(defaultLmp.getDate() - 56)
-  const [lmpStr, setLmpStr] = useState(defaultLmp.toISOString().split('T')[0])
+  const [today, setToday] = useState(() => new Date(2026, 0, 1))
+  const [lmpStr, setLmpStr] = useState('2025-11-06')
   const [cycleLength, setCycleLength] = useState(28)
+
+  useEffect(() => {
+    const now = new Date()
+    setToday(now)
+    const defaultLmp = new Date(now)
+    defaultLmp.setDate(defaultLmp.getDate() - 56)
+    setLmpStr(defaultLmp.toISOString().split('T')[0])
+  }, [])
 
   const result = useMemo(() => {
     const lmp = new Date(lmpStr)
@@ -64,7 +70,7 @@ export default function DueDateCalculator({ labels }: DueDateCalculatorProps) {
     const trimester = weeksPregnant < 13 ? 1 : weeksPregnant < 27 ? 2 : 3
     const progress = Math.min(100, Math.max(0, (daysSinceLmp / 280) * 100))
     return { dueDate, conceptionDate, weeksPregnant, daysExtra, daysUntilDue, trimester, progress }
-  }, [lmpStr, cycleLength])
+  }, [lmpStr, cycleLength, today])
 
   const inputStyle: React.CSSProperties = {
     width: '100%', padding: '0.75rem', border: '1px solid var(--color-border)', borderRadius: '0.5rem',
