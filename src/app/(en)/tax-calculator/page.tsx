@@ -4,9 +4,9 @@ import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
 
 export const metadata: Metadata = {
-  title: 'Tax Calculator - Free US Federal Income Tax Estimator | toolcase',
+  title: 'Tax Calculator - US Federal & Taiwan Income Tax | toolcase',
   description:
-    'Estimate your US federal income tax with bracket breakdown. See taxable income, effective rate, and after-tax income for single or married filing.',
+    'Estimate US federal income tax or Taiwan consolidated income tax with bracket breakdown. See taxable income, effective rate, and after-tax income.',
   alternates: {
     canonical: 'https://toolcase.cc/tax-calculator',
     languages: {
@@ -20,17 +20,22 @@ const faqs = [
   {
     question: 'What is the effective tax rate?',
     answer:
-      'The effective tax rate is the actual percentage of your total income paid in taxes. Because the US uses a progressive tax system, your effective rate is always lower than your highest marginal bracket.',
+      'The effective tax rate is the actual percentage of your total income paid in taxes. Because both the US and Taiwan use progressive tax systems, your effective rate is always lower than your highest marginal bracket.',
   },
   {
-    question: 'What is the standard deduction for 2024?',
+    question: 'What are the US standard deductions for 2024?',
     answer:
-      'For tax year 2024, the standard deduction is $14,600 for single filers and $29,200 for married filing jointly. Most taxpayers use the standard deduction rather than itemizing.',
+      'For tax year 2024, the US standard deduction is $14,600 for single filers and $29,200 for married filing jointly. Most taxpayers use the standard deduction rather than itemizing.',
   },
   {
-    question: 'Does this calculator include state taxes?',
+    question: 'How does the Taiwan income tax system work?',
     answer:
-      'This calculator estimates federal income tax only. State income taxes vary widely — some states like Texas and Florida have no state income tax, while others like California can add 10%+ on top of federal taxes.',
+      'Taiwan uses a consolidated income tax with 5 progressive brackets (5%, 12%, 20%, 30%, 40%). Deductions include personal exemptions (NT$97,000 per person, NT$145,500 for seniors 70+), standard or itemized deductions, and a salary income special deduction of NT$218,000 per earner.',
+  },
+  {
+    question: 'Does this calculator include state or local taxes?',
+    answer:
+      'For the US, this calculator estimates federal income tax only. State taxes vary widely. For Taiwan, the consolidated income tax is a national tax — there is no separate local income tax.',
   },
 ]
 
@@ -41,17 +46,53 @@ export default function TaxCalculatorPage() {
         Tax Calculator
       </h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
-        Estimate your US federal income tax with a detailed bracket breakdown. See your effective rate and after-tax income.
+        Estimate your income tax with a detailed bracket breakdown. Switch between US federal and Taiwan tax systems.
       </p>
 
-      <TaxCalculator />
+      <TaxCalculator
+        defaultTaxSystem="us"
+        labels={{
+          taxSystem: 'Tax System',
+          us: 'US Federal',
+          taiwan: 'Taiwan',
+          grossIncome: 'Gross Annual Income',
+          filingStatus: 'Filing Status',
+          single: 'Single',
+          married: 'Married Filing Jointly',
+          deductions: 'Deductions',
+          standardDeduction: 'Standard Deduction',
+          itemized: 'Itemized',
+          deductionAmount: 'Deduction Amount',
+          calculate: 'Calculate',
+          taxableIncome: 'Taxable Income',
+          totalTax: 'Total Tax',
+          effectiveRate: 'Effective Tax Rate',
+          afterTax: 'After-Tax Income',
+          bracketBreakdown: 'Tax Bracket Breakdown',
+          bracket: 'Bracket',
+          taxableAt: 'Taxable Amount',
+          taxAmount: 'Tax',
+          exemptions: 'Exemptions',
+          generalExemptions: 'Exemptions (persons)',
+          seniorExemptions: 'Senior (70+) Exemptions',
+          salaryDeduction: 'Salary Income Deduction',
+          salaryEarners: 'Salary Earners',
+          deductionSummary: 'Deduction Summary',
+          exemptionSubtotal: 'Exemption Subtotal',
+          deductionSubtotal: 'Deduction Subtotal',
+          specialDeductionSubtotal: 'Salary Special Deduction',
+          netTaxableIncome: 'Net Taxable Income',
+          person: ' persons',
+        }}
+      />
 
       <section style={{ marginTop: '3rem' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>How to Use</h2>
         <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
-          Enter your gross annual income, select your filing status (Single or Married Filing Jointly),
-          and choose between standard or itemized deductions. The calculator instantly shows your taxable income,
-          total federal tax, effective tax rate, and after-tax income, along with a detailed breakdown by tax bracket.
+          Select a tax system (US Federal or Taiwan), enter your gross annual income, and configure your filing status and deductions.
+          For Taiwan, you can set the number of exemptions (including seniors 70+), choose between standard or itemized deductions,
+          and specify the number of salary earners. The calculator instantly shows your net taxable income, total tax,
+          effective tax rate, and after-tax income, along with a detailed breakdown by tax bracket.
         </p>
       </section>
 
