@@ -331,6 +331,20 @@ const zhTw = {
   tool_bloodtype: '血型性格分析',
   tool_bloodtype_desc: '血型性格特質、優缺點與配對分析',
 
+  // 常用查詢工具
+  tool_special_symbols: '特殊符號表',
+  tool_special_symbols_desc: '各種常用特殊符號，點擊即可複製貼上',
+  tool_postal_code: '台灣郵遞區號查詢',
+  tool_postal_code_desc: '快速查詢台灣各縣市鄉鎮區的郵遞區號',
+  tool_name_stroke: '姓名筆畫吉凶',
+  tool_name_stroke_desc: '輸入姓名查詢總筆畫數與吉凶判定',
+  tool_clothing_size: '衣服尺寸對照表',
+  tool_clothing_size_desc: '台灣/美國/歐洲/日本國際尺碼對照換算',
+  tool_multiplication: '九九乘法表',
+  tool_multiplication_desc: '互動式乘法對照表，點擊即可複製算式',
+  tool_address_translate: '中文地址英譯',
+  tool_address_translate_desc: '台灣中文地址翻譯成英文格式',
+
   // Categories (new)
   cat_css: 'CSS 與設計工具',
 

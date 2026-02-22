@@ -331,6 +331,20 @@ const en = {
   tool_bloodtype: 'Blood Type Personality',
   tool_bloodtype_desc: 'Blood type personality traits & compatibility guide',
 
+  // Common Reference & Lookup Tools
+  tool_special_symbols: 'Special Symbols',
+  tool_special_symbols_desc: 'Copy & paste special symbols with one click',
+  tool_postal_code: 'Taiwan Postal Code Lookup',
+  tool_postal_code_desc: 'Look up Taiwan postal codes by city and district',
+  tool_name_stroke: 'Name Stroke Calculator',
+  tool_name_stroke_desc: 'Calculate Chinese name stroke count & fortune',
+  tool_clothing_size: 'Clothing Size Chart',
+  tool_clothing_size_desc: 'International clothing size conversion chart',
+  tool_multiplication: 'Multiplication Table',
+  tool_multiplication_desc: 'Interactive multiplication table, click to copy',
+  tool_address_translate: 'Address Translator',
+  tool_address_translate_desc: 'Translate Taiwan Chinese addresses to English',
+
   // Categories (new)
   cat_css: 'CSS & Design Tools',
 

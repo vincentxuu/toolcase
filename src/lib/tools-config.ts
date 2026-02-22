@@ -362,6 +362,14 @@ export const tools: ToolConfig[] = [
   { slug: 'zodiac-sign-lookup', category: 'everyday', nameKey: 'tool_zodiac', descKey: 'tool_zodiac_desc', icon: 'star' },
   { slug: 'chinese-zodiac-lookup', category: 'everyday', nameKey: 'tool_chinese_zodiac', descKey: 'tool_chinese_zodiac_desc', icon: 'rabbit' },
   { slug: 'blood-type-personality', category: 'everyday', nameKey: 'tool_bloodtype', descKey: 'tool_bloodtype_desc', icon: 'droplets' },
+
+  // --- Common Reference & Lookup Tools ---
+  { slug: 'special-symbols', category: 'text', nameKey: 'tool_special_symbols', descKey: 'tool_special_symbols_desc', icon: 'at-sign' },
+  { slug: 'taiwan-postal-code', category: 'everyday', nameKey: 'tool_postal_code', descKey: 'tool_postal_code_desc', icon: 'mail' },
+  { slug: 'name-stroke-calculator', category: 'everyday', nameKey: 'tool_name_stroke', descKey: 'tool_name_stroke_desc', icon: 'pen-tool' },
+  { slug: 'clothing-size-chart', category: 'units', nameKey: 'tool_clothing_size', descKey: 'tool_clothing_size_desc', icon: 'shirt' },
+  { slug: 'multiplication-table', category: 'everyday', nameKey: 'tool_multiplication', descKey: 'tool_multiplication_desc', icon: 'grid-3x3' },
+  { slug: 'address-translator', category: 'everyday', nameKey: 'tool_address_translate', descKey: 'tool_address_translate_desc', icon: 'map' },
 ]
 
 export const categories = [
