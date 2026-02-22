@@ -42,7 +42,23 @@ export default function TimezoneConverterPage() {
         />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Timezone Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert time between timezones instantly with live clock display.</p>
-      <TimezoneConverter />
+      <TimezoneConverter
+        locale="en"
+        labels={{
+        modeConverter: 'Time Converter',
+        modeMeeting: 'Meeting Planner',
+        sourceTimezone: 'Source Timezone',
+        targetTimezone: 'Target Timezone',
+        date: 'Date',
+        time: 'Time',
+        convertedTime: 'Converted Time',
+        currentTime: 'Current Time',
+        timeDifference: 'Time Difference',
+        swap: 'Swap',
+        hours: 'hours',
+        workingHoursLabel: 'Good meeting times (both awake: 7AM-11PM)',
+        meetingPlannerDesc: 'Find the best meeting time across timezones',
+      }} />
       <section style={{ marginTop: '3rem' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>How to Use</h2>
         <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>Select a source timezone and a target timezone from the dropdown menus. Enter a date and time to convert. The converted time will appear instantly below, along with the time difference between the two zones. The current time in both timezones is shown at the top for quick reference.</p>

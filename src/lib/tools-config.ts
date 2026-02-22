@@ -370,6 +370,59 @@ export const tools: ToolConfig[] = [
   { slug: 'clothing-size-chart', category: 'units', nameKey: 'tool_clothing_size', descKey: 'tool_clothing_size_desc', icon: 'shirt' },
   { slug: 'multiplication-table', category: 'everyday', nameKey: 'tool_multiplication', descKey: 'tool_multiplication_desc', icon: 'grid-3x3' },
   { slug: 'address-translator', category: 'everyday', nameKey: 'tool_address_translate', descKey: 'tool_address_translate_desc', icon: 'map' },
+
+  // --- Phase 1: High-value pure frontend tools ---
+  // Security & Privacy (3)
+  { slug: 'password-strength-checker', category: 'everyday', nameKey: 'tool_password_strength', descKey: 'tool_password_strength_desc', icon: 'shield-check' },
+  { slug: 'credit-card-validator', category: 'everyday', nameKey: 'tool_cc_validator', descKey: 'tool_cc_validator_desc', icon: 'credit-card' },
+  { slug: 'tax-id-validator', category: 'finance', nameKey: 'tool_tax_id_validator', descKey: 'tool_tax_id_validator_desc', icon: 'building-2' },
+
+  // Daily Tools - Simple (6)
+  { slug: 'days-counter', category: 'everyday', nameKey: 'tool_days_counter', descKey: 'tool_days_counter_desc', icon: 'calendar-days' },
+  { slug: 'world-clock', category: 'everyday', nameKey: 'tool_world_clock', descKey: 'tool_world_clock_desc', icon: 'globe-2' },
+  { slug: 'country-code-lookup', category: 'everyday', nameKey: 'tool_country_code', descKey: 'tool_country_code_desc', icon: 'phone' },
+  { slug: 'test-card-generator', category: 'dev', nameKey: 'tool_test_card', descKey: 'tool_test_card_desc', icon: 'credit-card' },
+
+  // Encoding/Decoding (2)
+  { slug: 'punycode-converter', category: 'dev', nameKey: 'tool_punycode', descKey: 'tool_punycode_desc', icon: 'globe' },
+  { slug: 'html-color-reference', category: 'css', nameKey: 'tool_html_colors', descKey: 'tool_html_colors_desc', icon: 'palette' },
+
+  // Text Tools (5)
+  { slug: 'vertical-text-converter', category: 'text', nameKey: 'tool_vertical_text', descKey: 'tool_vertical_text_desc', icon: 'text-cursor' },
+  { slug: 'braille-converter', category: 'text', nameKey: 'tool_braille', descKey: 'tool_braille_desc', icon: 'braille' },
+  { slug: 'pinyin-converter', category: 'text', nameKey: 'tool_pinyin', descKey: 'tool_pinyin_desc', icon: 'a-large-small' },
+  { slug: 'bopomofo-converter', category: 'text', nameKey: 'tool_bopomofo', descKey: 'tool_bopomofo_desc', icon: 'text' },
+
+  // Everyday Tools - Complex
+  { slug: 'relative-title-calculator', category: 'everyday', nameKey: 'tool_relative_title', descKey: 'tool_relative_title_desc', icon: 'users' },
+
+  // === Phase 2 Implementation: Advanced Frontend Tools (16 tools) ===
+  // Data & Charts (4)
+  { slug: 'base64-image-converter', category: 'image', nameKey: 'tool_base64_image', descKey: 'tool_base64_image_desc', icon: 'image-plus' },
+  { slug: 'json-diff', category: 'dev', nameKey: 'tool_json_diff', descKey: 'tool_json_diff_desc', icon: 'git-compare' },
+  { slug: 'csv-editor', category: 'dev', nameKey: 'tool_csv_editor', descKey: 'tool_csv_editor_desc', icon: 'table' },
+  { slug: 'excel-formula-generator', category: 'dev', nameKey: 'tool_excel_formula', descKey: 'tool_excel_formula_desc', icon: 'function-square' },
+
+  // --- New tools from piliapp-missing-features.md ---
+  // Phase 1: Quick value tools
+  { slug: 'coin-flip', category: 'everyday', nameKey: 'tool_coinflip', descKey: 'tool_coinflip_desc', icon: 'circle-dot' },
+  { slug: 'dice-roller', category: 'everyday', nameKey: 'tool_diceroller', descKey: 'tool_diceroller_desc', icon: 'dice-5' },
+  { slug: 'counter', category: 'everyday', nameKey: 'tool_counter', descKey: 'tool_counter_desc', icon: 'hash' },
+  { slug: 'digital-clock', category: 'everyday', nameKey: 'tool_digitalclock', descKey: 'tool_digitalclock_desc', icon: 'clock' },
+  { slug: 'lucky-number-generator', category: 'everyday', nameKey: 'tool_luckynumber', descKey: 'tool_luckynumber_desc', icon: 'sparkles' },
+  { slug: 'strikethrough-generator', category: 'text', nameKey: 'tool_strikethrough', descKey: 'tool_strikethrough_desc', icon: 'strikethrough' },
+  { slug: 'phone-number-generator', category: 'everyday', nameKey: 'tool_phonenumber', descKey: 'tool_phonenumber_desc', icon: 'smartphone' },
+  { slug: 'screen-dead-pixel-test', category: 'everyday', nameKey: 'tool_screenpixel', descKey: 'tool_screenpixel_desc', icon: 'monitor' },
+
+  // --- Phase 2: Interactive tools ---
+  { slug: 'scoreboard', category: 'everyday', nameKey: 'tool_scoreboard', descKey: 'tool_scoreboard_desc', icon: 'trophy' },
+  { slug: 'fancy-font-generator', category: 'text', nameKey: 'tool_fancyfont', descKey: 'tool_fancyfont_desc', icon: 'sparkles' },
+  { slug: 'online-ruler', category: 'everyday', nameKey: 'tool_ruler', descKey: 'tool_ruler_desc', icon: 'ruler' },
+  { slug: 'alarm-clock', category: 'everyday', nameKey: 'tool_alarm', descKey: 'tool_alarm_desc', icon: 'bell' },
+  { slug: 'mind-reader', category: 'everyday', nameKey: 'tool_mindreader', descKey: 'tool_mindreader_desc', icon: 'brain' },
+  { slug: 'color-blindness-test', category: 'everyday', nameKey: 'tool_colorblind', descKey: 'tool_colorblind_desc', icon: 'eye' },
+  { slug: 'wheel-spinner', category: 'everyday', nameKey: 'tool_wheel', descKey: 'tool_wheel_desc', icon: 'circle-dot' },
+  { slug: 'drawing-board', category: 'everyday', nameKey: 'tool_drawingboard', descKey: 'tool_drawingboard_desc', icon: 'pencil' },
 ]
 
 export const categories = [

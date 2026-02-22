@@ -5,9 +5,10 @@ interface CopyButtonProps {
   text: string
   label?: string
   copiedLabel?: string
+  size?: 'sm' | 'md' | 'lg'
 }
 
-export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied!' }: CopyButtonProps) {
+export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied!', size = 'md' }: CopyButtonProps) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = useCallback(async () => {
@@ -26,11 +27,17 @@ export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied
     setTimeout(() => setCopied(false), 2000)
   }, [text])
 
+  const sizeClasses = {
+    sm: 'text-sm px-2 py-1',
+    md: 'text-base px-3 py-2',
+    lg: 'text-lg px-4 py-3',
+  }
+
   return (
     <button
       onClick={handleCopy}
-      className="btn-secondary"
-      style={{ minWidth: '5rem' }}
+      className={`btn-secondary ${sizeClasses[size]}`}
+      style={{ minWidth: size === 'sm' ? '4rem' : '5rem' }}
     >
       {copied ? copiedLabel : label}
     </button>

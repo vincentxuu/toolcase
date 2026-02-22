@@ -42,7 +42,11 @@ export default function TimezoneConverterPageZhTw() {
         />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>時區轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時轉換不同時區的時間，附帶即時時鐘顯示。</p>
-      <TimezoneConverter labels={{
+      <TimezoneConverter
+        locale="zh-tw"
+        labels={{
+        modeConverter: '時間轉換',
+        modeMeeting: '會議規劃',
         sourceTimezone: '來源時區',
         targetTimezone: '目標時區',
         date: '日期',
@@ -52,6 +56,8 @@ export default function TimezoneConverterPageZhTw() {
         timeDifference: '時差',
         swap: '交換',
         hours: '小時',
+        workingHoursLabel: '適合會議時段（雙方都清醒：7:00-23:00）',
+        meetingPlannerDesc: '找出跨時區的最佳會議時間',
       }} />
       <section style={{ marginTop: '3rem' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>如何使用</h2>
