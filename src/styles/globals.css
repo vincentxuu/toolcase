@@ -14,8 +14,9 @@
   --color-card: #ffffff;
 }
 
+/* 深色模式樣式 - 支援系統偏好和手動切換 */
 @media (prefers-color-scheme: dark) {
-  :root {
+  html:not(.light) {
     --color-bg: #0f172a;
     --color-bg-secondary: #1e293b;
     --color-text: #f1f5f9;
@@ -25,6 +26,33 @@
     --color-primary-hover: #60a5fa;
     --color-card: #1e293b;
   }
+}
+
+/* 手動深色模式 */
+html.dark {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-border: #334155;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-card: #1e293b;
+}
+
+/* 手動淺色模式（覆蓋系統深色偏好） */
+html.light {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-card: #ffffff;
 }
 
 body {

@@ -16,7 +16,7 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'qr-code-generator',
-    category: 'dev',
+    category: 'everyday',
     nameKey: 'tool_qr',
     descKey: 'tool_qr_desc',
     icon: 'qr-code',
@@ -149,7 +149,7 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'password-generator',
-    category: 'dev',
+    category: 'everyday',
     nameKey: 'tool_password',
     descKey: 'tool_password_desc',
     icon: 'shield',
@@ -226,7 +226,7 @@ export const tools: ToolConfig[] = [
   { slug: 'random-number-generator', category: 'everyday', nameKey: 'tool_randomnum', descKey: 'tool_randomnum_desc', icon: 'dice-5' },
   { slug: 'random-picker', category: 'everyday', nameKey: 'tool_randompick', descKey: 'tool_randompick_desc', icon: 'shuffle' },
   { slug: 'date-calculator', category: 'everyday', nameKey: 'tool_datecalc', descKey: 'tool_datecalc_desc', icon: 'calendar' },
-  { slug: 'color-converter', category: 'dev', nameKey: 'tool_color', descKey: 'tool_color_desc', icon: 'palette' },
+  { slug: 'color-converter', category: 'css', nameKey: 'tool_color', descKey: 'tool_color_desc', icon: 'palette' },
   { slug: 'base64-encoder-decoder', category: 'dev', nameKey: 'tool_base64', descKey: 'tool_base64_desc', icon: 'file-code' },
   { slug: 'url-encoder-decoder', category: 'dev', nameKey: 'tool_urlencode', descKey: 'tool_urlencode_desc', icon: 'link' },
   { slug: 'hash-generator', category: 'dev', nameKey: 'tool_hash', descKey: 'tool_hash_desc', icon: 'fingerprint' },
