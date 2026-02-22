@@ -323,6 +323,14 @@ const en = {
   tool_tw_retirement_tax: 'Taiwan Retirement Income Tax',
   tool_tw_retirement_tax_desc: 'Retirement income tax exemptions & lump-sum calculator',
 
+  // Lifestyle & Fun Reference Tools
+  tool_zodiac: 'Zodiac Sign Lookup',
+  tool_zodiac_desc: 'Find your zodiac sign, element & personality traits',
+  tool_chinese_zodiac: 'Chinese Zodiac Lookup',
+  tool_chinese_zodiac_desc: 'Find your Chinese zodiac animal, element & traits',
+  tool_bloodtype: 'Blood Type Personality',
+  tool_bloodtype_desc: 'Blood type personality traits & compatibility guide',
+
   // Categories (new)
   cat_css: 'CSS & Design Tools',
 

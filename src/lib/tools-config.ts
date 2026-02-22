@@ -357,6 +357,11 @@ export const tools: ToolConfig[] = [
   { slug: 'tw-minimum-wage', category: 'finance', nameKey: 'tool_tw_min_wage', descKey: 'tool_tw_min_wage_desc', icon: 'badge-dollar-sign' },
   { slug: 'tw-tax-deductions', category: 'finance', nameKey: 'tool_tw_deductions', descKey: 'tool_tw_deductions_desc', icon: 'list-checks' },
   { slug: 'tw-retirement-income-tax', category: 'finance', nameKey: 'tool_tw_retirement_tax', descKey: 'tool_tw_retirement_tax_desc', icon: 'wallet' },
+
+  // --- Lifestyle & Fun Reference Tools ---
+  { slug: 'zodiac-sign-lookup', category: 'everyday', nameKey: 'tool_zodiac', descKey: 'tool_zodiac_desc', icon: 'star' },
+  { slug: 'chinese-zodiac-lookup', category: 'everyday', nameKey: 'tool_chinese_zodiac', descKey: 'tool_chinese_zodiac_desc', icon: 'rabbit' },
+  { slug: 'blood-type-personality', category: 'everyday', nameKey: 'tool_bloodtype', descKey: 'tool_bloodtype_desc', icon: 'droplets' },
 ]
 
 export const categories = [

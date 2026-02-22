@@ -323,6 +323,14 @@ const zhTw = {
   tool_tw_retirement_tax: '退職所得免稅額',
   tool_tw_retirement_tax_desc: '退職所得課稅規則與一次領取免稅額試算',
 
+  // 生活趣味查詢工具
+  tool_zodiac: '星座查詢',
+  tool_zodiac_desc: '輸入生日查星座、元素屬性與性格特質',
+  tool_chinese_zodiac: '生肖查詢',
+  tool_chinese_zodiac_desc: '輸入出生年查生肖、五行與性格特質',
+  tool_bloodtype: '血型性格分析',
+  tool_bloodtype_desc: '血型性格特質、優缺點與配對分析',
+
   // Categories (new)
   cat_css: 'CSS 與設計工具',
 
