@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HtmlEntityEncoder from '@/components/tools/HtmlEntityEncoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML Entity Encoder/Decoder - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HtmlEntityEncoderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'HTML Entity Encoder/Decoder', url: 'https://toolcase.cc/html-entity-encoder' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML Entity Encoder/Decoder"
+        description="Encode and decode HTML entities online. Convert special characters to HTML entities and back. Supports named and numeric entities."
+        url="https://toolcase.cc/html-entity-encoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'HTML Entity Encoder/Decoder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML Entity Encoder/Decoder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Encode special characters to HTML entities or decode HTML entities back to characters.</p>
       <HtmlEntityEncoder />
@@ -28,5 +50,6 @@ export default function HtmlEntityEncoderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="html-entity-encoder" locale="en" />
     </div>
+    </>
   )
 }

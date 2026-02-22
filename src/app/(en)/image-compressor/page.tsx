@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageCompressor from '@/components/tools/ImageCompressor'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image Compressor - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageCompressorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image Compressor', url: 'https://toolcase.cc/image-compressor' },
+        ]}
+      />
+      <ToolSchema
+        name="Image Compressor"
+        description="Compress images online for free. Reduce file size of PNG, JPEG, and WebP images while maintaining visual quality. No uploads — everything runs in your browser."
+        url="https://toolcase.cc/image-compressor"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image Compressor' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Compressor</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Reduce image file sizes while preserving quality — entirely in your browser.
@@ -57,5 +79,6 @@ export default function ImageCompressorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-compressor" locale="en" />
     </div>
+    </>
   )
 }

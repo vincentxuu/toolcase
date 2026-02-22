@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SavingsCalculator from '@/components/tools/SavingsCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '存款利息計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function SavingsCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '存款利息計算器', url: 'https://toolcase.cc/zh-tw/savings-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="存款利息計算器"
+        description="計算定期存款搭配複利的成長。免費存款成長計算器，附互動圖表。"
+        url="https://toolcase.cc/zh-tw/savings-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '存款利息計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>存款利息計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         計算定期存款搭配複利如何隨時間成長。
@@ -67,5 +89,6 @@ export default function SavingsCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="savings-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AspectRatioCalculator from '@/components/tools/AspectRatioCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Aspect Ratio Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function AspectRatioCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Aspect Ratio Calculator', url: 'https://toolcase.cc/aspect-ratio-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Aspect Ratio Calculator"
+        description="Calculate and simplify aspect ratios instantly. Lock ratios, use presets like 16:9, 4:3, 1:1, and find the simplified ratio for any resolution."
+        url="https://toolcase.cc/aspect-ratio-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Aspect Ratio Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Aspect Ratio Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate, simplify, and lock aspect ratios for any resolution with preset options.</p>
       <AspectRatioCalculator />
@@ -28,5 +50,6 @@ export default function AspectRatioCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="aspect-ratio-calculator" locale="en" />
     </div>
+    </>
   )
 }

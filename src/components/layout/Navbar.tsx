@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getDictionary } from '@/i18n/get-dict'
 import type { Locale } from '@/i18n/config'
 import LangSwitcher from './LangSwitcher'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar({ locale }: { locale: Locale }) {
   const t = getDictionary(locale)
@@ -44,6 +45,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <ThemeToggle />
           <LangSwitcher locale={locale} />
         </div>
       </div>

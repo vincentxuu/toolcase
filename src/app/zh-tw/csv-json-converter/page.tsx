@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CsvJsonConverter from '@/components/tools/CsvJsonConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSV JSON 轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CsvJsonConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'CSV JSON 轉換器', url: 'https://toolcase.cc/zh-tw/csv-json-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="CSV JSON 轉換器"
+        description="即時在 CSV 和 JSON 格式之間轉換。支援 CSV 轉 JSON 及 JSON 轉 CSV，所有處理皆在瀏覽器本機完成。"
+        url="https://toolcase.cc/zh-tw/csv-json-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'CSV JSON 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSV JSON 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時在 CSV 和 JSON 格式之間互相轉換。</p>
       <CsvJsonConverter labels={{ input: '輸入', output: '輸出', csvToJson: 'CSV → JSON', jsonToCsv: 'JSON → CSV', copy: '複製', copied: '已複製！', invalidInput: '無效的輸入' }} />
@@ -28,5 +50,6 @@ export default function CsvJsonConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="csv-json-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BloodTypePersonality from '@/components/tools/BloodTypePersonality'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '血型性格分析 - A/B/O/AB 型性格特質與配對 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function BloodTypePersonalityPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '血型性格分析', url: 'https://toolcase.cc/zh-tw/blood-type-personality' },
+        ]}
+      />
+      <ToolSchema
+        name="血型性格分析"
+        description="選擇你的血型，查看性格特質、優缺點與配對分析。提供 A、B、O、AB 四大血型完整性格對照表。免費線上血型性格分析工具。"
+        url="https://toolcase.cc/zh-tw/blood-type-personality"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '血型性格分析' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>血型性格分析</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>選擇你的血型，查看性格特質、優缺點與配對分析。</p>
       <BloodTypePersonality />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="blood-type-personality" locale="zh-tw" />
     </div>
+    </>
   )
 }

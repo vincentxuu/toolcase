@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FancyTextGenerator from '@/components/tools/FancyTextGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Fancy Text Generator - Unicode Font Styles | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function FancyTextGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Fancy Text Generator', url: 'https://toolcase.cc/fancy-text-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Fancy Text Generator"
+        description="Generate fancy text with bold, italic, script, fraktur, double-struck, monospace, circled, fullwidth, upside down and small caps Unicode styles. Copy and paste anywhere."
+        url="https://toolcase.cc/fancy-text-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Fancy Text Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Fancy Text Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Transform your text into stylish Unicode font variations. Click any result to copy.</p>
       <FancyTextGenerator />
@@ -28,5 +50,6 @@ export default function FancyTextGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="fancy-text-generator" locale="en" />
     </div>
+    </>
   )
 }

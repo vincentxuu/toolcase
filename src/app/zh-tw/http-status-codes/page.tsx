@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HttpStatusCodes from '@/components/tools/HttpStatusCodes'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTTP 狀態碼查詢 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HttpStatusCodesPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'HTTP 狀態碼查詢', url: 'https://toolcase.cc/zh-tw/http-status-codes' },
+        ]}
+      />
+      <ToolSchema
+        name="HTTP 狀態碼查詢"
+        description="完整的 HTTP 狀態碼參考手冊，附說明。可搜尋與篩選 1xx 到 5xx 所有狀態碼。網頁開發者的快速參考工具。"
+        url="https://toolcase.cc/zh-tw/http-status-codes"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'HTTP 狀態碼查詢' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTTP 狀態碼查詢</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>可搜尋的完整 HTTP 狀態碼參考手冊，附詳細說明。</p>
       <HttpStatusCodes labels={{
@@ -36,5 +58,6 @@ export default function HttpStatusCodesPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="http-status-codes" locale="zh-tw" />
     </div>
+    </>
   )
 }

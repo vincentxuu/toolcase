@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SocialVideoSpeed from '@/components/tools/SocialVideoSpeed'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '社群影片快轉工具 - IG、TikTok、Threads 影片加速 | toolcase',
@@ -18,7 +21,26 @@ const faqs = [
 
 export default function SocialVideoSpeedPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '社群影片快轉工具', url: 'https://toolcase.cc/zh-tw/social-video-speed' },
+        ]}
+      />
+      <ToolSchema
+        name="社群影片快轉工具"
+        description="將長影片加速以符合社群媒體時間限制。預設 Instagram Reels、限時動態、Threads、Facebook Reels、TikTok、YouTube Shorts 和 X 的時長。在瀏覽器中處理。"
+        url="https://toolcase.cc/zh-tw/social-video-speed"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '社群影片快轉工具' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>社群影片快轉工具</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>加速影片以符合社群媒體時間限制。選擇平台預設或自訂目標時長。</p>
       <SocialVideoSpeed labels={{
@@ -51,5 +73,6 @@ export default function SocialVideoSpeedPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="social-video-speed" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TomlConverter from '@/components/tools/TomlConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'TOML 轉換器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function TomlConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'TOML 轉換器', url: 'https://toolcase.cc/zh-tw/toml-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="TOML 轉換器"
+        description="即時在 TOML 和 JSON 格式之間轉換。將 TOML 解析為 JSON，或從 JSON 資料生成 TOML，支援雙向轉換。"
+        url="https://toolcase.cc/zh-tw/toml-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'TOML 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>TOML 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在 TOML 和 JSON 格式之間轉換。在下方貼上你的 TOML 或 JSON 資料，進行雙向轉換。
@@ -62,5 +84,6 @@ export default function TomlConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="toml-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

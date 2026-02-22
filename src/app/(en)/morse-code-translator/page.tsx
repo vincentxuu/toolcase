@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MorseCodeTranslator from '@/components/tools/MorseCodeTranslator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Morse Code Translator - Text to Morse & Morse to Text | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MorseCodeTranslatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Morse Code Translator', url: 'https://toolcase.cc/morse-code-translator' },
+        ]}
+      />
+      <ToolSchema
+        name="Morse Code Translator"
+        description="Translate text to Morse code and Morse code to text instantly. Includes audio playback, reference chart, and copy to clipboard. Free online Morse code converter."
+        url="https://toolcase.cc/morse-code-translator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Morse Code Translator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Morse Code Translator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert text to Morse code and back. Listen to the Morse code audio or view the full reference chart.</p>
       <MorseCodeTranslator />
@@ -28,5 +50,6 @@ export default function MorseCodeTranslatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="morse-code-translator" locale="en" />
     </div>
+    </>
   )
 }

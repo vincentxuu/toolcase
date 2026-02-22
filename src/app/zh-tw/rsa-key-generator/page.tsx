@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RsaKeyGenerator from '@/components/tools/RsaKeyGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'RSA 金鑰對產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RsaKeyGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'RSA 金鑰對產生器', url: 'https://toolcase.cc/zh-tw/rsa-key-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="RSA 金鑰對產生器"
+        description="在瀏覽器中使用 Web Crypto API 產生 RSA 金鑰對（2048 或 4096 位元）。以 PEM 格式匯出公鑰和私鑰。資料不會傳送到伺服器。"
+        url="https://toolcase.cc/zh-tw/rsa-key-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'RSA 金鑰對產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>RSA 金鑰對產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在瀏覽器中產生 RSA 公鑰和私鑰對，以 PEM 格式輸出。</p>
       <RsaKeyGenerator labels={{ keySize: '金鑰大小', generate: '產生金鑰對', publicKey: '公鑰', privateKey: '私鑰', copy: '複製', copied: '已複製！', generating: '產生中...', bits: '位元' }} />
@@ -28,5 +50,6 @@ export default function RsaKeyGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="rsa-key-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

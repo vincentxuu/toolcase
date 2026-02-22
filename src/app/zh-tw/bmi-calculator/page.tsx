@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BmiCalculator from '@/components/tools/BmiCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'BMI 計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BmiCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'BMI 計算器', url: 'https://toolcase.cc/zh-tw/bmi-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="BMI 計算器"
+        description="即時計算你的身體質量指數 (BMI)。免費 BMI 計算器，附視覺化量表與分類。"
+        url="https://toolcase.cc/zh-tw/bmi-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'BMI 計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>BMI 計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算你的身體質量指數，了解你屬於哪個分類。</p>
       <BmiCalculator labels={{ height: '身高', weight: '體重', cm: '公分', kg: '公斤', yourBmi: '你的 BMI', category: '分類', underweight: '過輕', normal: '正常', overweight: '過重', obese: '肥胖', disclaimer: '本工具僅供參考，不能替代專業醫療建議。' }} />
@@ -28,5 +50,6 @@ export default function BmiCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="bmi-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

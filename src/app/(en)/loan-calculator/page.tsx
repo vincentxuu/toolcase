@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LoanCalculator from '@/components/tools/LoanCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Loan Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function LoanCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Loan Calculator', url: 'https://toolcase.cc/loan-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Loan Calculator"
+        description="Calculate monthly loan payments, total interest, and view payment breakdown charts. Works for auto loans, personal loans, and student loans."
+        url="https://toolcase.cc/loan-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Loan Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Loan Calculator
       </h1>
@@ -58,5 +80,6 @@ export default function LoanCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="loan-calculator" locale="en" />
     </div>
+    </>
   )
 }

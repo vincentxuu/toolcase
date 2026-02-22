@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DiscountCalculator from '@/components/tools/DiscountCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Discount Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DiscountCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Discount Calculator', url: 'https://toolcase.cc/discount-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Discount Calculator"
+        description="Calculate sale prices, savings and discount percentages instantly."
+        url="https://toolcase.cc/discount-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Discount Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Discount Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate discounted prices, savings and sale percentages.</p>
       <DiscountCalculator />
@@ -28,5 +50,6 @@ export default function DiscountCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="discount-calculator" locale="en" />
     </div>
+    </>
   )
 }

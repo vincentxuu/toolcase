@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LoanCalculator from '@/components/tools/LoanCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '貸款計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function LoanCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '貸款計算器', url: 'https://toolcase.cc/zh-tw/loan-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="貸款計算器"
+        description="計算每月貸款還款金額、總利息支出，適用於汽車貸款、個人貸款和學生貸款。"
+        url="https://toolcase.cc/zh-tw/loan-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '貸款計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>貸款計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         計算汽車貸款、個人貸款、學生貸款的每月還款和總利息。
@@ -68,5 +90,6 @@ export default function LoanCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="loan-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

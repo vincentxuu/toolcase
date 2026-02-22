@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import OpenGraphPreview from '@/components/tools/OpenGraphPreview'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Open Graph 預覽 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function OpenGraphPreviewPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Open Graph 預覽', url: 'https://toolcase.cc/zh-tw/open-graph-preview' },
+        ]}
+      />
+      <ToolSchema
+        name="Open Graph 預覽"
+        description="預覽網頁在 Facebook、Twitter 和 LinkedIn 等社群平台分享時的顯示效果，並產生 OG Meta 標籤。"
+        url="https://toolcase.cc/zh-tw/open-graph-preview"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Open Graph 預覽' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Open Graph 預覽</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>預覽網頁在社群平台分享時的顯示效果。</p>
       <OpenGraphPreview labels={{ title: '標題', description: '描述', imageUrl: '圖片網址', url: '網址', siteName: '網站名稱', facebookPreview: 'Facebook 預覽', twitterPreview: 'Twitter 預覽', linkedinPreview: 'LinkedIn 預覽', metaTags: 'Meta 標籤', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function OpenGraphPreviewPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="open-graph-preview" locale="zh-tw" />
     </div>
+    </>
   )
 }

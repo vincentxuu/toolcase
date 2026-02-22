@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JwtDecoder from '@/components/tools/JwtDecoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JWT Decoder - Free Online Tool | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function JwtDecoderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'JWT Decoder', url: 'https://toolcase.cc/jwt-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="JWT Decoder"
+        description="Decode and inspect JWT (JSON Web Token) tokens instantly. View header, payload, expiration, and claims without any server processing."
+        url="https://toolcase.cc/jwt-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'JWT Decoder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JWT Decoder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your JWT token below to decode and inspect its header, payload, and expiration status.
@@ -70,5 +92,6 @@ export default function JwtDecoderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="jwt-decoder" locale="en" />
     </div>
+    </>
   )
 }

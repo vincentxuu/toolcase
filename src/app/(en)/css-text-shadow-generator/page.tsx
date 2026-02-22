@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssTextShadowGenerator from '@/components/tools/CssTextShadowGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Text Shadow Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssTextShadowGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSS Text Shadow Generator', url: 'https://toolcase.cc/css-text-shadow-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Text Shadow Generator"
+        description="Generate CSS text-shadow with visual controls. Adjust offset, blur, color and opacity. Support for multiple shadow layers with live preview and copy CSS."
+        url="https://toolcase.cc/css-text-shadow-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSS Text Shadow Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Text Shadow Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate CSS text-shadow visually with multiple shadow layers.</p>
       <CssTextShadowGenerator />
@@ -28,5 +50,6 @@ export default function CssTextShadowGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="css-text-shadow-generator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RegexTester from '@/components/tools/RegexTester'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Regex Tester - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RegexTesterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Regex Tester', url: 'https://toolcase.cc/regex-tester' },
+        ]}
+      />
+      <ToolSchema
+        name="Regex Tester"
+        description="Test and debug regular expressions with real-time highlighting. Free online regex tester and debugger."
+        url="https://toolcase.cc/regex-tester"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Regex Tester' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Regex Tester</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Test and debug regular expressions with real-time highlighting.</p>
       <RegexTester />
@@ -28,5 +50,6 @@ export default function RegexTesterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="regex-tester" locale="en" />
     </div>
+    </>
   )
 }

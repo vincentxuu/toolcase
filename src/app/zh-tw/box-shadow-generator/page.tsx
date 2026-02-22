@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BoxShadowGenerator from '@/components/tools/BoxShadowGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '方塊陰影產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BoxShadowGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '方塊陰影產生器', url: 'https://toolcase.cc/zh-tw/box-shadow-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="方塊陰影產生器"
+        description="視覺化產生 CSS box-shadow。調整偏移、模糊、擴展、顏色和透明度，支援多重陰影和內陰影模式。"
+        url="https://toolcase.cc/zh-tw/box-shadow-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '方塊陰影產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>方塊陰影產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>視覺化產生 CSS box-shadow，支援多重陰影圖層。</p>
       <BoxShadowGenerator labels={{
@@ -43,5 +65,6 @@ export default function BoxShadowGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="box-shadow-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

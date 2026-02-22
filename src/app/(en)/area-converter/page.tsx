@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Area Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function AreaConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Area Converter', url: 'https://toolcase.cc/area-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Area Converter"
+        description="Convert between square meters, square feet, acres, hectares, ping, and more. Free online area converter with instant results."
+        url="https://toolcase.cc/area-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Area Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Area Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between square meters, square feet, acres, hectares, ping, and more.
@@ -57,5 +79,6 @@ export default function AreaConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="area-converter" locale="en" />
     </div>
+    </>
   )
 }

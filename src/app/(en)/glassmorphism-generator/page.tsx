@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GlassmorphismGenerator from '@/components/tools/GlassmorphismGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Glassmorphism Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GlassmorphismGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Glassmorphism Generator', url: 'https://toolcase.cc/glassmorphism-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Glassmorphism Generator"
+        description="Create stunning frosted glass effects with CSS. Adjust blur, transparency, border opacity and saturation with live preview."
+        url="https://toolcase.cc/glassmorphism-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Glassmorphism Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Glassmorphism Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Create frosted glass CSS effects with live preview.</p>
       <GlassmorphismGenerator />
@@ -28,5 +50,6 @@ export default function GlassmorphismGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="glassmorphism-generator" locale="en" />
     </div>
+    </>
   )
 }

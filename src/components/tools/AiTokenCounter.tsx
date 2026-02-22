@@ -10,6 +10,8 @@ interface AiTokenCounterProps {
     tokens: string
     lines: string
     model: string
+    inputRate: string
+    outputRate: string
     inputCost: string
     outputCost: string
     estimatedTokens: string
@@ -19,12 +21,22 @@ interface AiTokenCounterProps {
 }
 
 const models = [
+  { name: 'GPT-5.2', inputPer1M: 1.75, outputPer1M: 14 },
+  { name: 'GPT-5', inputPer1M: 1.25, outputPer1M: 10 },
+  { name: 'GPT-5 Nano', inputPer1M: 0.05, outputPer1M: 0.4 },
   { name: 'GPT-4o', inputPer1M: 2.5, outputPer1M: 10 },
   { name: 'GPT-4o-mini', inputPer1M: 0.15, outputPer1M: 0.6 },
-  { name: 'Claude Sonnet 4', inputPer1M: 3, outputPer1M: 15 },
-  { name: 'Claude Haiku 3.5', inputPer1M: 0.8, outputPer1M: 4 },
-  { name: 'Claude Opus 4', inputPer1M: 15, outputPer1M: 75 },
-  { name: 'Gemini 2.0 Flash', inputPer1M: 0.1, outputPer1M: 0.4 },
+  { name: 'o1', inputPer1M: 15, outputPer1M: 60 },
+  { name: 'o1-mini', inputPer1M: 3, outputPer1M: 12 },
+  { name: 'Claude Opus 4.6', inputPer1M: 5, outputPer1M: 25 },
+  { name: 'Claude Sonnet 4.6', inputPer1M: 3, outputPer1M: 15 },
+  { name: 'Claude Sonnet 4.5', inputPer1M: 3, outputPer1M: 15 },
+  { name: 'Claude Sonnet 3.5', inputPer1M: 3, outputPer1M: 15 },
+  { name: 'Claude Haiku 4.5', inputPer1M: 1, outputPer1M: 5 },
+  { name: 'Gemini 3.1 Pro', inputPer1M: 2.0, outputPer1M: 12 },
+  { name: 'Gemini 3 Flash', inputPer1M: 0.5, outputPer1M: 3 },
+  { name: 'Gemini 2.5 Pro', inputPer1M: 1.25, outputPer1M: 10 },
+  { name: 'DeepSeek V3', inputPer1M: 0.14, outputPer1M: 0.28 },
 ]
 
 function estimateTokens(text: string): number {
@@ -61,6 +73,8 @@ export default function AiTokenCounter({ labels }: AiTokenCounterProps) {
     tokens: labels?.tokens ?? 'Tokens',
     lines: labels?.lines ?? 'Lines',
     model: labels?.model ?? 'Model',
+    inputRate: labels?.inputRate ?? 'Input Rate (per 1M)',
+    outputRate: labels?.outputRate ?? 'Output Rate (per 1M)',
     inputCost: labels?.inputCost ?? 'Input Cost',
     outputCost: labels?.outputCost ?? 'Output Cost',
     estimatedTokens: labels?.estimatedTokens ?? 'Estimated Tokens',
@@ -148,6 +162,8 @@ export default function AiTokenCounter({ labels }: AiTokenCounterProps) {
             <thead>
               <tr style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
                 <th style={{ padding: '0.625rem 1rem', textAlign: 'left', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.model}</th>
+                <th style={{ padding: '0.625rem 1rem', textAlign: 'right', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.inputRate}</th>
+                <th style={{ padding: '0.625rem 1rem', textAlign: 'right', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.outputRate}</th>
                 <th style={{ padding: '0.625rem 1rem', textAlign: 'right', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.inputCost}</th>
                 <th style={{ padding: '0.625rem 1rem', textAlign: 'right', fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.outputCost}</th>
               </tr>
@@ -156,6 +172,12 @@ export default function AiTokenCounter({ labels }: AiTokenCounterProps) {
               {models.map((m) => (
                 <tr key={m.name} style={{ borderBottom: '1px solid var(--color-border)' }}>
                   <td style={{ padding: '0.625rem 1rem', fontWeight: 500 }}>{m.name}</td>
+                  <td style={{ padding: '0.625rem 1rem', textAlign: 'right', fontFamily: 'monospace', color: 'var(--color-text-secondary)', fontSize: '0.8125rem' }}>
+                    ${m.inputPer1M.toFixed(2)}
+                  </td>
+                  <td style={{ padding: '0.625rem 1rem', textAlign: 'right', fontFamily: 'monospace', color: 'var(--color-text-secondary)', fontSize: '0.8125rem' }}>
+                    ${m.outputPer1M.toFixed(2)}
+                  </td>
                   <td style={{ padding: '0.625rem 1rem', textAlign: 'right', fontFamily: 'monospace', color: 'var(--color-text)' }}>
                     {formatCost(stats.tokens, m.inputPer1M)}
                   </td>

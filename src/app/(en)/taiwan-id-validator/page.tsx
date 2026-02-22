@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TaiwanIdValidator from '@/components/tools/TaiwanIdValidator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Taiwan ID Validator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TaiwanIdValidatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Taiwan ID Validator', url: 'https://toolcase.cc/taiwan-id-validator' },
+        ]}
+      />
+      <ToolSchema
+        name="Taiwan ID Validator"
+        description="Validate Taiwan business IDs (統一編號) and national identification numbers (身分證字號) online. Free format checker with random ID generator for testing."
+        url="https://toolcase.cc/taiwan-id-validator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Taiwan ID Validator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan ID Validator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Validate Taiwan business IDs and national identification numbers.</p>
       <TaiwanIdValidator />
@@ -28,5 +50,6 @@ export default function TaiwanIdValidatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="taiwan-id-validator" locale="en" />
     </div>
+    </>
   )
 }

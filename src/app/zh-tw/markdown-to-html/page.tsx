@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MarkdownToHtml from '@/components/tools/MarkdownToHtml'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Markdown 轉 HTML 轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MarkdownToHtmlPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Markdown 轉 HTML 轉換器', url: 'https://toolcase.cc/zh-tw/markdown-to-html' },
+        ]}
+      />
+      <ToolSchema
+        name="Markdown 轉 HTML 轉換器"
+        description="將 Markdown 文字轉換為乾淨的 HTML 原始碼。免費線上 Markdown 轉 HTML 工具，適合開發者與內容創作者使用。"
+        url="https://toolcase.cc/zh-tw/markdown-to-html"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Markdown 轉 HTML 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Markdown 轉 HTML 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將 Markdown 文字轉換為乾淨的 HTML 原始碼。</p>
       <MarkdownToHtml labels={{
@@ -34,5 +56,6 @@ export default function MarkdownToHtmlPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="markdown-to-html" locale="zh-tw" />
     </div>
+    </>
   )
 }

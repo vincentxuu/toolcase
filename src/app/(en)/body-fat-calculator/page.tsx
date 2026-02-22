@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BodyFatCalculator from '@/components/tools/BodyFatCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Body Fat Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BodyFatCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Body Fat Calculator', url: 'https://toolcase.cc/body-fat-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Body Fat Calculator"
+        description="Estimate body fat percentage using the US Navy method. Free online body fat calculator with instant results."
+        url="https://toolcase.cc/body-fat-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Body Fat Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Body Fat Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Estimate body fat percentage using the US Navy method.</p>
       <BodyFatCalculator />
@@ -28,5 +50,6 @@ export default function BodyFatCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="body-fat-calculator" locale="en" />
     </div>
+    </>
   )
 }

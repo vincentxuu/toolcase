@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import EnergyConverter from '@/components/tools/EnergyConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Energy Converter - J, kJ, cal, kcal, Wh, kWh, BTU | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function EnergyConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Energy Converter', url: 'https://toolcase.cc/energy-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Energy Converter"
+        description="Convert between energy units including joules, kilojoules, calories, kilocalories, watt-hours, kilowatt-hours, BTU, foot-pounds, and electron-volts."
+        url="https://toolcase.cc/energy-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Energy Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Energy Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between all common energy units instantly.</p>
       <EnergyConverter />
@@ -28,5 +50,6 @@ export default function EnergyConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="energy-converter" locale="en" />
     </div>
+    </>
   )
 }

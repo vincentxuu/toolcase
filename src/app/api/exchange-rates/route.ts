@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server'
 
+// Configure for static export
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Revalidate every hour
+
 // In-memory cache
 let cache: { data: Record<string, number>; timestamp: number } | null = null
 const CACHE_TTL = 60 * 60 * 1000 // 1 hour

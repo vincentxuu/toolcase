@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitPriceCalculator from '@/components/tools/UnitPriceCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Unit Price Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UnitPriceCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Unit Price Calculator', url: 'https://toolcase.cc/unit-price-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Unit Price Calculator"
+        description="Compare unit prices to find the best deal. Add items with price, quantity, and unit to see which product offers the lowest cost per unit."
+        url="https://toolcase.cc/unit-price-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Unit Price Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Unit Price Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Compare products side by side to find the best deal based on unit price.</p>
       <UnitPriceCalculator />
@@ -28,5 +50,6 @@ export default function UnitPriceCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="unit-price-calculator" locale="en" />
     </div>
+    </>
   )
 }

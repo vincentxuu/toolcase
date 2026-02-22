@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BinaryTextConverter from '@/components/tools/BinaryTextConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Binary Text Converter - Text to Binary & Back | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function BinaryTextConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Binary Text Converter', url: 'https://toolcase.cc/binary-text-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Binary Text Converter"
+        description="Convert text to binary and binary back to text instantly. Encode any text as 8-bit binary bytes or decode binary strings to readable text."
+        url="https://toolcase.cc/binary-text-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Binary Text Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Binary Text Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between text and binary representation. Each character maps to its 8-bit binary form.</p>
       <BinaryTextConverter />
       <FaqSection items={faqs} />
       <RelatedTools current="binary-text-converter" locale="en" />
     </div>
+    </>
   )
 }

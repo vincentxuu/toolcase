@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextToHandwriting from '@/components/tools/TextToHandwriting'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '文字轉手寫 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TextToHandwritingPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '文字轉手寫', url: 'https://toolcase.cc/zh-tw/text-to-handwriting' },
+        ]}
+      />
+      <ToolSchema
+        name="文字轉手寫"
+        description="將打字文字轉換為手寫風格圖片。可選擇字體大小、墨水顏色和紙張樣式。免費下載 PNG 圖片。"
+        url="https://toolcase.cc/zh-tw/text-to-handwriting"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '文字轉手寫' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>文字轉手寫</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將打字文字轉換為手寫風格圖片，可自訂紙張和墨水選項。</p>
       <TextToHandwriting labels={{ inputText: '文字', fontSize: '字體大小', inkColor: '墨水顏色', paperColor: '紙張樣式', paperWhite: '白紙', paperLined: '橫線紙', paperGrid: '方格紙', generate: '產生', download: '下載 PNG', preview: '預覽', placeholder: '在此輸入文字...' }} />
@@ -28,5 +50,6 @@ export default function TextToHandwritingPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="text-to-handwriting" locale="zh-tw" />
     </div>
+    </>
   )
 }

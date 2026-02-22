@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SvgToPngConverter from '@/components/tools/SvgToPngConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'SVG to PNG Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function SvgToPngConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'SVG to PNG Converter', url: 'https://toolcase.cc/svg-to-png-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="SVG to PNG Converter"
+        description="Convert SVG files to high-quality PNG images instantly. Upload or paste SVG code, choose output scale (1x-4x), preview, and download your PNG."
+        url="https://toolcase.cc/svg-to-png-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'SVG to PNG Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>SVG to PNG Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Upload or paste SVG code and convert it to a high-quality PNG image at your desired scale.</p>
       <SvgToPngConverter />
@@ -28,5 +50,6 @@ export default function SvgToPngConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="svg-to-png-converter" locale="en" />
     </div>
+    </>
   )
 }

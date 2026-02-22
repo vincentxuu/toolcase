@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FaviconGenerator from '@/components/tools/FaviconGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Favicon 產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function FaviconGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Favicon 產生器', url: 'https://toolcase.cc/zh-tw/favicon-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Favicon 產生器"
+        description="從圖片或文字產生所有標準尺寸的 Favicon 圖示，附帶可直接使用的 HTML 標籤。免費線上工具。"
+        url="https://toolcase.cc/zh-tw/favicon-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Favicon 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Favicon 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>從圖片或文字產生所有標準尺寸的 Favicon 圖示，附帶 HTML 標籤。</p>
       <FaviconGenerator labels={{ uploadImage: '上傳圖片', orUseText: '或使用文字/表情符號', textInput: '文字 / 表情符號', generate: '產生 Favicon', download: '下載', downloadAll: '全部下載', preview: '預覽', htmlTags: 'HTML 標籤', copyTags: '複製標籤', copied: '已複製！', sourceImage: '來源圖片' }} />
@@ -28,5 +50,6 @@ export default function FaviconGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="favicon-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

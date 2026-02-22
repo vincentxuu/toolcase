@@ -1,6 +1,31 @@
+import { Metadata } from 'next'
 import { getDictionary } from '@/i18n/get-dict'
 import { tools, categories } from '@/lib/tools-config'
 import ToolCard from '@/components/shared/ToolCard'
+
+export const metadata: Metadata = {
+  title: 'toolcase — 免費線上工具集',
+  description:
+    '150+ 種免費線上工具：JSON 格式化、QR Code 產生器、計算機、圖片工具、單位轉換器等。完全免費，無需註冊，瀏覽器內執行。',
+  keywords: [
+    '線上工具',
+    '免費工具',
+    '網頁工具',
+    'JSON 格式化',
+    'QR Code 產生器',
+    '計算機',
+    '轉換器',
+    '圖片工具',
+    '開發者工具',
+  ],
+  alternates: {
+    canonical: 'https://toolcase.cc/zh-tw',
+    languages: {
+      en: 'https://toolcase.cc',
+      'zh-Hant-TW': 'https://toolcase.cc/zh-tw',
+    },
+  },
+}
 
 type DictKey = keyof ReturnType<typeof getDictionary>
 

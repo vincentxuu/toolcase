@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CaseConverter from '@/components/tools/CaseConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Case Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CaseConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Case Converter', url: 'https://toolcase.cc/case-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Case Converter"
+        description="Convert text between uppercase, lowercase, title case, camelCase, snake_case and more. Free online case converter tool."
+        url="https://toolcase.cc/case-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Case Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Case Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert text between different letter cases instantly.</p>
       <CaseConverter />
@@ -28,5 +50,6 @@ export default function CaseConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="case-converter" locale="en" />
     </div>
+    </>
   )
 }

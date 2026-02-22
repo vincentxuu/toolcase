@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RsaKeyGenerator from '@/components/tools/RsaKeyGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'RSA Key Pair Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function RsaKeyGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'RSA Key Pair Generator', url: 'https://toolcase.cc/rsa-key-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="RSA Key Pair Generator"
+        description="Generate RSA key pairs (2048 or 4096 bits) directly in your browser using the Web Crypto API. Export public and private keys in PEM format. Nothing is sent to any server."
+        url="https://toolcase.cc/rsa-key-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'RSA Key Pair Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>RSA Key Pair Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate RSA public and private key pairs in PEM format — entirely in your browser.
@@ -57,5 +79,6 @@ export default function RsaKeyGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="rsa-key-generator" locale="en" />
     </div>
+    </>
   )
 }

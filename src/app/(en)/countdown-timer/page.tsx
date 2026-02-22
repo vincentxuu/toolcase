@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CountdownTimer from '@/components/tools/CountdownTimer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Countdown Timer - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CountdownTimerPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Countdown Timer', url: 'https://toolcase.cc/countdown-timer' },
+        ]}
+      />
+      <ToolSchema
+        name="Countdown Timer"
+        description="Set a countdown timer with alarm. Free online countdown timer for cooking, studying, workouts and more."
+        url="https://toolcase.cc/countdown-timer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Countdown Timer' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Countdown Timer</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Set a countdown timer for any duration with an alarm alert.</p>
       <CountdownTimer />
@@ -28,5 +50,6 @@ export default function CountdownTimerPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="countdown-timer" locale="en" />
     </div>
+    </>
   )
 }

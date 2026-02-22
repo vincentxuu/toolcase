@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import EmojiSearch from '@/components/tools/EmojiSearch'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Emoji Search - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function EmojiSearchPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Emoji Search', url: 'https://toolcase.cc/emoji-search' },
+        ]}
+      />
+      <ToolSchema
+        name="Emoji Search"
+        description="Search and discover emojis by keyword. Browse categories, copy emojis to your clipboard with one click, and find the perfect emoji for any occasion."
+        url="https://toolcase.cc/emoji-search"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Emoji Search' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Emoji Search</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Find and copy the perfect emoji by searching with keywords or browsing categories.
@@ -57,5 +79,6 @@ export default function EmojiSearchPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="emoji-search" locale="en" />
     </div>
+    </>
   )
 }

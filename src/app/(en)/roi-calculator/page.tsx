@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RoiCalculator from '@/components/tools/RoiCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'ROI Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function RoiCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'ROI Calculator', url: 'https://toolcase.cc/roi-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="ROI Calculator"
+        description="Calculate return on investment (ROI) and annualized ROI. Simple and free investment return calculator."
+        url="https://toolcase.cc/roi-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'ROI Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         ROI Calculator
       </h1>
@@ -57,5 +79,6 @@ export default function RoiCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="roi-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DueDateCalculator from '@/components/tools/DueDateCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Due Date Calculator - Free Pregnancy Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DueDateCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Due Date Calculator', url: 'https://toolcase.cc/due-date-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Due Date Calculator"
+        description="Calculate your estimated due date based on your last menstrual period. Track pregnancy weeks and trimesters."
+        url="https://toolcase.cc/due-date-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Due Date Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Due Date Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Estimate your due date and track pregnancy progress.</p>
       <DueDateCalculator />
@@ -28,5 +50,6 @@ export default function DueDateCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="due-date-calculator" locale="en" />
     </div>
+    </>
   )
 }

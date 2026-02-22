@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CreditCardCalculator from '@/components/tools/CreditCardCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '信用卡利息計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function CreditCardCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '信用卡利息計算器', url: 'https://toolcase.cc/zh-tw/credit-card-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="信用卡利息計算器"
+        description="了解還清信用卡債務需要多久。比較最低還款與固定還款，節省數千元利息。"
+        url="https://toolcase.cc/zh-tw/credit-card-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '信用卡利息計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>信用卡利息計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         比較最低還款與固定還款，了解你可以節省多少信用卡利息。
@@ -66,5 +88,6 @@ export default function CreditCardCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="credit-card-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SqlFormatter from '@/components/tools/SqlFormatter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'SQL 格式化工具 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function SqlFormatterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'SQL 格式化工具', url: 'https://toolcase.cc/zh-tw/sql-formatter' },
+        ]}
+      />
+      <ToolSchema
+        name="SQL 格式化工具"
+        description="即時格式化和美化 SQL 查詢。將關鍵字大寫，加上適當的縮排和換行，讓 SQL 更易閱讀。"
+        url="https://toolcase.cc/zh-tw/sql-formatter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'SQL 格式化工具' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>SQL 格式化工具</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在下方貼上你的 SQL 查詢，即時格式化並加上適當的縮排、換行和大寫關鍵字。
@@ -62,5 +84,6 @@ export default function SqlFormatterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="sql-formatter" locale="zh-tw" />
     </div>
+    </>
   )
 }

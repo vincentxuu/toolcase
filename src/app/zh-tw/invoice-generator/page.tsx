@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import InvoiceGenerator from '@/components/tools/InvoiceGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '發票產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function InvoiceGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '發票產生器', url: 'https://toolcase.cc/zh-tw/invoice-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="發票產生器"
+        description="免費線上建立專業發票。新增公司資訊、品項明細自動計算、稅率設定，可直接從瀏覽器列印。"
+        url="https://toolcase.cc/zh-tw/invoice-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '發票產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>發票產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>建立專業發票，自動計算金額，可列印或儲存為 PDF。</p>
       <InvoiceGenerator labels={{ companyName: '公司名稱', clientName: '客戶名稱', invoiceNumber: '發票編號', date: '日期', dueDate: '到期日', description: '品項說明', quantity: '數量', unitPrice: '單價', amount: '金額', addItem: '新增品項', removeItem: '移除', subtotal: '小計', taxRate: '稅率', tax: '稅額', total: '總計', preview: '預覽', print: '列印發票', invoice: '發票', billTo: '帳單對象' }} />
@@ -28,5 +50,6 @@ export default function InvoiceGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="invoice-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

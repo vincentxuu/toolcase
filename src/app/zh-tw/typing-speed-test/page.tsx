@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TypingSpeedTest from '@/components/tools/TypingSpeedTest'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '打字速度測試 - WPM 與準確度 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TypingSpeedTestPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '打字速度測試', url: 'https://toolcase.cc/zh-tw/typing-speed-test' },
+        ]}
+      />
+      <ToolSchema
+        name="打字速度測試"
+        description="使用免費線上打字測試來測試您的打字速度和準確度。即時測量每分鐘字數（WPM）、淨 WPM 和準確度。"
+        url="https://toolcase.cc/zh-tw/typing-speed-test"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '打字速度測試' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>打字速度測試</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>測試您的打字速度和準確度。即時查看 WPM、準確度和詳細結果。</p>
       <TypingSpeedTest labels={{ start: '開始', restart: '重新開始', wpm: 'WPM', accuracy: '準確度', time: '時間', seconds: '秒', typingTest: '打字測試', typeBelow: '在下方輸入', results: '結果', grossWpm: '總 WPM', netWpm: '淨 WPM', correctChars: '正確字元', totalChars: '總字元' }} />
@@ -28,5 +50,6 @@ export default function TypingSpeedTestPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="typing-speed-test" locale="zh-tw" />
     </div>
+    </>
   )
 }

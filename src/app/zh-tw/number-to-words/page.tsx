@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import NumberToWords from '@/components/tools/NumberToWords'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '數字轉英文單字 - 數字拼寫轉換器 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function NumberToWordsPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '數字轉英文單字', url: 'https://toolcase.cc/zh-tw/number-to-words' },
+        ]}
+      />
+      <ToolSchema
+        name="數字轉英文單字"
+        description="將任何數字轉換為英文單字表示。支援整數、小數、負數，以及高達兆的大數值。免費線上數字轉英文工具。"
+        url="https://toolcase.cc/zh-tw/number-to-words"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '數字轉英文單字' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>數字轉英文單字</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將任何數字轉換為英文單字表示。支援小數、負數，以及高達兆的數值。</p>
       <NumberToWords labels={{ number: '數字', words: '英文單字', enterNumber: '輸入數字...', result: '結果', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function NumberToWordsPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="number-to-words" locale="zh-tw" />
     </div>
+    </>
   )
 }

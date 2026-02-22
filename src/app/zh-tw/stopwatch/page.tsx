@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Stopwatch from '@/components/tools/Stopwatch'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '碼錶 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function StopwatchPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '碼錶', url: 'https://toolcase.cc/zh-tw/stopwatch' },
+        ]}
+      />
+      <ToolSchema
+        name="碼錶"
+        description="精確的線上碼錶，支援分段計時功能。免費線上碼錶，適合運動計時和各種計時需求。"
+        url="https://toolcase.cc/zh-tw/stopwatch"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '碼錶' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>碼錶</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>精確計時，支援分段記錄功能。</p>
       <Stopwatch labels={{ start: '開始', stop: '停止', reset: '重置', lap: '分段', lapNumber: '圈數', lapTime: '分段時間', totalTime: '累計時間' }} />
@@ -28,5 +50,6 @@ export default function StopwatchPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="stopwatch" locale="zh-tw" />
     </div>
+    </>
   )
 }

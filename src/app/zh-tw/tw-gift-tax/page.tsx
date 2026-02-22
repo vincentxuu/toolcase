@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import TwGiftTax from '@/components/tools/TwGiftTax'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '贈與稅級距表 - 稅率與年度免稅額試算 | toolcase',
@@ -10,11 +13,31 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '贈與稅級距表', url: 'https://toolcase.cc/zh-tw/tw-gift-tax' },
+        ]}
+      />
+      <ToolSchema
+        name="贈與稅級距表"
+        description="贈與稅三級累進稅率（10%/15%/20%）級距表，每人每年免稅額244萬元，含快速試算功能。"
+        url="https://toolcase.cc/zh-tw/tw-gift-tax"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '贈與稅級距表' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>贈與稅級距表</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>贈與稅三級累進稅率（10%、15%、20%），每人每年免稅額244萬元，含年度贈與稅試算。</p>
       <TwGiftTax />
       <RelatedTools current="tw-gift-tax" locale="zh-tw" />
     </div>
+    </>
   )
 }

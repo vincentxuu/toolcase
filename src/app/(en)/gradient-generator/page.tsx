@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GradientGenerator from '@/components/tools/GradientGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Gradient Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GradientGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSS Gradient Generator', url: 'https://toolcase.cc/gradient-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Gradient Generator"
+        description="Create beautiful CSS gradients with a visual builder. Support for linear and radial gradients with multiple color stops and live preview."
+        url="https://toolcase.cc/gradient-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSS Gradient Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Gradient Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Build beautiful CSS gradients with a visual editor and copy the code.</p>
       <GradientGenerator />
@@ -28,5 +50,6 @@ export default function GradientGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="gradient-generator" locale="en" />
     </div>
+    </>
   )
 }

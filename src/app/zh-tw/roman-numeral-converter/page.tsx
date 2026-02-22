@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RomanNumeralConverter from '@/components/tools/RomanNumeralConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '羅馬數字轉換器 - 十進位與羅馬數字互轉 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RomanNumeralConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '羅馬數字轉換器', url: 'https://toolcase.cc/zh-tw/roman-numeral-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="羅馬數字轉換器"
+        description="即時在十進位數字和羅馬數字之間互相轉換。支援 1 到 3999 的數值，附完整轉換參考表。"
+        url="https://toolcase.cc/zh-tw/roman-numeral-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '羅馬數字轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>羅馬數字轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在十進位數字和羅馬數字之間互相轉換。支援 1 到 3999 的數值。</p>
       <RomanNumeralConverter labels={{ decimal: '十進位', roman: '羅馬數字', decimalToRoman: '十進位轉羅馬', romanToDecimal: '羅馬轉十進位', conversionTable: '轉換表', invalidInput: '無效輸入', outOfRange: '超出範圍（1-3999）' }} />
@@ -28,5 +50,6 @@ export default function RomanNumeralConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="roman-numeral-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

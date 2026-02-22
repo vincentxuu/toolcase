@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DiscountCalculator from '@/components/tools/DiscountCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '折扣計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DiscountCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '折扣計算器', url: 'https://toolcase.cc/zh-tw/discount-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="折扣計算器"
+        description="即時計算折扣後價格、節省金額與折扣百分比。免費線上折扣計算器，購物省錢好幫手。"
+        url="https://toolcase.cc/zh-tw/discount-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '折扣計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>折扣計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算折扣後價格、省下金額與折扣比例。</p>
       <DiscountCalculator labels={{ originalPrice: '原價', discountPercent: '折扣百分比', discountAmount: '折扣金額', finalPrice: '折後價格', youSave: '您省下', result: '結果' }} />
@@ -28,5 +50,6 @@ export default function DiscountCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="discount-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

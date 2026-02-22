@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnicodeConverter from '@/components/tools/UnicodeConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Unicode 轉換器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function UnicodeConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Unicode 轉換器', url: 'https://toolcase.cc/zh-tw/unicode-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Unicode 轉換器"
+        description="編碼與解碼 Unicode 字元。將文字轉換為 Unicode 跳脫序列、HTML 實體、CSS 跳脫和碼位。"
+        url="https://toolcase.cc/zh-tw/unicode-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Unicode 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Unicode 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         以多種格式編碼和解碼 Unicode 字元。
@@ -71,5 +93,6 @@ export default function UnicodeConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="unicode-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

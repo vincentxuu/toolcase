@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageWatermark from '@/components/tools/ImageWatermark'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片浮水印 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageWatermarkPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片浮水印', url: 'https://toolcase.cc/zh-tw/image-watermark' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片浮水印"
+        description="線上為圖片加上文字浮水印。可自訂文字、字體大小、顏色、透明度及位置。支援滿版浮水印。"
+        url="https://toolcase.cc/zh-tw/image-watermark"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片浮水印' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片浮水印</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>為圖片加上自訂文字浮水印，支援多種位置與滿版模式。</p>
       <ImageWatermark labels={{ uploadImage: '上傳圖片', watermarkText: '浮水印文字', fontSize: '字體大小', color: '顏色', opacity: '透明度', position: '位置', posCenter: '中央', posTopLeft: '左上', posTopRight: '右上', posBottomLeft: '左下', posBottomRight: '右下', posTiled: '滿版', apply: '套用浮水印', download: '下載', preview: '預覽' }} />
@@ -28,5 +50,6 @@ export default function ImageWatermarkPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-watermark" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextToSpeech from '@/components/tools/TextToSpeech'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '文字轉語音 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TextToSpeechPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '文字轉語音', url: 'https://toolcase.cc/zh-tw/text-to-speech' },
+        ]}
+      />
+      <ToolSchema
+        name="文字轉語音"
+        description="將文字轉換為語音朗讀，支援多種語音、速度和音調調整。免費線上 TTS 文字轉語音工具。"
+        url="https://toolcase.cc/zh-tw/text-to-speech"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '文字轉語音' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>文字轉語音</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將文字轉換為語音朗讀，支援多種語音和速度調整。</p>
       <TextToSpeech labels={{ text: '文字', voice: '語音', rate: '速度', pitch: '音調', play: '播放', pause: '暫停', stop: '停止', speaking: '播放中...', paused: '已暫停', ready: '就緒' }} />
@@ -28,5 +50,6 @@ export default function TextToSpeechPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="text-to-speech" locale="zh-tw" />
     </div>
+    </>
   )
 }

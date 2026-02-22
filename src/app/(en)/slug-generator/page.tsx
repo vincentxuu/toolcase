@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SlugGenerator from '@/components/tools/SlugGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Slug Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function SlugGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Slug Generator', url: 'https://toolcase.cc/slug-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Slug Generator"
+        description="Convert text to URL-friendly slugs. Free online slug generator with customizable separator, case, and length options."
+        url="https://toolcase.cc/slug-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Slug Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Slug Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert any text into a clean, URL-friendly slug.</p>
       <SlugGenerator />
@@ -28,5 +50,6 @@ export default function SlugGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="slug-generator" locale="en" />
     </div>
+    </>
   )
 }

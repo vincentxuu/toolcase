@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BodyFatCalculator from '@/components/tools/BodyFatCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '體脂率計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BodyFatCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '體脂率計算器', url: 'https://toolcase.cc/zh-tw/body-fat-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="體脂率計算器"
+        description="使用美國海軍公式計算體脂肪百分比。免費線上體脂率計算器，輸入身高和圍度即可估算。"
+        url="https://toolcase.cc/zh-tw/body-fat-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '體脂率計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>體脂率計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入身高與圍度，估算您的體脂肪百分比。</p>
       <BodyFatCalculator labels={{ gender: '性別', male: '男性', female: '女性', height: '身高', neck: '頸圍', waist: '腰圍', hip: '臀圍', bodyFat: '體脂率', category: '分類', essential: '必需脂肪', athletes: '運動員', fitness: '健身', average: '一般', obese: '肥胖', disclaimer: '本工具僅供參考，請諮詢醫療專業人員獲取準確的醫療建議。' }} />
@@ -28,5 +50,6 @@ export default function BodyFatCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="body-fat-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

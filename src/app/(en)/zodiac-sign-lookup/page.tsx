@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ZodiacSignLookup from '@/components/tools/ZodiacSignLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Zodiac Sign Lookup - Find Your Star Sign | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ZodiacSignLookupPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Zodiac Sign Lookup', url: 'https://toolcase.cc/zodiac-sign-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="Zodiac Sign Lookup"
+        description="Enter your birthday to find your zodiac sign instantly! Complete reference table with all 12 zodiac signs, date ranges, elements, and personality traits."
+        url="https://toolcase.cc/zodiac-sign-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Zodiac Sign Lookup' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Zodiac Sign Lookup</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Enter your birthday to find your zodiac sign, element, and personality traits.</p>
       <ZodiacSignLookup labels={{
@@ -54,5 +76,6 @@ export default function ZodiacSignLookupPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="zodiac-sign-lookup" locale="en" />
     </div>
+    </>
   )
 }

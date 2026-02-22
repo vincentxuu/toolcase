@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TdeeCalculator from '@/components/tools/TdeeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'TDEE & BMR Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TdeeCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'TDEE & BMR Calculator', url: 'https://toolcase.cc/tdee-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="TDEE & BMR Calculator"
+        description="Calculate your Total Daily Energy Expenditure (TDEE) and Basal Metabolic Rate (BMR). Know exactly how many calories you need."
+        url="https://toolcase.cc/tdee-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'TDEE & BMR Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>TDEE & BMR Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate your daily calorie needs based on your activity level.</p>
       <TdeeCalculator />
@@ -28,5 +50,6 @@ export default function TdeeCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="tdee-calculator" locale="en" />
     </div>
+    </>
   )
 }

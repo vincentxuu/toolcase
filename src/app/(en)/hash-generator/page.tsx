@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HashGenerator from '@/components/tools/HashGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Hash Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HashGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Hash Generator', url: 'https://toolcase.cc/hash-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Hash Generator"
+        description="Generate MD5, SHA-1, SHA-256 and other hash values from text. Free online hash generator for developers."
+        url="https://toolcase.cc/hash-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Hash Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Hash Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate MD5, SHA-1, SHA-256 and other hash values from any text.</p>
       <HashGenerator />
@@ -28,5 +50,6 @@ export default function HashGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="hash-generator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SavingsCalculator from '@/components/tools/SavingsCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Savings Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function SavingsCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Savings Calculator', url: 'https://toolcase.cc/savings-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Savings Calculator"
+        description="Calculate how your savings will grow with regular monthly deposits and compound interest. Free savings growth calculator with charts."
+        url="https://toolcase.cc/savings-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Savings Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Savings Calculator
       </h1>
@@ -57,5 +79,6 @@ export default function SavingsCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="savings-calculator" locale="en" />
     </div>
+    </>
   )
 }

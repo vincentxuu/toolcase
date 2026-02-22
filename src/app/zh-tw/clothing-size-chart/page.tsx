@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ClothingSizeChart from '@/components/tools/ClothingSizeChart'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '衣服尺寸對照表 - 台灣/美國/歐洲/日本尺碼換算 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function ClothingSizeChartPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '衣服尺寸對照表', url: 'https://toolcase.cc/zh-tw/clothing-size-chart' },
+        ]}
+      />
+      <ToolSchema
+        name="衣服尺寸對照表"
+        description="男女裝國際尺碼對照表，含台灣、美國、歐洲、英國、日本尺碼換算。上衣與下身分別對照。"
+        url="https://toolcase.cc/zh-tw/clothing-size-chart"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '衣服尺寸對照表' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>衣服尺寸對照表</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>台灣、美國、歐洲、英國、日本尺碼對照，含男女裝上衣與下身。</p>
       <ClothingSizeChart />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="clothing-size-chart" locale="zh-tw" />
     </div>
+    </>
   )
 }

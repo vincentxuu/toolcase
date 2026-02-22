@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageToPdf from '@/components/tools/ImageToPdf'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image to PDF - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageToPdfPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image to PDF', url: 'https://toolcase.cc/image-to-pdf' },
+        ]}
+      />
+      <ToolSchema
+        name="Image to PDF"
+        description="Convert one or more images into a single PDF document for free. Supports PNG, JPEG, and WebP. Arrange pages, set orientation, and download instantly."
+        url="https://toolcase.cc/image-to-pdf"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image to PDF' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image to PDF</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Combine multiple images into a single PDF document — fast and private.
@@ -57,5 +79,6 @@ export default function ImageToPdfPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-to-pdf" locale="en" />
     </div>
+    </>
   )
 }

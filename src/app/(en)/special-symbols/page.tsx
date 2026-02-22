@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SpecialSymbols from '@/components/tools/SpecialSymbols'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Special Symbols - Copy & Paste Symbols | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function SpecialSymbolsPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Special Symbols', url: 'https://toolcase.cc/special-symbols' },
+        ]}
+      />
+      <ToolSchema
+        name="Special Symbols"
+        description="Arrows, checkmarks, hearts, stars, math symbols, currency signs and more. Click to copy any symbol instantly."
+        url="https://toolcase.cc/special-symbols"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Special Symbols' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Special Symbols</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Copy & paste special symbols. Arrows, checkmarks, hearts, stars, math symbols and more.</p>
       <SpecialSymbols labels={{ clickToCopy: 'Click to copy', copied: 'Copied!', search: 'Search', searchPlaceholder: 'Search symbols...', categories: [] }} />
       <FaqSection items={faqs} title="FAQ" />
       <RelatedTools current="special-symbols" locale="en" />
     </div>
+    </>
   )
 }

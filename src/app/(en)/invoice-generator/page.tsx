@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import InvoiceGenerator from '@/components/tools/InvoiceGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Invoice Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function InvoiceGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Invoice Generator', url: 'https://toolcase.cc/invoice-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Invoice Generator"
+        description="Create professional invoices online for free. Add company details, line items with automatic calculations, tax rates, and print directly from your browser."
+        url="https://toolcase.cc/invoice-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Invoice Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Invoice Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Create professional invoices with automatic calculations — print or save as PDF.
@@ -57,5 +79,6 @@ export default function InvoiceGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="invoice-generator" locale="en" />
     </div>
+    </>
   )
 }

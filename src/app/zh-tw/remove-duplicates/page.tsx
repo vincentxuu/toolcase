@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RemoveDuplicates from '@/components/tools/RemoveDuplicates'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '移除重複行 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RemoveDuplicatesPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '移除重複行', url: 'https://toolcase.cc/zh-tw/remove-duplicates' },
+        ]}
+      />
+      <ToolSchema
+        name="移除重複行"
+        description="快速移除文字中的重複行。支援大小寫區分、空白修剪和排序輸出等選項。"
+        url="https://toolcase.cc/zh-tw/remove-duplicates"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '移除重複行' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>移除重複行</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>快速移除文字中的重複行，保留不重複的內容。</p>
       <RemoveDuplicates labels={{ input: '輸入', output: '輸出', caseSensitive: '區分大小寫', trimWhitespace: '修剪空白', sortOutput: '排序輸出', originalLines: '原始行數', uniqueLines: '不重複行數', duplicatesRemoved: '移除重複' }} />
@@ -28,5 +50,6 @@ export default function RemoveDuplicatesPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="remove-duplicates" locale="zh-tw" />
     </div>
+    </>
   )
 }

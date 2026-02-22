@@ -6,8 +6,8 @@ const en = {
   // Hero
   hero_badge: '100% Free — No signup required',
   hero_title_1: 'Online tools,',
-  hero_title_2: 'ridiculously fast.',
-  hero_desc: "Developer tools, calculators, image processors, converters — everything you need, nothing you don't.",
+  hero_title_2: '150+ tools, instant & free.',
+  hero_desc: "Development, design, finance, health, image processing, text editing, unit conversion — 150+ free tools, ready to use.",
   stat_tools: 'Free Tools',
   stat_signup: 'Signups Needed',
   stat_load: 'Load Time',

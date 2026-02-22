@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ChineseZodiacLookup from '@/components/tools/ChineseZodiacLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Chinese Zodiac Lookup - Find Your Animal Sign | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ChineseZodiacLookupPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Chinese Zodiac Lookup', url: 'https://toolcase.cc/chinese-zodiac-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="Chinese Zodiac Lookup"
+        description="Enter your birth year to find your Chinese zodiac animal sign! Complete reference with all 12 animals, five elements, personality traits, and compatibility."
+        url="https://toolcase.cc/chinese-zodiac-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Chinese Zodiac Lookup' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Chinese Zodiac Lookup</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Enter your birth year to find your Chinese zodiac animal, element, and personality traits.</p>
       <ChineseZodiacLookup labels={{
@@ -49,5 +71,6 @@ export default function ChineseZodiacLookupPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="chinese-zodiac-lookup" locale="en" />
     </div>
+    </>
   )
 }

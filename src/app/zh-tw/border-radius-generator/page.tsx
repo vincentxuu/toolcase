@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BorderRadiusGenerator from '@/components/tools/BorderRadiusGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圓角產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BorderRadiusGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圓角產生器', url: 'https://toolcase.cc/zh-tw/border-radius-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="圓角產生器"
+        description="視覺化產生 CSS border-radius，獨立控制每個角落。連結或獨立調整四角、即時預覽形狀並複製 CSS 程式碼。"
+        url="https://toolcase.cc/zh-tw/border-radius-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圓角產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圓角產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>視覺化設計 CSS border-radius，獨立控制每個角落並複製程式碼。</p>
       <BorderRadiusGenerator labels={{
@@ -39,5 +61,6 @@ export default function BorderRadiusGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="border-radius-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

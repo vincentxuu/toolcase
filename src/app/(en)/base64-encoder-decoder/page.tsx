@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Base64Tool from '@/components/tools/Base64Tool'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Base64 Encoder/Decoder - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function Base64EncoderDecoderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Base64 Encoder/Decoder', url: 'https://toolcase.cc/base64-encoder-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="Base64 Encoder/Decoder"
+        description="Encode and decode Base64 strings instantly. Free online Base64 tool for developers and data processing."
+        url="https://toolcase.cc/base64-encoder-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Base64 Encoder/Decoder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Base64 Encoder/Decoder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Encode text to Base64 or decode Base64 strings back to plain text.</p>
       <Base64Tool />
@@ -28,5 +50,6 @@ export default function Base64EncoderDecoderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="base64-encoder-decoder" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ChineseZodiacLookup from '@/components/tools/ChineseZodiacLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '生肖查詢 - 輸入出生年查生肖與五行 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function ChineseZodiacLookupPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '生肖查詢', url: 'https://toolcase.cc/zh-tw/chinese-zodiac-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="生肖查詢"
+        description="輸入出生年份立即查詢你的生肖！提供十二生肖五行屬性、性格特質、相合相沖完整對照表。免費線上生肖查詢工具。"
+        url="https://toolcase.cc/zh-tw/chinese-zodiac-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '生肖查詢' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>生肖查詢</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入出生年份，查詢你的生肖、五行屬性與性格特質。</p>
       <ChineseZodiacLookup />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="chinese-zodiac-lookup" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import WebpConverter from '@/components/tools/WebpConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'WebP 轉換器 - WebP、PNG、JPG 格式互轉 | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function WebpConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'WebP 轉換器', url: 'https://toolcase.cc/zh-tw/webp-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="WebP 轉換器"
+        description="在瀏覽器中轉換 WebP、PNG 和 JPG 圖片格式。調整品質並比較檔案大小。無需上傳，100% 隱私。"
+        url="https://toolcase.cc/zh-tw/webp-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'WebP 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>WebP 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在 WebP、PNG 和 JPG 格式之間轉換圖片。調整品質並比較檔案大小。</p>
       <WebpConverter labels={{ upload: '上傳圖片', dragDrop: '拖放圖片至此', orClick: '或點擊瀏覽', outputFormat: '輸出格式', quality: '品質', convert: '轉換', download: '下載', reset: '重設', original: '原始', converted: '已轉換', fileSize: '檔案大小' }} />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="webp-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

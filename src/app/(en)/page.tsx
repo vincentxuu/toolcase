@@ -1,6 +1,31 @@
+import { Metadata } from 'next'
 import { getDictionary } from '@/i18n/get-dict'
 import { tools, categories } from '@/lib/tools-config'
 import ToolCard from '@/components/shared/ToolCard'
+
+export const metadata: Metadata = {
+  title: 'toolcase — Free Online Tools for Everyone',
+  description:
+    'Free online tools: JSON formatter, QR code generator, calculators, image tools, unit converters and more. 150+ tools, no sign-up required, works in your browser.',
+  keywords: [
+    'online tools',
+    'free tools',
+    'web tools',
+    'JSON formatter',
+    'QR code generator',
+    'calculator',
+    'converter',
+    'image tools',
+    'developer tools',
+  ],
+  alternates: {
+    canonical: 'https://toolcase.cc',
+    languages: {
+      en: 'https://toolcase.cc',
+      'zh-Hant-TW': 'https://toolcase.cc/zh-tw',
+    },
+  },
+}
 
 type DictKey = keyof ReturnType<typeof getDictionary>
 

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PercentageCalculator from '@/components/tools/PercentageCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '百分比計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PercentageCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '百分比計算器', url: 'https://toolcase.cc/zh-tw/percentage-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="百分比計算器"
+        description="即時計算百分比。求某數的百分之幾、百分比變化等。"
+        url="https://toolcase.cc/zh-tw/percentage-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '百分比計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>百分比計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算百分比、求某數的百分之幾，以及計算百分比變化。</p>
       <PercentageCalculator labels={{ whatIsXPercentOfY: 'Y 的 X% 是多少？', xIsWhatPercentOfY: 'X 是 Y 的百分之幾？', percentChange: '百分比變化', value: '數值', percent: '%', of: '的', is: '是', result: '結果', from: '從', to: '到', change: '變化', increase: '增加', decrease: '減少' }} />
@@ -28,5 +50,6 @@ export default function PercentageCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="percentage-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

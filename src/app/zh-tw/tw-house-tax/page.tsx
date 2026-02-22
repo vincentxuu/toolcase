@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import TwHouseTax from '@/components/tools/TwHouseTax'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '房屋稅稅率表 - 自住/非自住/營業用稅率 | toolcase',
@@ -10,11 +13,31 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '房屋稅稅率表', url: 'https://toolcase.cc/zh-tw/tw-house-tax' },
+        ]}
+      />
+      <ToolSchema
+        name="房屋稅稅率表"
+        description="房屋稅稅率對照表，含自住1.2%、非自住累進稅率（囤房稅2.0）、營業用3%，及計算方式說明。"
+        url="https://toolcase.cc/zh-tw/tw-house-tax"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '房屋稅稅率表' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>房屋稅稅率表</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>房屋稅各使用類別稅率對照，含自住、非自住（囤房稅2.0累進）、營業用稅率及計算說明。</p>
       <TwHouseTax />
       <RelatedTools current="tw-house-tax" locale="zh-tw" />
     </div>
+    </>
   )
 }

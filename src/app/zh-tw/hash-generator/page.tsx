@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HashGenerator from '@/components/tools/HashGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '雜湊產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HashGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '雜湊產生器', url: 'https://toolcase.cc/zh-tw/hash-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="雜湊產生器"
+        description="產生 MD5、SHA-1、SHA-256、SHA-512 等雜湊值。免費線上雜湊產生器，支援文字和檔案。"
+        url="https://toolcase.cc/zh-tw/hash-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '雜湊產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>雜湊產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>產生 MD5、SHA-1、SHA-256、SHA-512 雜湊值。</p>
       <HashGenerator labels={{ input: '輸入', uploadFile: '上傳檔案', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function HashGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="hash-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

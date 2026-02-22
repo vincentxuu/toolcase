@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SlugGenerator from '@/components/tools/SlugGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Slug 產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function SlugGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Slug 產生器', url: 'https://toolcase.cc/zh-tw/slug-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Slug 產生器"
+        description="將文字轉換為適合網址的 slug。可自訂分隔符號、大小寫及長度限制。免費線上 slug 產生器。"
+        url="https://toolcase.cc/zh-tw/slug-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Slug 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Slug 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將任何文字轉換為乾淨、適合網址使用的 slug。</p>
       <SlugGenerator labels={{
@@ -38,5 +60,6 @@ export default function SlugGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="slug-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

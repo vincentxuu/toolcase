@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import OpenGraphPreview from '@/components/tools/OpenGraphPreview'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Open Graph Preview - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function OpenGraphPreviewPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Open Graph Preview', url: 'https://toolcase.cc/open-graph-preview' },
+        ]}
+      />
+      <ToolSchema
+        name="Open Graph Preview"
+        description="Preview how your website will appear when shared on Facebook, Twitter, LinkedIn, and other social platforms. Validate Open Graph and Twitter Card tags instantly."
+        url="https://toolcase.cc/open-graph-preview"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Open Graph Preview' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Open Graph Preview</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         See how your links will appear on social media before you share them.
@@ -57,5 +79,6 @@ export default function OpenGraphPreviewPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="open-graph-preview" locale="en" />
     </div>
+    </>
   )
 }

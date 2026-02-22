@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextEncryptDecrypt from '@/components/tools/TextEncryptDecrypt'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '文字加密 / 解密 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TextEncryptDecryptPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '文字加密 / 解密', url: 'https://toolcase.cc/zh-tw/text-encrypt-decrypt' },
+        ]}
+      />
+      <ToolSchema
+        name="文字加密 / 解密"
+        description="使用 AES-256-GCM 加密與解密文字。安全的客戶端加密，使用 Web Crypto API，資料不會傳送到任何伺服器。"
+        url="https://toolcase.cc/zh-tw/text-encrypt-decrypt"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '文字加密 / 解密' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>文字加密 / 解密</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>使用 AES-256-GCM 安全地加密與解密文字，完全在瀏覽器中執行。</p>
       <TextEncryptDecrypt labels={{ encrypt: '加密', decrypt: '解密', inputText: '輸入文字', password: '密碼 / 金鑰', output: '輸出', run: '執行', copy: '複製', copied: '已複製！', encryptPlaceholder: '輸入要加密的文字...', decryptPlaceholder: '貼上 base64 加密文字...', passwordPlaceholder: '輸入密碼...', errorEncrypt: '加密失敗，請重試。', errorDecrypt: '解密失敗。密碼錯誤或資料損毀。' }} />
@@ -28,5 +50,6 @@ export default function TextEncryptDecryptPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="text-encrypt-decrypt" locale="zh-tw" />
     </div>
+    </>
   )
 }

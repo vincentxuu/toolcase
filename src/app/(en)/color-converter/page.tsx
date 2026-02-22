@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorConverter from '@/components/tools/ColorConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Color Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Color Converter', url: 'https://toolcase.cc/color-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Color Converter"
+        description="Convert colors between HEX, RGB, HSL and other formats. Free online color converter with live preview."
+        url="https://toolcase.cc/color-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Color Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Color Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert colors between HEX, RGB, HSL and other formats.</p>
       <ColorConverter />
@@ -28,5 +50,6 @@ export default function ColorConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="color-converter" locale="en" />
     </div>
+    </>
   )
 }

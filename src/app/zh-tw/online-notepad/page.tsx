@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import OnlineNotepad from '@/components/tools/OnlineNotepad'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '線上記事本 - 免費文字編輯器，自動儲存 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function OnlineNotepadPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '線上記事本', url: 'https://toolcase.cc/zh-tw/online-notepad' },
+        ]}
+      />
+      <ToolSchema
+        name="線上記事本"
+        description="使用免費線上記事本即時撰寫和儲存筆記。具備自動儲存至本地端、字元與字數統計，以及下載為 .txt 檔案等功能。"
+        url="https://toolcase.cc/zh-tw/online-notepad"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '線上記事本' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>線上記事本</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>簡單、無干擾的記事本，具備自動儲存功能。筆記儲存在本地端，不會離開您的瀏覽器。</p>
       <OnlineNotepad labels={{ placeholder: '在此開始輸入筆記...', characters: '字元', words: '字數', clear: '清除', download: '下載 .txt', autoSaved: '已自動儲存' }} />
@@ -28,5 +50,6 @@ export default function OnlineNotepadPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="online-notepad" locale="zh-tw" />
     </div>
+    </>
   )
 }

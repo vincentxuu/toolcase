@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageCompressor from '@/components/tools/ImageCompressor'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片壓縮 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageCompressorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片壓縮', url: 'https://toolcase.cc/zh-tw/image-compressor' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片壓縮"
+        description="線上壓縮圖片檔案大小，支援調整品質與格式。免費圖片壓縮工具，在瀏覽器中即可完成。"
+        url="https://toolcase.cc/zh-tw/image-compressor"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片壓縮' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片壓縮</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>壓縮圖片檔案大小，支援調整品質與輸出格式。</p>
       <ImageCompressor labels={{ uploadImage: '上傳圖片', quality: '品質', format: '格式', originalSize: '原始大小', compressedSize: '壓縮後大小', savings: '節省', download: '下載', preview: '預覽', compress: '壓縮' }} />
@@ -28,5 +50,6 @@ export default function ImageCompressorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-compressor" locale="zh-tw" />
     </div>
+    </>
   )
 }

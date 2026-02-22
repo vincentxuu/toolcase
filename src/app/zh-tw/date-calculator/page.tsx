@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DateCalculator from '@/components/tools/DateCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '日期計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DateCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '日期計算器', url: 'https://toolcase.cc/zh-tw/date-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="日期計算器"
+        description="計算兩個日期之間的差異，或從日期加減天數。免費線上日期計算器。"
+        url="https://toolcase.cc/zh-tw/date-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '日期計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>日期計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算兩個日期之間的差異，或從日期加減天數。</p>
       <DateCalculator labels={{ difference: '日期差異', addSubtract: '加減天數', startDate: '開始日期', endDate: '結束日期', resultDate: '結果日期', daysToAdd: '天數', add: '加', subtract: '減', years: '年', months: '月', days: '日', totalDays: '總天數', totalWeeks: '總週數' }} />
@@ -28,5 +50,6 @@ export default function DateCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="date-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

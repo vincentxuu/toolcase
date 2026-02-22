@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UserAgentParser from '@/components/tools/UserAgentParser'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'User-Agent Parser - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function UserAgentParserPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'User', url: 'https://toolcase.cc/user-agent-parser' },
+        ]}
+      />
+      <ToolSchema
+        name="User"
+        description="Parse and analyze user-agent strings instantly. Detect browser, operating system, device type, and rendering engine from any user-agent."
+        url="https://toolcase.cc/user-agent-parser"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'User' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>User-Agent Parser</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Analyze user-agent strings to identify browser, OS, device type, and rendering engine. Your current browser is auto-detected.
@@ -56,5 +78,6 @@ export default function UserAgentParserPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="user-agent-parser" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SocialVideoSpeed from '@/components/tools/SocialVideoSpeed'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Social Video Speed Tool - Speed Up Videos for IG, TikTok, Threads | toolcase',
@@ -18,7 +21,26 @@ const faqs = [
 
 export default function SocialVideoSpeedPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Social Video Speed Tool', url: 'https://toolcase.cc/social-video-speed' },
+        ]}
+      />
+      <ToolSchema
+        name="Social Video Speed Tool"
+        description="Speed up long videos to fit social media time limits. Preset durations for Instagram Reels, Stories, Threads, Facebook Reels, TikTok, YouTube Shorts, and X. Processed in your browser."
+        url="https://toolcase.cc/social-video-speed"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Social Video Speed Tool' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Social Video Speed Tool</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Speed up videos to fit social media time limits. Select a platform preset or set a custom target duration.</p>
       <SocialVideoSpeed />
@@ -29,5 +51,6 @@ export default function SocialVideoSpeedPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="social-video-speed" locale="en" />
     </div>
+    </>
   )
 }

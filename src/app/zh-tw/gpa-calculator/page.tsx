@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GpaCalculator from '@/components/tools/GpaCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'GPA 計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GpaCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'GPA 計算器', url: 'https://toolcase.cc/zh-tw/gpa-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="GPA 計算器"
+        description="即時計算累積 GPA 成績。輸入課程名稱、學分數與成績，快速算出您的平均績點。"
+        url="https://toolcase.cc/zh-tw/gpa-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'GPA 計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>GPA 計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入課程與學分，計算您的累積平均績點。</p>
       <GpaCalculator labels={{ courseName: '課程名稱', credits: '學分', grade: '成績', addCourse: '新增課程', remove: '移除', totalCredits: '總學分', cumulativeGpa: '累積 GPA', course: '課程' }} />
@@ -28,5 +50,6 @@ export default function GpaCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="gpa-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

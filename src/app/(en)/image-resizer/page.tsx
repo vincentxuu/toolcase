@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageResizer from '@/components/tools/ImageResizer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image Resizer - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageResizerPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image Resizer', url: 'https://toolcase.cc/image-resizer' },
+        ]}
+      />
+      <ToolSchema
+        name="Image Resizer"
+        description="Resize images online for free. Change dimensions while maintaining aspect ratio. Supports PNG, JPEG, and WebP. No uploads — everything runs in your browser."
+        url="https://toolcase.cc/image-resizer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image Resizer' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Resizer</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Resize images to any dimension while optionally preserving the aspect ratio — entirely in your browser.
@@ -57,5 +79,6 @@ export default function ImageResizerPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-resizer" locale="en" />
     </div>
+    </>
   )
 }

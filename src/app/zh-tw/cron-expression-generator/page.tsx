@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CronGenerator from '@/components/tools/CronGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Cron 表達式產生器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CronExpressionGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Cron 表達式產生器', url: 'https://toolcase.cc/zh-tw/cron-expression-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Cron 表達式產生器"
+        description="視覺化建立與理解 Cron 表達式。免費線上 Cron 產生器，提供預設範本、人類可讀說明和便捷編輯。"
+        url="https://toolcase.cc/zh-tw/cron-expression-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Cron 表達式產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Cron 表達式產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         使用預設範本和人類可讀說明，視覺化建立 Cron 表達式。
@@ -78,5 +100,6 @@ export default function CronExpressionGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="cron-expression-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

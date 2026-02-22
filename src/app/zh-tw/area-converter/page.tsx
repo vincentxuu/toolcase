@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '面積轉換器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function AreaConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '面積轉換器', url: 'https://toolcase.cc/zh-tw/area-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="面積轉換器"
+        description="在平方公尺、坪、公頃、英畝、平方英尺等單位之間輕鬆轉換。支援台灣常用的坪數換算，免費線上面積轉換器。"
+        url="https://toolcase.cc/zh-tw/area-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '面積轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>面積轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         即時在各種面積單位之間進行轉換，支援台灣常用的坪 (Ping) 數換算。
@@ -54,5 +76,6 @@ export default function AreaConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="area-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

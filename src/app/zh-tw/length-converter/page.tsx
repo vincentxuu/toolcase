@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '長度轉換器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function LengthConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '長度轉換器', url: 'https://toolcase.cc/zh-tw/length-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="長度轉換器"
+        description="在公尺、公里、英里、英尺、英寸等單位之間輕鬆轉換。免費線上長度轉換器，即時顯示結果。"
+        url="https://toolcase.cc/zh-tw/length-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '長度轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>長度轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         即時在公制與英制長度單位之間進行轉換。
@@ -54,5 +76,6 @@ export default function LengthConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="length-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

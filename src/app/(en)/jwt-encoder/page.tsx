@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JwtEncoder from '@/components/tools/JwtEncoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JWT Encoder - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function JwtEncoderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'JWT Encoder', url: 'https://toolcase.cc/jwt-encoder' },
+        ]}
+      />
+      <ToolSchema
+        name="JWT Encoder"
+        description="Encode and sign JWT (JSON Web Token) tokens with HMAC algorithms. Build tokens from header and payload JSON with client-side signing."
+        url="https://toolcase.cc/jwt-encoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'JWT Encoder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JWT Encoder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Build and sign JWT tokens from header and payload JSON. Enter your claims and secret key to generate a token.
@@ -57,5 +79,6 @@ export default function JwtEncoderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="jwt-encoder" locale="en" />
     </div>
+    </>
   )
 }

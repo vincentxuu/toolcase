@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PercentageCalculator from '@/components/tools/PercentageCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Percentage Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PercentageCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Percentage Calculator', url: 'https://toolcase.cc/percentage-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Percentage Calculator"
+        description="Calculate percentages instantly. Find what percent of a number, percentage change, and more."
+        url="https://toolcase.cc/percentage-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Percentage Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Percentage Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate percentages, find percentage of a number, and compute percentage change.</p>
       <PercentageCalculator />
@@ -28,5 +50,6 @@ export default function PercentageCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="percentage-calculator" locale="en" />
     </div>
+    </>
   )
 }

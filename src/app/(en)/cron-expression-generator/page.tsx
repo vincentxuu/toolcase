@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CronGenerator from '@/components/tools/CronGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Cron Expression Generator - Free Online Tool | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function CronExpressionGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Cron Expression Generator', url: 'https://toolcase.cc/cron-expression-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Cron Expression Generator"
+        description="Build and understand cron expressions visually. Free online cron generator with presets, human-readable descriptions, and easy editing."
+        url="https://toolcase.cc/cron-expression-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Cron Expression Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Cron Expression Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Build cron expressions visually with presets and human-readable descriptions.
@@ -71,5 +93,6 @@ export default function CronExpressionGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="cron-expression-generator" locale="en" />
     </div>
+    </>
   )
 }

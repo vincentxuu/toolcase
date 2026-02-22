@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssGridGenerator from '@/components/tools/CssGridGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Grid 產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssGridGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'CSS Grid 產生器', url: 'https://toolcase.cc/zh-tw/css-grid-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Grid 產生器"
+        description="視覺化產生 CSS Grid 佈局。設定欄數、列數、間距和欄寬，支援 fr、px 和 auto 單位，即時預覽帶編號的格子。"
+        url="https://toolcase.cc/zh-tw/css-grid-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'CSS Grid 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Grid 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>視覺化建立 CSS Grid 佈局並複製程式碼。</p>
       <CssGridGenerator labels={{
@@ -42,5 +64,6 @@ export default function CssGridGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="css-grid-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

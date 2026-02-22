@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UtmBuilder from '@/components/tools/UtmBuilder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'UTM 網址產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UtmBuilderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'UTM 網址產生器', url: 'https://toolcase.cc/zh-tw/utm-builder' },
+        ]}
+      />
+      <ToolSchema
+        name="UTM 網址產生器"
+        description="快速產生帶有 UTM 追蹤參數的網址，方便在 Google Analytics 中追蹤行銷活動成效。"
+        url="https://toolcase.cc/zh-tw/utm-builder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'UTM 網址產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>UTM 網址產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>產生帶有 UTM 追蹤參數的網址，追蹤行銷活動成效。</p>
       <UtmBuilder labels={{ websiteUrl: '網站網址', source: '來源', medium: '媒介', campaignName: '活動名稱', term: '關鍵字', content: '內容', generatedUrl: '產生的網址', copy: '複製', copied: '已複製！', required: '必填' }} />
@@ -28,5 +50,6 @@ export default function UtmBuilderPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="utm-builder" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RemoveDuplicates from '@/components/tools/RemoveDuplicates'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Remove Duplicates - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RemoveDuplicatesPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Remove Duplicates', url: 'https://toolcase.cc/remove-duplicates' },
+        ]}
+      />
+      <ToolSchema
+        name="Remove Duplicates"
+        description="Remove duplicate lines from text instantly. Free online tool to deduplicate lists, data and text content."
+        url="https://toolcase.cc/remove-duplicates"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Remove Duplicates' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Remove Duplicates</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Remove duplicate lines from your text quickly and easily.</p>
       <RemoveDuplicates />
@@ -28,5 +50,6 @@ export default function RemoveDuplicatesPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="remove-duplicates" locale="en" />
     </div>
+    </>
   )
 }

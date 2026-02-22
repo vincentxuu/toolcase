@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import IpAddressLookup from '@/components/tools/IpAddressLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'IP Address Lookup - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function IpAddressLookupPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'IP Address Lookup', url: 'https://toolcase.cc/ip-address-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="IP Address Lookup"
+        description="Look up any IP address to find its geolocation, ISP, timezone, and coordinates. Automatically detects your own IP address. Free and instant results."
+        url="https://toolcase.cc/ip-address-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'IP Address Lookup' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>IP Address Lookup</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Find geolocation, ISP, and timezone information for any IP address — or detect your own.
@@ -56,5 +78,6 @@ export default function IpAddressLookupPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="ip-address-lookup" locale="en" />
     </div>
+    </>
   )
 }

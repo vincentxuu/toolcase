@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CreditCardCalculator from '@/components/tools/CreditCardCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Credit Card Interest Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CreditCardCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Credit Card Interest Calculator', url: 'https://toolcase.cc/credit-card-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Credit Card Interest Calculator"
+        description="See how long it takes to pay off credit card debt. Compare minimum payments vs fixed payments and save thousands in interest."
+        url="https://toolcase.cc/credit-card-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Credit Card Interest Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Credit Card Interest Calculator
       </h1>
@@ -58,5 +80,6 @@ export default function CreditCardCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="credit-card-calculator" locale="en" />
     </div>
+    </>
   )
 }

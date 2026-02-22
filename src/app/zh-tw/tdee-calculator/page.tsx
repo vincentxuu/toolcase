@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TdeeCalculator from '@/components/tools/TdeeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'TDEE / BMR 計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TdeeCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'TDEE / BMR 計算器', url: 'https://toolcase.cc/zh-tw/tdee-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="TDEE / BMR 計算器"
+        description="計算你的每日總消耗熱量 (TDEE) 和基礎代謝率 (BMR)。精確了解你每天需要多少熱量。"
+        url="https://toolcase.cc/zh-tw/tdee-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'TDEE / BMR 計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>TDEE / BMR 計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>根據活動量計算你每天所需的卡路里。</p>
       <TdeeCalculator labels={{ age: '年齡', gender: '性別', male: '男性', female: '女性', height: '身高', weight: '體重', cm: '公分', kg: '公斤', activityLevel: '活動量', sedentary: '久坐（辦公室）', light: '輕度（1-3 天/週）', moderate: '中度（3-5 天/週）', active: '活躍（6-7 天/週）', veryActive: '非常活躍（運動員）', bmr: 'BMR', tdee: 'TDEE', toMaintain: '維持體重', toLose: '減重 (-500 卡)', toGain: '增重 (+500 卡)', calories: '卡/天', disclaimer: '本工具僅供參考，不能替代專業醫療建議。' }} />
@@ -28,5 +50,6 @@ export default function TdeeCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="tdee-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

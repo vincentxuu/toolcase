@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageCropper from '@/components/tools/ImageCropper'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片裁切 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageCropperPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片裁切', url: 'https://toolcase.cc/zh-tw/image-cropper' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片裁切"
+        description="線上裁切圖片，支援旋轉和縮放功能。免費圖片裁切工具，輕鬆調整圖片大小和構圖。"
+        url="https://toolcase.cc/zh-tw/image-cropper"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片裁切' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片裁切</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>裁切、旋轉和縮放圖片，輕鬆調整構圖。</p>
       <ImageCropper labels={{ uploadImage: '上傳圖片', rotation: '旋轉', scale: '縮放', download: '下載', reset: '重置' }} />
@@ -28,5 +50,6 @@ export default function ImageCropperPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-cropper" locale="zh-tw" />
     </div>
+    </>
   )
 }

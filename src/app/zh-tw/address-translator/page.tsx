@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AddressTranslator from '@/components/tools/AddressTranslator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '中文地址英譯 - 台灣地址翻譯英文 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function AddressTranslatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '中文地址英譯', url: 'https://toolcase.cc/zh-tw/address-translator' },
+        ]}
+      />
+      <ToolSchema
+        name="中文地址英譯"
+        description="將台灣中文地址翻譯成英文，適用於寄國際包裹、填寫英文表格。自動辨識縣市、區域。"
+        url="https://toolcase.cc/zh-tw/address-translator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '中文地址英譯' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>中文地址英譯</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入台灣中文地址，自動翻譯成英文格式。適用於國際包裹、英文表格填寫。</p>
       <AddressTranslator />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="address-translator" locale="zh-tw" />
     </div>
+    </>
   )
 }

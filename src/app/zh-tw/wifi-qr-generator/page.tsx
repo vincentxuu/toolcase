@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import WifiQrGenerator from '@/components/tools/WifiQrGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'WiFi QR 碼產生器 - 分享 WiFi 密碼 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function WifiQrGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'WiFi QR 碼產生器', url: 'https://toolcase.cc/zh-tw/wifi-qr-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="WiFi QR 碼產生器"
+        description="為您的 WiFi 網路產生 QR 碼。來賓掃描即可立即連線，無需輸入密碼。支援 WPA、WEP 和開放網路。"
+        url="https://toolcase.cc/zh-tw/wifi-qr-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'WiFi QR 碼產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>WiFi QR 碼產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>為您的 WiFi 網路產生 QR 碼，來賓掃描即可立即連線。</p>
       <WifiQrGenerator labels={{ ssid: '網路名稱（SSID）', password: '密碼', encryption: '加密方式', generate: '產生', copy: '複製', wifiString: 'WiFi 字串', copied: '已複製！', none: '無' }} />
@@ -28,5 +50,6 @@ export default function WifiQrGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="wifi-qr-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

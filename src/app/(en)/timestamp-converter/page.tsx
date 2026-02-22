@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TimestampConverter from '@/components/tools/TimestampConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Timestamp Converter - Free Online Tool | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function TimestampConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Timestamp Converter', url: 'https://toolcase.cc/timestamp-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Timestamp Converter"
+        description="Convert between Unix timestamps and human-readable dates. Free online timestamp converter with live clock, relative time, and ISO 8601 output."
+        url="https://toolcase.cc/timestamp-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Timestamp Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Timestamp Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between Unix timestamps and human-readable dates with a live clock.
@@ -61,5 +83,6 @@ export default function TimestampConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="timestamp-converter" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TypingSpeedTest from '@/components/tools/TypingSpeedTest'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Typing Speed Test - WPM & Accuracy | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TypingSpeedTestPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Typing Speed Test', url: 'https://toolcase.cc/typing-speed-test' },
+        ]}
+      />
+      <ToolSchema
+        name="Typing Speed Test"
+        description="Test your typing speed and accuracy with our free online typing test. Measures words per minute (WPM), net WPM, and accuracy in real time."
+        url="https://toolcase.cc/typing-speed-test"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Typing Speed Test' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Typing Speed Test</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Test your typing speed and accuracy. See your WPM, accuracy, and detailed results in real time.</p>
       <TypingSpeedTest />
@@ -28,5 +50,6 @@ export default function TypingSpeedTestPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="typing-speed-test" locale="en" />
     </div>
+    </>
   )
 }

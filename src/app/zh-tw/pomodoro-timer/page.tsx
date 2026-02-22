@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PomodoroTimer from '@/components/tools/PomodoroTimer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '番茄鐘計時器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PomodoroTimerPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '番茄鐘計時器', url: 'https://toolcase.cc/zh-tw/pomodoro-timer' },
+        ]}
+      />
+      <ToolSchema
+        name="番茄鐘計時器"
+        description="免費線上番茄鐘計時器，提升工作效率。可自訂工作與休息時長，環形進度指示，音效通知及工作階段追蹤。"
+        url="https://toolcase.cc/zh-tw/pomodoro-timer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '番茄鐘計時器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>番茄鐘計時器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>使用可自訂的工作與休息區間保持專注並提升效率。</p>
       <PomodoroTimer labels={{ workDuration: '工作時長', breakDuration: '休息時長', start: '開始', pause: '暫停', reset: '重設', work: '工作', breakLabel: '休息', sessionsCompleted: '已完成階段', minutes: '分鐘' }} />
@@ -28,5 +50,6 @@ export default function PomodoroTimerPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="pomodoro-timer" locale="zh-tw" />
     </div>
+    </>
   )
 }

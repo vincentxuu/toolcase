@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HttpStatusCodes from '@/components/tools/HttpStatusCodes'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTTP Status Code Reference - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HttpStatusCodesPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'HTTP Status Code Reference', url: 'https://toolcase.cc/http-status-codes' },
+        ]}
+      />
+      <ToolSchema
+        name="HTTP Status Code Reference"
+        description="Complete HTTP status code reference with descriptions. Search and filter all status codes from 1xx to 5xx. A quick reference for web developers."
+        url="https://toolcase.cc/http-status-codes"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'HTTP Status Code Reference' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTTP Status Code Reference</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>A searchable reference of all HTTP status codes with descriptions.</p>
       <HttpStatusCodes />
@@ -28,5 +50,6 @@ export default function HttpStatusCodesPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="http-status-codes" locale="en" />
     </div>
+    </>
   )
 }

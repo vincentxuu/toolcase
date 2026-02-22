@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JsonPathFinder from '@/components/tools/JsonPathFinder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JSON 路徑查找器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function JsonPathFinderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'JSON 路徑查找器', url: 'https://toolcase.cc/zh-tw/json-path-finder' },
+        ]}
+      />
+      <ToolSchema
+        name="JSON 路徑查找器"
+        description="貼上 JSON 並以樹狀檢視探索其結構。點擊任何節點即可取得其 JSON 路徑（點表示法或括號表示法）。一鍵複製路徑到剪貼簿。"
+        url="https://toolcase.cc/zh-tw/json-path-finder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'JSON 路徑查找器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JSON 路徑查找器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>探索 JSON 結構，查找任何值的路徑。</p>
       <JsonPathFinder labels={{
@@ -41,5 +63,6 @@ export default function JsonPathFinderPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="json-path-finder" locale="zh-tw" />
     </div>
+    </>
   )
 }

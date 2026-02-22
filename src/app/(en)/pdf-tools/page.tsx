@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PdfTools from '@/components/tools/PdfTools'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'PDF Tools - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function PdfToolsPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'PDF Tools', url: 'https://toolcase.cc/pdf-tools' },
+        ]}
+      />
+      <ToolSchema
+        name="PDF Tools"
+        description="Merge, split, rotate, and organise PDF files for free. All processing runs in your browser — your documents are never uploaded to any server."
+        url="https://toolcase.cc/pdf-tools"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'PDF Tools' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>PDF Tools</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Merge, split, rotate, and organise your PDF documents — all in the browser.
@@ -57,5 +79,6 @@ export default function PdfToolsPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="pdf-tools" locale="en" />
     </div>
+    </>
   )
 }

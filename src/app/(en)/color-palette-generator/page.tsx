@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorPaletteGenerator from '@/components/tools/ColorPaletteGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Color Palette Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorPaletteGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Color Palette Generator', url: 'https://toolcase.cc/color-palette-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Color Palette Generator"
+        description="Generate harmonious color palettes from any base color. Complementary, analogous, triadic, split-complementary and monochromatic schemes with one click."
+        url="https://toolcase.cc/color-palette-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Color Palette Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Color Palette Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate harmonious color palettes from any base color.</p>
       <ColorPaletteGenerator />
@@ -28,5 +50,6 @@ export default function ColorPaletteGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="color-palette-generator" locale="en" />
     </div>
+    </>
   )
 }

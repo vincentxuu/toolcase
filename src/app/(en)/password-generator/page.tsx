@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PasswordGenerator from '@/components/tools/PasswordGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Password Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PasswordGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Password Generator', url: 'https://toolcase.cc/password-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Password Generator"
+        description="Generate strong, random passwords instantly. Customize length and character types. All generation happens in your browser."
+        url="https://toolcase.cc/password-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Password Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Password Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate strong, random passwords with customizable length and character types.</p>
       <PasswordGenerator />
@@ -28,5 +50,6 @@ export default function PasswordGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="password-generator" locale="en" />
     </div>
+    </>
   )
 }

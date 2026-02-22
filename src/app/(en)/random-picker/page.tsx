@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RandomPicker from '@/components/tools/RandomPicker'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Random Picker - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RandomPickerPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Random Picker', url: 'https://toolcase.cc/random-picker' },
+        ]}
+      />
+      <ToolSchema
+        name="Random Picker"
+        description="Randomly pick items from a list. Free online random picker for decisions, raffles, team selection and more."
+        url="https://toolcase.cc/random-picker"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Random Picker' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Random Picker</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Randomly pick one or more items from your list.</p>
       <RandomPicker />
@@ -28,5 +50,6 @@ export default function RandomPickerPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="random-picker" locale="en" />
     </div>
+    </>
   )
 }

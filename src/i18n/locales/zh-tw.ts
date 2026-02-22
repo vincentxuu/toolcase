@@ -6,8 +6,8 @@ const zhTw = {
   // Hero
   hero_badge: '100% 免費 — 不需要註冊',
   hero_title_1: '線上工具，',
-  hero_title_2: '快到不可思議。',
-  hero_desc: '開發者工具、計算機、圖片處理、轉換器 — 你需要的都在這裡，多餘的一個都沒有。',
+  hero_title_2: '150+ 工具開啟即用。',
+  hero_desc: '開發、設計、財務、健康、圖片處理、文字編輯、單位轉換 — 150+ 種免費工具，開啟即用。',
   stat_tools: '免費工具',
   stat_signup: '不需註冊',
   stat_load: '載入時間',

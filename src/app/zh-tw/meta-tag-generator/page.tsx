@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MetaTagGenerator from '@/components/tools/MetaTagGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Meta 標籤產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MetaTagGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Meta 標籤產生器', url: 'https://toolcase.cc/zh-tw/meta-tag-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Meta 標籤產生器"
+        description="產生 SEO 優化的 HTML Meta 標籤，包含標題、描述、Open Graph 和 robots 設定。免費 Meta Tag 產生器。"
+        url="https://toolcase.cc/zh-tw/meta-tag-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Meta 標籤產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Meta 標籤產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>產生 SEO 優化的 HTML Meta 標籤，提升網站搜尋排名。</p>
       <MetaTagGenerator labels={{ pageTitle: '頁面標題', metaDescription: 'Meta 描述', keywords: '關鍵字', author: '作者', robots: '機器人', index: '索引', noindex: '不索引', follow: '追蹤', nofollow: '不追蹤', canonicalUrl: '標準網址', ogImage: 'OG 圖片網址', serpPreview: 'Google 搜尋預覽', generatedCode: '產生的 Meta 標籤', copy: '複製', copied: '已複製！', titleLength: '標題長度', descLength: '描述長度' }} />
@@ -28,5 +50,6 @@ export default function MetaTagGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="meta-tag-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

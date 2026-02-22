@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TimezoneConverter from '@/components/tools/TimezoneConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '時區轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TimezoneConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '時區轉換器', url: 'https://toolcase.cc/zh-tw/timezone-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="時區轉換器"
+        description="即時轉換不同時區的時間。支援 UTC、EST、PST、GMT、CET、JST、CST 等時區。查看任意兩個時區的當前時間和時差。"
+        url="https://toolcase.cc/zh-tw/timezone-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '時區轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>時區轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時轉換不同時區的時間，附帶即時時鐘顯示。</p>
       <TimezoneConverter labels={{
@@ -38,5 +60,6 @@ export default function TimezoneConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="timezone-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

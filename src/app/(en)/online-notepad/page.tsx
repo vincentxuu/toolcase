@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import OnlineNotepad from '@/components/tools/OnlineNotepad'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Online Notepad - Free Text Editor with Auto-Save | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function OnlineNotepadPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Online Notepad', url: 'https://toolcase.cc/online-notepad' },
+        ]}
+      />
+      <ToolSchema
+        name="Online Notepad"
+        description="Write and save notes instantly with our free online notepad. Features auto-save to local storage, character and word count, and download as .txt file."
+        url="https://toolcase.cc/online-notepad"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Online Notepad' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Online Notepad</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>A simple, distraction-free notepad with auto-save. Your notes are stored locally and never leave your browser.</p>
       <OnlineNotepad />
@@ -28,5 +50,6 @@ export default function OnlineNotepadPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="online-notepad" locale="en" />
     </div>
+    </>
   )
 }

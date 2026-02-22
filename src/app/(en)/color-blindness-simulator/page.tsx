@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorBlindnessSimulator from '@/components/tools/ColorBlindnessSimulator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Color Blindness Simulator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorBlindnessSimulatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Color Blindness Simulator', url: 'https://toolcase.cc/color-blindness-simulator' },
+        ]}
+      />
+      <ToolSchema
+        name="Color Blindness Simulator"
+        description="Simulate how colors appear to people with color vision deficiencies. Preview protanopia, deuteranopia, tritanopia, and more color blindness types instantly."
+        url="https://toolcase.cc/color-blindness-simulator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Color Blindness Simulator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Color Blindness Simulator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>See how any color appears under different types of color vision deficiency.</p>
       <ColorBlindnessSimulator />
@@ -28,5 +50,6 @@ export default function ColorBlindnessSimulatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="color-blindness-simulator" locale="en" />
     </div>
+    </>
   )
 }

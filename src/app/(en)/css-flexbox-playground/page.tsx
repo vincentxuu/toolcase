@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssFlexboxPlayground from '@/components/tools/CssFlexboxPlayground'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Flexbox Playground - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssFlexboxPlaygroundPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSS Flexbox Playground', url: 'https://toolcase.cc/css-flexbox-playground' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Flexbox Playground"
+        description="Interactive CSS Flexbox playground. Adjust flex-direction, justify-content, align-items, flex-wrap and gap with live visual preview."
+        url="https://toolcase.cc/css-flexbox-playground"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSS Flexbox Playground' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Flexbox Playground</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Experiment with CSS Flexbox properties and see the results in real time.</p>
       <CssFlexboxPlayground />
@@ -28,5 +50,6 @@ export default function CssFlexboxPlaygroundPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="css-flexbox-playground" locale="en" />
     </div>
+    </>
   )
 }

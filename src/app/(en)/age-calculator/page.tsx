@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AgeCalculator from '@/components/tools/AgeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Age Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function AgeCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Age Calculator', url: 'https://toolcase.cc/age-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Age Calculator"
+        description="Calculate your exact age in years, months, days, and more. Find days until your next birthday."
+        url="https://toolcase.cc/age-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Age Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Age Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate your exact age in years, months, weeks, and days.</p>
       <AgeCalculator />
@@ -28,5 +50,6 @@ export default function AgeCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="age-calculator" locale="en" />
     </div>
+    </>
   )
 }

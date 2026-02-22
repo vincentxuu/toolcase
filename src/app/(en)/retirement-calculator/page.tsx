@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RetirementCalculator from '@/components/tools/RetirementCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Retirement Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function RetirementCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Retirement Calculator', url: 'https://toolcase.cc/retirement-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Retirement Calculator"
+        description="Plan your retirement with this free calculator. See projected savings, estimate retirement income, and visualize how long your money will last."
+        url="https://toolcase.cc/retirement-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Retirement Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Retirement Calculator
       </h1>
@@ -58,5 +80,6 @@ export default function RetirementCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="retirement-calculator" locale="en" />
     </div>
+    </>
   )
 }

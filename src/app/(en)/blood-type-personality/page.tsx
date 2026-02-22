@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BloodTypePersonality from '@/components/tools/BloodTypePersonality'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Blood Type Personality - A/B/O/AB Traits & Compatibility | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BloodTypePersonalityPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Blood Type Personality', url: 'https://toolcase.cc/blood-type-personality' },
+        ]}
+      />
+      <ToolSchema
+        name="Blood Type Personality"
+        description="Select your blood type to see personality traits, strengths, weaknesses, and compatibility analysis. Complete guide to A, B, O, and AB blood type personalities."
+        url="https://toolcase.cc/blood-type-personality"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Blood Type Personality' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Blood Type Personality</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Select your blood type to explore personality traits, strengths, weaknesses, and compatibility.</p>
       <BloodTypePersonality labels={{
@@ -74,5 +96,6 @@ export default function BloodTypePersonalityPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="blood-type-personality" locale="en" />
     </div>
+    </>
   )
 }

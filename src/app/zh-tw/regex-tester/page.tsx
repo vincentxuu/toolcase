@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RegexTester from '@/components/tools/RegexTester'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '正規表達式測試器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RegexTesterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '正規表達式測試器', url: 'https://toolcase.cc/zh-tw/regex-tester' },
+        ]}
+      />
+      <ToolSchema
+        name="正規表達式測試器"
+        description="即時測試和除錯正規表達式，支援即時高亮顯示。免費線上正規表達式測試工具。"
+        url="https://toolcase.cc/zh-tw/regex-tester"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '正規表達式測試器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>正規表達式測試器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時測試和除錯正規表達式，支援即時高亮顯示。</p>
       <RegexTester labels={{ pattern: '模式', flags: '標記', testString: '測試字串', matches: '匹配結果', matchCount: '匹配數', noMatches: '無匹配', invalidRegex: '無效的正規表達式', matchDetails: '匹配詳情' }} />
@@ -28,5 +50,6 @@ export default function RegexTesterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="regex-tester" locale="zh-tw" />
     </div>
+    </>
   )
 }

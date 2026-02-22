@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SqlFormatter from '@/components/tools/SqlFormatter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'SQL Formatter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function SqlFormatterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'SQL Formatter', url: 'https://toolcase.cc/sql-formatter' },
+        ]}
+      />
+      <ToolSchema
+        name="SQL Formatter"
+        description="Format and beautify SQL queries instantly. Uppercase keywords, add proper indentation and line breaks for readable SQL."
+        url="https://toolcase.cc/sql-formatter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'SQL Formatter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>SQL Formatter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your SQL query below to format it with proper indentation, line breaks, and uppercase keywords.
@@ -56,5 +78,6 @@ export default function SqlFormatterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="sql-formatter" locale="en" />
     </div>
+    </>
   )
 }

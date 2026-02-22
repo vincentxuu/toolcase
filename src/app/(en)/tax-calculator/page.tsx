@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TaxCalculator from '@/components/tools/TaxCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Tax Calculator - US Federal & Taiwan Income Tax | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function TaxCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Tax Calculator', url: 'https://toolcase.cc/tax-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Tax Calculator"
+        description="Estimate US federal income tax or Taiwan consolidated income tax with bracket breakdown. See taxable income, effective rate, and after-tax income."
+        url="https://toolcase.cc/tax-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Tax Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Tax Calculator
       </h1>
@@ -99,5 +121,6 @@ export default function TaxCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="tax-calculator" locale="en" />
     </div>
+    </>
   )
 }

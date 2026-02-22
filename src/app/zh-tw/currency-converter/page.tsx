@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CurrencyConverter from '@/components/tools/CurrencyConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '匯率換算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CurrencyConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '匯率換算器', url: 'https://toolcase.cc/zh-tw/currency-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="匯率換算器"
+        description="使用即時匯率在各國貨幣之間進行換算。免費線上匯率換算工具，支援美元、歐元、新台幣、日圓、英鎊等超過 30 種貨幣。"
+        url="https://toolcase.cc/zh-tw/currency-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '匯率換算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>匯率換算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>使用即時匯率，輕鬆換算各國貨幣。</p>
       <CurrencyConverter labels={{ amount: '金額', from: '來源幣別', to: '目標幣別', swap: '交換', result: '換算結果', rate: '匯率', lastUpdated: '最後更新', loading: '正在載入匯率資料...', error: '無法載入匯率資料。', retry: '重試' }} />
@@ -28,5 +50,6 @@ export default function CurrencyConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="currency-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BarcodeGenerator from '@/components/tools/BarcodeGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Barcode Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function BarcodeGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Barcode Generator', url: 'https://toolcase.cc/barcode-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Barcode Generator"
+        description="Generate Code 128 barcodes online for free. Enter text or numbers, customise bar width and height, preview and download as PNG. No uploads needed."
+        url="https://toolcase.cc/barcode-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Barcode Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Barcode Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate Code 128 barcodes from text or numbers — download as PNG.
@@ -56,5 +78,6 @@ export default function BarcodeGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="barcode-generator" locale="en" />
     </div>
+    </>
   )
 }

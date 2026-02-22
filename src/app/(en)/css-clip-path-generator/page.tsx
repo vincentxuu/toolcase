@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssClipPathGenerator from '@/components/tools/CssClipPathGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Clip Path Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssClipPathGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSS Clip Path Generator', url: 'https://toolcase.cc/css-clip-path-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Clip Path Generator"
+        description="Generate CSS clip-path shapes visually. Choose from circle, ellipse, triangle, polygon, pentagon, hexagon, and star presets with live preview."
+        url="https://toolcase.cc/css-clip-path-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSS Clip Path Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Clip Path Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Create CSS clip-path shapes with preset templates and live preview.</p>
       <CssClipPathGenerator />
@@ -28,5 +50,6 @@ export default function CssClipPathGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="css-clip-path-generator" locale="en" />
     </div>
+    </>
   )
 }

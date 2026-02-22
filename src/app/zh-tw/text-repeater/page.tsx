@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextRepeater from '@/components/tools/TextRepeater'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '文字重複器 - 重複文字多次 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TextRepeaterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '文字重複器', url: 'https://toolcase.cc/zh-tw/text-repeater' },
+        ]}
+      />
+      <ToolSchema
+        name="文字重複器"
+        description="重複任何文字多次，可自訂分隔符號。選擇換行、空格、逗號或自訂分隔符號。最多可即時重複 10,000 次。"
+        url="https://toolcase.cc/zh-tw/text-repeater"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '文字重複器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>文字重複器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>重複任何文字多次，可選擇分隔符號。適用於產生測試資料、填充文字或重複性內容。</p>
       <TextRepeater labels={{ inputText: '輸入文字', times: '次數', separator: '分隔符號', newline: '換行', space: '空格', comma: '逗號', custom: '自訂', output: '輸出', copy: '複製', copied: '已複製！', characters: '字元' }} />
@@ -28,5 +50,6 @@ export default function TextRepeaterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="text-repeater" locale="zh-tw" />
     </div>
+    </>
   )
 }

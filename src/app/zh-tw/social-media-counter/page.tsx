@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SocialMediaCounter from '@/components/tools/SocialMediaCounter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '社群媒體字數計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function SocialMediaCounterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '社群媒體字數計算器', url: 'https://toolcase.cc/zh-tw/social-media-counter' },
+        ]}
+      />
+      <ToolSchema
+        name="社群媒體字數計算器"
+        description="計算文字在各社群平台的字元數，支援 Twitter、Instagram、Facebook 等平台的字數限制檢查。"
+        url="https://toolcase.cc/zh-tw/social-media-counter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '社群媒體字數計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>社群媒體字數計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時檢查文字是否符合各社群平台的字數限制。</p>
       <SocialMediaCounter labels={{ input: '輸入文字', characters: '字元數', twitter: 'Twitter/X', instagram: 'Instagram', linkedin: 'LinkedIn', facebook: 'Facebook', youtube: 'YouTube', tiktok: 'TikTok', remaining: '剩餘', overLimit: '超出限制' }} />
@@ -28,5 +50,6 @@ export default function SocialMediaCounterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="social-media-counter" locale="zh-tw" />
     </div>
+    </>
   )
 }

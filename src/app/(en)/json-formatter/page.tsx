@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JsonFormatter from '@/components/tools/JsonFormatter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JSON Formatter & Validator - Free Online Tool | toolcase',
@@ -46,7 +49,26 @@ const faqs = [
 
 export default function JsonFormatterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'JSON Formatter & Validator', url: 'https://toolcase.cc/json-formatter' },
+        ]}
+      />
+      <ToolSchema
+        name="JSON Formatter & Validator"
+        description="Format, validate, and beautify JSON data instantly. Free online JSON formatter with syntax highlighting and error detection."
+        url="https://toolcase.cc/json-formatter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'JSON Formatter & Validator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JSON Formatter & Validator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your JSON below to format, validate, and beautify it instantly.
@@ -78,5 +100,6 @@ export default function JsonFormatterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="json-formatter" locale="en" />
     </div>
+    </>
   )
 }

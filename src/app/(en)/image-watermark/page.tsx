@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageWatermark from '@/components/tools/ImageWatermark'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image Watermark - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageWatermarkPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image Watermark', url: 'https://toolcase.cc/image-watermark' },
+        ]}
+      />
+      <ToolSchema
+        name="Image Watermark"
+        description="Add text watermarks to images online for free. Customise text, font size, colour, opacity, and position. Supports tiled watermarks. Everything runs in your browser."
+        url="https://toolcase.cc/image-watermark"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image Watermark' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Watermark</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Add customisable text watermarks to your images — entirely in your browser.
@@ -56,5 +78,6 @@ export default function ImageWatermarkPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-watermark" locale="en" />
     </div>
+    </>
   )
 }

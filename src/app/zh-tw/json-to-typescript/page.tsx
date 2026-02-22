@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JsonToTypescript from '@/components/tools/JsonToTypescript'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JSON 轉 TypeScript - 免費線上轉換工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function JsonToTypescriptPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'JSON 轉 TypeScript', url: 'https://toolcase.cc/zh-tw/json-to-typescript' },
+        ]}
+      />
+      <ToolSchema
+        name="JSON 轉 TypeScript"
+        description="即時將 JSON 資料轉換為 TypeScript 介面和型別定義。支援巢狀物件、陣列和可選欄位。"
+        url="https://toolcase.cc/zh-tw/json-to-typescript"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'JSON 轉 TypeScript' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JSON 轉 TypeScript 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在下方貼上你的 JSON 資料，即時生成 TypeScript 介面和型別定義。
@@ -63,5 +85,6 @@ export default function JsonToTypescriptPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="json-to-typescript" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import WordCounter from '@/components/tools/WordCounter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Word Counter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function WordCounterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Word Counter', url: 'https://toolcase.cc/word-counter' },
+        ]}
+      />
+      <ToolSchema
+        name="Word Counter"
+        description="Count words, characters, sentences and paragraphs instantly. Free online word counter for writers, students and professionals."
+        url="https://toolcase.cc/word-counter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Word Counter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Word Counter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Count words, characters, sentences and paragraphs in your text.</p>
       <WordCounter />
@@ -28,5 +50,6 @@ export default function WordCounterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="word-counter" locale="en" />
     </div>
+    </>
   )
 }

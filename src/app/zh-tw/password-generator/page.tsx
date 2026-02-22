@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PasswordGenerator from '@/components/tools/PasswordGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '密碼產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PasswordGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '密碼產生器', url: 'https://toolcase.cc/zh-tw/password-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="密碼產生器"
+        description="即時產生強密碼。自訂長度和字元類型。所有產生過程都在你的瀏覽器中完成。"
+        url="https://toolcase.cc/zh-tw/password-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '密碼產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>密碼產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>產生強度高的隨機密碼，可自訂長度和字元類型。</p>
       <PasswordGenerator labels={{ length: '長度', uppercase: '大寫字母 (A-Z)', lowercase: '小寫字母 (a-z)', numbers: '數字 (0-9)', symbols: '符號 (!@#$)', generate: '產生', copy: '複製', copied: '已複製！', strength: '強度', weak: '弱', fair: '普通', strong: '強', veryStrong: '非常強' }} />
@@ -28,5 +50,6 @@ export default function PasswordGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="password-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

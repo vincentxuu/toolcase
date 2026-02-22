@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LoremIpsumGenerator from '@/components/tools/LoremIpsumGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Lorem Ipsum Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function LoremIpsumGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Lorem Ipsum Generator', url: 'https://toolcase.cc/lorem-ipsum-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Lorem Ipsum Generator"
+        description="Generate placeholder text for your designs and layouts. Create paragraphs, sentences, or words of lorem ipsum text with one click."
+        url="https://toolcase.cc/lorem-ipsum-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Lorem Ipsum Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Lorem Ipsum Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate placeholder text for your designs, mockups, and layouts.
@@ -57,5 +79,6 @@ export default function LoremIpsumGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="lorem-ipsum-generator" locale="en" />
     </div>
+    </>
   )
 }

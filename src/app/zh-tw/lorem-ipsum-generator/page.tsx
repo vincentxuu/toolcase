@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LoremIpsumGenerator from '@/components/tools/LoremIpsumGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Lorem Ipsum 產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function LoremIpsumGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Lorem Ipsum 產生器', url: 'https://toolcase.cc/zh-tw/lorem-ipsum-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Lorem Ipsum 產生器"
+        description="產生 Lorem Ipsum 假文字，支援段落、句子和字詞模式。免費佔位文字產生器，適用於設計和排版。"
+        url="https://toolcase.cc/zh-tw/lorem-ipsum-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Lorem Ipsum 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Lorem Ipsum 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>產生 Lorem Ipsum 佔位文字，適用於設計和排版。</p>
       <LoremIpsumGenerator labels={{ paragraphs: '段落', sentences: '句子', words: '字詞', count: '數量', type: '類型', startWithLorem: '以「Lorem ipsum...」開頭', generate: '產生', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function LoremIpsumGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="lorem-ipsum-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

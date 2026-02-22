@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ScreenRecorder from '@/components/tools/ScreenRecorder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Screen Recorder - Record Screen Online Free | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function ScreenRecorderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Screen Recorder', url: 'https://toolcase.cc/screen-recorder' },
+        ]}
+      />
+      <ToolSchema
+        name="Screen Recorder"
+        description="Record your screen, window, or browser tab directly in the browser. Download as WebM video. No installation or signup required."
+        url="https://toolcase.cc/screen-recorder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Screen Recorder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Screen Recorder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Record your screen, window, or tab directly in the browser. No installation needed.</p>
       <ScreenRecorder />
       <FaqSection items={faqs} />
       <RelatedTools current="screen-recorder" locale="en" />
     </div>
+    </>
   )
 }

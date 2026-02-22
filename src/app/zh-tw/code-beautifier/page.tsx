@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CodeBeautifier from '@/components/tools/CodeBeautifier'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML/CSS/JS 美化工具 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function CodeBeautifierPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'HTML/CSS/JS 美化工具', url: 'https://toolcase.cc/zh-tw/code-beautifier' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML/CSS/JS 美化工具"
+        description="即時美化和格式化 HTML、CSS 和 JavaScript 程式碼。為壓縮或雜亂的程式碼加上適當的縮排和格式。"
+        url="https://toolcase.cc/zh-tw/code-beautifier"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'HTML/CSS/JS 美化工具' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML / CSS / JS 美化工具</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在下方貼上你的壓縮或雜亂程式碼，即時美化並加上適當的縮排和格式。
@@ -64,5 +86,6 @@ export default function CodeBeautifierPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="code-beautifier" locale="zh-tw" />
     </div>
+    </>
   )
 }

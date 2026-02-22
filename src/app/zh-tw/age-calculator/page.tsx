@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AgeCalculator from '@/components/tools/AgeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '年齡計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function AgeCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '年齡計算器', url: 'https://toolcase.cc/zh-tw/age-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="年齡計算器"
+        description="計算你的精確年齡，以年、月、日表示。查看距離下次生日還有幾天。"
+        url="https://toolcase.cc/zh-tw/age-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '年齡計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>年齡計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算你的精確年齡，以年、月、週、日表示。</p>
       <AgeCalculator labels={{ birthDate: '出生日期', targetDate: '計算日期', age: '年齡', years: '年', months: '月', days: '日', totalDays: '總天數', totalWeeks: '總週數', totalMonths: '總月數', nextBirthday: '下次生日', daysUntilBirthday: '距離生日' }} />
@@ -28,5 +50,6 @@ export default function AgeCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="age-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

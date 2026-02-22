@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import NameStrokeCalculator from '@/components/tools/NameStrokeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Chinese Name Stroke Calculator - Fortune Analysis | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function NameStrokeCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Chinese Name Stroke Calculator', url: 'https://toolcase.cc/name-stroke-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Chinese Name Stroke Calculator"
+        description="Calculate the total stroke count of Chinese characters in a name and check fortune based on traditional numerology."
+        url="https://toolcase.cc/name-stroke-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Chinese Name Stroke Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Chinese Name Stroke Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate stroke counts for Chinese names and check fortune based on traditional numerology.</p>
       <NameStrokeCalculator labels={{ title: 'Name Stroke Calculator', inputPlaceholder: 'Enter Chinese name', calculate: 'Calculate', totalStrokes: 'Total Strokes', eachChar: 'Each Character', fortune: 'Fortune', strokeBreakdown: 'Breakdown' }} />
       <FaqSection items={faqs} title="FAQ" />
       <RelatedTools current="name-stroke-calculator" locale="en" />
     </div>
+    </>
   )
 }

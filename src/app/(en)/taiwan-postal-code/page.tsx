@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TaiwanPostalCode from '@/components/tools/TaiwanPostalCode'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Taiwan Postal Code Lookup - ZIP Codes | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function TaiwanPostalCodePage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Taiwan Postal Code Lookup', url: 'https://toolcase.cc/taiwan-postal-code' },
+        ]}
+      />
+      <ToolSchema
+        name="Taiwan Postal Code Lookup"
+        description="Look up Taiwan postal codes (ZIP codes) by city and district. Search, filter, and click to copy."
+        url="https://toolcase.cc/taiwan-postal-code"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Taiwan Postal Code Lookup' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan Postal Code Lookup</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Look up Taiwan postal codes by city and district. Search, filter, and click to copy.</p>
       <TaiwanPostalCode labels={{ search: 'Search', searchPlaceholder: 'Type district name or postal code...', city: 'City', district: 'District', postalCode: 'Postal Code', allCities: 'All Cities', noResults: 'No results found', clickToCopy: 'Click to copy', copied: 'Copied!' }} />
       <FaqSection items={faqs} title="FAQ" />
       <RelatedTools current="taiwan-postal-code" locale="en" />
     </div>
+    </>
   )
 }

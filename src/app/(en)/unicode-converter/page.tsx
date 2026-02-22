@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnicodeConverter from '@/components/tools/UnicodeConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Unicode Converter - Free Online Tool | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function UnicodeConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Unicode Converter', url: 'https://toolcase.cc/unicode-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Unicode Converter"
+        description="Encode and decode Unicode characters. Convert text to Unicode escape sequences, HTML entities, CSS escapes, and code points."
+        url="https://toolcase.cc/unicode-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Unicode Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Unicode Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Encode and decode Unicode characters in multiple formats.
@@ -61,5 +83,6 @@ export default function UnicodeConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="unicode-converter" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HeartRateZoneCalculator from '@/components/tools/HeartRateZoneCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Heart Rate Zone Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HeartRateCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Heart Rate Zone Calculator', url: 'https://toolcase.cc/heart-rate-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Heart Rate Zone Calculator"
+        description="Find your optimal heart rate training zones. Free online calculator for fat burn, cardio and peak heart rate zones."
+        url="https://toolcase.cc/heart-rate-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Heart Rate Zone Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Heart Rate Zone Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Find your optimal heart rate training zones.</p>
       <HeartRateZoneCalculator />
@@ -28,5 +50,6 @@ export default function HeartRateCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="heart-rate-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Volume Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function VolumeConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Volume Converter', url: 'https://toolcase.cc/volume-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Volume Converter"
+        description="Convert between liters, milliliters, gallons, cups, fluid ounces, and more. Free online volume converter with instant results."
+        url="https://toolcase.cc/volume-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Volume Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Volume Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between liters, milliliters, gallons, cups, and more.
@@ -57,5 +79,6 @@ export default function VolumeConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="volume-converter" locale="en" />
     </div>
+    </>
   )
 }

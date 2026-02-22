@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GradientGenerator from '@/components/tools/GradientGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS 漸層產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GradientGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'CSS 漸層產生器', url: 'https://toolcase.cc/zh-tw/gradient-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS 漸層產生器"
+        description="使用視覺化編輯器建立漂亮的 CSS 漸層。支援線性和放射狀漸層，可自訂多個色彩停駐點，即時預覽。"
+        url="https://toolcase.cc/zh-tw/gradient-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'CSS 漸層產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS 漸層產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>使用視覺化編輯器建立漂亮的 CSS 漸層並複製程式碼。</p>
       <GradientGenerator labels={{
@@ -40,5 +62,6 @@ export default function GradientGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="gradient-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

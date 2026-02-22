@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AiTokenCounter from '@/components/tools/AiTokenCounter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'AI Token 計算器與成本估算 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function AiTokenCounterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'AI Token 計算器與成本估算', url: 'https://toolcase.cc/zh-tw/ai-token-counter' },
+        ]}
+      />
+      <ToolSchema
+        name="AI Token 計算器與成本估算"
+        description="計算 Token 數量並估算 GPT-4o、Claude、Gemini 等 AI 模型的 API 費用。免費線上 AI Token 計算器。"
+        url="https://toolcase.cc/zh-tw/ai-token-counter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'AI Token 計算器與成本估算' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>AI Token 計算器與成本估算</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>估算熱門 AI 模型的 Token 數量及 API 費用。</p>
       <AiTokenCounter labels={{
@@ -28,6 +50,8 @@ export default function AiTokenCounterPageZhTw() {
         tokens: 'Token 數',
         lines: '行數',
         model: '模型',
+        inputRate: '輸入費率 (每百萬)',
+        outputRate: '輸出費率 (每百萬)',
         inputCost: '輸入費用',
         outputCost: '輸出費用',
         estimatedTokens: '估算 Token',
@@ -36,10 +60,34 @@ export default function AiTokenCounterPageZhTw() {
       }} />
       <section style={{ marginTop: '3rem' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>如何使用</h2>
-        <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>在輸入框中貼上或輸入文字，工具會即時計算字元數、字數、行數及估算的 Token 數量，並顯示 GPT-4o、Claude Sonnet 4、Claude Opus 4、Gemini 2.0 Flash 等熱門 AI 模型的 API 費用估算。在呼叫 API 前使用此工具預估費用。</p>
+        <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7, marginBottom: '1rem' }}>
+          在輸入框中貼上或輸入文字，工具會即時計算字元數、字數、行數及估算的 Token 數量，並顯示 16 個熱門 AI 模型的 API 費用估算，包括：
+        </p>
+        <ul style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7, paddingLeft: '1.5rem', marginBottom: '1rem' }}>
+          <li><strong>OpenAI</strong>：GPT-5.2、GPT-5、GPT-5 Nano、GPT-4o、GPT-4o-mini、o1、o1-mini</li>
+          <li><strong>Anthropic</strong>：Claude Opus 4.6、Claude Sonnet 4.6/4.5/3.5、Claude Haiku 4.5</li>
+          <li><strong>Google</strong>：Gemini 3.1 Pro、Gemini 3 Flash、Gemini 2.5 Pro</li>
+          <li><strong>其他</strong>：DeepSeek V3</li>
+        </ul>
+        <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+          表格顯示每個模型的標準費率（每百萬 tokens）以及根據您輸入的文字計算出的實際費用。在呼叫 API 前使用此工具預估費用，選擇最適合您需求的模型。
+        </p>
+      </section>
+      <section style={{ marginTop: '2rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>定價資料來源</h2>
+        <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7, marginBottom: '0.5rem' }}>
+          所有模型定價均來自官方 API 文檔（更新於 2026 年 2 月）：
+        </p>
+        <ul style={{ color: 'var(--color-text-secondary)', lineHeight: 1.7, paddingLeft: '1.5rem' }}>
+          <li><a href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>OpenAI API 定價</a></li>
+          <li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Claude API 定價</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Gemini API 定價</a></li>
+          <li><a href="https://api-docs.deepseek.com/quick_start/pricing-details-usd" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>DeepSeek API 定價</a></li>
+        </ul>
       </section>
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="ai-token-counter" locale="zh-tw" />
     </div>
+    </>
   )
 }

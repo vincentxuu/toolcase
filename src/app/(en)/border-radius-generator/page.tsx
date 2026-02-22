@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BorderRadiusGenerator from '@/components/tools/BorderRadiusGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Border Radius Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BorderRadiusGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Border Radius Generator', url: 'https://toolcase.cc/border-radius-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Border Radius Generator"
+        description="Generate CSS border-radius with visual controls for each corner. Link or unlink corners, preview the shape, and copy the CSS code."
+        url="https://toolcase.cc/border-radius-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Border Radius Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Border Radius Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Visually design CSS border-radius for each corner and copy the code.</p>
       <BorderRadiusGenerator />
@@ -28,5 +50,6 @@ export default function BorderRadiusGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="border-radius-generator" locale="en" />
     </div>
+    </>
   )
 }

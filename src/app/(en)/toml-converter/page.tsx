@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TomlConverter from '@/components/tools/TomlConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'TOML Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TomlConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'TOML Converter', url: 'https://toolcase.cc/toml-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="TOML Converter"
+        description="Convert between TOML and JSON formats instantly. Parse TOML to JSON or generate TOML from JSON data with two-way conversion."
+        url="https://toolcase.cc/toml-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'TOML Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>TOML Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between TOML and JSON formats. Paste your TOML or JSON data below and convert in either direction.
@@ -57,5 +79,6 @@ export default function TomlConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="toml-converter" locale="en" />
     </div>
+    </>
   )
 }

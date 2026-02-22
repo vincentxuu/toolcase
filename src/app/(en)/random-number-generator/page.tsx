@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RandomNumberGenerator from '@/components/tools/RandomNumberGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Random Number Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RandomNumberGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Random Number Generator', url: 'https://toolcase.cc/random-number-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Random Number Generator"
+        description="Generate random numbers within any range. Free online random number generator for games, lotteries, statistics and more."
+        url="https://toolcase.cc/random-number-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Random Number Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Random Number Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate random numbers within a custom range.</p>
       <RandomNumberGenerator />
@@ -28,5 +50,6 @@ export default function RandomNumberGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="random-number-generator" locale="en" />
     </div>
+    </>
   )
 }

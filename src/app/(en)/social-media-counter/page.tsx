@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SocialMediaCounter from '@/components/tools/SocialMediaCounter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Social Media Character Counter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function SocialMediaCounterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Social Media Character Counter', url: 'https://toolcase.cc/social-media-counter' },
+        ]}
+      />
+      <ToolSchema
+        name="Social Media Character Counter"
+        description="Count characters for Twitter/X, Instagram, Facebook, LinkedIn, and YouTube. Stay within platform limits and optimise your posts before publishing."
+        url="https://toolcase.cc/social-media-counter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Social Media Character Counter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Social Media Character Counter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Write your post and see real-time character counts for every major social platform.
@@ -57,5 +79,6 @@ export default function SocialMediaCounterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="social-media-counter" locale="en" />
     </div>
+    </>
   )
 }

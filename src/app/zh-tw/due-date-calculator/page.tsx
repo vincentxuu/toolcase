@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DueDateCalculator from '@/components/tools/DueDateCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '預產期計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DueDateCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '預產期計算器', url: 'https://toolcase.cc/zh-tw/due-date-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="預產期計算器"
+        description="根據最後一次月經日期計算預產期。追蹤懷孕週數和孕期階段。"
+        url="https://toolcase.cc/zh-tw/due-date-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '預產期計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>預產期計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>估算預產期並追蹤懷孕進度。</p>
       <DueDateCalculator labels={{ lastPeriod: '最後一次月經第一天', cycleLength: '月經週期長度', days: '天', dueDate: '預估預產期', currentWeek: '目前週數', trimester: '孕期', first: '第一孕期', second: '第二孕期', third: '第三孕期', weeksPregnant: '懷孕週數', daysUntilDue: '距離預產期', conception: '預估受孕日', disclaimer: '本工具僅供參考，請諮詢醫療專業人員獲取準確的醫療建議。' }} />
@@ -28,5 +50,6 @@ export default function DueDateCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="due-date-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CodeBeautifier from '@/components/tools/CodeBeautifier'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML/CSS/JS Beautifier - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CodeBeautifierPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'HTML/CSS/JS Beautifier', url: 'https://toolcase.cc/code-beautifier' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML/CSS/JS Beautifier"
+        description="Beautify and format HTML, CSS, and JavaScript code instantly. Add proper indentation and formatting to minified or ugly code."
+        url="https://toolcase.cc/code-beautifier"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'HTML/CSS/JS Beautifier' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML / CSS / JS Beautifier</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your minified or ugly code below to beautify it with proper indentation and formatting.
@@ -56,5 +78,6 @@ export default function CodeBeautifierPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="code-beautifier" locale="en" />
     </div>
+    </>
   )
 }

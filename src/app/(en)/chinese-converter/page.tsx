@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ChineseConverter from '@/components/tools/ChineseConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Chinese Simplified/Traditional Converter - Free Online Tool | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function ChineseConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Chinese Simplified/Traditional Converter', url: 'https://toolcase.cc/chinese-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Chinese Simplified/Traditional Converter"
+        description="Convert between Simplified Chinese and Traditional Chinese instantly. Free online Chinese character converter with real-time conversion."
+        url="https://toolcase.cc/chinese-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Chinese Simplified/Traditional Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Chinese Simplified/Traditional Converter
       </h1>
@@ -63,5 +85,6 @@ export default function ChineseConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="chinese-converter" locale="en" />
     </div>
+    </>
   )
 }

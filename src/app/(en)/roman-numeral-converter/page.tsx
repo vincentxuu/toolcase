@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RomanNumeralConverter from '@/components/tools/RomanNumeralConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Roman Numeral Converter - Decimal to Roman & Back | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RomanNumeralConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Roman Numeral Converter', url: 'https://toolcase.cc/roman-numeral-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Roman Numeral Converter"
+        description="Convert between decimal numbers and Roman numerals instantly. Supports values from 1 to 3999 with a full conversion reference table."
+        url="https://toolcase.cc/roman-numeral-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Roman Numeral Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Roman Numeral Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between decimal numbers and Roman numerals. Supports values from 1 to 3999.</p>
       <RomanNumeralConverter />
@@ -28,5 +50,6 @@ export default function RomanNumeralConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="roman-numeral-converter" locale="en" />
     </div>
+    </>
   )
 }

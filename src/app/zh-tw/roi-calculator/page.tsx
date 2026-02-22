@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RoiCalculator from '@/components/tools/RoiCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '投資報酬率計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function RoiCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '投資報酬率計算器', url: 'https://toolcase.cc/zh-tw/roi-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="投資報酬率計算器"
+        description="計算投資報酬率（ROI）和年化報酬率。簡單好用的免費投資回報計算器。"
+        url="https://toolcase.cc/zh-tw/roi-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '投資報酬率計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>投資報酬率計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         即時計算你的投資報酬率（ROI）和年化報酬率。
@@ -65,5 +87,6 @@ export default function RoiCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="roi-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

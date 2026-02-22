@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UtmBuilder from '@/components/tools/UtmBuilder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'UTM Builder - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function UtmBuilderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'UTM Builder', url: 'https://toolcase.cc/utm-builder' },
+        ]}
+      />
+      <ToolSchema
+        name="UTM Builder"
+        description="Build UTM-tagged URLs for Google Analytics campaign tracking. Generate properly formatted links with source, medium, campaign, term, and content parameters."
+        url="https://toolcase.cc/utm-builder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'UTM Builder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>UTM Builder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate UTM-tagged URLs to track your marketing campaigns in Google Analytics.
@@ -57,5 +79,6 @@ export default function UtmBuilderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="utm-builder" locale="en" />
     </div>
+    </>
   )
 }

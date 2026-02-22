@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CountdownTimer from '@/components/tools/CountdownTimer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '倒數計時器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CountdownTimerPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '倒數計時器', url: 'https://toolcase.cc/zh-tw/countdown-timer' },
+        ]}
+      />
+      <ToolSchema
+        name="倒數計時器"
+        description="設定目標日期，即時倒數計時。免費線上倒數計時器，精確顯示天、時、分、秒。"
+        url="https://toolcase.cc/zh-tw/countdown-timer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '倒數計時器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>倒數計時器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>設定目標日期，精確顯示剩餘天數、時、分、秒。</p>
       <CountdownTimer labels={{ targetDate: '目標日期', days: '天', hours: '時', minutes: '分', seconds: '秒', timesUp: '時間到！', setTarget: '設定目標' }} />
@@ -28,5 +50,6 @@ export default function CountdownTimerPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="countdown-timer" locale="zh-tw" />
     </div>
+    </>
   )
 }

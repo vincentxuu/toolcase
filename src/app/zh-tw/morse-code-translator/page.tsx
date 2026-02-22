@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MorseCodeTranslator from '@/components/tools/MorseCodeTranslator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '摩斯密碼翻譯器 - 文字轉摩斯密碼 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MorseCodeTranslatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '摩斯密碼翻譯器', url: 'https://toolcase.cc/zh-tw/morse-code-translator' },
+        ]}
+      />
+      <ToolSchema
+        name="摩斯密碼翻譯器"
+        description="即時翻譯文字與摩斯密碼。支援音訊播放、參考表和複製到剪貼簿。免費線上摩斯密碼轉換工具。"
+        url="https://toolcase.cc/zh-tw/morse-code-translator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '摩斯密碼翻譯器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>摩斯密碼翻譯器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在文字與摩斯密碼之間互相轉換。可聆聽摩斯密碼音訊或查看完整參考表。</p>
       <MorseCodeTranslator labels={{ text: '文字', morseCode: '摩斯密碼', textToMorse: '文字轉摩斯', morseToText: '摩斯轉文字', play: '播放', stop: '停止', referenceChart: '參考表', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function MorseCodeTranslatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="morse-code-translator" locale="zh-tw" />
     </div>
+    </>
   )
 }

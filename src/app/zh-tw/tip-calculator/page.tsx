@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TipCalculator from '@/components/tools/TipCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '小費計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TipCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '小費計算器', url: 'https://toolcase.cc/zh-tw/tip-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="小費計算器"
+        description="輕鬆計算小費金額與分帳。免費線上小費計算器，適用於餐廳、酒吧及各種服務場合。"
+        url="https://toolcase.cc/zh-tw/tip-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '小費計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>小費計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算小費金額，輕鬆分攤帳單。</p>
       <TipCalculator labels={{ billAmount: '帳單金額', tipPercent: '小費比例', numberOfPeople: '人數', tipAmount: '小費金額', totalWithTip: '含小費總額', perPerson: '每人分攤', result: '結果' }} />
@@ -28,5 +50,6 @@ export default function TipCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="tip-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -9,7 +9,21 @@ type DictKey = keyof ReturnType<typeof getDictionary>
 export default function RelatedTools({ current, locale }: { current: string; locale: Locale }) {
   const t = getDictionary(locale)
   const prefix = locale === 'en' ? '' : `/${locale}`
-  const related = tools.filter((tool) => tool.slug !== current).slice(0, 4)
+
+  // Find current tool's category
+  const currentTool = tools.find((tool) => tool.slug === current)
+  const currentCategory = currentTool?.category
+
+  // Get tools from the same category first, then others
+  const sameCategory = tools.filter(
+    (tool) => tool.slug !== current && tool.category === currentCategory
+  )
+  const otherTools = tools.filter(
+    (tool) => tool.slug !== current && tool.category !== currentCategory
+  )
+
+  // Combine: prioritize same category, then others
+  const related = [...sameCategory, ...otherTools].slice(0, 4)
 
   return (
     <section style={{ marginTop: '3rem' }}>

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorPaletteGenerator from '@/components/tools/ColorPaletteGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '色彩調色盤產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorPaletteGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '色彩調色盤產生器', url: 'https://toolcase.cc/zh-tw/color-palette-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="色彩調色盤產生器"
+        description="從任意基礎顏色產生和諧配色方案。支援互補色、類似色、三角色、分裂互補色和單色調配色，一鍵生成。"
+        url="https://toolcase.cc/zh-tw/color-palette-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '色彩調色盤產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>色彩調色盤產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>從任意基礎顏色產生和諧配色方案。</p>
       <ColorPaletteGenerator labels={{
@@ -38,5 +60,6 @@ export default function ColorPaletteGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="color-palette-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

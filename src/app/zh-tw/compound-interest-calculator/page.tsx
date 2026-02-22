@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CompoundInterestCalculator from '@/components/tools/CompoundInterestCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '複利計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function CompoundInterestPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '複利計算器', url: 'https://toolcase.cc/zh-tw/compound-interest-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="複利計算器"
+        description="計算複利增長，包含每月定期投入。以互動圖表查看你的投資如何隨時間成長。"
+        url="https://toolcase.cc/zh-tw/compound-interest-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '複利計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>複利計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         計算複利成長，搭配定期投入，以圖表視覺化你的投資增長。
@@ -71,5 +93,6 @@ export default function CompoundInterestPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="compound-interest-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

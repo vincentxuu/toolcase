@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PressureConverter from '@/components/tools/PressureConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Pressure Converter - Pa, bar, PSI, atm, mmHg | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function PressureConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Pressure Converter', url: 'https://toolcase.cc/pressure-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Pressure Converter"
+        description="Convert between pressure units including Pascal, bar, PSI, atmosphere, Torr, mmHg, and more. Instant conversions with all common pressure units."
+        url="https://toolcase.cc/pressure-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Pressure Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Pressure Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between all common pressure units instantly.</p>
       <PressureConverter />
       <FaqSection items={faqs} />
       <RelatedTools current="pressure-converter" locale="en" />
     </div>
+    </>
   )
 }

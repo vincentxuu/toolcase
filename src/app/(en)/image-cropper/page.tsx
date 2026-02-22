@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageCropper from '@/components/tools/ImageCropper'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image Cropper - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageCropperPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image Cropper', url: 'https://toolcase.cc/image-cropper' },
+        ]}
+      />
+      <ToolSchema
+        name="Image Cropper"
+        description="Crop images online for free with a visual editor. Set custom aspect ratios, resize precisely, and download the cropped result instantly."
+        url="https://toolcase.cc/image-cropper"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image Cropper' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Cropper</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Crop and resize your images with precision using a simple visual editor.
@@ -57,5 +79,6 @@ export default function ImageCropperPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-cropper" locale="en" />
     </div>
+    </>
   )
 }

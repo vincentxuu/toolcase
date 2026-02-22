@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BcryptGenerator from '@/components/tools/BcryptGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '密碼雜湊產生器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function BcryptGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '密碼雜湊產生器', url: 'https://toolcase.cc/zh-tw/bcrypt-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="密碼雜湊產生器"
+        description="從密碼生成 SHA-256、SHA-384 和 SHA-512 雜湊值。支援加鹽以增強安全性。所有處理在瀏覽器中完成。"
+        url="https://toolcase.cc/zh-tw/bcrypt-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '密碼雜湊產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>密碼雜湊產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         從密碼生成安全的 SHA-256、SHA-384 或 SHA-512 雜湊值，支援可選的鹽值功能。
@@ -68,5 +90,6 @@ export default function BcryptGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="bcrypt-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

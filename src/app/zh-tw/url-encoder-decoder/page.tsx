@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UrlEncodeDecode from '@/components/tools/UrlEncodeDecode'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'URL 編碼/解碼器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UrlEncodeDecodePageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'URL 編碼/解碼器', url: 'https://toolcase.cc/zh-tw/url-encoder-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="URL 編碼/解碼器"
+        description="線上 URL 編碼與解碼工具。將特殊字元轉換為百分比編碼格式，或將編碼還原為可讀文字。"
+        url="https://toolcase.cc/zh-tw/url-encoder-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'URL 編碼/解碼器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>URL 編碼/解碼器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>快速進行 URL 編碼與解碼轉換。</p>
       <UrlEncodeDecode labels={{ input: '輸入', output: '輸出', encode: '編碼', decode: '解碼', encodeUri: '編碼 URI', decodeUri: '解碼 URI', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function UrlEncodeDecodePageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="url-encoder-decoder" locale="zh-tw" />
     </div>
+    </>
   )
 }

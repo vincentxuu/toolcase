@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import SpecialSymbols from '@/components/tools/SpecialSymbols'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '特殊符號表 - 一鍵複製各種符號 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function SpecialSymbolsPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '特殊符號表', url: 'https://toolcase.cc/zh-tw/special-symbols' },
+        ]}
+      />
+      <ToolSchema
+        name="特殊符號表"
+        description="箭頭、勾叉、愛心、星星、數學符號、貨幣符號等，點擊即可複製貼上。"
+        url="https://toolcase.cc/zh-tw/special-symbols"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '特殊符號表' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>特殊符號表</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>各種常用特殊符號，點擊即可複製。箭頭、勾叉、愛心、星星、數學符號等一應俱全。</p>
       <SpecialSymbols />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="special-symbols" locale="zh-tw" />
     </div>
+    </>
   )
 }

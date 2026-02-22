@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MarkdownPreview from '@/components/tools/MarkdownPreview'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Markdown Preview - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MarkdownPreviewPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Markdown Preview', url: 'https://toolcase.cc/markdown-preview' },
+        ]}
+      />
+      <ToolSchema
+        name="Markdown Preview"
+        description="Write Markdown and see the rendered HTML preview in real-time. Free online Markdown editor and previewer."
+        url="https://toolcase.cc/markdown-preview"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Markdown Preview' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Markdown Preview</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Write Markdown and see the rendered HTML preview in real-time.</p>
       <MarkdownPreview />
@@ -28,5 +50,6 @@ export default function MarkdownPreviewPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="markdown-preview" locale="en" />
     </div>
+    </>
   )
 }

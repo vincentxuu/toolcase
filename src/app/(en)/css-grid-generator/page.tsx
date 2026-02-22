@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssGridGenerator from '@/components/tools/CssGridGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Grid Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssGridGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSS Grid Generator', url: 'https://toolcase.cc/css-grid-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Grid Generator"
+        description="Generate CSS Grid layouts visually. Set columns, rows, gaps and column widths with fr, px or auto units. Live preview with numbered cells."
+        url="https://toolcase.cc/css-grid-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSS Grid Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Grid Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Build CSS Grid layouts visually and copy the code.</p>
       <CssGridGenerator />
@@ -28,5 +50,6 @@ export default function CssGridGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="css-grid-generator" locale="en" />
     </div>
+    </>
   )
 }

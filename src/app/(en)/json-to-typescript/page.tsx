@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JsonToTypescript from '@/components/tools/JsonToTypescript'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JSON to TypeScript - Free Online Converter | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function JsonToTypescriptPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'JSON to TypeScript', url: 'https://toolcase.cc/json-to-typescript' },
+        ]}
+      />
+      <ToolSchema
+        name="JSON to TypeScript"
+        description="Convert JSON data to TypeScript interfaces and type definitions instantly. Supports nested objects, arrays, and optional fields."
+        url="https://toolcase.cc/json-to-typescript"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'JSON to TypeScript' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JSON to TypeScript Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your JSON below to generate TypeScript interfaces and type definitions instantly.
@@ -57,5 +79,6 @@ export default function JsonToTypescriptPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="json-to-typescript" locale="en" />
     </div>
+    </>
   )
 }

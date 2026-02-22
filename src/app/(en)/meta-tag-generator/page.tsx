@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MetaTagGenerator from '@/components/tools/MetaTagGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Meta Tag Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function MetaTagGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Meta Tag Generator', url: 'https://toolcase.cc/meta-tag-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Meta Tag Generator"
+        description="Generate HTML meta tags for SEO, social sharing, and search engine optimisation. Preview how your page will appear in search results and on social media."
+        url="https://toolcase.cc/meta-tag-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Meta Tag Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Meta Tag Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate SEO-friendly HTML meta tags for your web pages in seconds.
@@ -57,5 +79,6 @@ export default function MetaTagGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="meta-tag-generator" locale="en" />
     </div>
+    </>
   )
 }

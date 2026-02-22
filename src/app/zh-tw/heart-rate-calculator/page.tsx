@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HeartRateZoneCalculator from '@/components/tools/HeartRateZoneCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '心率區間計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HeartRateCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '心率區間計算器', url: 'https://toolcase.cc/zh-tw/heart-rate-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="心率區間計算器"
+        description="計算個人化的心率訓練區間。免費線上心率區間計算器，幫助您優化運動訓練效果。"
+        url="https://toolcase.cc/zh-tw/heart-rate-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '心率區間計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>心率區間計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算您的個人化心率訓練區間，優化運動效果。</p>
       <HeartRateZoneCalculator labels={{ age: '年齡', restingHeartRate: '靜息心率', maxHeartRate: '最大心率', zone: '區間', recovery: '恢復', fatBurn: '燃脂', aerobic: '有氧', anaerobic: '無氧', max: '最大', bpm: '次/分', disclaimer: '本工具僅供參考，請在開始新的運動計畫前諮詢醫生。' }} />
@@ -28,5 +50,6 @@ export default function HeartRateCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="heart-rate-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

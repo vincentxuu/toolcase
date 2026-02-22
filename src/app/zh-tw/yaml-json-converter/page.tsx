@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import YamlJsonConverter from '@/components/tools/YamlJsonConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'YAML JSON 轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function YamlJsonConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'YAML JSON 轉換器', url: 'https://toolcase.cc/zh-tw/yaml-json-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="YAML JSON 轉換器"
+        description="即時在 YAML 和 JSON 格式之間轉換。免費線上 YAML/JSON 轉換工具，適用於設定檔轉換。"
+        url="https://toolcase.cc/zh-tw/yaml-json-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'YAML JSON 轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>YAML JSON 轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時在 YAML 和 JSON 格式之間互相轉換。</p>
       <YamlJsonConverter labels={{ input: '輸入', output: '輸出', yamlToJson: 'YAML → JSON', jsonToYaml: 'JSON → YAML', copy: '複製', copied: '已複製！', invalidInput: '無效的輸入' }} />
@@ -28,5 +50,6 @@ export default function YamlJsonConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="yaml-json-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

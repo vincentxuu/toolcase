@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import TwMinimumWage from '@/components/tools/TwMinimumWage'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Taiwan Minimum Wage History - Monthly & Hourly Rates (2011–2025) | toolcase',
@@ -10,11 +13,31 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Taiwan Minimum Wage History', url: 'https://toolcase.cc/tw-minimum-wage' },
+        ]}
+      />
+      <ToolSchema
+        name="Taiwan Minimum Wage History"
+        description="Taiwan minimum wage history from 2011 to 2025, including monthly and hourly rates, effective dates, and year-over-year increases."
+        url="https://toolcase.cc/tw-minimum-wage"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Taiwan Minimum Wage History' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan Minimum Wage</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Taiwan minimum wage history from 2011 to 2025, with monthly and hourly rates, effective dates, and annual increases.</p>
       <TwMinimumWage labels={{ title: 'Minimum Wage History', desc: '2011 – 2025', year: 'Year', monthlyWage: 'Monthly (NTD)', hourlyWage: 'Hourly (NTD)', effectiveDate: 'Effective Date', increase: 'Increase', keyInfoTitle: 'Key Information', item: 'Item', value: 'Details' }} />
       <RelatedTools current="tw-minimum-wage" locale="en" />
     </div>
+    </>
   )
 }

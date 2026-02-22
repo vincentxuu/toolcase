@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '時間單位轉換器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TimeConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '時間單位轉換器', url: 'https://toolcase.cc/zh-tw/time-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="時間單位轉換器"
+        description="在毫秒、秒、分鐘、小時、天、週、月、年等單位之間輕鬆轉換。免費線上時間單位轉換器，即時顯示結果。"
+        url="https://toolcase.cc/zh-tw/time-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '時間單位轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>時間單位轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         即時在各種時間單位之間進行轉換。
@@ -54,5 +76,6 @@ export default function TimeConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="time-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

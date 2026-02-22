@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CsvJsonConverter from '@/components/tools/CsvJsonConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSV ↔ JSON Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CsvJsonConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'CSV ↔ JSON Converter', url: 'https://toolcase.cc/csv-json-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="CSV ↔ JSON Converter"
+        description="Convert between CSV and JSON formats instantly. Supports CSV to JSON and JSON to CSV with customizable delimiters and formatting options."
+        url="https://toolcase.cc/csv-json-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'CSV ↔ JSON Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSV ↔ JSON Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between CSV and JSON formats instantly in your browser.
@@ -57,5 +79,6 @@ export default function CsvJsonConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="csv-json-converter" locale="en" />
     </div>
+    </>
   )
 }

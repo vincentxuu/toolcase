@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ZodiacSignLookup from '@/components/tools/ZodiacSignLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '星座查詢 - 輸入生日查星座與性格特質 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function ZodiacSignLookupPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '星座查詢', url: 'https://toolcase.cc/zh-tw/zodiac-sign-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="星座查詢"
+        description="輸入生日立即查詢你的星座！提供十二星座日期範圍、元素屬性、性格特質完整對照表。免費線上星座查詢工具。"
+        url="https://toolcase.cc/zh-tw/zodiac-sign-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '星座查詢' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>星座查詢</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入你的生日，立即查詢星座、元素屬性與性格特質。</p>
       <ZodiacSignLookup />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="zodiac-sign-lookup" locale="zh-tw" />
     </div>
+    </>
   )
 }

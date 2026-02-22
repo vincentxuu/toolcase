@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Speed Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function SpeedConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Speed Converter', url: 'https://toolcase.cc/speed-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Speed Converter"
+        description="Convert between km/h, mph, m/s, knots, and ft/s. Free online speed converter with instant results."
+        url="https://toolcase.cc/speed-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Speed Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Speed Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between km/h, mph, m/s, knots, and other speed units instantly.
@@ -57,5 +79,6 @@ export default function SpeedConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="speed-converter" locale="en" />
     </div>
+    </>
   )
 }

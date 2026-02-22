@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import WordCounter from '@/components/tools/WordCounter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '字數計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function WordCounterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '字數計算器', url: 'https://toolcase.cc/zh-tw/word-counter' },
+        ]}
+      />
+      <ToolSchema
+        name="字數計算器"
+        description="即時計算文字的字數、字元數、句數和段落數。免費線上字數計算器，還能估算閱讀時間。"
+        url="https://toolcase.cc/zh-tw/word-counter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '字數計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>字數計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時計算字數、字元數、句數、段落數及預估閱讀時間。</p>
       <WordCounter labels={{ input: '輸入文字', words: '字數', characters: '字元數', charactersNoSpaces: '不含空格', sentences: '句數', paragraphs: '段落數', readingTime: '閱讀時間', minutes: '分鐘' }} />
@@ -28,5 +50,6 @@ export default function WordCounterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="word-counter" locale="zh-tw" />
     </div>
+    </>
   )
 }

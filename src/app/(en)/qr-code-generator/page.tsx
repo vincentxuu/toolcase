@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import QrGenerator from '@/components/tools/QrGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'QR Code Generator - Free Online Tool | toolcase',
@@ -41,8 +44,27 @@ const faqs = [
 
 export default function QrCodeGeneratorPage() {
   return (
-    <div className="tool-container">
-      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>QR Code Generator</h1>
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'QR Code Generator', url: 'https://toolcase.cc/qr-code-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="QR Code Generator"
+        description="Generate QR codes from any text, URL, or data instantly. Free online QR code generator with customizable colors and sizes."
+        url="https://toolcase.cc/qr-code-generator"
+        category="UtilitiesApplication"
+      />
+      <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'QR Code Generator' },
+          ]}
+        />
+        <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>QR Code Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Enter any text or URL below to generate a QR code instantly.
       </p>
@@ -61,5 +83,6 @@ export default function QrCodeGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="qr-code-generator" locale="en" />
     </div>
+    </>
   )
 }

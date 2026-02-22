@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Data Size Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function DataSizeConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Data Size Converter', url: 'https://toolcase.cc/data-size-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Data Size Converter"
+        description="Convert between bytes, KB, MB, GB, TB, and PB. Free online data size converter with instant results using binary (1024) units."
+        url="https://toolcase.cc/data-size-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Data Size Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Data Size Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between bytes, kilobytes, megabytes, gigabytes, terabytes, and petabytes.
@@ -58,5 +80,6 @@ export default function DataSizeConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="data-size-converter" locale="en" />
     </div>
+    </>
   )
 }

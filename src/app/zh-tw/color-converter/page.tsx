@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorConverter from '@/components/tools/ColorConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '色碼轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '色碼轉換器', url: 'https://toolcase.cc/zh-tw/color-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="色碼轉換器"
+        description="在 HEX、RGB 和 HSL 色碼格式之間轉換。免費線上色碼轉換器，附即時顏色預覽。"
+        url="https://toolcase.cc/zh-tw/color-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '色碼轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>色碼轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在 HEX、RGB 和 HSL 色碼格式之間自由轉換。</p>
       <ColorConverter labels={{ hex: 'HEX', rgb: 'RGB', hsl: 'HSL', preview: '預覽', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function ColorConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="color-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

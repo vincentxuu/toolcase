@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BoxShadowGenerator from '@/components/tools/BoxShadowGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Box Shadow Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BoxShadowGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Box Shadow Generator', url: 'https://toolcase.cc/box-shadow-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Box Shadow Generator"
+        description="Generate CSS box-shadow with visual controls. Adjust offset, blur, spread, color and opacity. Support for multiple shadows and inset mode."
+        url="https://toolcase.cc/box-shadow-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Box Shadow Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Box Shadow Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate CSS box-shadow visually with multiple shadow layers.</p>
       <BoxShadowGenerator />
@@ -28,5 +50,6 @@ export default function BoxShadowGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="box-shadow-generator" locale="en" />
     </div>
+    </>
   )
 }

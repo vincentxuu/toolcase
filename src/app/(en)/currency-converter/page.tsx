@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CurrencyConverter from '@/components/tools/CurrencyConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Currency Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CurrencyConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Currency Converter', url: 'https://toolcase.cc/currency-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Currency Converter"
+        description="Convert between world currencies with live exchange rates. Free online currency converter supporting USD, EUR, TWD, JPY, GBP, and 30+ currencies."
+        url="https://toolcase.cc/currency-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Currency Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Currency Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between world currencies with live exchange rates.</p>
       <CurrencyConverter />
@@ -28,5 +50,6 @@ export default function CurrencyConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="currency-converter" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UuidGenerator from '@/components/tools/UuidGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'UUID Generator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UuidGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'UUID Generator', url: 'https://toolcase.cc/uuid-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="UUID Generator"
+        description="Generate UUID v4 and ULID identifiers instantly. Free online UUID generator with bulk generation support for developers."
+        url="https://toolcase.cc/uuid-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'UUID Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>UUID Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate UUID v4 and ULID identifiers for your applications.</p>
       <UuidGenerator />
@@ -28,5 +50,6 @@ export default function UuidGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="uuid-generator" locale="en" />
     </div>
+    </>
   )
 }

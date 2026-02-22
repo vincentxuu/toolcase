@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import WifiQrGenerator from '@/components/tools/WifiQrGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'WiFi QR Code Generator - Share WiFi Password | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function WifiQrGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'WiFi QR Code Generator', url: 'https://toolcase.cc/wifi-qr-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="WiFi QR Code Generator"
+        description="Generate a QR code for your WiFi network. Guests can scan the code to connect instantly without typing the password. Supports WPA, WEP, and open networks."
+        url="https://toolcase.cc/wifi-qr-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'WiFi QR Code Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>WiFi QR Code Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Generate a QR code for your WiFi network so guests can connect instantly by scanning.</p>
       <WifiQrGenerator />
@@ -28,5 +50,6 @@ export default function WifiQrGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="wifi-qr-generator" locale="en" />
     </div>
+    </>
   )
 }

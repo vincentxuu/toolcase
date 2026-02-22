@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitPriceCalculator from '@/components/tools/UnitPriceCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '單價計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UnitPriceCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '單價計算器', url: 'https://toolcase.cc/zh-tw/unit-price-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="單價計算器"
+        description="比較商品單價，找出最划算的選擇。輸入價格、數量和單位，即可比較哪個商品每單位成本最低。"
+        url="https://toolcase.cc/zh-tw/unit-price-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '單價計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>單價計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>比較商品單價，找出最划算的選擇。</p>
       <UnitPriceCalculator labels={{ itemName: '商品名稱', price: '價格', quantity: '數量', unit: '單位', unitPrice: '單價', bestDeal: '最划算', addItem: '新增商品', remove: '移除', item: '商品', compareItems: '比較商品' }} />
@@ -28,5 +50,6 @@ export default function UnitPriceCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="unit-price-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

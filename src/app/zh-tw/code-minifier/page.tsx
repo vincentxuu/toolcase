@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CodeMinifier from '@/components/tools/CodeMinifier'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML/CSS/JS 壓縮工具 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function CodeMinifierPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'HTML/CSS/JS 壓縮工具', url: 'https://toolcase.cc/zh-tw/code-minifier' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML/CSS/JS 壓縮工具"
+        description="即時壓縮 HTML、CSS 和 JavaScript 程式碼。移除註解、空白和多餘字元以減少檔案大小。"
+        url="https://toolcase.cc/zh-tw/code-minifier"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'HTML/CSS/JS 壓縮工具' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML / CSS / JS 壓縮工具</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在下方貼上你的 HTML、CSS 或 JavaScript 程式碼，即時壓縮以減少檔案大小。
@@ -66,5 +88,6 @@ export default function CodeMinifierPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="code-minifier" locale="zh-tw" />
     </div>
+    </>
   )
 }

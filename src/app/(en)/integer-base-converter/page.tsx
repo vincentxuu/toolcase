@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import IntegerBaseConverter from '@/components/tools/IntegerBaseConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Integer Base Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function IntegerBaseConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Integer Base Converter', url: 'https://toolcase.cc/integer-base-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Integer Base Converter"
+        description="Convert numbers between binary, octal, decimal, hexadecimal and custom bases. Free online base converter for developers."
+        url="https://toolcase.cc/integer-base-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Integer Base Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Integer Base Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert integers between binary, octal, decimal, hexadecimal and custom bases.</p>
       <IntegerBaseConverter />
@@ -28,5 +50,6 @@ export default function IntegerBaseConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="integer-base-converter" locale="en" />
     </div>
+    </>
   )
 }

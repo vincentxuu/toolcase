@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ScreenRecorder from '@/components/tools/ScreenRecorder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '螢幕錄影 - 免費線上錄製螢幕 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function ScreenRecorderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '螢幕錄影', url: 'https://toolcase.cc/zh-tw/screen-recorder' },
+        ]}
+      />
+      <ToolSchema
+        name="螢幕錄影"
+        description="直接在瀏覽器中錄製螢幕、視窗或瀏覽器分頁。下載為 WebM 影片。無需安裝或註冊。"
+        url="https://toolcase.cc/zh-tw/screen-recorder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '螢幕錄影' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>螢幕錄影</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>直接在瀏覽器中錄製螢幕、視窗或分頁。無需安裝。</p>
       <ScreenRecorder labels={{ startRecording: '開始錄製', stopRecording: '停止錄製', download: '下載', reset: '重設', recording: '錄製中…', preview: '預覽', selectScreen: '點擊選擇要錄製的螢幕、視窗或分頁。', includeAudio: '包含系統音訊' }} />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="screen-recorder" locale="zh-tw" />
     </div>
+    </>
   )
 }

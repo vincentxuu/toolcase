@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageResizer from '@/components/tools/ImageResizer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片縮放 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageResizerPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片縮放', url: 'https://toolcase.cc/zh-tw/image-resizer' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片縮放"
+        description="線上調整圖片尺寸，支援鎖定比例與自訂寬高。免費圖片縮放工具，在瀏覽器中即可完成。"
+        url="https://toolcase.cc/zh-tw/image-resizer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片縮放' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片縮放</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>調整圖片尺寸，支援鎖定比例與自訂寬高。</p>
       <ImageResizer labels={{ uploadImage: '上傳圖片', width: '寬度', height: '高度', lockAspectRatio: '鎖定比例', resize: '縮放', download: '下載', preview: '預覽', originalSize: '原始大小', newSize: '新大小', originalDimensions: '原始尺寸', newDimensions: '新尺寸' }} />
@@ -28,5 +50,6 @@ export default function ImageResizerPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-resizer" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageToPdf from '@/components/tools/ImageToPdf'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片轉 PDF - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageToPdfPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片轉 PDF', url: 'https://toolcase.cc/zh-tw/image-to-pdf' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片轉 PDF"
+        description="將多張圖片合併轉換為 PDF 檔案。免費線上圖片轉 PDF 工具，支援拖曳排序。"
+        url="https://toolcase.cc/zh-tw/image-to-pdf"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片轉 PDF' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片轉 PDF</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將多張圖片合併轉換為 PDF 檔案。</p>
       <ImageToPdf labels={{ uploadImages: '上傳圖片', addImages: '新增圖片', removeAll: '全部移除', printAsPdf: '列印為 PDF', noImages: '尚未上傳圖片' }} />
@@ -28,5 +50,6 @@ export default function ImageToPdfPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-to-pdf" locale="zh-tw" />
     </div>
+    </>
   )
 }

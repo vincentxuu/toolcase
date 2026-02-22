@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextEncryptDecrypt from '@/components/tools/TextEncryptDecrypt'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Text Encrypt / Decrypt - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TextEncryptDecryptPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Text Encrypt / Decrypt', url: 'https://toolcase.cc/text-encrypt-decrypt' },
+        ]}
+      />
+      <ToolSchema
+        name="Text Encrypt / Decrypt"
+        description="Encrypt and decrypt text using AES-256-GCM with a password. Secure client-side encryption using the Web Crypto API. Nothing is sent to any server."
+        url="https://toolcase.cc/text-encrypt-decrypt"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Text Encrypt / Decrypt' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Text Encrypt / Decrypt</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Securely encrypt and decrypt text using AES-256-GCM — entirely in your browser.
@@ -57,5 +79,6 @@ export default function TextEncryptDecryptPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="text-encrypt-decrypt" locale="en" />
     </div>
+    </>
   )
 }

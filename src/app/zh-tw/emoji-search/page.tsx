@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import EmojiSearch from '@/components/tools/EmojiSearch'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '表情符號搜尋 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function EmojiSearchPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '表情符號搜尋', url: 'https://toolcase.cc/zh-tw/emoji-search' },
+        ]}
+      />
+      <ToolSchema
+        name="表情符號搜尋"
+        description="快速搜尋並複製表情符號。輸入關鍵字即可找到想要的 Emoji，一鍵複製到剪貼簿。"
+        url="https://toolcase.cc/zh-tw/emoji-search"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '表情符號搜尋' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>表情符號搜尋</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>快速搜尋並一鍵複製表情符號。</p>
       <EmojiSearch labels={{ search: '搜尋', searchPlaceholder: '搜尋表情符號...', recentlyUsed: '最近使用', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function EmojiSearchPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="emoji-search" locale="zh-tw" />
     </div>
+    </>
   )
 }

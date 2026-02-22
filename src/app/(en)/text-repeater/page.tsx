@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextRepeater from '@/components/tools/TextRepeater'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Text Repeater - Repeat Text Multiple Times | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TextRepeaterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Text Repeater', url: 'https://toolcase.cc/text-repeater' },
+        ]}
+      />
+      <ToolSchema
+        name="Text Repeater"
+        description="Repeat any text multiple times with custom separators. Choose newline, space, comma, or custom separator. Generate repeated text up to 10,000 times instantly."
+        url="https://toolcase.cc/text-repeater"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Text Repeater' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Text Repeater</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Repeat any text multiple times with your choice of separator. Great for generating test data, filler text, or repetitive content.</p>
       <TextRepeater />
@@ -28,5 +50,6 @@ export default function TextRepeaterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="text-repeater" locale="en" />
     </div>
+    </>
   )
 }

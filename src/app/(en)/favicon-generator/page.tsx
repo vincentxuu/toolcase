@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FaviconGenerator from '@/components/tools/FaviconGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Favicon Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function FaviconGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Favicon Generator', url: 'https://toolcase.cc/favicon-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Favicon Generator"
+        description="Generate favicons in all standard sizes from an image or text. Get 16x16, 32x32, 48x48, 180x180, 192x192, and 512x512 icons with ready-to-use HTML tags."
+        url="https://toolcase.cc/favicon-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Favicon Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Favicon Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate favicons in all standard sizes from an image or text — with ready-to-use HTML tags.
@@ -56,5 +78,6 @@ export default function FaviconGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="favicon-generator" locale="en" />
     </div>
+    </>
   )
 }

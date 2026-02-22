@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ChineseConverter from '@/components/tools/ChineseConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '簡繁轉換 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ChineseConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '簡繁轉換', url: 'https://toolcase.cc/zh-tw/chinese-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="簡繁轉換"
+        description="即時在簡體中文和繁體中文之間轉換。免費線上簡繁轉換工具，即時轉換、不需註冊。"
+        url="https://toolcase.cc/zh-tw/chinese-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '簡繁轉換' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>簡繁轉換</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         即時在簡體中文和繁體中文字元之間轉換。
@@ -69,5 +91,6 @@ export default function ChineseConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="chinese-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

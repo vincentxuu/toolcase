@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageConverter from '@/components/tools/ImageConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Image Format Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function ImageConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Image Format Converter', url: 'https://toolcase.cc/image-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Image Format Converter"
+        description="Convert images between PNG, JPEG, WebP, GIF, and BMP formats for free. Fast, private, and entirely browser-based."
+        url="https://toolcase.cc/image-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Image Format Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Format Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert images between popular formats like PNG, JPEG, WebP, and more.
@@ -57,5 +79,6 @@ export default function ImageConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="image-converter" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MortgageCalculator from '@/components/tools/MortgageCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '房貸計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function MortgageCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '房貸計算器', url: 'https://toolcase.cc/zh-tw/mortgage-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="房貸計算器"
+        description="計算每月房貸還款金額、總利息支出，並查看還款攤還表。免費線上房貸計算器，附互動圖表。"
+        url="https://toolcase.cc/zh-tw/mortgage-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '房貸計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>房貸計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         計算每月房貸還款金額，並查看互動式還款攤還圖表。
@@ -68,5 +90,6 @@ export default function MortgageCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="mortgage-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

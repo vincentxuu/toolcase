@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JwtEncoder from '@/components/tools/JwtEncoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JWT 編碼器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function JwtEncoderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'JWT 編碼器', url: 'https://toolcase.cc/zh-tw/jwt-encoder' },
+        ]}
+      />
+      <ToolSchema
+        name="JWT 編碼器"
+        description="使用 HMAC 演算法編碼和簽署 JWT（JSON Web Token）。從標頭和載荷 JSON 建構 Token，並在瀏覽器中完成簽署。"
+        url="https://toolcase.cc/zh-tw/jwt-encoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'JWT 編碼器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JWT 編碼器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         從標頭和載荷 JSON 建構並簽署 JWT Token。輸入你的聲明和密鑰來生成 Token。
@@ -70,5 +92,6 @@ export default function JwtEncoderPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="jwt-encoder" locale="zh-tw" />
     </div>
+    </>
   )
 }

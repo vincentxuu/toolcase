@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CalorieCalculator from '@/components/tools/CalorieCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '熱量計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CalorieCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '熱量計算器', url: 'https://toolcase.cc/zh-tw/calorie-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="熱量計算器"
+        description="根據個人資料與活動量計算每日所需熱量。免費線上熱量計算器，含巨量營養素分配建議。"
+        url="https://toolcase.cc/zh-tw/calorie-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '熱量計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>熱量計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算每日所需熱量與巨量營養素分配。</p>
       <CalorieCalculator labels={{ gender: '性別', male: '男性', female: '女性', age: '年齡', height: '身高', weight: '體重', activity: '活動量', sedentary: '久坐', light: '輕度活動', moderate: '中度活動', active: '高度活動', veryActive: '非常活躍', goal: '目標', lose: '減重', maintain: '維持', gain: '增重', maintenanceCalories: '維持熱量', targetCalories: '目標熱量', protein: '蛋白質', carbs: '碳水化合物', fat: '脂肪', disclaimer: '本工具僅供參考，請諮詢營養師獲取個人化的飲食建議。' }} />
@@ -28,5 +50,6 @@ export default function CalorieCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="calorie-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

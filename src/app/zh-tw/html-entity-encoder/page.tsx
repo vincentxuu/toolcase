@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import HtmlEntityEncoder from '@/components/tools/HtmlEntityEncoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML 實體編碼/解碼器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function HtmlEntityEncoderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'HTML 實體編碼/解碼器', url: 'https://toolcase.cc/zh-tw/html-entity-encoder' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML 實體編碼/解碼器"
+        description="線上編碼與解碼 HTML 實體。將特殊字元轉換為 HTML 實體，或將 HTML 實體還原為字元。支援具名與數值實體。"
+        url="https://toolcase.cc/zh-tw/html-entity-encoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'HTML 實體編碼/解碼器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML 實體編碼/解碼器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將特殊字元編碼為 HTML 實體，或將 HTML 實體解碼還原為字元。</p>
       <HtmlEntityEncoder labels={{
@@ -36,5 +58,6 @@ export default function HtmlEntityEncoderPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="html-entity-encoder" locale="zh-tw" />
     </div>
+    </>
   )
 }

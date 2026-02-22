@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UserAgentParser from '@/components/tools/UserAgentParser'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'User-Agent 解析器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function UserAgentParserPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'User', url: 'https://toolcase.cc/zh-tw/user-agent-parser' },
+        ]}
+      />
+      <ToolSchema
+        name="User"
+        description="即時解析和分析 User-Agent 字串。從任何 User-Agent 中偵測瀏覽器、作業系統、裝置類型和渲染引擎。"
+        url="https://toolcase.cc/zh-tw/user-agent-parser"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'User' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>User-Agent 解析器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         分析 User-Agent 字串，識別瀏覽器、作業系統、裝置類型和渲染引擎。已自動偵測你目前的瀏覽器。
@@ -68,5 +90,6 @@ export default function UserAgentParserPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="user-agent-parser" locale="zh-tw" />
     </div>
+    </>
   )
 }

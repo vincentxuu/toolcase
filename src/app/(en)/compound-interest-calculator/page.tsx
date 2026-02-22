@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CompoundInterestCalculator from '@/components/tools/CompoundInterestCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Compound Interest Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CompoundInterestPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Compound Interest Calculator', url: 'https://toolcase.cc/compound-interest-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Compound Interest Calculator"
+        description="Calculate compound interest with monthly contributions. See how your investments grow over time with interactive growth charts."
+        url="https://toolcase.cc/compound-interest-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Compound Interest Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Compound Interest Calculator
       </h1>
@@ -58,5 +80,6 @@ export default function CompoundInterestPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="compound-interest-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TipCalculator from '@/components/tools/TipCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Tip Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TipCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Tip Calculator', url: 'https://toolcase.cc/tip-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Tip Calculator"
+        description="Calculate tips and split bills between friends easily. Free online tip calculator for restaurants, bars and services."
+        url="https://toolcase.cc/tip-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Tip Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Tip Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate tips and split bills between friends.</p>
       <TipCalculator />
@@ -28,5 +50,6 @@ export default function TipCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="tip-calculator" locale="en" />
     </div>
+    </>
   )
 }

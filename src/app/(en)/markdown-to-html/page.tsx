@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MarkdownToHtml from '@/components/tools/MarkdownToHtml'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Markdown to HTML Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MarkdownToHtmlPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Markdown to HTML Converter', url: 'https://toolcase.cc/markdown-to-html' },
+        ]}
+      />
+      <ToolSchema
+        name="Markdown to HTML Converter"
+        description="Convert Markdown text to clean HTML source code. Free online Markdown to HTML converter for developers and content creators."
+        url="https://toolcase.cc/markdown-to-html"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Markdown to HTML Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Markdown to HTML Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert Markdown text to clean HTML source code.</p>
       <MarkdownToHtml />
@@ -28,5 +50,6 @@ export default function MarkdownToHtmlPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="markdown-to-html" locale="en" />
     </div>
+    </>
   )
 }

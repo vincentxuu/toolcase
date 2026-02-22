@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LunarCalendarConverter from '@/components/tools/LunarCalendarConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '農曆國曆轉換 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function LunarCalendarConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '農曆國曆轉換', url: 'https://toolcase.cc/zh-tw/lunar-calendar-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="農曆國曆轉換"
+        description="國曆農曆雙向轉換，顯示天干地支及生肖。支援 1901 至 2100 年，免費線上農曆轉換器。"
+        url="https://toolcase.cc/zh-tw/lunar-calendar-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '農曆國曆轉換' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>農曆國曆轉換</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>國曆與農曆雙向轉換，顯示天干地支及生肖。</p>
       <LunarCalendarConverter labels={{
@@ -42,5 +64,6 @@ export default function LunarCalendarConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="lunar-calendar-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

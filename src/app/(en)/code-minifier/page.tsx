@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CodeMinifier from '@/components/tools/CodeMinifier'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'HTML/CSS/JS Minifier - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function CodeMinifierPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'HTML/CSS/JS Minifier', url: 'https://toolcase.cc/code-minifier' },
+        ]}
+      />
+      <ToolSchema
+        name="HTML/CSS/JS Minifier"
+        description="Minify HTML, CSS, and JavaScript code instantly. Remove comments, whitespace, and unnecessary characters to reduce file size."
+        url="https://toolcase.cc/code-minifier"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'HTML/CSS/JS Minifier' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>HTML / CSS / JS Minifier</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Paste your HTML, CSS, or JavaScript code below to minify it instantly and reduce file size.
@@ -56,5 +78,6 @@ export default function CodeMinifierPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="code-minifier" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import EnergyConverter from '@/components/tools/EnergyConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '能量轉換器 - J、kJ、cal、kcal、Wh、kWh、BTU | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function EnergyConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '能量轉換器', url: 'https://toolcase.cc/zh-tw/energy-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="能量轉換器"
+        description="在能量單位之間轉換，包括焦耳、千焦、卡路里、千卡、瓦時、千瓦時、BTU、呎磅和電子伏特。"
+        url="https://toolcase.cc/zh-tw/energy-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '能量轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>能量轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在所有常用能量單位之間即時轉換。</p>
       <EnergyConverter labels={{ value: '數值', from: '從', result: '轉換結果', enterValue: '輸入數值' }} />
@@ -28,5 +50,6 @@ export default function EnergyConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="energy-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

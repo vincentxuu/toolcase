@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MortgageCalculator from '@/components/tools/MortgageCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Mortgage Calculator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function MortgageCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Mortgage Calculator', url: 'https://toolcase.cc/mortgage-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Mortgage Calculator"
+        description="Calculate your monthly mortgage payments, total interest, and view amortization schedule. Free online mortgage calculator with interactive charts."
+        url="https://toolcase.cc/mortgage-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Mortgage Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
         Mortgage Calculator
       </h1>
@@ -58,5 +80,6 @@ export default function MortgageCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="mortgage-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssClipPathGenerator from '@/components/tools/CssClipPathGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS 裁切路徑產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssClipPathGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'CSS 裁切路徑產生器', url: 'https://toolcase.cc/zh-tw/css-clip-path-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS 裁切路徑產生器"
+        description="視覺化產生 CSS clip-path 形狀。提供圓形、橢圓、三角形、多邊形、五邊形、六邊形和星形預設，即時預覽。"
+        url="https://toolcase.cc/zh-tw/css-clip-path-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'CSS 裁切路徑產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS 裁切路徑產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>使用預設模板建立 CSS clip-path 形狀並即時預覽。</p>
       <CssClipPathGenerator labels={{
@@ -44,5 +66,6 @@ export default function CssClipPathGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="css-clip-path-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

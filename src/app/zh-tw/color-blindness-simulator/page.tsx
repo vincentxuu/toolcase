@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ColorBlindnessSimulator from '@/components/tools/ColorBlindnessSimulator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '色盲模擬器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ColorBlindnessSimulatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '色盲模擬器', url: 'https://toolcase.cc/zh-tw/color-blindness-simulator' },
+        ]}
+      />
+      <ToolSchema
+        name="色盲模擬器"
+        description="模擬色覺障礙者看到的顏色效果。即時預覽紅色盲、綠色盲、藍色盲等各種色覺缺陷類型。"
+        url="https://toolcase.cc/zh-tw/color-blindness-simulator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '色盲模擬器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>色盲模擬器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>查看任何顏色在不同色覺缺陷類型下的呈現效果。</p>
       <ColorBlindnessSimulator labels={{
@@ -40,5 +62,6 @@ export default function ColorBlindnessSimulatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="color-blindness-simulator" locale="zh-tw" />
     </div>
+    </>
   )
 }

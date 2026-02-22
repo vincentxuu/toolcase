@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PdfTools from '@/components/tools/PdfTools'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'PDF 工具 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function PdfToolsPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'PDF 工具', url: 'https://toolcase.cc/zh-tw/pdf-tools' },
+        ]}
+      />
+      <ToolSchema
+        name="PDF 工具"
+        description="線上檢視 PDF 檔案，查看檔案資訊並下載。免費 PDF 工具，無需安裝任何軟體。"
+        url="https://toolcase.cc/zh-tw/pdf-tools"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'PDF 工具' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>PDF 工具</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>線上檢視 PDF 檔案資訊，預覽和下載。</p>
       <PdfTools labels={{ uploadPdf: '上傳 PDF', fileName: '檔案名稱', fileSize: '檔案大小', openInNewTab: '在新分頁開啟', download: '下載', note: '提示：如需合併或拆分 PDF，請使用瀏覽器的列印功能。' }} />
@@ -28,5 +50,6 @@ export default function PdfToolsPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="pdf-tools" locale="zh-tw" />
     </div>
+    </>
   )
 }

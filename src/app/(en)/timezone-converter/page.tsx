@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TimezoneConverter from '@/components/tools/TimezoneConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Timezone Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TimezoneConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Timezone Converter', url: 'https://toolcase.cc/timezone-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Timezone Converter"
+        description="Convert time between timezones instantly. Supports UTC, EST, PST, GMT, CET, JST, CST, and more. View current time and time differences between any two timezones."
+        url="https://toolcase.cc/timezone-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Timezone Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Timezone Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert time between timezones instantly with live clock display.</p>
       <TimezoneConverter />
@@ -28,5 +50,6 @@ export default function TimezoneConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="timezone-converter" locale="en" />
     </div>
+    </>
   )
 }

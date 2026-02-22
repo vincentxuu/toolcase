@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import LunarCalendarConverter from '@/components/tools/LunarCalendarConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Lunar Calendar Converter - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function LunarCalendarConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Lunar Calendar Converter', url: 'https://toolcase.cc/lunar-calendar-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Lunar Calendar Converter"
+        description="Convert between solar (Gregorian) and lunar (Chinese) calendar dates. Shows Heavenly Stems, Earthly Branches, and Chinese Zodiac for any date from 1901 to 2100."
+        url="https://toolcase.cc/lunar-calendar-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Lunar Calendar Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Lunar Calendar Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert between solar (Gregorian) and Chinese lunar calendar dates.</p>
       <LunarCalendarConverter />
@@ -28,5 +50,6 @@ export default function LunarCalendarConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="lunar-calendar-converter" locale="en" />
     </div>
+    </>
   )
 }

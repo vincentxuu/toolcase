@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import IpAddressLookup from '@/components/tools/IpAddressLookup'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'IP 位址查詢 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function IpAddressLookupPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'IP 位址查詢', url: 'https://toolcase.cc/zh-tw/ip-address-lookup' },
+        ]}
+      />
+      <ToolSchema
+        name="IP 位址查詢"
+        description="查詢任何 IP 位址的地理位置、ISP、時區和座標資訊。自動偵測您的 IP 位址。免費即時查詢。"
+        url="https://toolcase.cc/zh-tw/ip-address-lookup"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'IP 位址查詢' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>IP 位址查詢</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>查詢任何 IP 位址的地理位置、ISP 和時區資訊，或偵測您自己的 IP。</p>
       <IpAddressLookup labels={{ yourIp: '您的 IP 位址', lookupIp: '查詢 IP 位址', lookup: '查詢', detectMyIp: '偵測我的 IP', ip: 'IP 位址', city: '城市', region: '地區', country: '國家', isp: 'ISP / 組織', timezone: '時區', coordinates: '座標', loading: '載入中...', error: '查詢 IP 資訊時發生錯誤，請重試。', placeholder: '輸入 IP 位址...' }} />
@@ -28,5 +50,6 @@ export default function IpAddressLookupPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="ip-address-lookup" locale="zh-tw" />
     </div>
+    </>
   )
 }

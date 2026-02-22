@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JwtDecoder from '@/components/tools/JwtDecoder'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JWT 解碼器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function JwtDecoderPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'JWT 解碼器', url: 'https://toolcase.cc/zh-tw/jwt-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="JWT 解碼器"
+        description="即時解碼與檢視 JWT（JSON Web Token）。查看標頭、載荷、過期時間和聲明，所有處理在瀏覽器中完成。"
+        url="https://toolcase.cc/zh-tw/jwt-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'JWT 解碼器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JWT 解碼器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         貼上你的 JWT Token，即時解碼並檢視其標頭、載荷和過期狀態。
@@ -78,5 +100,6 @@ export default function JwtDecoderPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="jwt-decoder" locale="zh-tw" />
     </div>
+    </>
   )
 }

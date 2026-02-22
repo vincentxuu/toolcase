@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AspectRatioCalculator from '@/components/tools/AspectRatioCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '長寬比計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function AspectRatioCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '長寬比計算器', url: 'https://toolcase.cc/zh-tw/aspect-ratio-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="長寬比計算器"
+        description="即時計算並簡化長寬比。鎖定比例、使用 16:9、4:3、1:1 等預設值，快速找出任何解析度的簡化比例。"
+        url="https://toolcase.cc/zh-tw/aspect-ratio-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '長寬比計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>長寬比計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算、簡化並鎖定任何解析度的長寬比，提供常用預設選項。</p>
       <AspectRatioCalculator labels={{ width: '寬度', height: '高度', ratio: '長寬比', lockRatio: '鎖定比例', presets: '預設比例', calculate: '計算', simplifiedRatio: '簡化比例' }} />
@@ -28,5 +50,6 @@ export default function AspectRatioCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="aspect-ratio-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

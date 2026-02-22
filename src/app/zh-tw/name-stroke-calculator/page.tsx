@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import NameStrokeCalculator from '@/components/tools/NameStrokeCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '姓名筆畫吉凶查詢 - 姓名學筆畫計算 | toolcase',
@@ -17,12 +20,32 @@ const faqs = [
 
 export default function NameStrokeCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '姓名筆畫吉凶查詢', url: 'https://toolcase.cc/zh-tw/name-stroke-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="姓名筆畫吉凶查詢"
+        description="輸入姓名查詢總筆畫數與吉凶判定，含各字筆畫明細。姓名學筆畫分析工具。"
+        url="https://toolcase.cc/zh-tw/name-stroke-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '姓名筆畫吉凶查詢' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>姓名筆畫吉凶查詢</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輸入中文姓名，即時查詢總筆畫數與吉凶判定。</p>
       <NameStrokeCalculator />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="name-stroke-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

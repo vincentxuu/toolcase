@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DigitalSignaturePad from '@/components/tools/DigitalSignaturePad'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '電子簽名板 - 繪製與下載簽名 | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function DigitalSignaturePadPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '電子簽名板', url: 'https://toolcase.cc/zh-tw/digital-signature-pad' },
+        ]}
+      />
+      <ToolSchema
+        name="電子簽名板"
+        description="在電子簽名板上繪製您的簽名，並下載為透明或白色背景的 PNG 圖片。支援桌面和行動裝置。"
+        url="https://toolcase.cc/zh-tw/digital-signature-pad"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '電子簽名板' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>電子簽名板</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>繪製您的簽名並下載為 PNG。支援透明和白色背景。</p>
       <DigitalSignaturePad labels={{ drawSignature: '在下方繪製您的簽名', clear: '清除', download: '下載 PNG', penColor: '筆色', penSize: '筆寬', backgroundColor: '背景', transparent: '透明', white: '白色' }} />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="digital-signature-pad" locale="zh-tw" />
     </div>
+    </>
   )
 }

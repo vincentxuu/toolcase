@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TaxCalculator from '@/components/tools/TaxCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '所得稅計算器 - 台灣綜合所得稅 / 美國聯邦稅 | toolcase',
@@ -41,7 +44,26 @@ const faqs = [
 
 export default function TaxCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '所得稅計算器', url: 'https://toolcase.cc/zh-tw/tax-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="所得稅計算器"
+        description="線上計算台灣綜合所得稅或美國聯邦所得稅。支援免稅額、標準/列舉扣除額、薪資所得特別扣除額，即時顯示稅率級距明細與有效稅率。"
+        url="https://toolcase.cc/zh-tw/tax-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '所得稅計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>所得稅計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         計算台灣綜合所得稅或美國聯邦所得稅，包含詳細的稅率級距明細。支援免稅額、扣除額、薪資特別扣除額設定。
@@ -94,5 +116,6 @@ export default function TaxCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="tax-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

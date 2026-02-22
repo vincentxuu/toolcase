@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import AddressTranslator from '@/components/tools/AddressTranslator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Taiwan Address Translator - Chinese to English | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function AddressTranslatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Taiwan Address Translator', url: 'https://toolcase.cc/address-translator' },
+        ]}
+      />
+      <ToolSchema
+        name="Taiwan Address Translator"
+        description="Translate Taiwan Chinese addresses to English format. Auto-detects cities and districts for international mail and forms."
+        url="https://toolcase.cc/address-translator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Taiwan Address Translator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan Address Translator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Translate Taiwan Chinese addresses to English format for international mail and forms.</p>
       <AddressTranslator labels={{ inputLabel: 'Chinese Address', inputPlaceholder: 'e.g., 100 台北市中正區重慶南路一段122號3樓', result: 'English Address', copy: 'Copy', copied: 'Copied!', note: '※ Road name translations are approximate. For official translations, check Chunghwa Post.', city: 'City', district: 'District', road: 'Road/Street' }} />
       <FaqSection items={faqs} title="FAQ" />
       <RelatedTools current="address-translator" locale="en" />
     </div>
+    </>
   )
 }

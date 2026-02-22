@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CalorieCalculator from '@/components/tools/CalorieCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Calorie Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CalorieCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Calorie Calculator', url: 'https://toolcase.cc/calorie-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Calorie Calculator"
+        description="Calculate daily calorie needs based on your goals. Free online calorie calculator for weight loss, maintenance and muscle gain."
+        url="https://toolcase.cc/calorie-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Calorie Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Calorie Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate daily calorie needs based on your goals.</p>
       <CalorieCalculator />
@@ -28,5 +50,6 @@ export default function CalorieCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="calorie-calculator" locale="en" />
     </div>
+    </>
   )
 }

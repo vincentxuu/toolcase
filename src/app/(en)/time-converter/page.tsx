@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Time Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TimeConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Time Converter', url: 'https://toolcase.cc/time-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Time Converter"
+        description="Convert between seconds, minutes, hours, days, weeks, months, and years. Free online time converter with instant results."
+        url="https://toolcase.cc/time-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Time Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Time Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between milliseconds, seconds, minutes, hours, days, weeks, months, and years.
@@ -57,5 +79,6 @@ export default function TimeConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="time-converter" locale="en" />
     </div>
+    </>
   )
 }

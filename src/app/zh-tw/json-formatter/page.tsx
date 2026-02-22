@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import JsonFormatter from '@/components/tools/JsonFormatter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'JSON 格式化與驗證 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function JsonFormatterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'JSON 格式化與驗證', url: 'https://toolcase.cc/zh-tw/json-formatter' },
+        ]}
+      />
+      <ToolSchema
+        name="JSON 格式化與驗證"
+        description="即時格式化、驗證與美化 JSON 資料。免費線上 JSON 格式化工具，支援語法高亮與錯誤偵測。"
+        url="https://toolcase.cc/zh-tw/json-formatter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'JSON 格式化與驗證' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>JSON 格式化與驗證</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         在下方貼上你的 JSON 資料，即時格式化、驗證與美化。
@@ -77,5 +99,6 @@ export default function JsonFormatterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="json-formatter" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DigitalSignaturePad from '@/components/tools/DigitalSignaturePad'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Digital Signature Pad - Draw & Download Signature | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function DigitalSignaturePadPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Digital Signature Pad', url: 'https://toolcase.cc/digital-signature-pad' },
+        ]}
+      />
+      <ToolSchema
+        name="Digital Signature Pad"
+        description="Draw your signature on a digital pad and download it as a PNG image with transparent or white background. Works on desktop and mobile."
+        url="https://toolcase.cc/digital-signature-pad"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Digital Signature Pad' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Digital Signature Pad</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Draw your signature and download as PNG. Supports transparent and white backgrounds.</p>
       <DigitalSignaturePad />
       <FaqSection items={faqs} />
       <RelatedTools current="digital-signature-pad" locale="en" />
     </div>
+    </>
   )
 }

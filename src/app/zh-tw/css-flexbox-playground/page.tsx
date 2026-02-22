@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssFlexboxPlayground from '@/components/tools/CssFlexboxPlayground'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'CSS Flexbox 互動練習場 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssFlexboxPlaygroundPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'CSS Flexbox 互動練習場', url: 'https://toolcase.cc/zh-tw/css-flexbox-playground' },
+        ]}
+      />
+      <ToolSchema
+        name="CSS Flexbox 互動練習場"
+        description="互動式 CSS Flexbox 練習場。調整 flex-direction、justify-content、align-items、flex-wrap 和 gap，即時視覺化預覽。"
+        url="https://toolcase.cc/zh-tw/css-flexbox-playground"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'CSS Flexbox 互動練習場' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>CSS Flexbox 互動練習場</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>即時實驗 CSS Flexbox 屬性並查看視覺化結果。</p>
       <CssFlexboxPlayground labels={{
@@ -39,5 +61,6 @@ export default function CssFlexboxPlaygroundPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="css-flexbox-playground" locale="zh-tw" />
     </div>
+    </>
   )
 }

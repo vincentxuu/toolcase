@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CaseConverter from '@/components/tools/CaseConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '大小寫轉換器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CaseConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '大小寫轉換器', url: 'https://toolcase.cc/zh-tw/case-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="大小寫轉換器"
+        description="快速轉換文字大小寫格式。支援大寫、小寫、標題格式、camelCase、snake_case 等多種格式。"
+        url="https://toolcase.cc/zh-tw/case-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '大小寫轉換器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>大小寫轉換器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>快速轉換文字的大小寫與命名格式。</p>
       <CaseConverter labels={{ input: '輸入', output: '輸出', uppercase: '大寫', lowercase: '小寫', titleCase: '標題格式', sentenceCase: '句首大寫', camelCase: 'camelCase', pascalCase: 'PascalCase', snakeCase: 'snake_case', kebabCase: 'kebab-case', copy: '複製', copied: '已複製！' }} />
@@ -28,5 +50,6 @@ export default function CaseConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="case-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

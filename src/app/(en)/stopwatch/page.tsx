@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Stopwatch from '@/components/tools/Stopwatch'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Stopwatch - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function StopwatchPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Stopwatch', url: 'https://toolcase.cc/stopwatch' },
+        ]}
+      />
+      <ToolSchema
+        name="Stopwatch"
+        description="Free online stopwatch with lap timing. Accurate stopwatch for sports, workouts, cooking and productivity."
+        url="https://toolcase.cc/stopwatch"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Stopwatch' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Stopwatch</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>A precise online stopwatch with lap timing support.</p>
       <Stopwatch />
@@ -28,5 +50,6 @@ export default function StopwatchPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="stopwatch" locale="en" />
     </div>
+    </>
   )
 }

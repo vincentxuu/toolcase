@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RetirementCalculator from '@/components/tools/RetirementCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '退休金計算器 - 免費線上工具 | toolcase',
@@ -32,7 +35,26 @@ const faqs = [
 
 export default function RetirementCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '退休金計算器', url: 'https://toolcase.cc/zh-tw/retirement-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="退休金計算器"
+        description="規劃你的退休生活。查看預估存款、估算退休收入，以及資金可以維持多久的視覺化圖表。"
+        url="https://toolcase.cc/zh-tw/retirement-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '退休金計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>退休金計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         規劃退休 — 查看存款如何成長，以及考慮通膨後資金能維持多久。
@@ -71,5 +93,6 @@ export default function RetirementCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="retirement-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

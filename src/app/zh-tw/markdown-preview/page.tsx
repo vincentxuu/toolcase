@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MarkdownPreview from '@/components/tools/MarkdownPreview'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Markdown 預覽 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function MarkdownPreviewPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Markdown 預覽', url: 'https://toolcase.cc/zh-tw/markdown-preview' },
+        ]}
+      />
+      <ToolSchema
+        name="Markdown 預覽"
+        description="撰寫 Markdown 並即時預覽渲染後的 HTML。免費線上 Markdown 編輯器和預覽工具。"
+        url="https://toolcase.cc/zh-tw/markdown-preview"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Markdown 預覽' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Markdown 預覽</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>撰寫 Markdown 並即時預覽渲染後的 HTML。</p>
       <MarkdownPreview labels={{ input: '輸入 Markdown', preview: '預覽', inputPlaceholder: '在此輸入 Markdown...' }} />
@@ -28,5 +50,6 @@ export default function MarkdownPreviewPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="markdown-preview" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DateCalculator from '@/components/tools/DateCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Date Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function DateCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Date Calculator', url: 'https://toolcase.cc/date-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Date Calculator"
+        description="Calculate the difference between two dates or add/subtract days from a date. Free online date calculator."
+        url="https://toolcase.cc/date-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Date Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Date Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate the difference between two dates or add/subtract days from a date.</p>
       <DateCalculator />
@@ -28,5 +50,6 @@ export default function DateCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="date-calculator" locale="en" />
     </div>
+    </>
   )
 }

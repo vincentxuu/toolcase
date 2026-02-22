@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import QrGenerator from '@/components/tools/QrGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'QR Code 產生器 - 免費線上工具 | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function QrCodeGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'QR Code 產生器', url: 'https://toolcase.cc/zh-tw/qr-code-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="QR Code 產生器"
+        description="從任何文字或網址即時產生 QR Code。免費線上 QR Code 產生器，支援自訂顏色與大小。"
+        url="https://toolcase.cc/zh-tw/qr-code-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'QR Code 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>QR Code 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         輸入任何文字或網址，即時產生 QR Code。
@@ -65,5 +87,6 @@ export default function QrCodeGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="qr-code-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

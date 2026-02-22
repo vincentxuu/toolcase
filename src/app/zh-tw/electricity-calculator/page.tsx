@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ElectricityCalculator from '@/components/tools/ElectricityCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '電費計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ElectricityCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '電費計算器', url: 'https://toolcase.cc/zh-tw/electricity-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="電費計算器"
+        description="計算電器的用電成本。輸入瓦數、使用時間和電價，即可查看每日、每月和每年的電費。"
+        url="https://toolcase.cc/zh-tw/electricity-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '電費計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>電費計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>計算電器每日、每月和每年的用電成本。</p>
       <ElectricityCalculator labels={{ deviceName: '裝置名稱', wattage: '瓦數 (W)', hoursPerDay: '每日使用時數', daysPerMonth: '每月使用天數', electricityRate: '電價 ($/kWh)', addDevice: '新增裝置', remove: '移除', device: '裝置', dailyKwh: '每日度數', monthlyKwh: '每月度數', dailyCost: '每日電費', monthlyCost: '每月電費', yearlyCost: '每年電費', totalCosts: '總計費用', perKwh: '/度' }} />
@@ -28,5 +50,6 @@ export default function ElectricityCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="electricity-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

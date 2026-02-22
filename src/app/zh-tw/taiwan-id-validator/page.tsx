@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TaiwanIdValidator from '@/components/tools/TaiwanIdValidator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '統一編號 / 身分證字號驗證器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function TaiwanIdValidatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '統一編號 / 身分證字號驗證器', url: 'https://toolcase.cc/zh-tw/taiwan-id-validator' },
+        ]}
+      />
+      <ToolSchema
+        name="統一編號 / 身分證字號驗證器"
+        description="線上驗證統一編號及身分證字號格式是否正確。免費工具，支援隨機產生有效號碼供測試使用。"
+        url="https://toolcase.cc/zh-tw/taiwan-id-validator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '統一編號 / 身分證字號驗證器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>統一編號 / 身分證字號驗證器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>驗證統一編號及身分證字號的格式是否正確。</p>
       <TaiwanIdValidator labels={{
@@ -43,5 +65,6 @@ export default function TaiwanIdValidatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="taiwan-id-validator" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FancyTextGenerator from '@/components/tools/FancyTextGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '花式文字產生器 - Unicode 字體樣式 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function FancyTextGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '花式文字產生器', url: 'https://toolcase.cc/zh-tw/fancy-text-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="花式文字產生器"
+        description="產生各種花式文字，包含粗體、斜體、手寫體、哥特體、雙線體、等寬、圓圈、全形、上下顛倒和小型大寫字母等 Unicode 樣式。可複製貼上至任何地方。"
+        url="https://toolcase.cc/zh-tw/fancy-text-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '花式文字產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>花式文字產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>將您的文字轉換為多種 Unicode 字體變體。點擊任一結果即可複製。</p>
       <FancyTextGenerator labels={{ inputText: '輸入文字', placeholder: '在此輸入文字...', copied: '已複製！', clickToCopy: '點擊複製' }} />
@@ -28,5 +50,6 @@ export default function FancyTextGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="fancy-text-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

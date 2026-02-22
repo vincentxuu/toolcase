@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import PomodoroTimer from '@/components/tools/PomodoroTimer'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Pomodoro Timer - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function PomodoroTimerPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Pomodoro Timer', url: 'https://toolcase.cc/pomodoro-timer' },
+        ]}
+      />
+      <ToolSchema
+        name="Pomodoro Timer"
+        description="Boost your productivity with a free Pomodoro timer. Customisable work and break durations, circular progress indicator, audio notifications, and session tracking."
+        url="https://toolcase.cc/pomodoro-timer"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Pomodoro Timer' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Pomodoro Timer</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Stay focused and productive with customisable work and break intervals.
@@ -58,5 +80,6 @@ export default function PomodoroTimerPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="pomodoro-timer" locale="en" />
     </div>
+    </>
   )
 }

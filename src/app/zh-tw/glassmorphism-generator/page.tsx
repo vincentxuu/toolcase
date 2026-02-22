@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GlassmorphismGenerator from '@/components/tools/GlassmorphismGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '毛玻璃效果產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GlassmorphismGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '毛玻璃效果產生器', url: 'https://toolcase.cc/zh-tw/glassmorphism-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="毛玻璃效果產生器"
+        description="使用 CSS 建立精美的毛玻璃效果。調整模糊、透明度、邊框透明度和飽和度，即時預覽。"
+        url="https://toolcase.cc/zh-tw/glassmorphism-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '毛玻璃效果產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>毛玻璃效果產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>建立 CSS 毛玻璃效果並即時預覽。</p>
       <GlassmorphismGenerator labels={{
@@ -38,5 +60,6 @@ export default function GlassmorphismGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="glassmorphism-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

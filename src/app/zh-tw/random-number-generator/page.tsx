@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import RandomNumberGenerator from '@/components/tools/RandomNumberGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '隨機數字產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function RandomNumberGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '隨機數字產生器', url: 'https://toolcase.cc/zh-tw/random-number-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="隨機數字產生器"
+        description="在指定範圍內產生隨機數字。支援多個數字、不重複和排序選項。免費線上隨機數字產生器。"
+        url="https://toolcase.cc/zh-tw/random-number-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '隨機數字產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>隨機數字產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>在指定範圍內產生隨機數字，支援多種選項。</p>
       <RandomNumberGenerator labels={{ min: '最小值', max: '最大值', quantity: '數量', allowDuplicates: '允許重複', sortResults: '排序結果', generate: '產生', result: '結果', results: '結果列表' }} />
@@ -28,5 +50,6 @@ export default function RandomNumberGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="random-number-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

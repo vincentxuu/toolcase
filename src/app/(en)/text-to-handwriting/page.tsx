@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextToHandwriting from '@/components/tools/TextToHandwriting'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Text to Handwriting - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TextToHandwritingPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Text to Handwriting', url: 'https://toolcase.cc/text-to-handwriting' },
+        ]}
+      />
+      <ToolSchema
+        name="Text to Handwriting"
+        description="Convert typed text into handwriting-style images. Choose font size, ink colour, and paper style (white, lined, or grid). Download as PNG. Free online tool."
+        url="https://toolcase.cc/text-to-handwriting"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Text to Handwriting' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Text to Handwriting</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert typed text into handwriting-style images with customisable paper and ink options.
@@ -57,5 +79,6 @@ export default function TextToHandwritingPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="text-to-handwriting" locale="en" />
     </div>
+    </>
   )
 }

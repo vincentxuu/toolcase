@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import NumberToWords from '@/components/tools/NumberToWords'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Number to Words Converter - Spell Out Numbers | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function NumberToWordsPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Number to Words Converter', url: 'https://toolcase.cc/number-to-words' },
+        ]}
+      />
+      <ToolSchema
+        name="Number to Words Converter"
+        description="Convert any number to its English word representation. Supports integers, decimals, negative numbers, and large values up to trillions. Free online number to words tool."
+        url="https://toolcase.cc/number-to-words"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Number to Words Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Number to Words Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Convert any number into its English word representation. Supports decimals, negatives, and values up to trillions.</p>
       <NumberToWords />
@@ -28,5 +50,6 @@ export default function NumberToWordsPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="number-to-words" locale="en" />
     </div>
+    </>
   )
 }

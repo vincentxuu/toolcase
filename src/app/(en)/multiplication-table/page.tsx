@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import MultiplicationTable from '@/components/tools/MultiplicationTable'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Multiplication Table - Interactive Times Table | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function MultiplicationTablePage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Multiplication Table', url: 'https://toolcase.cc/multiplication-table' },
+        ]}
+      />
+      <ToolSchema
+        name="Multiplication Table"
+        description="Interactive multiplication table up to 19×19. Click any cell to copy the equation. Great for students and teachers."
+        url="https://toolcase.cc/multiplication-table"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Multiplication Table' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Multiplication Table</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Interactive times table. Click any cell to copy the equation. Supports up to 19×19.</p>
       <MultiplicationTable labels={{ range: 'Range', highlight: 'Click any cell to copy the equation', clickToCopy: 'Click to copy', copied: 'Copied!' }} />
       <FaqSection items={faqs} title="FAQ" />
       <RelatedTools current="multiplication-table" locale="en" />
     </div>
+    </>
   )
 }

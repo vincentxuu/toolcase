@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import DiffChecker from '@/components/tools/DiffChecker'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Diff Checker - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function DiffCheckerPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Diff Checker', url: 'https://toolcase.cc/diff-checker' },
+        ]}
+      />
+      <ToolSchema
+        name="Diff Checker"
+        description="Compare two blocks of text side by side and instantly see additions, deletions, and modifications highlighted in color."
+        url="https://toolcase.cc/diff-checker"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Diff Checker' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Diff Checker</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Compare two pieces of text and instantly spot every difference.
@@ -57,5 +79,6 @@ export default function DiffCheckerPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="diff-checker" locale="en" />
     </div>
+    </>
   )
 }

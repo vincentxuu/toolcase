@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FuelCostCalculator from '@/components/tools/FuelCostCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '油費計算器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function FuelCostCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '油費計算器', url: 'https://toolcase.cc/zh-tw/fuel-cost-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="油費計算器"
+        description="計算旅程的油費。輸入距離、油耗和油價，估算需要多少油量和費用。"
+        url="https://toolcase.cc/zh-tw/fuel-cost-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '油費計算器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>油費計算器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>估算旅程所需的油量和費用。</p>
       <FuelCostCalculator labels={{ unitSystem: '單位系統', metric: '公制', imperial: '英制', tripDistance: '行程距離', fuelEfficiency: '油耗', fuelPrice: '油價', roundTrip: '來回行程', fuelNeeded: '所需油量', totalCost: '總費用', oneWay: '單程', roundTripLabel: '來回', km: '公里', miles: '英里', kmPerL: 'km/L', mpg: 'mpg', perLiter: '$/L', perGallon: '$/gal' }} />
@@ -28,5 +50,6 @@ export default function FuelCostCalculatorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="fuel-cost-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

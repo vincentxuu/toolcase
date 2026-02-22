@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import WebsiteSchema from '@/components/seo/WebsiteSchema'
+import OrganizationSchema from '@/components/seo/OrganizationSchema'
 
 export const metadata: Metadata = {
   title: 'toolcase — 免費線上工具',
@@ -18,6 +20,8 @@ export const metadata: Metadata = {
 export default function ZhTwLayout({ children }: { children: React.ReactNode }) {
   return (
     <div lang="zh-Hant-TW">
+      <WebsiteSchema />
+      <OrganizationSchema />
       <Navbar locale="zh-tw" />
       {children}
       <Footer locale="zh-tw" />

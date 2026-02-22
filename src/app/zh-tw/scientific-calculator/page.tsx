@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ScientificCalculator from '@/components/tools/ScientificCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '科學計算機 - 免費線上 | toolcase',
@@ -16,12 +19,32 @@ const faqs = [
 
 export default function ScientificCalculatorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '科學計算機', url: 'https://toolcase.cc/zh-tw/scientific-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="科學計算機"
+        description="免費線上科學計算機，支援三角函數（sin、cos、tan）、對數、平方根、指數和度/弧度切換。"
+        url="https://toolcase.cc/zh-tw/scientific-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '科學計算機' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>科學計算機</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>功能完整的科學計算機，支援三角函數、對數等。</p>
       <ScientificCalculator labels={{ result: '結果', clear: 'AC', delete: 'DEL', deg: '度', rad: '弧度' }} />
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="scientific-calculator" locale="zh-tw" />
     </div>
+    </>
   )
 }

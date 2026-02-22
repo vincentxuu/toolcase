@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import CssTextShadowGenerator from '@/components/tools/CssTextShadowGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '文字陰影產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function CssTextShadowGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '文字陰影產生器', url: 'https://toolcase.cc/zh-tw/css-text-shadow-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="文字陰影產生器"
+        description="視覺化產生 CSS text-shadow。調整偏移、模糊、顏色和透明度，支援多重陰影圖層和即時預覽。"
+        url="https://toolcase.cc/zh-tw/css-text-shadow-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '文字陰影產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>文字陰影產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>視覺化產生 CSS text-shadow，支援多重陰影圖層。</p>
       <CssTextShadowGenerator labels={{
@@ -43,5 +65,6 @@ export default function CssTextShadowGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="css-text-shadow-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

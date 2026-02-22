@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Base64Tool from '@/components/tools/Base64Tool'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Base64 編碼/解碼器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function Base64ToolPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'Base64 編碼/解碼器', url: 'https://toolcase.cc/zh-tw/base64-encoder-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="Base64 編碼/解碼器"
+        description="線上 Base64 編碼與解碼工具。支援文字和檔案的 Base64 轉換，快速安全。"
+        url="https://toolcase.cc/zh-tw/base64-encoder-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'Base64 編碼/解碼器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Base64 編碼/解碼器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>快速進行 Base64 編碼與解碼，支援文字和檔案。</p>
       <Base64Tool labels={{ input: '輸入', output: '輸出', encode: '編碼', decode: '解碼', uploadFile: '上傳檔案', copy: '複製', copied: '已複製！', invalidBase64: '無效的 Base64' }} />
@@ -28,5 +50,6 @@ export default function Base64ToolPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="base64-encoder-decoder" locale="zh-tw" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BcryptGenerator from '@/components/tools/BcryptGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Password Hash Generator - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function BcryptGeneratorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Password Hash Generator', url: 'https://toolcase.cc/bcrypt-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="Password Hash Generator"
+        description="Generate SHA-256, SHA-384, and SHA-512 hashes from passwords. Supports salt for added security. All processing in your browser."
+        url="https://toolcase.cc/bcrypt-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Password Hash Generator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Password Hash Generator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Generate secure SHA-256, SHA-384, or SHA-512 hashes from passwords with optional salt support.
@@ -57,5 +79,6 @@ export default function BcryptGeneratorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="bcrypt-generator" locale="en" />
     </div>
+    </>
   )
 }

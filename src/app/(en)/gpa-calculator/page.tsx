@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import GpaCalculator from '@/components/tools/GpaCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'GPA Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function GpaCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'GPA Calculator', url: 'https://toolcase.cc/gpa-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="GPA Calculator"
+        description="Calculate your cumulative GPA instantly. Add courses with grades and credits to see your grade point average."
+        url="https://toolcase.cc/gpa-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'GPA Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>GPA Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate your cumulative grade point average from your courses and credits.</p>
       <GpaCalculator />
@@ -28,5 +50,6 @@ export default function GpaCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="gpa-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import FuelCostCalculator from '@/components/tools/FuelCostCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Fuel Cost Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function FuelCostCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Fuel Cost Calculator', url: 'https://toolcase.cc/fuel-cost-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="Fuel Cost Calculator"
+        description="Calculate fuel costs for your trip. Enter distance, fuel efficiency, and fuel price to estimate how much fuel and money you need."
+        url="https://toolcase.cc/fuel-cost-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Fuel Cost Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Fuel Cost Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Estimate how much fuel and money you need for your trip.</p>
       <FuelCostCalculator />
@@ -28,5 +50,6 @@ export default function FuelCostCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="fuel-cost-calculator" locale="en" />
     </div>
+    </>
   )
 }

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UuidGenerator from '@/components/tools/UuidGenerator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'UUID 產生器 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UuidGeneratorPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: 'UUID 產生器', url: 'https://toolcase.cc/zh-tw/uuid-generator' },
+        ]}
+      />
+      <ToolSchema
+        name="UUID 產生器"
+        description="即時產生 UUID v4 與 ULID 唯一識別碼。支援批次產生，免費線上 UUID 產生器。"
+        url="https://toolcase.cc/zh-tw/uuid-generator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: 'UUID 產生器' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>UUID 產生器</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>為你的應用程式產生 UUID v4 與 ULID 唯一識別碼。</p>
       <UuidGenerator labels={{
@@ -40,5 +62,6 @@ export default function UuidGeneratorPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="uuid-generator" locale="zh-tw" />
     </div>
+    </>
   )
 }

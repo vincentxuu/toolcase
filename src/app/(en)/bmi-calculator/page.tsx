@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import BmiCalculator from '@/components/tools/BmiCalculator'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'BMI Calculator - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function BmiCalculatorPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'BMI Calculator', url: 'https://toolcase.cc/bmi-calculator' },
+        ]}
+      />
+      <ToolSchema
+        name="BMI Calculator"
+        description="Calculate your Body Mass Index (BMI) instantly. Free online BMI calculator with visual scale and category breakdown."
+        url="https://toolcase.cc/bmi-calculator"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'BMI Calculator' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>BMI Calculator</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Calculate your Body Mass Index and see which category you fall into.</p>
       <BmiCalculator />
@@ -28,5 +50,6 @@ export default function BmiCalculatorPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="bmi-calculator" locale="en" />
     </div>
+    </>
   )
 }

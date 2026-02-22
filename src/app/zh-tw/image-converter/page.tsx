@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import ImageConverter from '@/components/tools/ImageConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: '圖片格式轉換 - 免費線上工具 | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function ImageConverterPageZhTw() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: '首頁', url: 'https://toolcase.cc' },
+          { name: '圖片格式轉換', url: 'https://toolcase.cc/zh-tw/image-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="圖片格式轉換"
+        description="線上轉換圖片格式，支援 JPEG、PNG、WebP 等格式互轉。免費圖片轉檔工具，快速又簡單。"
+        url="https://toolcase.cc/zh-tw/image-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: '首頁', href: '/zh-tw' },
+            { name: '圖片格式轉換' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>圖片格式轉換</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>輕鬆將圖片轉換為不同格式。</p>
       <ImageConverter labels={{ uploadImage: '上傳圖片', outputFormat: '輸出格式', preview: '預覽', download: '下載', convert: '轉換' }} />
@@ -28,5 +50,6 @@ export default function ImageConverterPageZhTw() {
       <FaqSection items={faqs} title="常見問題" />
       <RelatedTools current="image-converter" locale="zh-tw" />
     </div>
+    </>
   )
 }

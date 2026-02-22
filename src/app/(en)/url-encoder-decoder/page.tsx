@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UrlEncodeDecode from '@/components/tools/UrlEncodeDecode'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'URL Encoder/Decoder - Free Online Tool | toolcase',
@@ -17,7 +20,26 @@ const faqs = [
 
 export default function UrlEncoderDecoderPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'URL Encoder/Decoder', url: 'https://toolcase.cc/url-encoder-decoder' },
+        ]}
+      />
+      <ToolSchema
+        name="URL Encoder/Decoder"
+        description="Encode and decode URLs and query strings instantly. Free online URL encoding tool for developers."
+        url="https://toolcase.cc/url-encoder-decoder"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'URL Encoder/Decoder' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>URL Encoder/Decoder</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Encode or decode URLs and query string parameters.</p>
       <UrlEncodeDecode />
@@ -28,5 +50,6 @@ export default function UrlEncoderDecoderPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="url-encoder-decoder" locale="en" />
     </div>
+    </>
   )
 }

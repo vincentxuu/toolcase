@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import UnitConverter from '@/components/tools/UnitConverter'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Temperature Converter - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TemperatureConverterPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Temperature Converter', url: 'https://toolcase.cc/temperature-converter' },
+        ]}
+      />
+      <ToolSchema
+        name="Temperature Converter"
+        description="Convert between Celsius, Fahrenheit, and Kelvin. Free online temperature converter with instant results."
+        url="https://toolcase.cc/temperature-converter"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Temperature Converter' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Temperature Converter</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Convert between Celsius, Fahrenheit, and Kelvin instantly.
@@ -57,5 +79,6 @@ export default function TemperatureConverterPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="temperature-converter" locale="en" />
     </div>
+    </>
   )
 }

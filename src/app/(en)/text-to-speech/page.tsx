@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import TextToSpeech from '@/components/tools/TextToSpeech'
 import FaqSection from '@/components/shared/FaqSection'
 import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
 
 export const metadata: Metadata = {
   title: 'Text to Speech - Free Online Tool | toolcase',
@@ -36,7 +39,26 @@ const faqs = [
 
 export default function TextToSpeechPage() {
   return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Text to Speech', url: 'https://toolcase.cc/text-to-speech' },
+        ]}
+      />
+      <ToolSchema
+        name="Text to Speech"
+        description="Convert text to natural-sounding speech using your browser\"
+        url="https://toolcase.cc/text-to-speech"
+        category="UtilitiesApplication"
+      />
     <div className="tool-container">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Text to Speech' },
+          ]}
+        />
       <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Text to Speech</h1>
       <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
         Type or paste text and hear it read aloud with natural-sounding voices.
@@ -57,5 +79,6 @@ export default function TextToSpeechPage() {
       <FaqSection items={faqs} />
       <RelatedTools current="text-to-speech" locale="en" />
     </div>
+    </>
   )
 }
