@@ -1,0 +1,50 @@
+import { Metadata } from 'next'
+import SpecialSymbols from '@/components/tools/SpecialSymbols'
+import FaqSection from '@/components/shared/FaqSection'
+import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
+
+export const metadata: Metadata = {
+  title: 'Special Symbols - Copy & Paste Symbols | toolcase',
+  description: 'Arrows, checkmarks, hearts, stars, math symbols, currency signs and more. Click to copy any symbol instantly.',
+  alternates: { canonical: 'https://toolcase.cc/text/special-symbols', languages: { en: 'https://toolcase.cc/text/special-symbols', 'zh-Hant-TW': 'https://toolcase.cc/zh-tw/text/special-symbols' } },
+}
+
+const faqs = [
+  { question: 'How do I use special symbols?', answer: 'Simply click on any symbol to copy it to your clipboard, then paste it anywhere with Ctrl+V (or Cmd+V).' },
+  { question: 'Where can I use these symbols?', answer: 'These Unicode symbols work on most platforms including social media, email, documents, messaging apps, and more.' },
+]
+
+export default function SpecialSymbolsPage() {
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Special Symbols', url: 'https://toolcase.cc/text/special-symbols' },
+        ]}
+      />
+      <ToolSchema
+        name="Special Symbols"
+        description="Arrows, checkmarks, hearts, stars, math symbols, currency signs and more. Click to copy any symbol instantly."
+        url="https://toolcase.cc/text/special-symbols"
+        category="UtilitiesApplication"
+      />
+    <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Special Symbols' },
+          ]}
+        />
+      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Special Symbols</h1>
+      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Copy & paste special symbols. Arrows, checkmarks, hearts, stars, math symbols and more.</p>
+      <SpecialSymbols labels={{ clickToCopy: 'Click to copy', copied: 'Copied!', search: 'Search', searchPlaceholder: 'Search symbols...', categories: [] }} />
+      <FaqSection items={faqs} title="FAQ" />
+      <RelatedTools current="special-symbols" locale="en" />
+    </div>
+    </>
+  )
+}

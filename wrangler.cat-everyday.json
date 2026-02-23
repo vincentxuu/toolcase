@@ -1,0 +1,50 @@
+{
+  "name": "toolcase-cat-everyday",
+  "main": "workers/worker-cat-everyday.js",
+  "compatibility_date": "2025-01-13",
+  "compatibility_flags": [
+    "nodejs_compat_v2"
+  ],
+  "account_id": "1ff43f0d4c3ad3bd98ce5ab767546a68",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "alias": {
+    "critters": "./workers/shims/empty.js",
+    "@opentelemetry/api": "./workers/shims/empty.js"
+  },
+  "env": {
+    "production": {
+      "name": "toolcase-cat-everyday-production",
+      "routes": [
+        {
+          "pattern": "toolcase.cc/everyday/*",
+          "zone_name": "toolcase.cc"
+        },
+        {
+          "pattern": "www.toolcase.cc/everyday/*",
+          "zone_name": "toolcase.cc"
+        },
+        {
+          "pattern": "toolcase.cc/zh-tw/everyday/*",
+          "zone_name": "toolcase.cc"
+        },
+        {
+          "pattern": "www.toolcase.cc/zh-tw/everyday/*",
+          "zone_name": "toolcase.cc"
+        }
+      ],
+      "vars": {
+        "ENVIRONMENT": "production"
+      }
+    },
+    "preview": {
+      "name": "toolcase-cat-everyday-preview",
+      "vars": {
+        "ENVIRONMENT": "preview"
+      }
+    }
+  },
+  "base_dir": "."
+}
