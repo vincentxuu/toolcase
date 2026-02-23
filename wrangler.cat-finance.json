@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-finance",
-  "main": "workers/worker-cat-finance.js",
+  "main": ".open-next/server-functions/cat-finance/index.mjs",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat_v2"

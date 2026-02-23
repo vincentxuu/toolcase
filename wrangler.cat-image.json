@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-image",
-  "main": "workers/worker-cat-image.js",
+  "main": ".open-next/server-functions/cat-image/index.mjs",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat_v2"

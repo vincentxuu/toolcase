@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-css",
-  "main": "workers/worker-cat-css.js",
+  "main": ".open-next/server-functions/cat-css/index.mjs",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat_v2"

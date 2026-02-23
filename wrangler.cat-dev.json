@@ -1,9 +1,9 @@
 {
   "name": "toolcase-cat-dev",
-  "main": "workers/worker-cat-dev.js",
+  "main": ".open-next/server-functions/cat-dev/index.mjs",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
-    "nodejs_compat_v2"
+    "nodejs_compat"
   ],
   "account_id": "1ff43f0d4c3ad3bd98ce5ab767546a68",
   "assets": {
