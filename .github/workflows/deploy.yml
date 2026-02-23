@@ -89,12 +89,75 @@ jobs:
             echo "environment=preview" >> $GITHUB_OUTPUT
           fi
 
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy Main Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           wranglerVersion: "4"
           command: deploy --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy API Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.api.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Dev Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-dev.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy CSS Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-css.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Finance Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-finance.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Health Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-health.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Image Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-image.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Text Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-text.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Units Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-units.json --env ${{ steps.env.outputs.environment }}
+
+      - name: Deploy Everyday Tools Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: "4"
+          command: deploy --config wrangler.cat-everyday.json --env ${{ steps.env.outputs.environment }}
 
       - name: Purge Cloudflare cache (Production only)
         if: steps.env.outputs.environment == 'production'
