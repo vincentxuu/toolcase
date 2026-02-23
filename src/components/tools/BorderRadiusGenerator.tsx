@@ -94,7 +94,7 @@ export default function BorderRadiusGenerator({ labels }: BorderRadiusGeneratorP
   )
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Link toggle */}
       <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--color-text)' }}>
         <input
@@ -127,16 +127,16 @@ export default function BorderRadiusGenerator({ labels }: BorderRadiusGeneratorP
           />
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', justifyItems: 'center' }}>
-          {cornerControl(l.topLeft, tl, 'tl')}
-          {cornerControl(l.topRight, tr, 'tr')}
-          {cornerControl(l.bottomLeft, bl, 'bl')}
-          {cornerControl(l.bottomRight, br, 'br')}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center">
+            {cornerControl(l.topLeft, tl, 'tl')}
+            {cornerControl(l.topRight, tr, 'tr')}
+            {cornerControl(l.bottomLeft, bl, 'bl')}
+            {cornerControl(l.bottomRight, br, 'br')}
         </div>
       )}
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
           <div
@@ -152,9 +152,9 @@ export default function BorderRadiusGenerator({ labels }: BorderRadiusGeneratorP
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

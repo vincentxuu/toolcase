@@ -132,7 +132,7 @@ export default function ZodiacSignLookup({ labels }: ZodiacSignLookupProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input Section */}
       <div style={sectionStyle}>
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'end', flexWrap: 'wrap' }}>
@@ -148,7 +148,7 @@ export default function ZodiacSignLookup({ labels }: ZodiacSignLookupProps) {
               {Array.from({ length: maxDay }, (_, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
             </select>
           </div>
-          <button className="btn-primary" onClick={handleLookup} style={{ whiteSpace: 'nowrap' }}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleLookup} style={{ whiteSpace: 'nowrap' }}>
             {l.lookup}
           </button>
         </div>
@@ -183,17 +183,17 @@ export default function ZodiacSignLookup({ labels }: ZodiacSignLookupProps) {
 
       {/* All Signs Reference Table */}
       <div style={sectionStyle}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>
+        <h3 className="font-semibold mb-3">
           {labels ? 'All Zodiac Signs' : '十二星座一覽'}
         </h3>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{labels ? 'Sign' : '星座'}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.dateRange}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.element}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.traits}</th>
+                <th className="p-2 text-left">{labels ? 'Sign' : '星座'}</th>
+                <th className="p-2 text-left">{l.dateRange}</th>
+                <th className="p-2 text-left">{l.element}</th>
+                <th className="p-2 text-left">{l.traits}</th>
               </tr>
             </thead>
             <tbody>

@@ -112,7 +112,7 @@ export default function DateCalculator({ labels }: DateCalculatorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Mode tabs */}
       <div style={{
         display: 'flex', gap: '0.25rem', padding: '0.25rem', borderRadius: '0.625rem',
@@ -125,7 +125,7 @@ export default function DateCalculator({ labels }: DateCalculatorProps) {
       {mode === 'diff' ? (
         <>
           {/* Difference mode */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
             <div>
               <label style={labelStyle}>{l.startDate}</label>
               <input type="date" style={inputStyle} value={startStr} onChange={(e) => setStartStr(e.target.value)} />
@@ -138,35 +138,35 @@ export default function DateCalculator({ labels }: DateCalculatorProps) {
 
           {diffResult && (
             <>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3">
                 <div style={cardStyle}>
                   <div style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-primary)' }}>
                     {Math.abs(diffResult.years)}
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.years}</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">{l.years}</div>
                 </div>
                 <div style={cardStyle}>
                   <div style={{ fontSize: '3rem', fontWeight: 700 }}>
                     {Math.abs(diffResult.months)}
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.months}</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">{l.months}</div>
                 </div>
                 <div style={cardStyle}>
                   <div style={{ fontSize: '3rem', fontWeight: 700 }}>
                     {Math.abs(diffResult.days)}
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.days}</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">{l.days}</div>
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
                 <div style={cardStyle}>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalDays}</div>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{Math.abs(diffResult.totalDays).toLocaleString()}</div>
+                  <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalDays}</div>
+                  <div className="text-2xl font-bold">{Math.abs(diffResult.totalDays).toLocaleString()}</div>
                 </div>
                 <div style={cardStyle}>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalWeeks}</div>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{Math.abs(diffResult.totalWeeks).toLocaleString()}</div>
+                  <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalWeeks}</div>
+                  <div className="text-2xl font-bold">{Math.abs(diffResult.totalWeeks).toLocaleString()}</div>
                 </div>
               </div>
             </>
@@ -185,7 +185,7 @@ export default function DateCalculator({ labels }: DateCalculatorProps) {
             <input type="number" style={inputStyle} value={daysToAdd} min={0} onChange={(e) => setDaysToAdd(Math.max(0, Number(e.target.value)))} />
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="flex gap-2">
             <button style={opBtnStyle(operation === 'add')} onClick={() => setOperation('add')}>{l.add}</button>
             <button style={opBtnStyle(operation === 'subtract')} onClick={() => setOperation('subtract')}>{l.subtract}</button>
           </div>
@@ -195,7 +195,7 @@ export default function DateCalculator({ labels }: DateCalculatorProps) {
               <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
                 {l.resultDate}
               </div>
-              <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+              <div className="text-[1.75rem] font-bold text-[var(--color-primary)]">
                 {formatDate(addResult)}
               </div>
               <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>

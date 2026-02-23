@@ -82,7 +82,7 @@ export default function RandomPicker({ labels }: RandomPickerProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Items input */}
       <div>
         <label style={labelStyle}>{l.items}</label>
@@ -93,7 +93,7 @@ export default function RandomPicker({ labels }: RandomPickerProps) {
           onChange={(e) => setText(e.target.value)}
         />
         {text && (
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mt-1">
             {getItems().length} item{getItems().length !== 1 ? 's' : ''}
           </div>
         )}
@@ -146,7 +146,7 @@ export default function RandomPicker({ labels }: RandomPickerProps) {
 
       {/* Pick button */}
       <button
-        className="btn-primary"
+        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
         onClick={handlePick}
         disabled={animating || getItems().length === 0}
         style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}

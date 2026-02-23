@@ -153,14 +153,13 @@ export default function ColorPaletteGenerator({ labels }: ColorPaletteGeneratorP
   const renderPalette = (name: string, colors: string[]) => (
     <div key={name} style={{ marginBottom: '1.5rem' }}>
       <div style={labelStyle}>{name}</div>
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(min(80px,100%),1fr))] gap-2">
         {colors.map((color, i) => (
           <button
             key={i}
             onClick={() => copyColor(color)}
             title={color.toUpperCase()}
             style={{
-              width: '80px',
               height: '80px',
               borderRadius: '0.5rem',
               backgroundColor: color,
@@ -193,7 +192,7 @@ export default function ColorPaletteGenerator({ labels }: ColorPaletteGeneratorP
   )
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <span style={labelStyle}>{l.baseColor}</span>
         <input
@@ -222,7 +221,7 @@ export default function ColorPaletteGenerator({ labels }: ColorPaletteGeneratorP
         />
       </div>
 
-      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.clickToCopy}</p>
+      <p className="text-xs text-[var(--color-text-secondary)]">{l.clickToCopy}</p>
 
       {palettes && (
         <>

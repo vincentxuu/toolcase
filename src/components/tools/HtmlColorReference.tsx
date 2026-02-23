@@ -181,7 +181,7 @@ export default function HtmlColorReference({ labels }: HtmlColorReferenceProps) 
   }, [searchTerm])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Search */}
       <div>
         <input
@@ -224,7 +224,7 @@ export default function HtmlColorReference({ labels }: HtmlColorReferenceProps) 
               <div style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.25rem' }}>
                 {color.name}
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="flex justify-between items-center">
                 <code style={{
                   fontSize: '0.813rem',
                   fontFamily: "'Fira Code', monospace",
@@ -241,7 +241,7 @@ export default function HtmlColorReference({ labels }: HtmlColorReferenceProps) 
 
       {filteredColors.length === 0 && (
         <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-secondary)' }}>
-          No colors found matching "{searchTerm}"
+          No colors found matching &quot;{searchTerm}&quot;
         </div>
       )}
 

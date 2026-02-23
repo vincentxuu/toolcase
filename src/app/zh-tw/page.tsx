@@ -1,7 +1,11 @@
 import { Metadata } from 'next'
 import { getDictionary } from '@/i18n/get-dict'
-import { tools, categories } from '@/lib/tools-config'
-import ToolCard from '@/components/shared/ToolCard'
+import { tools } from '@/lib/tools-config'
+import CategoryNav from '@/components/navigation/CategoryNav'
+import FeaturedToolsSection from '@/components/sections/FeaturedToolsSection'
+import PopularToolsSection from '@/components/sections/PopularToolsSection'
+import NewToolsSection from '@/components/sections/NewToolsSection'
+import CategoryGridSection from '@/components/sections/CategoryGridSection'
 
 export const metadata: Metadata = {
   title: 'toolcase — 免費線上工具集',
@@ -27,83 +31,57 @@ export const metadata: Metadata = {
   },
 }
 
-type DictKey = keyof ReturnType<typeof getDictionary>
-
 export default function ZhTwHomePage() {
   const t = getDictionary('zh-tw')
+  const toolCount = tools.length
+  const heroTitle2 = t.hero_title_2.replace('{count}', String(toolCount))
+  const heroDesc = t.hero_desc.replace('{count}', String(toolCount))
 
   return (
-    <div className="tool-container">
-      {/* Hero */}
-      <section style={{ textAlign: 'center', padding: '3rem 0' }}>
-        <span
-          style={{
-            display: 'inline-block',
-            padding: '0.375rem 1rem',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-            color: 'var(--color-primary)',
-            fontSize: '0.875rem',
-            fontWeight: 500,
-            marginBottom: '1.5rem',
-          }}
-        >
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Hero Section - 保留現有 */}
+      <section className="text-center py-12">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-[rgba(37,99,235,0.1)] text-[var(--color-primary)] text-sm font-medium mb-6">
           {t.hero_badge}
         </span>
-        <h1 style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem' }}>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
           {t.hero_title_1}
           <br />
-          <span style={{ color: 'var(--color-primary)' }}>{t.hero_title_2}</span>
+          <span className="text-[var(--color-primary)]">{heroTitle2}</span>
         </h1>
-        <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
-          {t.hero_desc}
+        <p className="text-[var(--color-text-secondary)] text-lg max-w-[600px] mx-auto mb-8">
+          {heroDesc}
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+        <div className="flex justify-center gap-8 flex-wrap">
           <div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{tools.length}+</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{t.stat_tools}</div>
+            <div className="text-2xl font-bold">{toolCount}+</div>
+            <div className="text-sm text-[var(--color-text-secondary)]">{t.stat_tools}</div>
           </div>
           <div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>0</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{t.stat_signup}</div>
+            <div className="text-2xl font-bold">0</div>
+            <div className="text-sm text-[var(--color-text-secondary)]">{t.stat_signup}</div>
           </div>
           <div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>&lt;1s</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{t.stat_load}</div>
+            <div className="text-2xl font-bold">&lt;1s</div>
+            <div className="text-sm text-[var(--color-text-secondary)]">{t.stat_load}</div>
           </div>
         </div>
       </section>
 
-      {/* All Categories */}
-      {categories.map((cat) => {
-        const catTools = tools.filter((tool) => tool.category === cat.key)
-        if (catTools.length === 0) return null
-        return (
-          <section key={cat.key} style={{ marginTop: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-              {t[cat.labelKey as DictKey] as string}
-            </h2>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                gap: '1rem',
-              }}
-            >
-              {catTools.map((tool) => (
-                <ToolCard
-                  key={tool.slug}
-                  slug={tool.slug}
-                  name={t[tool.nameKey as DictKey] as string}
-                  description={t[tool.descKey as DictKey] as string}
-                  icon={tool.icon}
-                  locale="zh-tw"
-                />
-              ))}
-            </div>
-          </section>
-        )
-      })}
+      {/* Category Quick Nav - 新增 */}
+      <CategoryNav locale="zh-tw" />
+
+      {/* Featured Tools - 新增 */}
+      <FeaturedToolsSection locale="zh-tw" />
+
+      {/* Popular Tools - 新增 */}
+      <PopularToolsSection locale="zh-tw" />
+
+      {/* New Tools - 新增 */}
+      <NewToolsSection locale="zh-tw" />
+
+      {/* Category Grid - 新增 */}
+      <CategoryGridSection locale="zh-tw" />
     </div>
   )
 }

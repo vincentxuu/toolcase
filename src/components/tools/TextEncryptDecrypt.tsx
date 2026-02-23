@@ -162,9 +162,9 @@ export default function TextEncryptDecrypt({ labels }: TextEncryptDecryptProps) 
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {/* Mode toggle */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className="flex gap-2">
         <button style={tabStyle(mode === 'encrypt')} onClick={() => { setMode('encrypt'); setInput(''); setOutput(''); setError('') }}>
           {l.encrypt}
         </button>
@@ -173,7 +173,7 @@ export default function TextEncryptDecrypt({ labels }: TextEncryptDecryptProps) 
         </button>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <label style={labelStyle}>{l.inputText}</label>
         <textarea
           value={input}
@@ -184,7 +184,7 @@ export default function TextEncryptDecrypt({ labels }: TextEncryptDecryptProps) 
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <label style={labelStyle}>{l.password}</label>
         <input
           type="password"
@@ -197,7 +197,7 @@ export default function TextEncryptDecrypt({ labels }: TextEncryptDecryptProps) 
 
       <div>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleRun}
           disabled={!input.trim() || !password || processing}
         >
@@ -208,12 +208,11 @@ export default function TextEncryptDecrypt({ labels }: TextEncryptDecryptProps) 
       {error && <p style={{ color: '#ef4444', fontSize: '0.875rem' }}>{error}</p>}
 
       {output && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-center">
             <label style={labelStyle}>{l.output}</label>
             <button
-              className="btn-secondary"
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
               onClick={handleCopy}
             >
               {copied ? l.copied : l.copy}

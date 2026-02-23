@@ -141,11 +141,11 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
         <input
@@ -153,16 +153,16 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {sourceUrl && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             {l.sourceImage} ✓
           </span>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div className="flex gap-4 items-center flex-wrap">
         <span style={labelStyle}>{l.orUseText}</span>
         <input
           type="text"
@@ -176,7 +176,7 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
 
       <div>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleGenerate}
           disabled={!sourceUrl && !textInput.trim()}
         >
@@ -186,7 +186,7 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
 
       {favicons.length > 0 && (
         <>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div className="flex gap-4 flex-wrap">
             {favicons.map(({ size, url }) => (
               <div key={size} style={cardStyle}>
                 <div style={{
@@ -201,12 +201,11 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
                 }}>
                   <img src={url} alt={`${size}x${size}`} width={size} height={size} style={{ imageRendering: size <= 32 ? 'pixelated' : 'auto' }} />
                 </div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                <span className="text-xs text-[var(--color-text-secondary)]">
                   {size}x{size}
                 </span>
                 <button
-                  className="btn-secondary"
-                  style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
                   onClick={() => handleDownload(url, size)}
                 >
                   {l.download}
@@ -221,11 +220,11 @@ export default function FaviconGenerator({ labels }: FaviconGeneratorProps) {
             border: '1px solid var(--color-border)',
             backgroundColor: 'var(--color-bg-secondary)',
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+            <div className="flex justify-between items-center mb-2">
               <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text)' }}>
                 {l.htmlTags}
               </span>
-              <button className="btn-secondary" style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }} onClick={handleCopyTags}>
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1" onClick={handleCopyTags}>
                 {copied ? l.copied : l.copyTags}
               </button>
             </div>

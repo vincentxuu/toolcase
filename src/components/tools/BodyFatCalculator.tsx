@@ -94,16 +94,16 @@ export default function BodyFatCalculator({ labels }: BodyFatCalculatorProps) {
   const categories = gender === 'male' ? maleCategories : femaleCategories
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
         <label style={labelStyle}>{l.gender}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className={gender === 'male' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('male')} style={{ flex: 1 }}>{l.male}</button>
-          <button className={gender === 'female' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('female')} style={{ flex: 1 }}>{l.female}</button>
+        <div className="flex gap-2">
+          <button className={gender === 'male' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('male')}>{l.male}</button>
+          <button className={gender === 'female' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('female')}>{l.female}</button>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: gender === 'female' ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className={`grid gap-4 ${gender === 'female' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
         <div>
           <label style={labelStyle}>{l.height}</label>
           <input type="number" style={inputStyle} value={height} onChange={(e) => setHeight(Number(e.target.value))} min={50} max={300} />
@@ -125,14 +125,14 @@ export default function BodyFatCalculator({ labels }: BodyFatCalculatorProps) {
       </div>
 
       <div style={cardStyle}>
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.bodyFat}</div>
+        <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.bodyFat}</div>
         <div style={{ fontSize: '3.5rem', fontWeight: 700, color: result.category.color }}>{result.bodyFat.toFixed(1)}%</div>
         <div style={{ fontSize: '1.25rem', fontWeight: 600, color: result.category.color, marginTop: '0.25rem' }}>
           {catLabels[result.category.key]}
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.5rem' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
         {categories.map((cat) => (
           <div key={cat.key} style={{
             padding: '0.75rem', borderRadius: '0.5rem', textAlign: 'center', fontSize: '0.8rem',
@@ -151,7 +151,7 @@ export default function BodyFatCalculator({ labels }: BodyFatCalculatorProps) {
       </div>
 
       <div style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-        ℹ️ {l.disclaimer}
+        {l.disclaimer}
       </div>
     </div>
   )

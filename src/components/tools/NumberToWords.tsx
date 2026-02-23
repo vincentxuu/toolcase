@@ -116,9 +116,9 @@ export default function NumberToWords({ labels }: NumberToWordsProps) {
   }, [output])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div>
-        <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.number}</label>
+        <label className="font-semibold block mb-1">{l.number}</label>
         <input
           type="text"
           value={input}
@@ -139,7 +139,7 @@ export default function NumberToWords({ labels }: NumberToWordsProps) {
       </div>
 
       <div>
-        <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.result}</label>
+        <label className="font-semibold block mb-1">{l.result}</label>
         <div style={{
           padding: '1rem',
           border: '1px solid var(--color-border)',

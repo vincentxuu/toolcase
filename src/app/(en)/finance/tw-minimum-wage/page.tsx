@@ -1,0 +1,43 @@
+import { Metadata } from 'next'
+import TwMinimumWage from '@/components/tools/TwMinimumWage'
+import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
+
+export const metadata: Metadata = {
+  title: 'Taiwan Minimum Wage History - Monthly & Hourly Rates (2011–2025) | toolcase',
+  description: 'Taiwan minimum wage history from 2011 to 2025, including monthly and hourly rates, effective dates, and year-over-year increases.',
+  alternates: { canonical: 'https://toolcase.cc/finance/tw-minimum-wage', languages: { en: 'https://toolcase.cc/finance/tw-minimum-wage', 'zh-Hant-TW': 'https://toolcase.cc/zh-tw/finance/tw-minimum-wage' } },
+}
+
+export default function Page() {
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Taiwan Minimum Wage History', url: 'https://toolcase.cc/finance/tw-minimum-wage' },
+        ]}
+      />
+      <ToolSchema
+        name="Taiwan Minimum Wage History"
+        description="Taiwan minimum wage history from 2011 to 2025, including monthly and hourly rates, effective dates, and year-over-year increases."
+        url="https://toolcase.cc/finance/tw-minimum-wage"
+        category="UtilitiesApplication"
+      />
+    <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Taiwan Minimum Wage History' },
+          ]}
+        />
+      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Taiwan Minimum Wage</h1>
+      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Taiwan minimum wage history from 2011 to 2025, with monthly and hourly rates, effective dates, and annual increases.</p>
+      <TwMinimumWage labels={{ title: 'Minimum Wage History', desc: '2011 – 2025', year: 'Year', monthlyWage: 'Monthly (NTD)', hourlyWage: 'Hourly (NTD)', effectiveDate: 'Effective Date', increase: 'Increase', keyInfoTitle: 'Key Information', item: 'Item', value: 'Details' }} />
+      <RelatedTools current="tw-minimum-wage" locale="en" />
+    </div>
+    </>
+  )
+}

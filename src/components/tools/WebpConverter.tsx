@@ -103,7 +103,7 @@ export default function WebpConverter({ labels }: WebpConverterProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {!file && (
         <div
           onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
@@ -113,23 +113,23 @@ export default function WebpConverter({ labels }: WebpConverterProps) {
           style={{ padding: '3rem', textAlign: 'center', cursor: 'pointer', border: '2px dashed', borderColor: dragging ? 'var(--color-primary)' : 'var(--color-border)', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)' }}
         >
           <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🖼️</div>
-          <div style={{ fontWeight: 600 }}>{l.dragDrop}</div>
+          <div className="font-semibold">{l.dragDrop}</div>
           <div style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>{l.orClick}</div>
-          <input ref={fileRef} type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f) }} style={{ display: 'none' }} />
+          <input ref={fileRef} type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f) }} className="hidden" />
         </div>
       )}
 
       {file && preview && (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: resultUrl ? '1fr 1fr' : '1fr', gap: '1rem' }}>
-            <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+            <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
               <div style={{ padding: '0.5rem', backgroundColor: 'var(--color-bg-secondary)', fontWeight: 600, fontSize: '0.85rem' }}>
                 {l.original} — {fmtSize(file.size)}
               </div>
               <img src={preview} alt="Original" style={{ width: '100%', display: 'block' }} />
             </div>
             {resultUrl && (
-              <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+              <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
                 <div style={{ padding: '0.5rem', backgroundColor: 'var(--color-bg-secondary)', fontWeight: 600, fontSize: '0.85rem' }}>
                   {l.converted} — {fmtSize(resultSize)}
                 </div>
@@ -141,19 +141,19 @@ export default function WebpConverter({ labels }: WebpConverterProps) {
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
             <div>
               <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>{l.outputFormat}</label>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div className="flex gap-2">
                 {FORMATS.map((f) => <button key={f.id} onClick={() => setFormat(f.id)} style={btnStyle(format === f.id)}>{f.label}</button>)}
               </div>
             </div>
             {format !== 'png' && (
               <div style={{ flex: '1 1 150px' }}>
                 <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem', fontSize: '0.9rem' }}>{l.quality}: {quality}%</label>
-                <input type="range" min={10} max={100} value={quality} onChange={(e) => setQuality(Number(e.target.value))} style={{ width: '100%' }} />
+                <input type="range" min={10} max={100} value={quality} onChange={(e) => setQuality(Number(e.target.value))} className="w-full" />
               </div>
             )}
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="flex gap-2">
             <button onClick={convert} style={btnStyle(true)}>{l.convert}</button>
             {resultUrl && <button onClick={handleDownload} style={btnStyle(true)}>{l.download}</button>}
             <button onClick={handleReset} style={btnStyle(false)}>{l.reset}</button>

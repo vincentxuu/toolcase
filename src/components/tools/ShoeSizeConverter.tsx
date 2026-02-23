@@ -71,10 +71,10 @@ export default function ShoeSizeConverter({ labels }: ShoeSizeConverterProps) {
   }, [fromSystem, fromSize, fromDef.col])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 flex-wrap">
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.system}</label>
+          <label className="font-semibold block mb-1">{l.system}</label>
           <select
             value={fromSystem}
             onChange={(e) => { setFromSystem(e.target.value); setFromSize(MEN_SIZES[4][SYSTEMS.find((s) => s.id === e.target.value)!.col]) }}
@@ -84,7 +84,7 @@ export default function ShoeSizeConverter({ labels }: ShoeSizeConverterProps) {
           </select>
         </div>
         <div style={{ flex: '1 1 120px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.size}</label>
+          <label className="font-semibold block mb-1">{l.size}</label>
           <select
             value={fromSize}
             onChange={(e) => setFromSize(Number(e.target.value))}
@@ -95,7 +95,7 @@ export default function ShoeSizeConverter({ labels }: ShoeSizeConverterProps) {
         </div>
       </div>
 
-      <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+      <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
         <div style={{ padding: '0.5rem 0.75rem', backgroundColor: 'var(--color-bg-secondary)', fontWeight: 600, borderBottom: '1px solid var(--color-border)' }}>{l.result}</div>
         {result.map((r) => (
           <div key={r.name} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem', borderBottom: '1px solid var(--color-border)' }}>
@@ -108,7 +108,7 @@ export default function ShoeSizeConverter({ labels }: ShoeSizeConverterProps) {
       {/* Size Chart */}
       <details style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem' }}>
         <summary style={{ padding: '0.75rem', cursor: 'pointer', fontWeight: 600, backgroundColor: 'var(--color-bg-secondary)' }}>Size Chart</summary>
-        <div style={{ overflowX: 'auto' }}>
+        <div className="overflow-x-auto">
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
             <thead>
               <tr>{SYSTEMS.map((s) => <th key={s.id} style={{ padding: '0.5rem', borderBottom: '2px solid var(--color-border)', textAlign: 'center', whiteSpace: 'nowrap' }}>{s.name}</th>)}</tr>

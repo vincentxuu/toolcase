@@ -154,7 +154,7 @@ export default function RelativeTitleCalculator({ labels }: RelativeTitleCalcula
   const result = getResult()
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Relation selector */}
       <div>
         <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.75rem', fontSize: '0.875rem' }}>
@@ -184,19 +184,17 @@ export default function RelativeTitleCalculator({ labels }: RelativeTitleCalcula
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleAdd}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.addRelation}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={chain.length === 0}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -218,8 +216,8 @@ export default function RelativeTitleCalculator({ labels }: RelativeTitleCalcula
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
               <span style={{ fontWeight: 600, color: 'var(--color-primary)' }}>{l.you}</span>
               {chain.map((rel, index) => (
-                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>→</span>
+                <div key={index} className="flex items-center gap-2">
+                  <span className="text-[var(--color-text-secondary)]">→</span>
                   <span style={{
                     padding: '0.375rem 0.75rem',
                     borderRadius: '0.375rem',
@@ -243,10 +241,10 @@ export default function RelativeTitleCalculator({ labels }: RelativeTitleCalcula
                 border: '1px solid var(--color-border)',
                 textAlign: 'center',
               }}>
-                <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
+                <div className="text-sm text-[var(--color-text-secondary)] mb-2">
                   {l.result}:
                 </div>
-                <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+                <div className="text-3xl font-bold text-[var(--color-primary)]">
                   {result}
                 </div>
               </div>
@@ -265,8 +263,8 @@ export default function RelativeTitleCalculator({ labels }: RelativeTitleCalcula
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>How to use:</strong> Select relationships step by step to build the family tree.
-        For example: select "Father" then "Father" to get "爺爺" (paternal grandfather). The tool supports common Taiwan family relationships.
+        <strong className="text-[var(--color-text)]">How to use:</strong> Select relationships step by step to build the family tree.
+        For example: select &quot;Father&quot; then &quot;Father&quot; to get &quot;爺爺&quot; (paternal grandfather). The tool supports common Taiwan family relationships.
       </div>
     </div>
   )

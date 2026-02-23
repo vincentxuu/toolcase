@@ -172,7 +172,7 @@ export default function TaiwanIdValidator({ labels }: TaiwanIdValidatorProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Business ID Section */}
       <div style={sectionStyle}>
         <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{l.businessId}</h3>
@@ -187,7 +187,7 @@ export default function TaiwanIdValidator({ labels }: TaiwanIdValidatorProps) {
             onKeyDown={(e) => e.key === 'Enter' && handleBizValidate()}
             style={{ ...inputStyle, flex: 1 }}
           />
-          <button className="btn-primary" onClick={handleBizValidate} style={{ whiteSpace: 'nowrap' }}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleBizValidate} style={{ whiteSpace: 'nowrap' }}>
             {l.validate}
           </button>
         </div>
@@ -212,7 +212,7 @@ export default function TaiwanIdValidator({ labels }: TaiwanIdValidatorProps) {
             onKeyDown={(e) => e.key === 'Enter' && handleNatValidate()}
             style={{ ...inputStyle, flex: 1 }}
           />
-          <button className="btn-primary" onClick={handleNatValidate} style={{ whiteSpace: 'nowrap' }}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleNatValidate} style={{ whiteSpace: 'nowrap' }}>
             {l.validate}
           </button>
         </div>
@@ -222,7 +222,7 @@ export default function TaiwanIdValidator({ labels }: TaiwanIdValidatorProps) {
               {natResult ? `\u2713 ${l.valid}` : `\u2717 ${l.invalid}`}
             </div>
             {natResult && natGender && (
-              <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+              <span className="text-sm text-[var(--color-text-secondary)]">
                 ({natGender})
               </span>
             )}
@@ -232,17 +232,17 @@ export default function TaiwanIdValidator({ labels }: TaiwanIdValidatorProps) {
 
       {/* Random Generator Section */}
       <div style={sectionStyle}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.generator}</h3>
+        <h3 className="font-semibold mb-3">{l.generator}</h3>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <button
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
             onClick={handleGenBiz}
             style={{ flex: '1 1 auto', justifyContent: 'center' }}
           >
             {l.generate} {l.businessId}
           </button>
           <button
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
             onClick={handleGenNat}
             style={{ flex: '1 1 auto', justifyContent: 'center' }}
           >

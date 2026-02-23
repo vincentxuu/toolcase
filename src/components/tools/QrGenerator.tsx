@@ -62,18 +62,18 @@ export default function QrGenerator({ labels }: QrGeneratorProps) {
   }, [qrDataUrl])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <textarea
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ minHeight: '100px' }}
         placeholder={l.placeholder}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.size}:</label>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-[var(--color-text-secondary)]">{l.size}:</label>
           <select
             value={size}
             onChange={(e) => setSize(Number(e.target.value))}
@@ -92,18 +92,18 @@ export default function QrGenerator({ labels }: QrGeneratorProps) {
           </select>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.color}:</label>
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-[var(--color-text-secondary)]">{l.color}:</label>
           <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <label style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.bgColor}:</label>
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-[var(--color-text-secondary)]">{l.bgColor}:</label>
           <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} />
         </div>
 
         {qrDataUrl && (
-          <button className="btn-primary" onClick={handleDownload}>{l.download}</button>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>{l.download}</button>
         )}
       </div>
 
@@ -122,7 +122,7 @@ export default function QrGenerator({ labels }: QrGeneratorProps) {
         </div>
       )}
 
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      <canvas ref={canvasRef} className="hidden" />
     </div>
   )
 }

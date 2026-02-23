@@ -77,8 +77,8 @@ export default function TwSalaryWithholdingTax({ labels }: Props) {
   const tabInactive: React.CSSProperties = { ...tabBase, backgroundColor: 'var(--color-bg-secondary)', color: 'var(--color-text)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="flex gap-2">
         <button style={tab === 'resident' ? tabActive : tabInactive} onClick={() => setTab('resident')}>{l.residentTab}</button>
         <button style={tab === 'nonResident' ? tabActive : tabInactive} onClick={() => setTab('nonResident')}>{l.nonResidentTab}</button>
       </div>
@@ -88,22 +88,22 @@ export default function TwSalaryWithholdingTax({ labels }: Props) {
           {/* Quick calculator */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', alignItems: 'end' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.monthlySalary}</label>
+              <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.monthlySalary}</label>
               <input type="number" style={inputStyle} value={salary} onChange={e => setSalary(Number(e.target.value))} min={0} step={1000} />
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.monthlyWithholding}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ef4444' }}>NT${fmt(withholding)}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.monthlyWithholding}</div>
+              <div className="text-2xl font-bold text-red-500">NT${fmt(withholding)}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.annualEstimate}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f59e0b' }}>NT${fmt(withholding * 12)}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.annualEstimate}</div>
+              <div className="text-2xl font-bold text-amber-500">NT${fmt(withholding * 12)}</div>
             </div>
           </div>
 
           {/* Reference table */}
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
               <thead>
                 <tr>
                   <th style={{ ...headerCell, textAlign: 'left' }}>{l.salaryRange}</th>
@@ -131,8 +131,8 @@ export default function TwSalaryWithholdingTax({ labels }: Props) {
           </div>
         </>
       ) : (
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.incomeType}</th>

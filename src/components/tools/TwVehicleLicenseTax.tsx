@@ -70,16 +70,16 @@ export default function TwVehicleLicenseTax({ labels }: Props) {
   const tabInactive: React.CSSProperties = { ...tabBase, backgroundColor: 'var(--color-bg-secondary)', color: 'var(--color-text)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="flex gap-2">
         <button style={tab === 'car' ? tabActive : tabInactive} onClick={() => setTab('car')}>{l.carTab}</button>
         <button style={tab === 'motorcycle' ? tabActive : tabInactive} onClick={() => setTab('motorcycle')}>{l.motorcycleTab}</button>
         <button style={tab === 'ev' ? tabActive : tabInactive} onClick={() => setTab('ev')}>{l.evTab}</button>
       </div>
 
-      <div style={{ overflowX: 'auto' }}>
+      <div className="overflow-x-auto">
         {tab === 'car' && (
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.displacement}</th>
@@ -100,7 +100,7 @@ export default function TwVehicleLicenseTax({ labels }: Props) {
         )}
 
         {tab === 'motorcycle' && (
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.displacement}</th>
@@ -122,7 +122,7 @@ export default function TwVehicleLicenseTax({ labels }: Props) {
 
         {tab === 'ev' && (
           <>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+            <table className="w-full border-collapse text-sm">
               <thead>
                 <tr>
                   <th style={{ ...headerCell, textAlign: 'left' }}>{l.power}</th>

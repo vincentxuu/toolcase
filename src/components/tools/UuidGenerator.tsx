@@ -119,9 +119,9 @@ export default function UuidGenerator({ labels }: UuidGeneratorProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Type selector */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className="flex gap-2">
         <button style={activeTabStyle(activeType === 'uuid')} onClick={() => setActiveType('uuid')}>
           {l.uuidV4}
         </button>
@@ -131,19 +131,19 @@ export default function UuidGenerator({ labels }: UuidGeneratorProps) {
       </div>
 
       {/* Generate buttons */}
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <div className="flex gap-2 flex-wrap">
         {activeType === 'uuid' ? (
-          <button className="btn-primary" onClick={handleGenerateUuid}>{l.generateUuid}</button>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerateUuid}>{l.generateUuid}</button>
         ) : (
-          <button className="btn-primary" onClick={handleGenerateUlid}>{l.generateUlid}</button>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerateUlid}>{l.generateUlid}</button>
         )}
       </div>
 
       {/* Result */}
       {(activeType === 'uuid' && uuid) && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <span style={labelStyle}>{l.uuidV4}</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="flex items-center gap-2">
             <div style={{ ...resultStyle, flex: 1 }}>{uuid}</div>
             <CopyButton text={uuid} label={l.copy} copiedLabel={l.copied} />
           </div>
@@ -151,9 +151,9 @@ export default function UuidGenerator({ labels }: UuidGeneratorProps) {
       )}
 
       {(activeType === 'ulid' && ulid) && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <span style={labelStyle}>{l.ulid}</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="flex items-center gap-2">
             <div style={{ ...resultStyle, flex: 1 }}>{ulid}</div>
             <CopyButton text={ulid} label={l.copy} copiedLabel={l.copied} />
           </div>
@@ -167,29 +167,29 @@ export default function UuidGenerator({ labels }: UuidGeneratorProps) {
           {[1, 5, 10, 50].map((count) => (
             <button
               key={count}
-              className={bulkCount === count ? 'btn-primary' : 'btn-secondary'}
+              className={bulkCount === count ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
               onClick={() => setBulkCount(count)}
             >
               {count}
             </button>
           ))}
-          <button className="btn-primary" onClick={handleBulkGenerate}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleBulkGenerate}>
             {l.bulkGenerate} ({bulkCount})
           </button>
         </div>
       </div>
 
       {bulkResults && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <span style={labelStyle}>{l.bulkResult}</span>
-          <div style={{ position: 'relative' }}>
+          <div className="relative">
             <textarea
-              className="tool-textarea"
+              className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
               style={{ height: '200px', fontFamily: 'monospace' }}
               value={bulkResults}
               readOnly
             />
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+            <div className="absolute top-2 right-2">
               <CopyButton text={bulkResults} label={l.copy} copiedLabel={l.copied} />
             </div>
           </div>

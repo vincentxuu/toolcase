@@ -82,12 +82,12 @@ export default function TwRetirementIncomeTax({ labels }: Props) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Rules */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.rulesTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.rulesTitle}</div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.type}</th>
@@ -109,37 +109,37 @@ export default function TwRetirementIncomeTax({ labels }: Props) {
       </div>
 
       {/* Quick Calculator */}
-      <div style={{ padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.quickCalc}</div>
+      <div className="p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <div className="text-base font-semibold mb-4">{l.quickCalc}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.serviceYears}</label>
+            <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.serviceYears}</label>
             <input type="number" style={inputStyle} value={years} onChange={e => setYears(Math.max(1, Number(e.target.value)))} min={1} max={50} />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.lumpSum}</label>
+            <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.lumpSum}</label>
             <input type="number" style={inputStyle} value={lumpSum} onChange={e => setLumpSum(Number(e.target.value))} min={0} step={100000} />
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.taxFree}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.taxFree}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#10b981' }}>NT${fmt(result.taxFreeAmount)}</div>
             <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
               上限 {fmt(result.taxFreeLimit)}
             </div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.halfTaxable}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.halfTaxable}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f59e0b' }}>NT${fmt(result.halfTaxableAmount)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.fullyTaxable}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.fullyTaxable}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ef4444' }}>NT${fmt(result.fullyTaxableAmount)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>應課稅所得</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">應課稅所得</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ef4444' }}>NT${fmt(result.taxableIncome)}</div>
           </div>
         </div>
@@ -147,8 +147,8 @@ export default function TwRetirementIncomeTax({ labels }: Props) {
 
       {/* History */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.exemptionHistory}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.exemptionHistory}</div>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'center' }}>{l.year}</th>

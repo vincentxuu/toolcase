@@ -173,7 +173,7 @@ export default function SpecialSymbols({ labels }: SpecialSymbolsProps) {
       {filteredCategories.map((cat, ci) => (
         <div key={ci} style={sectionStyle}>
           <h3 style={{ fontWeight: 600, marginBottom: '0.75rem', fontSize: '0.95rem' }}>{cat.name}</h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div className="flex flex-wrap gap-2">
             {cat.symbols.map((s, si) => (
               <button
                 key={si}

@@ -115,11 +115,11 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
         <input
@@ -127,17 +127,17 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {originalFile && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             {originalFile.name}
           </span>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.quality}: {quality}%</label>
           <input
             type="range"
@@ -145,11 +145,11 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
             max={100}
             value={quality}
             onChange={(e) => setQuality(Number(e.target.value))}
-            style={{ width: '150px' }}
+            className="w-32 sm:w-40"
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.format}:</label>
           <select
             value={format}
@@ -169,7 +169,7 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
         </div>
 
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleCompress}
           disabled={!originalFile}
         >
@@ -178,7 +178,7 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
       </div>
 
       {originalSize > 0 && (
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-4 flex-wrap">
           <div style={cardStyle}>
             <span style={labelStyle}>{l.originalSize}: </span>
             <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>{formatBytes(originalSize)}</span>
@@ -204,12 +204,12 @@ export default function ImageCompressor({ labels }: ImageCompressorProps) {
       )}
 
       {compressedUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
             <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text)' }}>
               {l.preview}
             </span>
-            <button className="btn-primary" onClick={handleDownload}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>
               {l.download}
             </button>
           </div>

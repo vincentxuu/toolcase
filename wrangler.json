@@ -10,6 +10,10 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "alias": {
+    "critters": "./workers/shims/empty.js",
+    "@opentelemetry/api": "./workers/shims/empty.js"
+  },
   "env": {
     "production": {
       "name": "toolcase-production",
@@ -33,5 +37,6 @@
         "ENVIRONMENT": "preview"
       }
     }
-  }
+  },
+  "base_dir": "."
 }

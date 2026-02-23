@@ -130,28 +130,28 @@ export default function UnicodeConverter({ labels }: UnicodeConverterProps) {
   ]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center flex-wrap">
         <button
-          className={direction === 'encode' ? 'btn-primary' : 'btn-secondary'}
+          className={direction === 'encode' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
           onClick={() => { setDirection('encode'); setOutput(input.trim() ? textToEncoded(input, mode) : '') }}
         >
           {l.textToUnicode}
         </button>
         <button
-          className={direction === 'decode' ? 'btn-primary' : 'btn-secondary'}
+          className={direction === 'decode' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
           onClick={() => { setDirection('decode'); setOutput(input.trim() ? encodedToText(input, mode) : '') }}
         >
           {l.unicodeToText}
         </button>
-        <button className="btn-secondary" onClick={() => { setInput(''); setOutput('') }}>{l.clear}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => { setInput(''); setOutput('') }}>{l.clear}</button>
       </div>
 
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <div className="flex gap-2 flex-wrap">
         {modeOptions.map((opt) => (
           <button
             key={opt.value}
-            className={mode === opt.value ? 'btn-primary' : 'btn-secondary'}
+            className={mode === opt.value ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
             style={{ fontSize: '0.8125rem', padding: '0.375rem 0.75rem' }}
             onClick={() => {
               setMode(opt.value)
@@ -165,10 +165,9 @@ export default function UnicodeConverter({ labels }: UnicodeConverterProps) {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <textarea
-          className="tool-textarea"
-          style={{ height: '300px' }}
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
           placeholder={l.inputPlaceholder}
           value={input}
           onChange={(e) => {
@@ -176,16 +175,15 @@ export default function UnicodeConverter({ labels }: UnicodeConverterProps) {
             handleConvert(e.target.value)
           }}
         />
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <textarea
-            className="tool-textarea"
-            style={{ height: '300px' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
             placeholder={l.outputPlaceholder}
             value={output}
             readOnly
           />
           {output && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+            <div className="absolute top-2 right-2">
               <CopyButton text={output} label={l.copy} copiedLabel={l.copied} />
             </div>
           )}

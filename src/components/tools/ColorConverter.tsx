@@ -135,9 +135,9 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Color preview swatch */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div
           style={{
@@ -151,7 +151,7 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
       </div>
 
       {/* HEX */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.hex}</span>
         <div style={rowStyle}>
           <input
@@ -186,11 +186,11 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
       </div>
 
       {/* RGB */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.rgb}</span>
         <div style={rowStyle}>
           <div style={{ display: 'flex', gap: '0.375rem', flex: 1 }}>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>R</span>
               <input
                 type="number"
@@ -201,7 +201,7 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
                 style={inputStyle}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>G</span>
               <input
                 type="number"
@@ -212,7 +212,7 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
                 style={inputStyle}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>B</span>
               <input
                 type="number"
@@ -229,11 +229,11 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
       </div>
 
       {/* HSL */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.hsl}</span>
         <div style={rowStyle}>
           <div style={{ display: 'flex', gap: '0.375rem', flex: 1 }}>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>H</span>
               <input
                 type="number"
@@ -244,7 +244,7 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
                 style={inputStyle}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>S%</span>
               <input
                 type="number"
@@ -255,7 +255,7 @@ export default function ColorConverter({ labels }: ColorConverterProps) {
                 style={inputStyle}
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <span style={labelStyle}>L%</span>
               <input
                 type="number"

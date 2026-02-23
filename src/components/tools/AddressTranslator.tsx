@@ -272,7 +272,7 @@ export default function AddressTranslator({ labels }: AddressTranslatorProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       <div>
-        <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.inputLabel}</label>
+        <label className="font-semibold block mb-1">{l.inputLabel}</label>
         <input
           type="text"
           value={input}
@@ -283,9 +283,9 @@ export default function AddressTranslator({ labels }: AddressTranslatorProps) {
       </div>
 
       {result && (
-        <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+        <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.5rem 0.75rem', backgroundColor: 'var(--color-bg-secondary)', borderBottom: '1px solid var(--color-border)' }}>
-            <span style={{ fontWeight: 600 }}>{l.result}</span>
+            <span className="font-semibold">{l.result}</span>
             <button
               onClick={handleCopy}
               style={{ padding: '0.25rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: '0.25rem', background: 'none', cursor: 'pointer', fontSize: '0.85rem', color: copied ? 'var(--color-primary)' : 'inherit' }}

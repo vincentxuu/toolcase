@@ -85,7 +85,7 @@ export default function ClothingSizeChart({ labels }: ClothingSizeChartProps) {
   const isWomenBottoms = gender === 'women' && isBottoms
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
           {(['men', 'women'] as const).map((g) => (

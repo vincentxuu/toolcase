@@ -55,22 +55,22 @@ export default function TwMinimumWage({ labels }: Props) {
   const headerCell: React.CSSProperties = { ...cellStyle, fontWeight: 600, fontSize: '0.8125rem', color: 'var(--color-text-secondary)', borderBottom: '2px solid var(--color-border)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Current highlight */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div style={{ padding: '1.5rem', borderRadius: '0.75rem', backgroundColor: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>2025 年月薪基本工資</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>NT${fmt(28590)}</div>
+          <div className="text-sm text-[var(--color-text-secondary)] mb-2">2025 年月薪基本工資</div>
+          <div className="text-3xl font-bold text-[var(--color-primary)]">NT${fmt(28590)}</div>
         </div>
         <div style={{ padding: '1.5rem', borderRadius: '0.75rem', backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>2025 年時薪基本工資</div>
+          <div className="text-sm text-[var(--color-text-secondary)] mb-2">2025 年時薪基本工資</div>
           <div style={{ fontSize: '2rem', fontWeight: 700, color: '#10b981' }}>NT${fmt(190)}</div>
         </div>
       </div>
 
       {/* History table */}
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'center' }}>{l.year}</th>
@@ -96,8 +96,8 @@ export default function TwMinimumWage({ labels }: Props) {
 
       {/* Key info */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.keyInfoTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.keyInfoTitle}</div>
+        <table className="w-full border-collapse text-sm">
           <tbody>
             {RELATED_INFO.map((r, i) => (
               <tr key={i}>

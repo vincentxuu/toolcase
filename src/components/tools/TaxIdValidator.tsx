@@ -76,10 +76,10 @@ export default function TaxIdValidator({ labels }: TaxIdValidatorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input section */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.inputLabel}
         </label>
         <input
@@ -103,20 +103,18 @@ export default function TaxIdValidator({ labels }: TaxIdValidatorProps) {
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleValidate}
           disabled={input.length !== 8}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.validate}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !result}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -136,8 +134,8 @@ export default function TaxIdValidator({ labels }: TaxIdValidatorProps) {
             {l.result}
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.status}:</span>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-[var(--color-text-secondary)]">{l.status}:</span>
             <span
               style={{
                 fontSize: '0.875rem',
@@ -164,7 +162,7 @@ export default function TaxIdValidator({ labels }: TaxIdValidatorProps) {
           lineHeight: 1.6,
         }}
       >
-        <strong style={{ color: 'var(--color-text)' }}>Note:</strong> This tool validates Taiwan Business Tax ID (統一編號) format using the official algorithm.
+        <strong className="text-[var(--color-text)]">Note:</strong> This tool validates Taiwan Business Tax ID (統一編號) format using the official algorithm.
         It does not verify if the business is currently active or registered.
       </div>
     </div>

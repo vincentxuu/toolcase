@@ -201,11 +201,11 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
   const standardDeductionAmount = system === 'us' ? US_STANDARD_DEDUCTION[filing] : TW_STANDARD_DEDUCTION[filing]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Tax System Toggle */}
       <div>
         <label style={labelStyle}>{l.taxSystem}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           <button style={system === 'us' ? tabActive : tabInactive} onClick={() => handleSystemChange('us')}>
             {l.us}
           </button>
@@ -216,7 +216,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
       </div>
 
       {/* Income & Filing Status */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.grossIncome}</label>
           <input type="number" style={inputStyle} value={income} onChange={(e) => setIncome(Number(e.target.value))} min={0} step={system === 'tw' ? 10000 : 1000} />
@@ -232,7 +232,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
 
       {/* Taiwan: Exemptions */}
       {system === 'tw' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label style={labelStyle}>{l.generalExemptions}</label>
             <input type="number" style={inputStyle} value={twExemptions} onChange={(e) => {
@@ -249,7 +249,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
       )}
 
       {/* Deductions */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.deductions}</label>
           <select style={inputStyle} value={deductionType} onChange={(e) => setDeductionType(e.target.value as 'standard' | 'itemized')}>
@@ -267,7 +267,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
 
       {/* Taiwan: Salary Earners */}
       {system === 'tw' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label style={labelStyle}>{l.salaryEarners}</label>
             <select style={inputStyle} value={twSalaryEarners} onChange={(e) => setTwSalaryEarners(Number(e.target.value))}>
@@ -283,24 +283,24 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
       {system === 'tw' && 'exemptionTotal' in result && (
         <div style={{ padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)' }}>
           <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text-secondary)', marginBottom: '0.75rem' }}>{l.deductionSummary}</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="flex flex-col gap-2 text-sm">
+            <div className="flex justify-between">
               <span>{l.grossIncome}</span>
-              <span style={{ fontWeight: 600 }}>{currencySymbol}{fmt(income)}</span>
+              <span className="font-semibold">{currencySymbol}{fmt(income)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-secondary)' }}>
+            <div className="flex justify-between text-[var(--color-text-secondary)]">
               <span>- {l.exemptionSubtotal} ({twExemptions}{l.person})</span>
               <span>{currencySymbol}{fmt(result.exemptionTotal as number)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-secondary)' }}>
+            <div className="flex justify-between text-[var(--color-text-secondary)]">
               <span>- {l.deductionSubtotal}</span>
               <span>{currencySymbol}{fmt(result.deduction as number)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-secondary)' }}>
+            <div className="flex justify-between text-[var(--color-text-secondary)]">
               <span>- {l.specialDeductionSubtotal} ({twSalaryEarners}{l.person})</span>
               <span>{currencySymbol}{fmt(result.salaryTotal as number)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '2px solid var(--color-border)', paddingTop: '0.5rem', fontWeight: 700 }}>
+            <div className="flex justify-between border-t-2 border-[var(--color-border)] pt-2 font-bold">
               <span>{l.netTaxableIncome}</span>
               <span>{currencySymbol}{fmt(result.taxableIncome)}</span>
             </div>
@@ -309,23 +309,23 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
       )}
 
       {/* Result Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">
             {system === 'tw' ? l.netTaxableIncome : l.taxableIncome}
           </div>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{currencySymbol}{fmt(result.taxableIncome)}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalTax}</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ef4444' }}>{currencySymbol}{fmt(result.totalTax)}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalTax}</div>
+          <div className="text-2xl font-bold text-red-500">{currencySymbol}{fmt(result.totalTax)}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.effectiveRate}</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f59e0b' }}>{result.effectiveRate.toFixed(1)}%</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.effectiveRate}</div>
+          <div className="text-2xl font-bold text-amber-500">{result.effectiveRate.toFixed(1)}%</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.afterTax}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.afterTax}</div>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#10b981' }}>{currencySymbol}{fmt(result.afterTax)}</div>
         </div>
       </div>
@@ -333,7 +333,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
       {/* Bracket Breakdown */}
       <div>
         <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.bracketBreakdown}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
               <th style={{ textAlign: 'left', padding: '0.5rem', color: 'var(--color-text-secondary)' }}>{l.bracket}</th>
@@ -344,7 +344,7 @@ export default function TaxCalculator({ defaultTaxSystem = 'us', labels }: Props
           <tbody>
             {result.breakdown.map((b, i) => (
               <tr key={i} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                <td style={{ padding: '0.5rem' }}>{(b.rate * 100).toFixed(0)}%</td>
+                <td className="p-2">{(b.rate * 100).toFixed(0)}%</td>
                 <td style={{ padding: '0.5rem', textAlign: 'right' }}>{currencySymbol}{fmt(b.taxable)}</td>
                 <td style={{ padding: '0.5rem', textAlign: 'right', color: '#ef4444' }}>{currencySymbol}{fmt(b.tax)}</td>
               </tr>

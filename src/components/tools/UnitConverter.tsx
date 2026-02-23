@@ -78,7 +78,7 @@ export default function UnitConverter({ unitType, defaultFrom = 0, defaultTo = 1
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '0.75rem', alignItems: 'end' }}>
         <div>
           <label style={labelStyle}>{l.from}</label>
@@ -86,7 +86,7 @@ export default function UnitConverter({ unitType, defaultFrom = 0, defaultTo = 1
             {units.map((u, i) => <option key={u.key} value={i}>{u.label}</option>)}
           </select>
         </div>
-        <button className="btn-secondary" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
         <div>
           <label style={labelStyle}>{l.to}</label>
           <select style={inputStyle} value={toIdx} onChange={(e) => setToIdx(Number(e.target.value))}>
@@ -101,8 +101,8 @@ export default function UnitConverter({ unitType, defaultFrom = 0, defaultTo = 1
       </div>
 
       <div style={{ padding: '1.5rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }}>
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.result}</div>
-        <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+        <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.result}</div>
+        <div className="text-4xl font-bold text-[var(--color-primary)]">
           {formatResult(result)}
         </div>
         <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>

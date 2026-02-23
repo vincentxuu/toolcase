@@ -74,18 +74,18 @@ export default function TextRepeater({ labels }: TextRepeaterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div>
         <label style={labelStyle}>{l.inputText}</label>
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ height: '80px' }}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <div className="flex gap-4 flex-wrap">
         <div style={{ flex: '1 1 120px' }}>
           <label style={labelStyle}>{l.times}</label>
           <input
@@ -99,7 +99,7 @@ export default function TextRepeater({ labels }: TextRepeaterProps) {
         </div>
         <div style={{ flex: '1 1 200px' }}>
           <label style={labelStyle}>{l.separator}</label>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div className="flex gap-2 flex-wrap">
             {(['newline', 'space', 'comma', 'custom'] as const).map((s) => (
               <button
                 key={s}
@@ -139,7 +139,7 @@ export default function TextRepeater({ labels }: TextRepeaterProps) {
           <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>{output.length} {l.characters}</span>
         </div>
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ height: '150px' }}
           value={output}
           readOnly

@@ -96,10 +96,10 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <textarea
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ height: '100px' }}
         placeholder={l.inputPlaceholder}
         value={input}
@@ -120,7 +120,7 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           <button style={optionStyle(toLowercase)} onClick={() => setToLowercase(!toLowercase)}>
             {l.lowercase}
           </button>
@@ -131,7 +131,7 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
           <span style={labelStyle}>{l.maxLength}</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="flex items-center gap-2">
             <input
               type="number"
               min={0}
@@ -148,7 +148,7 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
                 fontSize: '0.875rem',
               }}
             />
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+            <span className="text-xs text-[var(--color-text-secondary)]">
               {maxLength === 0 ? l.noLimit : ''}
             </span>
           </div>
@@ -159,7 +159,7 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
       {slug && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
           <span style={labelStyle}>{l.result}</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="flex items-center gap-2">
             <div style={{
               flex: 1,
               padding: '1rem',
@@ -176,7 +176,7 @@ export default function SlugGenerator({ labels }: SlugGeneratorProps) {
             </div>
             <CopyButton text={slug} label={l.copy} copiedLabel={l.copied} />
           </div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-xs text-[var(--color-text-secondary)]">
             {slug.length} characters
           </span>
         </div>

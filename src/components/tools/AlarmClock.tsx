@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -106,6 +106,11 @@ export default function AlarmClock({ labels }: AlarmClockProps) {
     return () => clearInterval(interval)
   }, [])
 
+  const triggerAlarm = useCallback((alarm: Alarm) => {
+    setRingingAlarm(alarm)
+    playSound()
+  }, [])
+
   // Check for alarm triggers
   useEffect(() => {
     const now = new Date()
@@ -124,12 +129,7 @@ export default function AlarmClock({ labels }: AlarmClockProps) {
         triggerAlarm(alarm)
       }
     })
-  }, [currentTime, alarms])
-
-  const triggerAlarm = (alarm: Alarm) => {
-    setRingingAlarm(alarm)
-    playSound()
-  }
+  }, [currentTime, alarms, triggerAlarm])
 
   const playSound = () => {
     // Create beep sound using Web Audio API

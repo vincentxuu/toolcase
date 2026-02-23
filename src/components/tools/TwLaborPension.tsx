@@ -114,43 +114,43 @@ export default function TwLaborPension({ labels }: Props) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ padding: '1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)' }}>
-        <div style={{ fontSize: '0.875rem' }}>
+        <div className="text-sm">
           <strong>勞退新制：</strong>雇主每月至少提繳工資的 6% 到勞工個人退休金專戶。勞工可自願提繳 1~6%（享有當年度個人綜合所得稅遞延優惠）。
         </div>
       </div>
 
       {/* Quick Lookup */}
-      <div style={{ padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.quickLookup}</div>
+      <div className="p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <div className="text-base font-semibold mb-4">{l.quickLookup}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.monthlySalary}</label>
+            <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.monthlySalary}</label>
             <input type="number" style={inputStyle} value={salary} onChange={e => setSalary(Number(e.target.value))} min={0} step={1000} />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>自願提繳比例</label>
+            <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">自願提繳比例</label>
             <select style={inputStyle} value={voluntaryRate} onChange={e => setVoluntaryRate(Number(e.target.value))}>
               {[0, 1, 2, 3, 4, 5, 6].map(r => <option key={r} value={r}>{r}%</option>)}
             </select>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.yourGrade}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.yourGrade}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text)' }}>NT${fmt(matched.salary)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.monthlyEmployer}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.monthlyEmployer}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ef4444' }}>NT${fmt(employerContrib)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>自願提繳</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">自願提繳</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#3b82f6' }}>NT${fmt(voluntaryContrib)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.annualEmployer}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.annualEmployer}</div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f59e0b' }}>NT${fmt(employerContrib * 12)}</div>
           </div>
         </div>

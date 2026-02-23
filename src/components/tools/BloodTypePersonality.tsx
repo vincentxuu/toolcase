@@ -104,7 +104,7 @@ export default function BloodTypePersonality({ labels }: BloodTypePersonalityPro
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Blood Type Selection */}
       <div style={sectionStyle}>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.75rem' }}>
@@ -179,16 +179,16 @@ export default function BloodTypePersonality({ labels }: BloodTypePersonalityPro
 
       {/* All Types Reference Table */}
       <div style={sectionStyle}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.allTypes}</h3>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <h3 className="font-semibold mb-3">{l.allTypes}</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.type}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.personality}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.strengths}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.weaknesses}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.compatibility}</th>
+                <th className="p-2 text-left">{l.type}</th>
+                <th className="p-2 text-left">{l.personality}</th>
+                <th className="p-2 text-left">{l.strengths}</th>
+                <th className="p-2 text-left">{l.weaknesses}</th>
+                <th className="p-2 text-left">{l.compatibility}</th>
               </tr>
             </thead>
             <tbody>
@@ -200,12 +200,12 @@ export default function BloodTypePersonality({ labels }: BloodTypePersonalityPro
                   <td style={{ padding: '0.5rem', fontWeight: 700, color: TYPE_COLORS[i] }}>
                     {TYPE_KEYS[i]}
                   </td>
-                  <td style={{ padding: '0.5rem' }}>
-                    <span style={{ fontWeight: 600 }}>{t.nickname}</span>
+                  <td className="p-2">
+                    <span className="font-semibold">{t.nickname}</span>
                   </td>
                   <td style={{ padding: '0.5rem', color: 'var(--color-text-secondary)' }}>{t.strengths}</td>
                   <td style={{ padding: '0.5rem', color: 'var(--color-text-secondary)' }}>{t.weaknesses}</td>
-                  <td style={{ padding: '0.5rem' }}>
+                  <td className="p-2">
                     <span style={{ color: '#22c55e', fontSize: '0.8rem' }}>{t.bestMatch}</span>
                   </td>
                 </tr>

@@ -66,7 +66,7 @@ export default function PasswordStrengthChecker({ labels }: PasswordStrengthChec
   ]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Password input */}
       <div>
         <textarea

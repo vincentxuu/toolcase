@@ -112,9 +112,9 @@ export default function OpenGraphPreview({ labels }: OpenGraphPreviewProps) {
   })()
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Inputs */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div className="flex flex-col gap-4">
         <div>
           <label style={labelStyle}>{l.title}</label>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Page title" style={inputStyle} />
@@ -133,7 +133,7 @@ export default function OpenGraphPreview({ labels }: OpenGraphPreviewProps) {
           <label style={labelStyle}>{l.imageUrl}</label>
           <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="https://example.com/image.jpg" style={inputStyle} />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label style={labelStyle}>{l.url}</label>
             <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://example.com" style={inputStyle} />
@@ -146,7 +146,7 @@ export default function OpenGraphPreview({ labels }: OpenGraphPreviewProps) {
       </div>
 
       {/* Preview Cards */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div className="flex flex-col gap-6">
         {/* Facebook Preview */}
         <div>
           <div style={sectionTitleStyle}>{l.facebookPreview}</div>
@@ -221,7 +221,7 @@ export default function OpenGraphPreview({ labels }: OpenGraphPreviewProps) {
               <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-text)', lineHeight: 1.3 }}>
                 {title || 'Page Title'}
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
+              <div className="text-xs text-[var(--color-text-secondary)] mt-1">
                 {displayDomain}
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function OpenGraphPreview({ labels }: OpenGraphPreviewProps) {
 
       {/* Meta Tags Output */}
       <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <div className="flex justify-between items-center mb-2">
           <div style={sectionTitleStyle}>{l.metaTags}</div>
           <button
             onClick={handleCopy}

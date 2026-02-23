@@ -98,19 +98,19 @@ export default function JwtDecoder({ labels }: JwtDecoderProps) {
   }, [input, handleDecode])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <textarea
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ minHeight: '120px' }}
         placeholder={l.placeholder}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button className="btn-primary" onClick={handleDecode}>{l.decode}</button>
+      <div className="flex gap-2">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDecode}>{l.decode}</button>
         <button
-          className="btn-secondary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={() => { setInput(''); setHeader(''); setPayload(''); setSignature(''); setError(''); setExpInfo(null) }}
         >
           {l.clear}
@@ -140,9 +140,9 @@ export default function JwtDecoder({ labels }: JwtDecoderProps) {
       )}
 
       {header && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+            <div className="flex justify-between items-center mb-2">
               <h3 style={{ fontWeight: 600, color: 'var(--color-primary)' }}>{l.header}</h3>
               <CopyButton text={header} label={l.copy} copiedLabel={l.copied} />
             </div>
@@ -159,7 +159,7 @@ export default function JwtDecoder({ labels }: JwtDecoderProps) {
             </pre>
           </div>
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+            <div className="flex justify-between items-center mb-2">
               <h3 style={{ fontWeight: 600, color: 'var(--color-primary)' }}>{l.payload}</h3>
               <CopyButton text={payload} label={l.copy} copiedLabel={l.copied} />
             </div>
@@ -180,7 +180,7 @@ export default function JwtDecoder({ labels }: JwtDecoderProps) {
 
       {signature && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <h3 style={{ fontWeight: 600, color: 'var(--color-text-secondary)' }}>{l.signature}</h3>
             <CopyButton text={signature} label={l.copy} copiedLabel={l.copied} />
           </div>

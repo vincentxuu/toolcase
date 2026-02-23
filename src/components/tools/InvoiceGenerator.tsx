@@ -87,26 +87,10 @@ export default function InvoiceGenerator({ labels }: InvoiceGeneratorProps) {
     window.print()
   }, [])
 
-  const labelStyle: React.CSSProperties = {
-    fontSize: '0.875rem',
-    fontWeight: 500,
-    color: 'var(--color-text-secondary)',
-  }
-
-  const inputStyle: React.CSSProperties = {
-    padding: '0.375rem 0.5rem',
-    borderRadius: '0.375rem',
-    border: '1px solid var(--color-border)',
-    backgroundColor: 'var(--color-bg-secondary)',
-    color: 'var(--color-text)',
-    fontSize: '0.875rem',
-    width: '100%',
-  }
-
   const fmt = (n: number) => n.toFixed(2)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Print-specific styles */}
       <style>{`
         @media print {
@@ -118,95 +102,89 @@ export default function InvoiceGenerator({ labels }: InvoiceGeneratorProps) {
       `}</style>
 
       {/* Form inputs */}
-      <div className="no-print" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.companyName}</label>
-          <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} style={inputStyle} />
+      <div className="no-print grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.companyName}</label>
+          <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.clientName}</label>
-          <input type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} style={inputStyle} />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.clientName}</label>
+          <input type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.invoiceNumber}</label>
-          <input type="text" value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} style={inputStyle} />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.invoiceNumber}</label>
+          <input type="text" value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.date}</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={inputStyle} />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.date}</label>
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.dueDate}</label>
-          <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} style={inputStyle} />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.dueDate}</label>
+          <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <label style={labelStyle}>{l.taxRate} (%)</label>
-          <input type="number" value={taxRate} onChange={(e) => setTaxRate(Number(e.target.value))} min={0} max={100} style={inputStyle} />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-[var(--color-text-secondary)]">{l.taxRate} (%)</label>
+          <input type="number" value={taxRate} onChange={(e) => setTaxRate(Number(e.target.value))} min={0} max={100} className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm" />
         </div>
       </div>
 
       {/* Line Items */}
       <div className="no-print">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-          <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text)' }}>Line Items</span>
-          <button className="btn-secondary" style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }} onClick={addItem}>
+        <div className="flex justify-between items-center mb-2">
+          <span className="font-semibold text-sm text-[var(--color-text)]">Line Items</span>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1" onClick={addItem}>
             + {l.addItem}
           </button>
         </div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
-              <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                <th style={{ textAlign: 'left', padding: '0.5rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>{l.description}</th>
-                <th style={{ textAlign: 'right', padding: '0.5rem', color: 'var(--color-text-secondary)', fontWeight: 500, width: '80px' }}>{l.quantity}</th>
-                <th style={{ textAlign: 'right', padding: '0.5rem', color: 'var(--color-text-secondary)', fontWeight: 500, width: '100px' }}>{l.unitPrice}</th>
-                <th style={{ textAlign: 'right', padding: '0.5rem', color: 'var(--color-text-secondary)', fontWeight: 500, width: '100px' }}>{l.amount}</th>
-                <th style={{ width: '60px' }}></th>
+              <tr className="border-b-2 border-[var(--color-border)]">
+                <th className="text-left p-2 text-[var(--color-text-secondary)] font-medium">{l.description}</th>
+                <th className="text-right p-2 text-[var(--color-text-secondary)] font-medium w-20">{l.quantity}</th>
+                <th className="text-right p-2 text-[var(--color-text-secondary)] font-medium w-[100px]">{l.unitPrice}</th>
+                <th className="text-right p-2 text-[var(--color-text-secondary)] font-medium w-[100px]">{l.amount}</th>
+                <th className="w-[60px]"></th>
               </tr>
             </thead>
             <tbody>
               {items.map((item) => (
-                <tr key={item.id} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.375rem' }}>
+                <tr key={item.id} className="border-b border-[var(--color-border)]">
+                  <td className="p-1.5">
                     <input
                       type="text"
                       value={item.description}
                       onChange={(e) => updateItem(item.id, 'description', e.target.value)}
-                      style={inputStyle}
+                      className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm"
                     />
                   </td>
-                  <td style={{ padding: '0.375rem' }}>
+                  <td className="p-1.5">
                     <input
                       type="number"
                       value={item.quantity}
                       onChange={(e) => updateItem(item.id, 'quantity', Number(e.target.value))}
                       min={1}
-                      style={{ ...inputStyle, textAlign: 'right' }}
+                      className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm text-right"
                     />
                   </td>
-                  <td style={{ padding: '0.375rem' }}>
+                  <td className="p-1.5">
                     <input
                       type="number"
                       value={item.unitPrice}
                       onChange={(e) => updateItem(item.id, 'unitPrice', Number(e.target.value))}
                       min={0}
                       step={0.01}
-                      style={{ ...inputStyle, textAlign: 'right' }}
+                      className="w-full px-2 py-1.5 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm text-right"
                     />
                   </td>
-                  <td style={{ padding: '0.375rem', textAlign: 'right', fontFamily: 'monospace', color: 'var(--color-text)' }}>
+                  <td className="p-1.5 text-right font-mono text-[var(--color-text)]">
                     ${fmt(item.quantity * item.unitPrice)}
                   </td>
-                  <td style={{ padding: '0.375rem', textAlign: 'center' }}>
+                  <td className="p-1.5 text-center">
                     <button
                       onClick={() => removeItem(item.id)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        color: '#ef4444',
-                        cursor: 'pointer',
-                        fontSize: '0.75rem',
-                      }}
+                      className="bg-transparent border-0 text-red-500 cursor-pointer text-xs"
                     >
                       {l.removeItem}
                     </button>
@@ -220,7 +198,7 @@ export default function InvoiceGenerator({ labels }: InvoiceGeneratorProps) {
 
       {/* Print button */}
       <div className="no-print">
-        <button className="btn-primary" onClick={handlePrint}>{l.print}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handlePrint}>{l.print}</button>
       </div>
 
       {/* Invoice Preview */}
@@ -241,7 +219,7 @@ export default function InvoiceGenerator({ labels }: InvoiceGeneratorProps) {
               {companyName || 'Your Company'}
             </h3>
           </div>
-          <div style={{ textAlign: 'right' }}>
+          <div className="text-right">
             <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#333', marginBottom: '0.5rem' }}>{l.invoice}</div>
             <div style={{ fontSize: '0.875rem', color: '#666' }}>{invoiceNumber}</div>
             <div style={{ fontSize: '0.875rem', color: '#666' }}>{l.date}: {date}</div>

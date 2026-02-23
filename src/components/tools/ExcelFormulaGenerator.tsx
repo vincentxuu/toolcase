@@ -125,7 +125,7 @@ export default function ExcelFormulaGenerator({ labels }: ExcelFormulaGeneratorP
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Controls */}
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
         <select
@@ -191,8 +191,8 @@ export default function ExcelFormulaGenerator({ labels }: ExcelFormulaGeneratorP
                 />
               </div>
 
-              <div style={{ marginBottom: '0.5rem' }}>
-                <strong style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+              <div className="mb-2">
+                <strong className="text-sm text-[var(--color-text-secondary)]">
                   {l.syntax}:
                 </strong>
                 <code
@@ -216,7 +216,7 @@ export default function ExcelFormulaGenerator({ labels }: ExcelFormulaGeneratorP
               </p>
 
               <div>
-                <strong style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+                <strong className="text-sm text-[var(--color-text-secondary)]">
                   {l.example}:
                 </strong>
                 <code

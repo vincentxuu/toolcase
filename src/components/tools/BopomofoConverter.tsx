@@ -43,7 +43,7 @@ const bopomofoMap: Record<string, string> = {
   '站': 'ㄓㄢˋ', '走': 'ㄗㄡˇ', '跑': 'ㄆㄠˇ', '跳': 'ㄊㄧㄠˋ', '飛': 'ㄈㄟ',
   '長': 'ㄔㄤˊ', '短': 'ㄉㄨㄢˇ', '高': 'ㄍㄠ', '低': 'ㄉㄧ', '快': 'ㄎㄨㄞˋ',
   '慢': 'ㄇㄢˋ', '多': 'ㄉㄨㄛ', '少': 'ㄕㄠˇ', '新': 'ㄒㄧㄣ', '舊': 'ㄐㄧㄡˋ',
-  '好': 'ㄏㄠˇ', '壞': 'ㄏㄨㄞˋ', '美': 'ㄇㄟˇ', '醜': 'ㄔㄡˇ', '冷': 'ㄌㄥˇ',
+  '壞': 'ㄏㄨㄞˋ', '美': 'ㄇㄟˇ', '醜': 'ㄔㄡˇ', '冷': 'ㄌㄥˇ',
   '熱': 'ㄖㄜˋ', '黑': 'ㄏㄟ', '白': 'ㄅㄞˊ', '紅': 'ㄏㄨㄥˊ', '黃': 'ㄏㄨㄤˊ',
   '綠': 'ㄌㄩˋ', '藍': 'ㄌㄢˊ', '紫': 'ㄗˇ', '金': 'ㄐㄧㄣ', '銀': 'ㄧㄣˊ',
   '謝': 'ㄒㄧㄝˋ', '請': 'ㄑㄧㄥˇ', '對': 'ㄉㄨㄟˋ', '起': 'ㄑㄧˇ', '再': 'ㄗㄞˋ',
@@ -91,10 +91,10 @@ export default function BopomofoConverter({ labels }: BopomofoConverterProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.input}
         </label>
         <textarea
@@ -116,20 +116,18 @@ export default function BopomofoConverter({ labels }: BopomofoConverterProps) {
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleConvert}
           disabled={!input.trim()}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.convert}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !output}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -138,7 +136,7 @@ export default function BopomofoConverter({ labels }: BopomofoConverterProps) {
       {/* Output */}
       {output && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontWeight: 500, fontSize: '0.875rem' }}>
               {l.result}
             </label>
@@ -168,10 +166,10 @@ export default function BopomofoConverter({ labels }: BopomofoConverterProps) {
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>About Bopomofo:</strong> Bopomofo (注音符號), also called Zhuyin,
-        is a phonetic system for transcribing Mandarin Chinese. It's primarily used in Taiwan for teaching pronunciation.
-        <div style={{ marginTop: '0.5rem' }}>
-          <strong style={{ color: 'var(--color-text)' }}>{l.note}</strong> Characters in [brackets] are not in the current dictionary.
+        <strong className="text-[var(--color-text)]">About Bopomofo:</strong> Bopomofo (注音符號), also called Zhuyin,
+        is a phonetic system for transcribing Mandarin Chinese. It&apos;s primarily used in Taiwan for teaching pronunciation.
+        <div className="mt-2">
+          <strong className="text-[var(--color-text)]">{l.note}</strong> Characters in [brackets] are not in the current dictionary.
         </div>
       </div>
     </div>

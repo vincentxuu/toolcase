@@ -36,8 +36,7 @@ export default function CopyButton({ text, label = 'Copy', copiedLabel = 'Copied
   return (
     <button
       onClick={handleCopy}
-      className={`btn-secondary ${sizeClasses[size]}`}
-      style={{ minWidth: size === 'sm' ? '4rem' : '5rem' }}
+      className={`inline-flex items-center gap-2 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] ${sizeClasses[size]} min-w-[${size === 'sm' ? '4rem' : '5rem'}]`}
     >
       {copied ? copiedLabel : label}
     </button>

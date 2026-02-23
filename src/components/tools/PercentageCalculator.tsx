@@ -60,38 +60,51 @@ export default function PercentageCalculator({ labels }: PercentageCalculatorPro
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* What is X% of Y */}
       <div style={cardStyle}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.whatIsXPercentOfY}</h3>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={pct1} onChange={(e) => setPct1(Number(e.target.value))} />
-          <span style={{ fontWeight: 500 }}>{l.percent} {l.of}</span>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={val1} onChange={(e) => setVal1(Number(e.target.value))} />
-          <span style={{ fontWeight: 500 }}>=</span>
+        <h3 className="text-base font-semibold mb-4">{l.whatIsXPercentOfY}</h3>
+        <div className="grid grid-cols-2 gap-2 mb-2">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.percent}</span>
+            <input type="number" style={inputStyle} value={pct1} onChange={(e) => setPct1(Number(e.target.value))} />
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.of}</span>
+            <input type="number" style={inputStyle} value={val1} onChange={(e) => setVal1(Number(e.target.value))} />
+          </div>
         </div>
         <div style={resultStyle}>{result1.toLocaleString('en-US', { maximumFractionDigits: 4 })}</div>
       </div>
 
       {/* X is what % of Y */}
       <div style={cardStyle}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.xIsWhatPercentOfY}</h3>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={val2a} onChange={(e) => setVal2a(Number(e.target.value))} />
-          <span style={{ fontWeight: 500 }}>{l.is} __% {l.of}</span>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={val2b} onChange={(e) => setVal2b(Number(e.target.value))} />
+        <h3 className="text-base font-semibold mb-4">{l.xIsWhatPercentOfY}</h3>
+        <div className="grid grid-cols-2 gap-2 mb-2">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.value}</span>
+            <input type="number" style={inputStyle} value={val2a} onChange={(e) => setVal2a(Number(e.target.value))} />
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.of}</span>
+            <input type="number" style={inputStyle} value={val2b} onChange={(e) => setVal2b(Number(e.target.value))} />
+          </div>
         </div>
         <div style={resultStyle}>{result2.toFixed(2)}%</div>
       </div>
 
       {/* Percentage change */}
       <div style={cardStyle}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.percentChange}</h3>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-          <span style={{ fontWeight: 500, fontSize: '0.875rem' }}>{l.from}</span>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={from} onChange={(e) => setFrom(Number(e.target.value))} />
-          <span style={{ fontWeight: 500, fontSize: '0.875rem' }}>{l.to}</span>
-          <input type="number" style={{ ...inputStyle, width: '120px' }} value={to} onChange={(e) => setTo(Number(e.target.value))} />
+        <h3 className="text-base font-semibold mb-4">{l.percentChange}</h3>
+        <div className="grid grid-cols-2 gap-2 mb-2">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.from}</span>
+            <input type="number" style={inputStyle} value={from} onChange={(e) => setFrom(Number(e.target.value))} />
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-gray-500">{l.to}</span>
+            <input type="number" style={inputStyle} value={to} onChange={(e) => setTo(Number(e.target.value))} />
+          </div>
         </div>
         <div style={{ ...resultStyle, color: result3 >= 0 ? 'var(--color-success)' : 'var(--color-error)' }}>
           {result3 >= 0 ? '+' : ''}{result3.toFixed(2)}%

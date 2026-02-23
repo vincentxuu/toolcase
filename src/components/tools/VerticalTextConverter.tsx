@@ -28,10 +28,10 @@ export default function VerticalTextConverter({ labels }: VerticalTextConverterP
   const [orientation, setOrientation] = useState<'rl' | 'lr'>('rl')
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.input}
         </label>
         <textarea
@@ -137,7 +137,7 @@ export default function VerticalTextConverter({ labels }: VerticalTextConverterP
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>Vertical Writing:</strong> This tool displays text in vertical format, commonly used in traditional Chinese, Japanese, and Korean typography.
+        <strong className="text-[var(--color-text)]">Vertical Writing:</strong> This tool displays text in vertical format, commonly used in traditional Chinese, Japanese, and Korean typography.
         Right-to-left is the traditional orientation for Chinese and Japanese text.
       </div>
     </div>

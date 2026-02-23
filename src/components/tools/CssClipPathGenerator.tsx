@@ -120,11 +120,11 @@ export default function CssClipPathGenerator({ labels }: CssClipPathGeneratorPro
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Shape selector */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.shape}</span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <div className="flex flex-wrap gap-2">
           {shapes.map((s) => (
             <button
               key={s.key}
@@ -143,35 +143,35 @@ export default function CssClipPathGenerator({ labels }: CssClipPathGeneratorPro
 
       {/* Parameters */}
       {shape === 'circle' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
             <span>{l.radius}</span>
             <span>{radius}%</span>
           </div>
-          <input type="range" min={5} max={50} value={radius} onChange={(e) => setRadius(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={5} max={50} value={radius} onChange={(e) => setRadius(Number(e.target.value))} className="w-full" />
         </div>
       )}
       {shape === 'ellipse' && (
         <>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+          <div className="flex flex-col gap-1">
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
               <span>{l.radiusX}</span>
               <span>{radiusX}%</span>
             </div>
-            <input type="range" min={5} max={50} value={radiusX} onChange={(e) => setRadiusX(Number(e.target.value))} style={{ width: '100%' }} />
+            <input type="range" min={5} max={50} value={radiusX} onChange={(e) => setRadiusX(Number(e.target.value))} className="w-full" />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+          <div className="flex flex-col gap-1">
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
               <span>{l.radiusY}</span>
               <span>{radiusY}%</span>
             </div>
-            <input type="range" min={5} max={50} value={radiusY} onChange={(e) => setRadiusY(Number(e.target.value))} style={{ width: '100%' }} />
+            <input type="range" min={5} max={50} value={radiusY} onChange={(e) => setRadiusY(Number(e.target.value))} className="w-full" />
           </div>
         </>
       )}
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
           <div
@@ -187,9 +187,9 @@ export default function CssClipPathGenerator({ labels }: CssClipPathGeneratorPro
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

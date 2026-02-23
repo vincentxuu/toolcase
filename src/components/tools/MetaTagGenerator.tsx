@@ -75,8 +75,8 @@ export default function MetaTagGenerator({ labels }: Props) {
   const descColor = description.length > 160 ? '#ef4444' : description.length >= 150 ? '#22c55e' : 'var(--color-text-secondary)'
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.pageTitle} <span style={{ color: titleColor, fontSize: '0.75rem' }}>({title.length}/60)</span></label>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} style={inputStyle} placeholder="My Awesome Page" />
@@ -90,7 +90,7 @@ export default function MetaTagGenerator({ labels }: Props) {
         <label style={labelStyle}>{l.metaDescription} <span style={{ color: descColor, fontSize: '0.75rem' }}>({description.length}/160)</span></label>
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }} />
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.keywords}</label>
           <input type="text" value={keywords} onChange={(e) => setKeywords(e.target.value)} style={inputStyle} placeholder="keyword1, keyword2, keyword3" />
@@ -100,7 +100,7 @@ export default function MetaTagGenerator({ labels }: Props) {
           <input type="text" value={canonical} onChange={(e) => setCanonical(e.target.value)} style={inputStyle} placeholder="https://example.com/page" />
         </div>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.ogImage}</label>
           <input type="text" value={ogImage} onChange={(e) => setOgImage(e.target.value)} style={inputStyle} placeholder="https://example.com/image.jpg" />
@@ -127,10 +127,10 @@ export default function MetaTagGenerator({ labels }: Props) {
         </div>
       )}
 
-      <div style={{ position: 'relative' }}>
+      <div className="relative">
         <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem', fontWeight: 500 }}>{l.generatedCode}</div>
         <pre style={{ ...inputStyle, whiteSpace: 'pre-wrap', fontFamily: "'Fira Code', monospace", fontSize: '0.8rem', minHeight: '100px', overflow: 'auto' }}>{code}</pre>
-        <button className="btn-secondary" onClick={handleCopy} style={{ position: 'absolute', top: '2rem', right: '0.5rem' }}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleCopy} style={{ position: 'absolute', top: '2rem', right: '0.5rem' }}>
           {copied ? l.copied : l.copy}
         </button>
       </div>

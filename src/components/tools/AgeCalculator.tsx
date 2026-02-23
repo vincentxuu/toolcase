@@ -76,8 +76,8 @@ export default function AgeCalculator({ labels }: AgeCalculatorProps) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.birthDate}</label>
           <input type="date" style={inputStyle} value={birthStr} onChange={(e) => setBirthStr(e.target.value)} />
@@ -88,36 +88,36 @@ export default function AgeCalculator({ labels }: AgeCalculatorProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div style={cardStyle}>
           <div style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-primary)' }}>{result.years}</div>
-          <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.years}</div>
+          <div className="text-sm text-[var(--color-text-secondary)]">{l.years}</div>
         </div>
         <div style={cardStyle}>
           <div style={{ fontSize: '3rem', fontWeight: 700 }}>{result.months}</div>
-          <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.months}</div>
+          <div className="text-sm text-[var(--color-text-secondary)]">{l.months}</div>
         </div>
         <div style={cardStyle}>
           <div style={{ fontSize: '3rem', fontWeight: 700 }}>{result.days}</div>
-          <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.days}</div>
+          <div className="text-sm text-[var(--color-text-secondary)]">{l.days}</div>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalDays}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalDays}</div>
           <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{result.totalDays.toLocaleString()}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalWeeks}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalWeeks}</div>
           <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{result.totalWeeks.toLocaleString()}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalMonths}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalMonths}</div>
           <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{result.totalMonths.toLocaleString()}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.daysUntilBirthday}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.daysUntilBirthday}</div>
           <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-accent)' }}>{result.daysUntilBirthday}</div>
         </div>
       </div>

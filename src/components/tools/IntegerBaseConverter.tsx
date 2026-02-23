@@ -150,7 +150,7 @@ export default function IntegerBaseConverter({ labels }: IntegerBaseConverterPro
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input base selector */}
       <div>
         <span style={labelStyle}>{l.inputBase}</span>
@@ -194,7 +194,7 @@ export default function IntegerBaseConverter({ labels }: IntegerBaseConverterPro
       {/* Input field */}
       <input
         type="text"
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ height: 'auto', padding: '0.75rem', fontFamily: 'monospace', fontSize: '1rem' }}
         placeholder={l.inputPlaceholder}
         value={input}
@@ -216,10 +216,10 @@ export default function IntegerBaseConverter({ labels }: IntegerBaseConverterPro
 
       {/* Conversions */}
       {input && isValid && Object.keys(conversions).length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div className="flex flex-col gap-3">
           <span style={labelStyle}>{l.conversions}</span>
           {BASES.map((b) => (
-            <div key={b.base} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div key={b.base} className="flex flex-col gap-1">
               <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 600, fontFamily: 'monospace' }}>
                 {baseNames[b.base] ?? `Base ${b.base}`} ({b.short})
               </span>
@@ -234,7 +234,7 @@ export default function IntegerBaseConverter({ labels }: IntegerBaseConverterPro
             </div>
           ))}
           {useCustom && customBase && ![2, 8, 10, 16].includes(customBase) && conversions[customBase] && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div className="flex flex-col gap-1">
               <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 600, fontFamily: 'monospace' }}>
                 Base {customBase}
               </span>

@@ -85,8 +85,8 @@ export default function WifiQrGenerator({ labels }: WifiQrGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         <div>
           <label style={labelStyle}>{l.ssid}</label>
           <input
@@ -140,7 +140,7 @@ export default function WifiQrGenerator({ labels }: WifiQrGeneratorProps) {
         </div>
       )}
 
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button style={primaryBtnStyle} onClick={generateQr} disabled={!ssid}>
           {l.generate}
         </button>

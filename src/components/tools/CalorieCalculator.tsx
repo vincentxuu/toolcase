@@ -101,17 +101,17 @@ export default function CalorieCalculator({ labels }: CalorieCalculatorProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.age}</label>
           <input type="number" style={inputStyle} value={age} onChange={(e) => setAge(Number(e.target.value))} min={10} max={120} />
         </div>
         <div>
           <label style={labelStyle}>{l.gender}</label>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button className={gender === 'male' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('male')} style={{ flex: 1 }}>{l.male}</button>
-            <button className={gender === 'female' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('female')} style={{ flex: 1 }}>{l.female}</button>
+          <div className="flex gap-2">
+            <button className={gender === 'male' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('male')}>{l.male}</button>
+            <button className={gender === 'female' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('female')}>{l.female}</button>
           </div>
         </div>
         <div>
@@ -135,7 +135,7 @@ export default function CalorieCalculator({ labels }: CalorieCalculatorProps) {
 
       <div>
         <label style={labelStyle}>{l.goal}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           {(['lose', 'maintain', 'gain'] as const).map((g) => (
             <button key={g} style={goalBtnStyle(goal === g)} onClick={() => setGoal(g)}>
               {goalLabels[g]}
@@ -144,39 +144,39 @@ export default function CalorieCalculator({ labels }: CalorieCalculatorProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.maintenanceCalories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.maintenanceCalories}</div>
           <div style={{ fontSize: '2rem', fontWeight: 700 }}>{result.maintenance.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>cal/day</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">cal/day</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.targetCalories}</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>{result.target.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>cal/day</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.targetCalories}</div>
+          <div className="text-3xl font-bold text-[var(--color-primary)]">{result.target.toLocaleString()}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">cal/day</div>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.protein}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.protein}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#ef4444' }}>{result.proteinGrams}g</div>
-          <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>30%</div>
+          <div className="text-[0.7rem] text-[var(--color-text-secondary)]">30%</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.carbs}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.carbs}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#3b82f6' }}>{result.carbsGrams}g</div>
-          <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>40%</div>
+          <div className="text-[0.7rem] text-[var(--color-text-secondary)]">40%</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.fat}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.fat}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#f59e0b' }}>{result.fatGrams}g</div>
-          <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>30%</div>
+          <div className="text-[0.7rem] text-[var(--color-text-secondary)]">30%</div>
         </div>
       </div>
 
       <div style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-        ℹ️ {l.disclaimer}
+        {l.disclaimer}
       </div>
     </div>
   )

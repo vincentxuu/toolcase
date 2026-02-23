@@ -120,28 +120,28 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
   }, [output, fileName])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center flex-wrap">
         <button
-          className={direction === 's2t' ? 'btn-primary' : 'btn-secondary'}
+          className={direction === 's2t' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
           onClick={() => setDirection('s2t')}
         >
           {l.toTraditional} (簡→繁)
         </button>
         <button
-          className={direction === 't2s' ? 'btn-primary' : 'btn-secondary'}
+          className={direction === 't2s' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
           onClick={() => setDirection('t2s')}
         >
           {l.toSimplified} (繁→簡)
         </button>
-        <button className="btn-secondary" onClick={handleSwap}>{l.swap} ⇄</button>
-        <button className="btn-secondary" onClick={() => { setInput(''); setOutput(''); setFileName('') }}>{l.clear}</button>
-        <button className="btn-secondary" onClick={() => fileInputRef.current?.click()}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleSwap}>{l.swap} ⇄</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => { setInput(''); setOutput(''); setFileName('') }}>{l.clear}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileInputRef.current?.click()}>
           <Upload size={14} style={{ marginRight: '0.25rem', verticalAlign: 'middle' }} />
           {l.uploadFile}
         </button>
         {output && (
-          <button className="btn-secondary" onClick={handleDownload}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleDownload}>
             <Download size={14} style={{ marginRight: '0.25rem', verticalAlign: 'middle' }} />
             {l.downloadFile}
           </button>
@@ -150,21 +150,20 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
           ref={fileInputRef}
           type="file"
           accept=".txt,.csv,.md,.html,.xml,.json,.srt,.ass,.vtt,.log"
-          style={{ display: 'none' }}
+          className="hidden"
           onChange={handleFileUpload}
         />
       </div>
       {fileName && (
-        <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+        <div className="text-xs text-[var(--color-text-secondary)]">
           {fileName}
         </div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <textarea
-            className="tool-textarea"
-            style={{ height: '300px' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
             placeholder={l.inputPlaceholder}
             value={input}
             onChange={(e) => {
@@ -173,24 +172,23 @@ export default function ChineseConverter({ labels }: ChineseConverterProps) {
               setOutput(result)
             }}
           />
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mt-1">
             {input.length} {l.charCount}
           </div>
         </div>
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <textarea
-            className="tool-textarea"
-            style={{ height: '300px' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
             placeholder={l.outputPlaceholder}
             value={output}
             readOnly
           />
           {output && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+            <div className="absolute top-2 right-2">
               <CopyButton text={output} label={l.copy} copiedLabel={l.copied} />
             </div>
           )}
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mt-1">
             {output.length} {l.charCount}
           </div>
         </div>

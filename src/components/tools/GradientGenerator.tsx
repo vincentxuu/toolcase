@@ -92,9 +92,9 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Gradient type */}
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+      <div className="flex gap-2 items-center">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.type}</span>
         <button
           onClick={() => setGradientType('linear')}
@@ -112,7 +112,7 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
 
       {/* Angle control (linear only) */}
       {gradientType === 'linear' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div className="flex flex-col gap-2">
           <span style={labelStyle}>{l.angle}: {angle}°</span>
           <input
             type="range"
@@ -120,27 +120,28 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
             max={360}
             value={angle}
             onChange={(e) => setAngle(Number(e.target.value))}
-            style={{ width: '100%' }}
+            className="w-full"
           />
         </div>
       )}
 
       {/* Color stops */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div className="flex flex-col gap-3">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.colorStops}</span>
         {stops.map((stop, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div key={i} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
             <input
               type="color"
               value={stop.color}
               onChange={(e) => updateStop(i, 'color', e.target.value)}
-              style={{ width: '40px', height: '40px', border: '1px solid var(--color-border)', borderRadius: '0.375rem', cursor: 'pointer', padding: 0, backgroundColor: 'transparent' }}
+              style={{ width: '40px', height: '40px', border: '1px solid var(--color-border)', borderRadius: '0.375rem', cursor: 'pointer', padding: 0, backgroundColor: 'transparent', flexShrink: 0 }}
             />
             <input
               type="text"
               value={stop.color.toUpperCase()}
               onChange={(e) => updateStop(i, 'color', e.target.value)}
-              style={{ ...inputStyle, width: '100px', fontFamily: 'monospace' }}
+              style={{ ...inputStyle, fontFamily: 'monospace' }}
+              className="w-full sm:w-[100px]"
             />
             <input
               type="number"
@@ -148,7 +149,8 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
               max={100}
               value={stop.position}
               onChange={(e) => updateStop(i, 'position', Number(e.target.value))}
-              style={{ ...inputStyle, width: '70px' }}
+              style={inputStyle}
+              className="w-full sm:w-[70px]"
             />
             <span style={labelStyle}>%</span>
             {stops.length > 2 && (
@@ -162,7 +164,7 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
       </div>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div
           style={{
@@ -176,9 +178,9 @@ export default function GradientGenerator({ labels }: GradientGeneratorProps) {
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

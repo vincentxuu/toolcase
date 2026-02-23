@@ -96,16 +96,16 @@ export default function CaseConverter({ labels }: CaseConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <textarea
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ height: '150px' }}
         placeholder={l.input}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <div className="flex gap-2 flex-wrap">
         <button style={btnStyle} onClick={() => convert((t) => t.toUpperCase())}>{l.uppercase}</button>
         <button style={btnStyle} onClick={() => convert((t) => t.toLowerCase())}>{l.lowercase}</button>
         <button style={btnStyle} onClick={() => convert(toTitleCase)}>{l.titleCase}</button>
@@ -116,16 +116,16 @@ export default function CaseConverter({ labels }: CaseConverterProps) {
         <button style={btnStyle} onClick={() => convert(toKebabCase)}>{l.kebabCase}</button>
       </div>
 
-      <div style={{ position: 'relative' }}>
+      <div className="relative">
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ height: '150px' }}
           placeholder={l.output}
           value={output}
           readOnly
         />
         {output && (
-          <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+          <div className="absolute top-2 right-2">
             <CopyButton text={output} label={l.copy} copiedLabel={l.copied} />
           </div>
         )}

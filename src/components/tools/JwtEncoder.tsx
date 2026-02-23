@@ -146,12 +146,12 @@ export default function JwtEncoder({ labels }: JwtEncoderProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.headerLabel}</label>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ height: '150px', fontFamily: 'monospace' }}
             placeholder={l.headerPlaceholder}
             value={headerInput}
@@ -161,7 +161,7 @@ export default function JwtEncoder({ labels }: JwtEncoderProps) {
         <div>
           <label style={labelStyle}>{l.payloadLabel}</label>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ height: '150px', fontFamily: 'monospace' }}
             placeholder={l.payloadPlaceholder}
             value={payloadInput}
@@ -202,9 +202,9 @@ export default function JwtEncoder({ labels }: JwtEncoderProps) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button className="btn-primary" onClick={handleEncode}>{l.encode}</button>
-        <button className="btn-secondary" onClick={handleClear}>{l.clear}</button>
+      <div className="flex gap-2">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleEncode}>{l.encode}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>{l.clear}</button>
       </div>
 
       {error && (

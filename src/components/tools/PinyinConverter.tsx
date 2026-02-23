@@ -78,10 +78,10 @@ export default function PinyinConverter({ labels }: PinyinConverterProps) {
   ]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.input}
         </label>
         <textarea
@@ -131,20 +131,18 @@ export default function PinyinConverter({ labels }: PinyinConverterProps) {
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleConvert}
           disabled={!input.trim()}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.convert}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !output}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -153,7 +151,7 @@ export default function PinyinConverter({ labels }: PinyinConverterProps) {
       {/* Output */}
       {output && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontWeight: 500, fontSize: '0.875rem' }}>
               {l.result}
             </label>
@@ -183,8 +181,8 @@ export default function PinyinConverter({ labels }: PinyinConverterProps) {
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>Examples:</strong>
-        <div style={{ marginTop: '0.5rem' }}>
+        <strong className="text-[var(--color-text)]">Examples:</strong>
+        <div className="mt-2">
           <div>你好 → nǐ hǎo (with tone)</div>
           <div>你好 → ni hao (without tone)</div>
           <div>你好 → ni3 hao3 (tone numbers)</div>

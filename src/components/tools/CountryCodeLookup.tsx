@@ -84,7 +84,7 @@ export default function CountryCodeLookup({ labels }: CountryCodeLookupProps) {
   }, [searchTerm])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Search */}
       <div>
         <input
@@ -149,7 +149,7 @@ export default function CountryCodeLookup({ labels }: CountryCodeLookupProps) {
 
       {filteredCountries.length === 0 && (
         <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-secondary)' }}>
-          No countries found matching "{searchTerm}"
+          No countries found matching &quot;{searchTerm}&quot;
         </div>
       )}
 

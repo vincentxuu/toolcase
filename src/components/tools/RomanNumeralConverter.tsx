@@ -105,11 +105,11 @@ export default function RomanNumeralConverter({ labels }: RomanNumeralConverterP
   const isError = (text: string) => text === l.invalidInput || text === l.outOfRange
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
         <div style={sectionStyle}>
-          <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.decimalToRoman}</div>
-          <div style={{ marginBottom: '0.75rem' }}>
+          <div className="text-base font-semibold mb-4">{l.decimalToRoman}</div>
+          <div className="mb-3">
             <label style={labelStyle}>{l.decimal}</label>
             <input
               type="number"
@@ -127,8 +127,8 @@ export default function RomanNumeralConverter({ labels }: RomanNumeralConverterP
         </div>
 
         <div style={sectionStyle}>
-          <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.romanToDecimal}</div>
-          <div style={{ marginBottom: '0.75rem' }}>
+          <div className="text-base font-semibold mb-4">{l.romanToDecimal}</div>
+          <div className="mb-3">
             <label style={labelStyle}>{l.roman}</label>
             <input
               type="text"
@@ -145,7 +145,7 @@ export default function RomanNumeralConverter({ labels }: RomanNumeralConverterP
       </div>
 
       <div style={sectionStyle}>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.conversionTable}</div>
+        <div className="text-base font-semibold mb-4">{l.conversionTable}</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '0.5rem' }}>
           {tableRows.map((row) => (
             <div key={row.decimal} style={{

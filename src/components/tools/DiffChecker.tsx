@@ -74,8 +74,8 @@ export default function DiffChecker({ labels }: Props) {
   const removedCount = diff.filter(d => d.type === 'removed').length
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.original}</label>
           <textarea style={inputStyle} value={original} onChange={(e) => setOriginal(e.target.value)} />
@@ -85,7 +85,7 @@ export default function DiffChecker({ labels }: Props) {
           <textarea style={inputStyle} value={modified} onChange={(e) => setModified(e.target.value)} />
         </div>
       </div>
-      <button className="btn-primary" onClick={compare} style={{ alignSelf: 'center' }}>{l.compare}</button>
+      <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={compare} style={{ alignSelf: 'center' }}>{l.compare}</button>
       {compared && (
         <div>
           <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.75rem', fontSize: '0.875rem' }}>
@@ -93,7 +93,7 @@ export default function DiffChecker({ labels }: Props) {
             <span style={{ color: '#ef4444' }}>- {removedCount} {l.removed}</span>
           </div>
           {diff.length === 0 || (addedCount === 0 && removedCount === 0) ? (
-            <p style={{ color: 'var(--color-text-secondary)' }}>{l.noChanges}</p>
+            <p className="text-[var(--color-text-secondary)]">{l.noChanges}</p>
           ) : (
             <div style={{ borderRadius: '0.5rem', overflow: 'hidden', border: '1px solid var(--color-border)', fontFamily: "'Fira Code', monospace", fontSize: '0.8rem' }}>
               {diff.map((d, idx) => (

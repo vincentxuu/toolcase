@@ -73,10 +73,10 @@ export default function BrailleConverter({ labels }: BrailleConverterProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.input}
         </label>
         <textarea
@@ -100,21 +100,21 @@ export default function BrailleConverter({ labels }: BrailleConverterProps) {
       {/* Buttons */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleToBraille}
           disabled={!input.trim()}
         >
           {l.toBraille}
         </button>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleToText}
           disabled={!input.trim()}
         >
           {l.toText}
         </button>
         <button
-          className="btn-secondary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !output}
         >
@@ -125,7 +125,7 @@ export default function BrailleConverter({ labels }: BrailleConverterProps) {
       {/* Output */}
       {output && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontWeight: 500, fontSize: '0.875rem' }}>
               {l.result}
             </label>
@@ -155,7 +155,7 @@ export default function BrailleConverter({ labels }: BrailleConverterProps) {
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>Note:</strong> This converter uses English Braille (Grade 1).
+        <strong className="text-[var(--color-text)]">Note:</strong> This converter uses English Braille (Grade 1).
         It supports basic letters, numbers, and common punctuation. Braille is a tactile writing system used by people who are blind or visually impaired.
       </div>
     </div>

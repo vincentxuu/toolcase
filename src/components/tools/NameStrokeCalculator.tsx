@@ -148,8 +148,8 @@ export default function NameStrokeCalculator({ labels }: NameStrokeCalculatorPro
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="flex gap-3">
         <input
           type="text"
           value={name}
@@ -173,13 +173,13 @@ export default function NameStrokeCalculator({ labels }: NameStrokeCalculatorPro
           </div>
 
           {/* Total & Fortune */}
-          <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+          <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', borderBottom: '1px solid var(--color-border)', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>{l.totalStrokes}</span>
-              <span style={{ fontSize: '1.5rem', fontWeight: 700 }}>{result.total} 畫</span>
+              <span className="font-semibold">{l.totalStrokes}</span>
+              <span className="text-2xl font-bold">{result.total} 畫</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', borderBottom: '1px solid var(--color-border)', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>{l.fortune}</span>
+              <span className="font-semibold">{l.fortune}</span>
               <span style={{ fontSize: '1.25rem', fontWeight: 700, color: fortuneColor(result.fortune.fortune) }}>{result.fortune.fortune}</span>
             </div>
             <div style={{ padding: '1rem', backgroundColor: 'var(--color-bg-secondary)' }}>

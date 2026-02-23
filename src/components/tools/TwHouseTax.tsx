@@ -45,9 +45,9 @@ export default function TwHouseTax({ labels }: Props) {
   const headerCell: React.CSSProperties = { ...cellStyle, fontWeight: 600, fontSize: '0.8125rem', color: 'var(--color-text-secondary)', borderBottom: '2px solid var(--color-border)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.category}</th>
@@ -71,8 +71,8 @@ export default function TwHouseTax({ labels }: Props) {
 
       {/* Formula Info */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.formulaTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.formulaTitle}</div>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.item}</th>

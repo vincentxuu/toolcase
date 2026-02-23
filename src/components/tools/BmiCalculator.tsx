@@ -60,8 +60,8 @@ export default function BmiCalculator({ labels }: BmiCalculatorProps) {
   const pct = Math.min(100, Math.max(0, ((result.bmi - 10) / 35) * 100))
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.height} ({l.cm})</label>
           <input type="number" style={inputStyle} value={height} onChange={(e) => setHeight(Number(e.target.value))} min={50} max={300} />
@@ -73,7 +73,7 @@ export default function BmiCalculator({ labels }: BmiCalculatorProps) {
       </div>
 
       <div style={{ padding: '2rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }}>
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.yourBmi}</div>
+        <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.yourBmi}</div>
         <div style={{ fontSize: '3.5rem', fontWeight: 700, color: result.cat.color }}>{result.bmi.toFixed(1)}</div>
         <div style={{ fontSize: '1.25rem', fontWeight: 600, color: result.cat.color, marginTop: '0.25rem' }}>
           {catLabels[result.cat.key]}
@@ -95,7 +95,7 @@ export default function BmiCalculator({ labels }: BmiCalculatorProps) {
       </div>
 
       {/* Category table */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {categories.map((cat) => (
           <div key={cat.key} style={{
             padding: '0.75rem', borderRadius: '0.5rem', textAlign: 'center', fontSize: '0.8rem',

@@ -123,9 +123,9 @@ export default function RsaKeyGenerator({ labels }: RsaKeyGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.keySize}:</label>
           <select
             value={keySize}
@@ -137,18 +137,17 @@ export default function RsaKeyGenerator({ labels }: RsaKeyGeneratorProps) {
           </select>
         </div>
 
-        <button className="btn-primary" onClick={handleGenerate} disabled={generating}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerate} disabled={generating}>
           {generating ? l.generating : l.generate}
         </button>
       </div>
 
       {publicKeyPem && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-center">
             <label style={{ ...labelStyle, fontWeight: 600 }}>{l.publicKey}</label>
             <button
-              className="btn-secondary"
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
               onClick={handleCopyPub}
             >
               {copiedPub ? l.copied : l.copy}
@@ -159,12 +158,11 @@ export default function RsaKeyGenerator({ labels }: RsaKeyGeneratorProps) {
       )}
 
       {privateKeyPem && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-center">
             <label style={{ ...labelStyle, fontWeight: 600 }}>{l.privateKey}</label>
             <button
-              className="btn-secondary"
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
               onClick={handleCopyPriv}
             >
               {copiedPriv ? l.copied : l.copy}

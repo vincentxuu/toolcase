@@ -64,11 +64,11 @@ export default function TwSupplementaryNhiPremium({ labels }: Props) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Key thresholds */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.thresholdTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.thresholdTitle}</div>
+        <table className="w-full border-collapse text-sm">
           <tbody>
             {KEY_THRESHOLDS.map((r, i) => (
               <tr key={i}>
@@ -82,9 +82,9 @@ export default function TwSupplementaryNhiPremium({ labels }: Props) {
 
       {/* Income types */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.incomeTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.incomeTitle}</div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.type}</th>
@@ -106,22 +106,22 @@ export default function TwSupplementaryNhiPremium({ labels }: Props) {
       </div>
 
       {/* Quick Calculator */}
-      <div style={{ padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.quickCalc}</div>
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.amount}（股利/兼職/租金等）</label>
+      <div className="p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <div className="text-base font-semibold mb-4">{l.quickCalc}</div>
+        <div className="mb-4">
+          <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.amount}（股利/兼職/租金等）</label>
           <input type="number" style={inputStyle} value={amount} onChange={e => setAmount(Number(e.target.value))} min={0} step={10000} />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.premiumDue}</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ef4444' }}>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.premiumDue}</div>
+            <div className="text-2xl font-bold text-red-500">
               NT${fmt(result.premium)}
               {amount < 20000 && <span style={{ fontSize: '0.75rem', color: '#10b981', display: 'block' }}>未達門檻，免扣</span>}
             </div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.netAmount}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.netAmount}</div>
             <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#10b981' }}>NT${fmt(result.net)}</div>
           </div>
         </div>

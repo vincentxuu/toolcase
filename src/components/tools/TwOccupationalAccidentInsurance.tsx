@@ -68,17 +68,17 @@ export default function TwOccupationalAccidentInsurance({ labels }: Props) {
   const headerCell: React.CSSProperties = { ...cellStyle, fontWeight: 600, fontSize: '0.8125rem', color: 'var(--color-text-secondary)', borderBottom: '2px solid var(--color-border)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ padding: '1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
-        <div style={{ fontSize: '0.875rem' }}>
+        <div className="text-sm">
           <strong>勞工職業災害保險：</strong>全額由雇主負擔，勞工不須繳納任何保費。自2022年5月1日起強制納保所有受僱勞工。
         </div>
       </div>
 
       {/* Key info */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.keyInfoTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.keyInfoTitle}</div>
+        <table className="w-full border-collapse text-sm">
           <tbody>
             {KEY_INFO.map((r, i) => (
               <tr key={i}>
@@ -92,9 +92,9 @@ export default function TwOccupationalAccidentInsurance({ labels }: Props) {
 
       {/* Industry rates */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.industryTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.industryTitle}</div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'center' }}>{l.code}</th>
@@ -117,8 +117,8 @@ export default function TwOccupationalAccidentInsurance({ labels }: Props) {
 
       {/* Benefits */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.benefitsTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.benefitsTitle}</div>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.type}</th>

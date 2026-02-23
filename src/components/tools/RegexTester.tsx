@@ -140,11 +140,11 @@ export default function RegexTester({ labels }: RegexTesterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {/* Pattern */}
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="flex flex-col">
         <span style={labelStyle}>{l.pattern}</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <span style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', fontFamily: 'monospace' }}>/</span>
           <input
             type="text"
@@ -158,9 +158,9 @@ export default function RegexTester({ labels }: RegexTesterProps) {
       </div>
 
       {/* Flags */}
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="flex flex-col">
         <span style={labelStyle}>{l.flags}</span>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-4 flex-wrap">
           <label style={checkboxStyle}>
             <input type="checkbox" checked={flagG} onChange={(e) => setFlagG(e.target.checked)} style={{ accentColor: 'var(--color-primary)' }} />
             <code>g</code> global
@@ -197,10 +197,10 @@ export default function RegexTester({ labels }: RegexTesterProps) {
       )}
 
       {/* Test String */}
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="flex flex-col">
         <span style={labelStyle}>{l.testString}</span>
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ height: '150px', fontFamily: 'monospace' }}
           value={testStr}
           onChange={(e) => setTestStr(e.target.value)}
@@ -210,8 +210,8 @@ export default function RegexTester({ labels }: RegexTesterProps) {
 
       {/* Highlighted matches */}
       {testStr && pattern && !error && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-center">
             <span style={labelStyle}>{l.matches}</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--color-text-secondary)' }}>
               {l.matchCount}: <strong>{matchInfos.length}</strong>
@@ -244,7 +244,7 @@ export default function RegexTester({ labels }: RegexTesterProps) {
 
       {/* Match details */}
       {matchInfos.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div className="flex flex-col gap-2">
           <span style={labelStyle}>{l.matchDetails}</span>
           <div
             style={{
@@ -268,15 +268,15 @@ export default function RegexTester({ labels }: RegexTesterProps) {
                   color: 'var(--color-text)',
                 }}
               >
-                <span style={{ color: 'var(--color-text-secondary)' }}>#{i + 1}</span>{' '}
-                <span style={{ fontWeight: 600 }}>"{info.value}"</span>{' '}
-                <span style={{ color: 'var(--color-text-secondary)' }}>at index {info.index}</span>
+                <span className="text-[var(--color-text-secondary)]">#{i + 1}</span>{' '}
+                <span className="font-semibold">&quot;{info.value}&quot;</span>{' '}
+                <span className="text-[var(--color-text-secondary)]">at index {info.index}</span>
                 {info.groups.length > 0 && (
-                  <span style={{ color: 'var(--color-text-secondary)' }}>
+                  <span className="text-[var(--color-text-secondary)]">
                     {' '}| groups: [{info.groups.map((g, gi) => (
                       <span key={gi}>
                         {gi > 0 && ', '}
-                        "{g}"
+                        &quot;{g}&quot;
                       </span>
                     ))}]
                   </span>

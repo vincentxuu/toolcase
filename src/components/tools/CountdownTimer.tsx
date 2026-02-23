@@ -72,7 +72,7 @@ export default function CountdownTimer({ labels }: CountdownTimerProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
         <label style={labelStyle}>{l.targetDate}</label>
         <input
@@ -88,7 +88,7 @@ export default function CountdownTimer({ labels }: CountdownTimerProps) {
           padding: '2rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)',
           border: '1px solid var(--color-border)', textAlign: 'center',
         }}>
-          <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+          <div className="text-3xl font-bold text-[var(--color-primary)]">
             {l.timesUp}
           </div>
         </div>

@@ -78,17 +78,17 @@ export default function TdeeCalculator({ labels }: TdeeCalculatorProps) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.age}</label>
           <input type="number" style={inputStyle} value={age} onChange={(e) => setAge(Number(e.target.value))} min={10} max={120} />
         </div>
         <div>
           <label style={labelStyle}>{l.gender}</label>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button className={gender === 'male' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('male')} style={{ flex: 1 }}>{l.male}</button>
-            <button className={gender === 'female' ? 'btn-primary' : 'btn-secondary'} onClick={() => setGender('female')} style={{ flex: 1 }}>{l.female}</button>
+          <div className="flex gap-2">
+            <button className={gender === 'male' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('male')}>{l.male}</button>
+            <button className={gender === 'female' ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 flex-1' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] flex-1'} onClick={() => setGender('female')}>{l.female}</button>
           </div>
         </div>
         <div>
@@ -110,39 +110,39 @@ export default function TdeeCalculator({ labels }: TdeeCalculatorProps) {
         </select>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.bmr}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.bmr}</div>
           <div style={{ fontSize: '2rem', fontWeight: 700 }}>{result.bmr.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.calories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.tdee}</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>{result.tdee.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.calories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.tdee}</div>
+          <div className="text-3xl font-bold text-[var(--color-primary)]">{result.tdee.toLocaleString()}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}</div>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.toLose}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.toLose}</div>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-success)' }}>{(result.tdee - 500).toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.calories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.toMaintain}</div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{result.tdee.toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.calories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.toMaintain}</div>
+          <div className="text-2xl font-bold">{result.tdee.toLocaleString()}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.toGain}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.toGain}</div>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-error)' }}>{(result.tdee + 500).toLocaleString()}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.calories}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}</div>
         </div>
       </div>
 
       <div style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-        ℹ️ {l.disclaimer}
+        {l.disclaimer}
       </div>
     </div>
   )

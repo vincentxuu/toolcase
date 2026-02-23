@@ -90,8 +90,8 @@ export default function UnitPriceCalculator({ labels }: UnitPriceCalculatorProps
   const labelStyle: React.CSSProperties = { display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className={`grid gap-4 ${items.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : items.length === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
         {items.map((item) => {
           const r = results.normalized.find((n) => n.id === item.id)
           const isBest = results.canCompare && results.bestId === item.id
@@ -133,7 +133,7 @@ export default function UnitPriceCalculator({ labels }: UnitPriceCalculatorProps
                   </button>
                 )}
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div className="flex flex-col gap-2">
                 <div>
                   <label style={labelStyle}>{l.price}</label>
                   <input type="number" style={inputStyle} value={item.price} onChange={(e) => updateItem(item.id, 'price', Number(e.target.value))} min={0} step={0.01} />
@@ -152,7 +152,7 @@ export default function UnitPriceCalculator({ labels }: UnitPriceCalculatorProps
                 </div>
               </div>
               <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '0.5rem', backgroundColor: isBest ? 'rgba(16,185,129,0.1)' : 'transparent', textAlign: 'center' }}>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.unitPrice}</div>
+                <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.unitPrice}</div>
                 <div style={{ fontSize: '1.5rem', fontWeight: 700, color: isBest ? 'var(--color-success)' : 'var(--color-primary)' }}>
                   ${r ? r.unitPrice.toFixed(4) : '0.0000'}/{r?.baseUnit ?? item.unit}
                 </div>

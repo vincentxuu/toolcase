@@ -156,22 +156,22 @@ export default function CsvEditor({ labels }: CsvEditorProps) {
   const tableData = hasHeaders && data.length > 0 ? data.slice(1) : data
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input Section */}
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+        <h3 className="text-lg font-semibold mb-3">
           {l.pasteOrUpload}
         </h3>
 
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <button className="btn-primary" onClick={handleParse}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleParse}>
             {l.parse}
           </button>
-          <button className="btn-secondary" onClick={handleClear}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>
             {l.clear}
           </button>
           <label
-            className="btn-secondary"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
             style={{ margin: 0, cursor: 'pointer' }}
           >
             {l.uploadFile}
@@ -179,7 +179,7 @@ export default function CsvEditor({ labels }: CsvEditorProps) {
               type="file"
               accept=".csv,.txt"
               onChange={handleFileUpload}
-              style={{ display: 'none' }}
+              className="hidden"
             />
           </label>
 
@@ -214,7 +214,7 @@ export default function CsvEditor({ labels }: CsvEditorProps) {
         </div>
 
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ minHeight: '120px', fontFamily: 'monospace', fontSize: '0.875rem' }}
           placeholder={l.inputPlaceholder}
           value={csvInput}
@@ -241,23 +241,23 @@ export default function CsvEditor({ labels }: CsvEditorProps) {
       {data.length > 0 ? (
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+            <h3 className="text-lg font-semibold">
               {l.csvInput} ({data.length} × {data[0]?.length || 0})
             </h3>
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              <button className="btn-secondary" style={{ fontSize: '0.875rem' }} onClick={handleAddRow}>
+            <div className="flex gap-2 flex-wrap">
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-sm" onClick={handleAddRow}>
                 {l.addRow}
               </button>
-              <button className="btn-secondary" style={{ fontSize: '0.875rem' }} onClick={handleAddColumn}>
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-sm" onClick={handleAddColumn}>
                 {l.addColumn}
               </button>
-              <button className="btn-secondary" style={{ fontSize: '0.875rem' }} onClick={handleDeleteRow}>
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-sm" onClick={handleDeleteRow}>
                 {l.deleteRow}
               </button>
-              <button className="btn-secondary" style={{ fontSize: '0.875rem' }} onClick={handleDeleteColumn}>
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-sm" onClick={handleDeleteColumn}>
                 {l.deleteColumn}
               </button>
-              <button className="btn-primary" style={{ fontSize: '0.875rem' }} onClick={handleDownload}>
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 text-sm" onClick={handleDownload}>
                 {l.download}
               </button>
               <CopyButton text={getCsvOutput()} label={l.copy} copiedLabel={l.copied} />
@@ -265,7 +265,7 @@ export default function CsvEditor({ labels }: CsvEditorProps) {
           </div>
 
           <div style={{ overflowX: 'auto', border: '1px solid var(--color-border)', borderRadius: '0.5rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+            <table className="w-full border-collapse text-sm">
               {headers && (
                 <thead>
                   <tr>

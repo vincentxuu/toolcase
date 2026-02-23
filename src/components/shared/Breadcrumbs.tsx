@@ -14,27 +14,17 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        fontSize: '0.875rem',
-        color: 'var(--color-text-secondary)',
-        marginBottom: '1rem',
-      }}
+      className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] mb-4"
     >
       {items.map((item, index) => {
         const isLast = index === items.length - 1
 
         return (
-          <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            {index > 0 && <ChevronRight size={14} style={{ opacity: 0.5 }} />}
+          <div key={index} className="flex items-center gap-2">
+            {index > 0 && <ChevronRight size={14} className="opacity-50" />}
             {isLast || !item.href ? (
               <span
-                style={{
-                  color: isLast ? 'var(--color-text)' : 'var(--color-text-secondary)',
-                  fontWeight: isLast ? 500 : 400,
-                }}
+                className={isLast ? 'text-[var(--color-text)] font-medium' : 'text-[var(--color-text-secondary)]'}
                 aria-current={isLast ? 'page' : undefined}
               >
                 {item.name}
@@ -42,10 +32,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
             ) : (
               <Link
                 href={item.href}
-                style={{
-                  color: 'var(--color-text-secondary)',
-                  textDecoration: 'none',
-                }}
+                className="text-[var(--color-text-secondary)] no-underline hover:text-[var(--color-text)]"
               >
                 {item.name}
               </Link>

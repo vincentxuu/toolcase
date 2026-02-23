@@ -71,7 +71,7 @@ gap: ${gap}px;`
   }
 
   const selectRow = (label: string, value: string, options: string[], onChange: (v: string) => void) => (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col">
       <span style={labelStyle}>{label}</span>
       <select value={value} onChange={(e) => onChange(e.target.value)} style={selectStyle}>
         {options.map((opt) => (
@@ -82,14 +82,14 @@ gap: ${gap}px;`
   )
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Controls */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {selectRow(l.flexDirection, direction, directionOptions, setDirection)}
         {selectRow(l.justifyContent, justify, justifyOptions, setJustify)}
         {selectRow(l.alignItems, align, alignOptions, setAlign)}
         {selectRow(l.flexWrap, wrap, wrapOptions, setWrap)}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="flex flex-col">
           <span style={labelStyle}>{l.gap}: {gap}px</span>
           <input
             type="range"
@@ -100,7 +100,7 @@ gap: ${gap}px;`
             style={{ width: '100%', marginTop: '0.5rem' }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="flex flex-col">
           <span style={labelStyle}>{l.childCount}: {childCount}</span>
           <input
             type="range"
@@ -114,7 +114,7 @@ gap: ${gap}px;`
       </div>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div
           style={{
@@ -155,9 +155,9 @@ gap: ${gap}px;`
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

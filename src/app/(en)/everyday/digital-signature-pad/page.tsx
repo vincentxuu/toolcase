@@ -1,0 +1,50 @@
+import { Metadata } from 'next'
+import DigitalSignaturePad from '@/components/tools/DigitalSignaturePad'
+import FaqSection from '@/components/shared/FaqSection'
+import RelatedTools from '@/components/shared/RelatedTools'
+import Breadcrumbs from '@/components/shared/Breadcrumbs'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ToolSchema from '@/components/seo/ToolSchema'
+
+export const metadata: Metadata = {
+  title: 'Digital Signature Pad - Draw & Download Signature | toolcase',
+  description: 'Draw your signature on a digital pad and download it as a PNG image with transparent or white background. Works on desktop and mobile.',
+  alternates: { canonical: 'https://toolcase.cc/everyday/digital-signature-pad', languages: { en: 'https://toolcase.cc/everyday/digital-signature-pad', 'zh-Hant-TW': 'https://toolcase.cc/zh-tw/everyday/digital-signature-pad' } },
+}
+
+const faqs = [
+  { question: 'Can I use this on mobile?', answer: 'Yes! The signature pad supports touch input on mobile devices and tablets. You can draw with your finger or a stylus.' },
+  { question: 'What format is the signature saved in?', answer: 'The signature is downloaded as a PNG image. You can choose between a transparent background (great for overlaying on documents) or a white background.' },
+]
+
+export default function DigitalSignaturePadPage() {
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://toolcase.cc' },
+          { name: 'Digital Signature Pad', url: 'https://toolcase.cc/everyday/digital-signature-pad' },
+        ]}
+      />
+      <ToolSchema
+        name="Digital Signature Pad"
+        description="Draw your signature on a digital pad and download it as a PNG image with transparent or white background. Works on desktop and mobile."
+        url="https://toolcase.cc/everyday/digital-signature-pad"
+        category="UtilitiesApplication"
+      />
+    <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Digital Signature Pad' },
+          ]}
+        />
+      <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>Digital Signature Pad</h1>
+      <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>Draw your signature and download as PNG. Supports transparent and white backgrounds.</p>
+      <DigitalSignaturePad />
+      <FaqSection items={faqs} />
+      <RelatedTools current="digital-signature-pad" locale="en" />
+    </div>
+    </>
+  )
+}

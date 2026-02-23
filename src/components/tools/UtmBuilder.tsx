@@ -109,9 +109,9 @@ export default function UtmBuilder({ labels }: UtmBuilderProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Preset buttons */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <div className="flex flex-wrap gap-2">
         {PRESETS.map((preset) => (
           <button
             key={preset.name}
@@ -152,7 +152,7 @@ export default function UtmBuilder({ labels }: UtmBuilderProps) {
       </div>
 
       {/* Source & Medium */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>
             {l.source}
@@ -197,7 +197,7 @@ export default function UtmBuilder({ labels }: UtmBuilderProps) {
       </div>
 
       {/* Term & Content (optional) */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.term}</label>
           <input
@@ -237,7 +237,7 @@ export default function UtmBuilder({ labels }: UtmBuilderProps) {
           fontFamily: "'Fira Code', monospace",
         }}>
           {generatedUrl || 'Enter a URL and parameters to generate...'}
-          <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+          <div className="absolute top-2 right-2">
             <button
               onClick={handleCopy}
               disabled={!generatedUrl}

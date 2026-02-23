@@ -102,11 +102,11 @@ export default function ImageConverter({ labels }: ImageConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
         <input
@@ -114,17 +114,17 @@ export default function ImageConverter({ labels }: ImageConverterProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {originalFile && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             {originalFile.name} ({formatBytes(originalFile.size)})
           </span>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.outputFormat}:</label>
           <select
             value={format}
@@ -145,7 +145,7 @@ export default function ImageConverter({ labels }: ImageConverterProps) {
         </div>
 
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleConvert}
           disabled={!originalFile}
         >
@@ -154,17 +154,17 @@ export default function ImageConverter({ labels }: ImageConverterProps) {
       </div>
 
       {convertedUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
             <span style={{ fontSize: '0.875rem', color: 'var(--color-text)' }}>
-              <span style={{ fontWeight: 600 }}>{l.preview}</span>
+              <span className="font-semibold">{l.preview}</span>
               {convertedSize > 0 && (
                 <span style={{ color: 'var(--color-text-secondary)', marginLeft: '0.5rem' }}>
                   ({formatBytes(convertedSize)})
                 </span>
               )}
             </span>
-            <button className="btn-primary" onClick={handleDownload}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>
               {l.download}
             </button>
           </div>

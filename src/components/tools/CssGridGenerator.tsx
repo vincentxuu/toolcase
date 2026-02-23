@@ -108,43 +108,43 @@ row-gap: ${rowGap}px;`
   const CELL_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316', '#84cc16', '#6366f1', '#14b8a6', '#e11d48']
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Grid config */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="flex flex-col gap-1">
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span style={labelStyle}>{l.columns}</span>
             <span style={labelStyle}>{cols}</span>
           </div>
-          <input type="range" min={1} max={12} value={cols} onChange={(e) => updateCols(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={1} max={12} value={cols} onChange={(e) => updateCols(Number(e.target.value))} className="w-full" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span style={labelStyle}>{l.rows}</span>
             <span style={labelStyle}>{rows}</span>
           </div>
-          <input type="range" min={1} max={12} value={rows} onChange={(e) => setRows(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={1} max={12} value={rows} onChange={(e) => setRows(Number(e.target.value))} className="w-full" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span style={labelStyle}>{l.columnGap}</span>
             <span style={labelStyle}>{colGap}px</span>
           </div>
-          <input type="range" min={0} max={40} value={colGap} onChange={(e) => setColGap(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={0} max={40} value={colGap} onChange={(e) => setColGap(Number(e.target.value))} className="w-full" />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <div className="flex flex-col gap-1">
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span style={labelStyle}>{l.rowGap}</span>
             <span style={labelStyle}>{rowGap}px</span>
           </div>
-          <input type="range" min={0} max={40} value={rowGap} onChange={(e) => setRowGap(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={0} max={40} value={rowGap} onChange={(e) => setRowGap(Number(e.target.value))} className="w-full" />
         </div>
       </div>
 
       {/* Column widths */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.columnWidths}</span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <div className="flex flex-wrap gap-2">
           {colDefs.map((def, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', padding: '0.375rem', border: '1px solid var(--color-border)', borderRadius: '0.375rem', backgroundColor: 'var(--color-bg-secondary)' }}>
               <span style={{ fontSize: '0.6875rem', color: 'var(--color-text-secondary)' }}>C{i + 1}</span>
@@ -173,7 +173,7 @@ row-gap: ${rowGap}px;`
       </div>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div
           style={{
@@ -211,9 +211,9 @@ row-gap: ${rowGap}px;`
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

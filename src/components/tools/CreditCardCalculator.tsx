@@ -82,8 +82,8 @@ export default function CreditCardCalculator({ labels }: CreditCardCalculatorPro
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.balance}</label>
           <input type="number" style={inputStyle} value={balance} onChange={(e) => setBalance(Number(e.target.value))} min={0} />
@@ -102,37 +102,37 @@ export default function CreditCardCalculator({ labels }: CreditCardCalculatorPro
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
           <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-error)' }}>Minimum Payment Only</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.monthsToPayoff}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.monthsToPayoff}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{result.minResult.months}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.totalInterest}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.totalInterest}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-error)' }}>{formatNumber(result.minResult.totalInterest, l.currency)}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.totalPayment}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.totalPayment}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{formatNumber(result.minResult.totalPaid, l.currency)}</div>
             </div>
           </div>
         </div>
         <div>
           <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-success)' }}>Fixed Payment ({formatNumber(fixedPayment, l.currency)}/mo)</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.monthsToPayoff}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.monthsToPayoff}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{result.fixedResult.months}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.totalInterest}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.totalInterest}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-success)' }}>{formatNumber(result.fixedResult.totalInterest, l.currency)}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>{l.totalPayment}</div>
+              <div className="text-[0.7rem] text-[var(--color-text-secondary)]">{l.totalPayment}</div>
               <div style={{ fontSize: '1.25rem', fontWeight: 700 }}>{formatNumber(result.fixedResult.totalPaid, l.currency)}</div>
             </div>
           </div>
@@ -140,11 +140,11 @@ export default function CreditCardCalculator({ labels }: CreditCardCalculatorPro
       </div>
 
       <div style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', fontSize: '0.875rem', color: 'var(--color-text)' }}>
-        ⚠️ {l.minPaymentWarning}
+        {l.minPaymentWarning}
       </div>
 
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.payoffChart}</h3>
+        <h3 className="text-lg font-semibold mb-3">{l.payoffChart}</h3>
         <div style={{ width: '100%', height: 350, backgroundColor: 'var(--color-bg-secondary)', borderRadius: '0.75rem', border: '1px solid var(--color-border)', padding: '1rem 0.5rem 0 0' }}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart>

@@ -81,40 +81,51 @@ export default function GpaCalculator({ labels }: GpaCalculatorProps) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', gap: '0.75rem', alignItems: 'end' }}>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-3">
+        <div className="hidden sm:grid sm:grid-cols-[2fr_1fr_1fr_auto] gap-3 items-end">
           <label style={labelStyle}>{l.courseName}</label>
           <label style={labelStyle}>{l.credits}</label>
           <label style={labelStyle}>{l.grade}</label>
-          <span style={{ width: '70px' }} />
+          <span className="w-[70px]" />
         </div>
         {courses.map((course) => (
-          <div key={course.id} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr auto', gap: '0.75rem', alignItems: 'center' }}>
-            <input
-              type="text"
-              style={inputStyle}
-              value={course.name}
-              onChange={(e) => updateCourse(course.id, 'name', e.target.value)}
-            />
-            <select
-              style={inputStyle}
-              value={course.credits}
-              onChange={(e) => updateCourse(course.id, 'credits', Number(e.target.value))}
-            >
-              {[1, 2, 3, 4, 5, 6].map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
-            <select
-              style={inputStyle}
-              value={course.grade}
-              onChange={(e) => updateCourse(course.id, 'grade', e.target.value)}
-            >
-              {GRADES.map((g) => (
-                <option key={g} value={g}>{g} ({GRADE_POINTS[g].toFixed(1)})</option>
-              ))}
-            </select>
+          <div key={course.id} className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] gap-3 items-center p-3 sm:p-0 rounded-lg sm:rounded-none bg-gray-50 sm:bg-transparent border sm:border-0 border-gray-200">
+            <div className="sm:contents">
+              <label className="sm:hidden text-xs font-medium text-gray-500 mb-1">{l.courseName}</label>
+              <input
+                type="text"
+                style={inputStyle}
+                value={course.name}
+                onChange={(e) => updateCourse(course.id, 'name', e.target.value)}
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:contents">
+              <div className="flex flex-col sm:contents">
+                <label className="sm:hidden text-xs font-medium text-gray-500 mb-1">{l.credits}</label>
+                <select
+                  style={inputStyle}
+                  value={course.credits}
+                  onChange={(e) => updateCourse(course.id, 'credits', Number(e.target.value))}
+                >
+                  {[1, 2, 3, 4, 5, 6].map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex flex-col sm:contents">
+                <label className="sm:hidden text-xs font-medium text-gray-500 mb-1">{l.grade}</label>
+                <select
+                  style={inputStyle}
+                  value={course.grade}
+                  onChange={(e) => updateCourse(course.id, 'grade', e.target.value)}
+                >
+                  {GRADES.map((g) => (
+                    <option key={g} value={g}>{g} ({GRADE_POINTS[g].toFixed(1)})</option>
+                  ))}
+                </select>
+              </div>
+            </div>
             <button
               onClick={() => removeCourse(course.id)}
               style={{
@@ -141,15 +152,15 @@ export default function GpaCalculator({ labels }: GpaCalculatorProps) {
         + {l.addCourse}
       </button>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalCredits}</div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalCredits}</div>
+          <div className="text-[1.75rem] font-bold text-[var(--color-primary)]">
             {result.totalCredits}
           </div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.cumulativeGpa}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.cumulativeGpa}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-success)' }}>
             {result.gpa.toFixed(2)}
           </div>

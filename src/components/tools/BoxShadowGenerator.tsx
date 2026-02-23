@@ -81,7 +81,7 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
   const cssCode = `box-shadow: ${cssValue};`
 
   const sliderRow = (label: string, value: number, min: number, max: number, onChange: (v: number) => void) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+    <div className="flex flex-col gap-1">
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
         <span>{label}</span>
         <span>{value}{label === l.opacity ? '' : 'px'}</span>
@@ -93,7 +93,7 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
         step={label === l.opacity ? 0.01 : 1}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: '100%' }}
+        className="w-full"
       />
     </div>
   )
@@ -109,11 +109,11 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Shadow configs */}
       {shadows.map((shadow, i) => (
         <div key={i} style={{ padding: '1rem', border: '1px solid var(--color-border)', borderRadius: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="flex justify-between items-center">
             <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text)' }}>{l.shadow} {i + 1}</span>
             {shadows.length > 1 && (
               <button onClick={() => removeShadow(i)} style={{ ...btnStyle, color: '#ef4444', padding: '0.25rem 0.75rem', fontSize: '0.75rem' }}>
@@ -127,7 +127,7 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
           {sliderRow(l.spread, shadow.spread, -50, 50, (v) => updateShadow(i, 'spread', v))}
           {sliderRow(l.opacity, shadow.opacity, 0, 1, (v) => updateShadow(i, 'opacity', v))}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.color}</span>
+            <span className="text-xs text-[var(--color-text-secondary)]">{l.color}</span>
             <input
               type="color"
               value={shadow.color}
@@ -149,7 +149,7 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
       <button onClick={addShadow} style={btnStyle}>+ {l.addShadow}</button>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>{l.preview}</span>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
           <div
@@ -165,9 +165,9 @@ export default function BoxShadowGenerator({ labels }: BoxShadowGeneratorProps) 
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', fontWeight: 600 }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

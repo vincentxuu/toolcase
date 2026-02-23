@@ -81,7 +81,7 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
   const cssCode = `text-shadow: ${cssValue};`
 
   const sliderRow = (label: string, value: number, min: number, max: number, step: number, onChange: (v: number) => void) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+    <div className="flex flex-col gap-1">
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
         <span>{label}</span>
         <span>{value}{label === l.opacity ? '' : 'px'}</span>
@@ -93,7 +93,7 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: '100%' }}
+        className="w-full"
       />
     </div>
   )
@@ -109,9 +109,9 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Preview text input and font size */}
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <div className="flex gap-4 flex-wrap">
         <div style={{ flex: '1 1 250px' }}>
           <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.previewText}</label>
           <input
@@ -137,7 +137,7 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
       {/* Shadow configs */}
       {shadows.map((shadow, i) => (
         <div key={i} style={{ padding: '1rem', border: '1px solid var(--color-border)', borderRadius: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="flex justify-between items-center">
             <span style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text)' }}>{l.shadow} {i + 1}</span>
             {shadows.length > 1 && (
               <button onClick={() => removeShadow(i)} style={{ ...btnStyle, color: '#ef4444', padding: '0.25rem 0.75rem', fontSize: '0.75rem' }}>
@@ -150,7 +150,7 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
           {sliderRow(l.blur, shadow.blur, 0, 50, 1, (v) => updateShadow(i, 'blur', v))}
           {sliderRow(l.opacity, shadow.opacity, 0, 1, 0.01, (v) => updateShadow(i, 'opacity', v))}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.color}</span>
+            <span className="text-xs text-[var(--color-text-secondary)]">{l.color}</span>
             <input
               type="color"
               value={shadow.color}
@@ -164,7 +164,7 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
       <button onClick={addShadow} style={btnStyle}>+ {l.addShadow}</button>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>{l.preview}</span>
         <div style={{
           display: 'flex',
@@ -188,9 +188,9 @@ export default function CssTextShadowGenerator({ labels }: CssTextShadowGenerato
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', fontWeight: 600 }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

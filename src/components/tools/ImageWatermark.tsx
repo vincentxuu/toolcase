@@ -174,20 +174,20 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
-        <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
+        <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
         {originalFile && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{originalFile.name}</span>
+          <span className="text-sm text-[var(--color-text-secondary)]">{originalFile.name}</span>
         )}
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <label style={labelStyle}>{l.watermarkText}</label>
         <input
           type="text"
@@ -197,8 +197,8 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
         />
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.fontSize}:</label>
           <input
             type="number"
@@ -210,7 +210,7 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.color}:</label>
           <input
             type="color"
@@ -220,7 +220,7 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.opacity}: {opacity}%</label>
           <input
             type="range"
@@ -233,8 +233,8 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.position}:</label>
           <select value={position} onChange={(e) => setPosition(e.target.value as Position)} style={selectStyle}>
             <option value="center">{l.posCenter}</option>
@@ -246,18 +246,18 @@ export default function ImageWatermark({ labels }: ImageWatermarkProps) {
           </select>
         </div>
 
-        <button className="btn-primary" onClick={handleApply} disabled={!originalFile || !wmText.trim()}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleApply} disabled={!originalFile || !wmText.trim()}>
           {l.apply}
         </button>
       </div>
 
       {resultUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
             <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text)' }}>
               {l.preview}
             </span>
-            <button className="btn-primary" onClick={handleDownload}>{l.download}</button>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>{l.download}</button>
           </div>
           <div style={{
             border: '1px solid var(--color-border)',

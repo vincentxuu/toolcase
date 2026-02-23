@@ -73,12 +73,12 @@ export default function Base64Tool({ labels }: Base64ToolProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-primary" onClick={handleEncode}>{l.encode}</button>
-        <button className="btn-secondary" onClick={handleDecode}>{l.decode}</button>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleEncode}>{l.encode}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleDecode}>{l.decode}</button>
         <button
-          className="btn-secondary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={() => fileRef.current?.click()}
         >
           {l.uploadFile}
@@ -87,30 +87,28 @@ export default function Base64Tool({ labels }: Base64ToolProps) {
           ref={fileRef}
           type="file"
           onChange={handleFileUpload}
-          style={{ display: 'none' }}
+          className="hidden"
         />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <textarea
-            className="tool-textarea"
-            style={{ height: '300px' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
             placeholder={l.input}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <textarea
-            className="tool-textarea"
-            style={{ height: '300px' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
             placeholder={l.output}
             value={output}
             readOnly
           />
           {output && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+            <div className="absolute top-2 right-2">
               <CopyButton text={output} label={l.copy} copiedLabel={l.copied} />
             </div>
           )}

@@ -351,7 +351,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
   const targetCity = TIMEZONES.find(tz => tz.id === targetTz)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Mode Tabs */}
       <div style={{
         display: 'flex',
@@ -395,7 +395,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
       {mode === 'converter' && (
         <>
           {/* Current time in both zones */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div style={{
               padding: '1rem',
               backgroundColor: 'var(--color-bg-secondary)',
@@ -453,7 +453,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
                 ))}
               </select>
             </div>
-            <button className="btn-secondary" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
             <div>
               <label style={labelStyle}>{l.targetTimezone}</label>
               <input
@@ -482,7 +482,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
           </div>
 
           {/* Date and time inputs */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={labelStyle}>{l.date}</label>
               <input
@@ -511,7 +511,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
             border: '1px solid var(--color-border)',
             textAlign: 'center',
           }}>
-            <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.convertedTime}</div>
+            <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.convertedTime}</div>
             <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)', fontFamily: 'monospace' }}>
               {convertedResult ?? '--'}
             </div>
@@ -563,7 +563,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
                 ))}
               </select>
             </div>
-            <button className="btn-secondary" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleSwap} style={{ marginBottom: '0.125rem' }}>⇄</button>
             <div>
               <label style={labelStyle}>{l.targetTimezone}</label>
               <input
@@ -599,7 +599,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
             border: '1px solid var(--color-border)',
           }}>
             <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', fontSize: '0.875rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div className="flex items-center gap-2">
                 <div style={{
                   width: '20px',
                   height: '20px',
@@ -613,7 +613,7 @@ export default function TimezoneConverter({ labels, locale }: TimezoneConverterP
           </div>
 
           {/* Time Comparison Table */}
-          <div style={{ overflowX: 'auto' }}>
+          <div className="overflow-x-auto">
             <table style={{
               width: '100%',
               borderCollapse: 'collapse',

@@ -100,8 +100,8 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.width} (px)</label>
           <input type="number" style={inputStyle} value={width} onChange={(e) => handleWidthChange(Number(e.target.value))} min={1} />
@@ -112,7 +112,7 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <div className="flex flex-wrap items-center gap-3">
         <button
           onClick={handleLockToggle}
           style={locked ? activeBtnStyle : btnStyle}
@@ -120,14 +120,14 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
           {locked ? '🔒' : '🔓'} {l.lockRatio}
         </button>
         {locked && lockedRatio && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             ({lockedRatio.w}:{lockedRatio.h})
           </span>
         )}
       </div>
 
       <div style={{ padding: '2rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }}>
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.simplifiedRatio}</div>
+        <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.simplifiedRatio}</div>
         <div style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--color-primary)' }}>
           {width > 0 && height > 0 ? `${simplified.w}:${simplified.h}` : '—'}
         </div>
@@ -156,7 +156,7 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
 
       <div>
         <label style={labelStyle}>{l.presets}</label>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2">
           {presetRatios.map((p) => (
             <button
               key={p.label}
@@ -170,7 +170,7 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
       </div>
 
       {/* Common resolutions table */}
-      <div style={{ overflow: 'auto' }}>
+      <div className="overflow-x-auto">
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
           <thead>
             <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
@@ -190,7 +190,7 @@ export default function AspectRatioCalculator({ labels }: AspectRatioCalculatorP
               { res: '1080×1920', ratio: '9:16', name: 'Mobile' },
             ].map((r) => (
               <tr key={r.res} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                <td style={{ padding: '0.5rem' }}>{r.res}</td>
+                <td className="p-2">{r.res}</td>
                 <td style={{ padding: '0.5rem', color: 'var(--color-primary)', fontWeight: 600 }}>{r.ratio}</td>
                 <td style={{ padding: '0.5rem', color: 'var(--color-text-secondary)' }}>{r.name}</td>
               </tr>

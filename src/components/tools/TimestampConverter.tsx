@@ -113,7 +113,7 @@ export default function TimestampConverter({ labels }: TimestampConverterProps) 
   const nowTs = Math.floor(now.getTime() / 1000)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Current time display */}
       <div style={{
         padding: '1.5rem',
@@ -132,7 +132,7 @@ export default function TimestampConverter({ labels }: TimestampConverterProps) 
 
       {/* Timestamp → Date */}
       <div style={{ padding: '1.25rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem' }}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.unixToDate}</h3>
+        <h3 className="font-semibold mb-3">{l.unixToDate}</h3>
         <input
           type="text"
           placeholder="e.g. 1700000000"
@@ -151,13 +151,13 @@ export default function TimestampConverter({ labels }: TimestampConverterProps) 
         />
         {tsResult && (
           <div style={{ marginTop: '0.75rem', display: 'grid', gridTemplateColumns: '120px 1fr', gap: '0.375rem', fontSize: '0.875rem' }}>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.localTime}:</span>
+            <span className="text-[var(--color-text-secondary)]">{l.localTime}:</span>
             <span style={{ fontFamily: 'monospace' }}>{tsResult.local}</span>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.utcTime}:</span>
+            <span className="text-[var(--color-text-secondary)]">{l.utcTime}:</span>
             <span style={{ fontFamily: 'monospace' }}>{tsResult.utc}</span>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.iso8601}:</span>
+            <span className="text-[var(--color-text-secondary)]">{l.iso8601}:</span>
             <span style={{ fontFamily: 'monospace' }}>{tsResult.iso}</span>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.relative}:</span>
+            <span className="text-[var(--color-text-secondary)]">{l.relative}:</span>
             <span>{tsResult.relative}</span>
           </div>
         )}
@@ -165,7 +165,7 @@ export default function TimestampConverter({ labels }: TimestampConverterProps) 
 
       {/* Date → Timestamp */}
       <div style={{ padding: '1.25rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem' }}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.dateToUnix}</h3>
+        <h3 className="font-semibold mb-3">{l.dateToUnix}</h3>
         <input
           type="datetime-local"
           value={dateInput}
@@ -182,13 +182,13 @@ export default function TimestampConverter({ labels }: TimestampConverterProps) 
         />
         {dateResult && (
           <div style={{ marginTop: '0.75rem', display: 'grid', gridTemplateColumns: '120px 1fr', gap: '0.375rem', fontSize: '0.875rem' }}>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.seconds}:</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span className="text-[var(--color-text-secondary)]">{l.seconds}:</span>
+            <div className="flex items-center gap-2">
               <span style={{ fontFamily: 'monospace' }}>{dateResult.seconds}</span>
               <CopyButton text={dateResult.seconds} label={l.copy} copiedLabel={l.copied} />
             </div>
-            <span style={{ color: 'var(--color-text-secondary)' }}>{l.milliseconds}:</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span className="text-[var(--color-text-secondary)]">{l.milliseconds}:</span>
+            <div className="flex items-center gap-2">
               <span style={{ fontFamily: 'monospace' }}>{dateResult.milliseconds}</span>
               <CopyButton text={dateResult.milliseconds} label={l.copy} copiedLabel={l.copied} />
             </div>

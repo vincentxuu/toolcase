@@ -444,7 +444,7 @@ export default function TaiwanPostalCode({ labels }: TaiwanPostalCodeProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
         <select
           value={selectedCity}
@@ -463,7 +463,7 @@ export default function TaiwanPostalCode({ labels }: TaiwanPostalCodeProps) {
         />
       </div>
 
-      <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+      <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 120px', backgroundColor: 'var(--color-bg-secondary)', borderBottom: '2px solid var(--color-border)', fontWeight: 600, fontSize: '0.85rem' }}>
           <div style={{ padding: '0.5rem 0.75rem' }}>{l.city}</div>
           <div style={{ padding: '0.5rem 0.75rem' }}>{l.district}</div>

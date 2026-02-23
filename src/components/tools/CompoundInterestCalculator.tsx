@@ -113,8 +113,8 @@ export default function CompoundInterestCalculator({ labels }: CompoundInterestC
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.initialInvestment}</label>
           <input type="number" style={inputStyle} value={principal} onChange={(e) => setPrincipal(Number(e.target.value))} min={0} />
@@ -134,7 +134,7 @@ export default function CompoundInterestCalculator({ labels }: CompoundInterestC
       </div>
       <div>
         <label style={labelStyle}>{l.compoundFrequency}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           {([
             [12, l.monthly],
             [4, l.quarterly],
@@ -142,7 +142,7 @@ export default function CompoundInterestCalculator({ labels }: CompoundInterestC
           ] as const).map(([val, label]) => (
             <button
               key={val}
-              className={frequency === val ? 'btn-primary' : 'btn-secondary'}
+              className={frequency === val ? 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0' : 'inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]'}
               onClick={() => setFrequency(val)}
             >
               {label}
@@ -151,21 +151,21 @@ export default function CompoundInterestCalculator({ labels }: CompoundInterestC
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.finalBalance}</div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.finalBalance}</div>
+          <div className="text-[1.75rem] font-bold text-[var(--color-primary)]">
             {formatNumber(result.finalBalance, l.currency)}
           </div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalContributions}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalContributions}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700 }}>
             {formatNumber(result.totalContributions, l.currency)}
           </div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalInterest}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalInterest}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-success)' }}>
             {formatNumber(result.totalInterest, l.currency)}
           </div>
@@ -173,7 +173,7 @@ export default function CompoundInterestCalculator({ labels }: CompoundInterestC
       </div>
 
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.growthChart}</h3>
+        <h3 className="text-lg font-semibold mb-3">{l.growthChart}</h3>
         <div style={{ width: '100%', height: 350, backgroundColor: 'var(--color-bg-secondary)', borderRadius: '0.75rem', border: '1px solid var(--color-border)', padding: '1rem 0.5rem 0 0' }}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={result.chartData}>

@@ -159,11 +159,11 @@ export default function HttpStatusCodes({ labels }: HttpStatusCodesProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {/* Search */}
       <input
         type="text"
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ height: 'auto', padding: '0.75rem', fontSize: '1rem' }}
         placeholder={l.searchPlaceholder}
         value={search}
@@ -183,7 +183,7 @@ export default function HttpStatusCodes({ labels }: HttpStatusCodesProps) {
       </div>
 
       {/* Results */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         {filteredCodes.map((status) => (
           <div
             key={status.code}
@@ -209,7 +209,7 @@ export default function HttpStatusCodes({ labels }: HttpStatusCodesProps) {
             >
               {status.code}
             </span>
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
               <div style={{ fontWeight: 600, marginBottom: '0.25rem', color: 'var(--color-text)' }}>
                 {status.name}
               </div>

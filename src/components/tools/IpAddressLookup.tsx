@@ -131,7 +131,7 @@ export default function IpAddressLookup({ labels }: IpAddressLookupProps) {
   ] : []
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {myIp && (
         <div style={cardStyle}>
           <span style={labelStyle}>{l.yourIp}: </span>
@@ -139,8 +139,8 @@ export default function IpAddressLookup({ labels }: IpAddressLookupProps) {
         </div>
       )}
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.lookupIp}:</label>
           <input
             type="text"
@@ -151,15 +151,15 @@ export default function IpAddressLookup({ labels }: IpAddressLookupProps) {
             onKeyDown={(e) => e.key === 'Enter' && handleLookup()}
           />
         </div>
-        <button className="btn-primary" onClick={handleLookup} disabled={!inputIp.trim() || loading}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleLookup} disabled={!inputIp.trim() || loading}>
           {l.lookup}
         </button>
-        <button className="btn-secondary" onClick={detectMyIp} disabled={loading}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={detectMyIp} disabled={loading}>
           {l.detectMyIp}
         </button>
       </div>
 
-      {loading && <p style={{ color: 'var(--color-text-secondary)' }}>{l.loading}</p>}
+      {loading && <p className="text-[var(--color-text-secondary)]">{l.loading}</p>}
       {error && <p style={{ color: '#ef4444' }}>{error}</p>}
 
       {details && (

@@ -4,6 +4,12 @@ export interface ToolConfig {
   nameKey: string
   descKey: string
   icon: string
+  // 新增欄位（可選）
+  isFeatured?: boolean    // 精選工具標記
+  isPopular?: boolean     // 熱門工具標記
+  isNew?: boolean         // 新增工具標記
+  tags?: string[]         // 標籤陣列
+  priority?: number       // 排序優先級
 }
 
 export const tools: ToolConfig[] = [
@@ -403,6 +409,25 @@ export const tools: ToolConfig[] = [
   { slug: 'csv-editor', category: 'dev', nameKey: 'tool_csv_editor', descKey: 'tool_csv_editor_desc', icon: 'table' },
   { slug: 'excel-formula-generator', category: 'dev', nameKey: 'tool_excel_formula', descKey: 'tool_excel_formula_desc', icon: 'function-square' },
 
+  // Design Tools (4)
+  { slug: 'icon-search', category: 'css', nameKey: 'tool_icon_search', descKey: 'tool_icon_search_desc', icon: 'search' },
+  { slug: 'wcag-color-checker', category: 'css', nameKey: 'tool_wcag_color', descKey: 'tool_wcag_color_desc', icon: 'eye' },
+  { slug: 'font-preview', category: 'css', nameKey: 'tool_font_preview', descKey: 'tool_font_preview_desc', icon: 'type' },
+  { slug: 'logo-generator', category: 'css', nameKey: 'tool_logo_generator', descKey: 'tool_logo_generator_desc', icon: 'image' },
+
+  // Daily Complex Tools (1)
+  { slug: 'sunrise-sunset-calculator', category: 'everyday', nameKey: 'tool_sunrise_sunset', descKey: 'tool_sunrise_sunset_desc', icon: 'sunrise' },
+
+  // Education Tools (2)
+  { slug: 'math-formula-editor', category: 'everyday', nameKey: 'tool_math_formula', descKey: 'tool_math_formula_desc', icon: 'square-root' },
+  { slug: 'latex-editor', category: 'dev', nameKey: 'tool_latex_editor', descKey: 'tool_latex_editor_desc', icon: 'file-code' },
+
+  // Health Records (1)
+  { slug: 'menstrual-cycle-calculator', category: 'health', nameKey: 'tool_menstrual_cycle', descKey: 'tool_menstrual_cycle_desc', icon: 'calendar-heart' },
+
+  // Lunar/Almanac (1)
+  { slug: 'farmer-almanac', category: 'everyday', nameKey: 'tool_farmer_almanac', descKey: 'tool_farmer_almanac_desc', icon: 'calendar-range' },
+
   // --- New tools from piliapp-missing-features.md ---
   // Phase 1: Quick value tools
   { slug: 'coin-flip', category: 'everyday', nameKey: 'tool_coinflip', descKey: 'tool_coinflip_desc', icon: 'circle-dot' },
@@ -420,9 +445,12 @@ export const tools: ToolConfig[] = [
   { slug: 'online-ruler', category: 'everyday', nameKey: 'tool_ruler', descKey: 'tool_ruler_desc', icon: 'ruler' },
   { slug: 'alarm-clock', category: 'everyday', nameKey: 'tool_alarm', descKey: 'tool_alarm_desc', icon: 'bell' },
   { slug: 'mind-reader', category: 'everyday', nameKey: 'tool_mindreader', descKey: 'tool_mindreader_desc', icon: 'brain' },
-  { slug: 'color-blindness-test', category: 'everyday', nameKey: 'tool_colorblind', descKey: 'tool_colorblind_desc', icon: 'eye' },
+  { slug: 'color-blindness-test', category: 'everyday', nameKey: 'tool_colorblind_test', descKey: 'tool_colorblind_test_desc', icon: 'eye' },
   { slug: 'wheel-spinner', category: 'everyday', nameKey: 'tool_wheel', descKey: 'tool_wheel_desc', icon: 'circle-dot' },
   { slug: 'drawing-board', category: 'everyday', nameKey: 'tool_drawingboard', descKey: 'tool_drawingboard_desc', icon: 'pencil' },
+
+  // --- New Health Tools ---
+  { slug: 'weight-loss-plan', category: 'health', nameKey: 'tool_weightloss', descKey: 'tool_weightloss_desc', icon: 'target' },
 ]
 
 export const categories = [

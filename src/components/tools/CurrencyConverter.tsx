@@ -202,7 +202,7 @@ export default function CurrencyConverter({ labels }: CurrencyConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input section */}
       <div style={cardStyle}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

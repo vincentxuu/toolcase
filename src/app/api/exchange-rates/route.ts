@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server'
-
 // Configure for static export
 export const dynamic = 'force-static'
 export const revalidate = 3600 // Revalidate every hour
@@ -8,10 +6,18 @@ export const revalidate = 3600 // Revalidate every hour
 let cache: { data: Record<string, number>; timestamp: number } | null = null
 const CACHE_TTL = 60 * 60 * 1000 // 1 hour
 
+function jsonResponse(body: unknown, init: ResponseInit = {}) {
+  const headers = new Headers(init.headers)
+  if (!headers.has('content-type')) {
+    headers.set('content-type', 'application/json; charset=utf-8')
+  }
+  return new Response(JSON.stringify(body), { ...init, headers })
+}
+
 export async function GET() {
   // If cache is fresh, use it
   if (cache && Date.now() - cache.timestamp < CACHE_TTL) {
-    return NextResponse.json({ rates: cache.data, cached: true })
+    return jsonResponse({ rates: cache.data, cached: true })
   }
 
   try {
@@ -40,12 +46,12 @@ export async function GET() {
     }
 
     cache = { data: rates, timestamp: Date.now() }
-    return NextResponse.json({ rates, cached: false })
+    return jsonResponse({ rates, cached: false })
   } catch {
     // If API fails and we have stale cache, use it
     if (cache) {
-      return NextResponse.json({ rates: cache.data, cached: true, stale: true })
+      return jsonResponse({ rates: cache.data, cached: true, stale: true })
     }
-    return NextResponse.json({ error: 'Failed to fetch exchange rates' }, { status: 500 })
+    return jsonResponse({ error: 'Failed to fetch exchange rates' }, { status: 500 })
   }
 }

@@ -10,48 +10,25 @@ export default function FaqSection({ items, title = 'FAQ' }: { items: FaqItem[];
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section style={{ marginTop: '3rem' }}>
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>{title}</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+    <section className="mt-12">
+      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+      <div className="flex flex-col gap-2">
         {items.map((item, index) => (
           <div
             key={index}
-            style={{
-              border: '1px solid var(--color-border)',
-              borderRadius: '0.5rem',
-              overflow: 'hidden',
-            }}
+            className="border border-[var(--color-border)] rounded-lg overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              style={{
-                width: '100%',
-                padding: '1rem',
-                textAlign: 'left',
-                background: 'none',
-                border: 'none',
-                color: 'var(--color-text)',
-                fontSize: '1rem',
-                fontWeight: 500,
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
+              className="w-full p-4 text-left bg-transparent border-0 text-[var(--color-text)] text-base font-medium cursor-pointer flex justify-between items-center"
             >
               {item.question}
-              <span style={{ transform: openIndex === index ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
+              <span className={`transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}>
                 ▼
               </span>
             </button>
             {openIndex === index && (
-              <div
-                style={{
-                  padding: '0 1rem 1rem',
-                  color: 'var(--color-text-secondary)',
-                  lineHeight: 1.6,
-                }}
-              >
+              <div className="px-4 pb-4 text-[var(--color-text-secondary)] leading-relaxed">
                 {item.answer}
               </div>
             )}

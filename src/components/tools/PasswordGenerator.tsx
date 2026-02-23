@@ -86,7 +86,7 @@ export default function PasswordGenerator({ labels }: PasswordGeneratorProps) {
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Password display */}
       <div style={{
         position: 'relative', padding: '1.5rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)',
@@ -94,7 +94,7 @@ export default function PasswordGenerator({ labels }: PasswordGeneratorProps) {
         wordBreak: 'break-all', letterSpacing: '0.05em', lineHeight: 1.6,
       }}>
         {password}
-        <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+        <div className="absolute top-2 right-2">
           <CopyButton text={password} label={l.copy} copiedLabel={l.copied} />
         </div>
       </div>
@@ -102,7 +102,7 @@ export default function PasswordGenerator({ labels }: PasswordGeneratorProps) {
       {/* Strength bar */}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '0.25rem' }}>
-          <span style={{ color: 'var(--color-text-secondary)' }}>{l.strength}</span>
+          <span className="text-[var(--color-text-secondary)]">{l.strength}</span>
           <span style={{ color: strength.color, fontWeight: 600 }}>{strengthLabels[strength.level]}</span>
         </div>
         <div style={{ display: 'flex', gap: '0.25rem', height: '0.5rem' }}>
@@ -126,14 +126,14 @@ export default function PasswordGenerator({ labels }: PasswordGeneratorProps) {
       </div>
 
       {/* Character options */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <div style={checkStyle(upper)} onClick={() => { setUpper(!upper); setPassword(generatePassword(length, !upper, lower, nums, syms)) }}>{l.uppercase}</div>
         <div style={checkStyle(lower)} onClick={() => { setLower(!lower); setPassword(generatePassword(length, upper, !lower, nums, syms)) }}>{l.lowercase}</div>
         <div style={checkStyle(nums)} onClick={() => { setNums(!nums); setPassword(generatePassword(length, upper, lower, !nums, syms)) }}>{l.numbers}</div>
         <div style={checkStyle(syms)} onClick={() => { setSyms(!syms); setPassword(generatePassword(length, upper, lower, nums, !syms)) }}>{l.symbols}</div>
       </div>
 
-      <button className="btn-primary" onClick={handleGenerate} style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}>
+      <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerate} style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}>
         {l.generate}
       </button>
     </div>

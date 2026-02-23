@@ -75,10 +75,10 @@ export default function FuelCostCalculator({ labels }: FuelCostCalculatorProps) 
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
         <label style={labelStyle}>{l.unitSystem}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           <button style={toggleBtnStyle(isMetric)} onClick={() => { setIsMetric(true); setEfficiency(12); setFuelPrice(1.5) }}>
             {l.metric}
           </button>
@@ -88,7 +88,7 @@ export default function FuelCostCalculator({ labels }: FuelCostCalculatorProps) 
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <label style={labelStyle}>{l.tripDistance} ({isMetric ? l.km : l.miles})</label>
           <input type="number" style={inputStyle} value={distance} onChange={(e) => setDistance(Number(e.target.value))} min={0} step={1} />
@@ -105,7 +105,7 @@ export default function FuelCostCalculator({ labels }: FuelCostCalculatorProps) 
 
       <div>
         <label style={labelStyle}>{l.roundTrip}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           <button style={toggleBtnStyle(!isRoundTrip)} onClick={() => setIsRoundTrip(false)}>
             {l.oneWay}
           </button>
@@ -115,18 +115,18 @@ export default function FuelCostCalculator({ labels }: FuelCostCalculatorProps) 
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.fuelNeeded}</div>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.fuelNeeded}</div>
+          <div className="text-[1.75rem] font-bold text-[var(--color-primary)]">
             {result.fuelNeeded.toFixed(2)} {isMetric ? 'L' : 'gal'}
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
+          <div className="text-xs text-[var(--color-text-secondary)] mt-1">
             {result.actualDistance} {isMetric ? l.km : l.miles}
           </div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalCost}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalCost}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-success)' }}>
             ${result.totalCost.toFixed(2)}
           </div>

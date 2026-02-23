@@ -58,9 +58,9 @@ export default function SocialMediaCounter({ labels }: SocialMediaCounterProps) 
   const charCount = text.length
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Textarea */}
-      <div style={{ position: 'relative' }}>
+      <div className="relative">
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -96,7 +96,7 @@ export default function SocialMediaCounter({ labels }: SocialMediaCounterProps) 
       </div>
 
       {/* Platform progress bars */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div className="flex flex-col gap-4">
         {PLATFORMS.map((platform) => {
           const ratio = charCount / platform.limit
           const remaining = platform.limit - charCount
@@ -140,7 +140,7 @@ export default function SocialMediaCounter({ labels }: SocialMediaCounterProps) 
                 justifyContent: 'flex-end',
                 marginTop: '0.125rem',
               }}>
-                <span style={{ fontSize: '0.7rem', color: 'var(--color-text-secondary)' }}>
+                <span className="text-[0.7rem] text-[var(--color-text-secondary)]">
                   {charCount} / {platform.limit.toLocaleString()}
                 </span>
               </div>

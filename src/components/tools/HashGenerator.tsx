@@ -85,10 +85,10 @@ export default function HashGenerator({ labels }: HashGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center">
         <button
-          className="btn-secondary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={() => fileRef.current?.click()}
         >
           {l.uploadFile}
@@ -97,12 +97,12 @@ export default function HashGenerator({ labels }: HashGeneratorProps) {
           ref={fileRef}
           type="file"
           onChange={handleFileUpload}
-          style={{ display: 'none' }}
+          className="hidden"
         />
       </div>
 
       <textarea
-        className="tool-textarea"
+        className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
         style={{ height: '150px' }}
         placeholder={l.input}
         value={input}
@@ -110,15 +110,15 @@ export default function HashGenerator({ labels }: HashGeneratorProps) {
       />
 
       {computing && (
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+        <div className="text-sm text-[var(--color-text-secondary)]">
           Computing hashes...
         </div>
       )}
 
       {Object.keys(hashes).length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div className="flex flex-col gap-3">
           {ALGORITHMS.map((algo) => (
-            <div key={algo} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div key={algo} className="flex flex-col gap-1">
               <span style={labelStyle}>{algo}</span>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                 <div style={{ ...hashStyle, flex: 1 }}>

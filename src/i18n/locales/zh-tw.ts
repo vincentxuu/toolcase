@@ -6,8 +6,8 @@ const zhTw = {
   // Hero
   hero_badge: '100% 免費 — 不需要註冊',
   hero_title_1: '線上工具，',
-  hero_title_2: '150+ 工具開啟即用。',
-  hero_desc: '開發、設計、財務、健康、圖片處理、文字編輯、單位轉換 — 150+ 種免費工具，開啟即用。',
+  hero_title_2: '{count}+ 工具開啟即用。',
+  hero_desc: '開發、設計、財務、健康、圖片處理、文字編輯、單位轉換 — {count}+ 種免費工具，開啟即用。',
   stat_tools: '免費工具',
   stat_signup: '不需註冊',
   stat_load: '載入時間',
@@ -56,6 +56,8 @@ const zhTw = {
   tool_bmi_desc: '即時計算你的身體質量指數',
   tool_tdee: 'TDEE / BMR 計算器',
   tool_tdee_desc: '計算每日所需熱量與基礎代謝率',
+  tool_weightloss: '減脂跑步計畫',
+  tool_weightloss_desc: '建立個人化減脂跑步計畫,包含跑步規劃、熱量目標與誠實提醒',
   tool_duedate: '預產期計算器',
   tool_duedate_desc: '估算預產期並追蹤懷孕進度',
   tool_percentage: '百分比計算器',
@@ -384,6 +386,29 @@ const zhTw = {
   tool_csv_editor_desc: '在試算表介面中編輯 CSV 檔案並匯出',
   tool_excel_formula: 'Excel 公式產生器',
   tool_excel_formula_desc: '瀏覽並複製常用 Excel 公式與範例',
+  tool_icon_search: '圖示搜尋',
+  tool_icon_search_desc: '搜尋並複製 Lucide React 圖示與自訂樣式',
+  tool_wcag_color: 'WCAG 配色檢查器',
+  tool_wcag_color_desc: '檢查顏色對比度是否符合無障礙標準',
+  tool_font_preview: '字體預覽',
+  tool_font_preview_desc: '預覽 Google 字體並自訂文字和大小',
+  tool_logo_generator: 'Logo 產生器',
+  tool_logo_generator_desc: '使用 Canvas 建立簡單的文字和形狀 Logo',
+
+  tool_sunrise_sunset: '日出日落計算機',
+  tool_sunrise_sunset_desc: '使用天文公式計算日出、日落和曙暮光時間',
+
+  tool_math_formula: '數學公式編輯器',
+  tool_math_formula_desc: '使用 KaTeX 創建和渲染數學公式',
+
+  tool_latex_editor: 'LaTeX 編輯器',
+  tool_latex_editor_desc: '撰寫和預覽 LaTeX 數學表達式',
+
+  tool_menstrual_cycle: '月經週期計算機',
+  tool_menstrual_cycle_desc: '計算下次經期、排卵日和受孕期',
+
+  tool_farmer_almanac: '農民曆',
+  tool_farmer_almanac_desc: '農曆查詢與宜忌事項',
 
   // New tools - Phase 1: Quick value tools
   tool_coinflip: '擲硬幣',
@@ -414,8 +439,8 @@ const zhTw = {
   tool_alarm_desc: '多鬧鐘設定,重複提醒,貪睡功能',
   tool_mindreader: '讀心術遊戲',
   tool_mindreader_desc: '數學魔術遊戲,猜出你的想法',
-  tool_colorblind: '色盲測試',
-  tool_colorblind_desc: 'Ishihara 色盲檢測,篩檢色覺異常',
+  tool_colorblind_test: '色盲測試',
+  tool_colorblind_test_desc: 'Ishihara 色盲檢測,篩檢色覺異常',
   tool_wheel: '輪盤抽獎',
   tool_wheel_desc: 'Canvas 動畫輪盤,隨機抽獎工具',
   tool_drawingboard: '線上塗鴉板',
@@ -454,11 +479,37 @@ const zhTw = {
   tz_working_hours: '適合會議時段（雙方都清醒：7:00-23:00）',
   tz_meeting_planner_desc: '找出跨時區的最佳會議時間',
 
+  // Search
+  search_no_results: '找不到工具',
+  search_suggestions: '建議',
+
+  // Section Titles
+  featured_tools_title: '精選工具',
+  popular_tools_title: '熱門工具',
+  new_tools_title: '最新工具',
+  browse_categories_title: '瀏覽分類',
+
+  // Category & Filter
+  category_page_title: '{category}工具',
+  filter_by_category: '依分類篩選',
+  sort_by: '排序',
+  sort_popular: '最熱門',
+  sort_name: '名稱 (A-Z)',
+  sort_new: '最新加入',
+
+  // Call to Action
+  view_all: '查看全部',
+  view_all_tools: '查看所有工具',
+  view_category: '查看{category}',
+
+  // Tool Metadata
+  tool_badge_new: '新',
+  tool_badge_popular: '熱門',
+  tool_badge_featured: '精選',
+  tool_count: '{count} 個工具',
+
   // Footer
-  footer_text: '© 2026 toolcase. 用咖啡和簡約主義打造。',
-  footer_about: '關於',
-  footer_privacy: '隱私權',
-  footer_terms: '使用條款',
+  footer_text: '© 2026 toolcase. 為簡單而生。',
 } as const
 
 export default zhTw

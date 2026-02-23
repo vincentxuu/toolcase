@@ -253,7 +253,7 @@ export default function OnlineRuler({ labels }: OnlineRulerProps) {
         <ul className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
           <li>• <strong>{l.calibrate}:</strong> {l.calibrateDesc}</li>
           <li>• <strong>{l.measureTip}:</strong> 用實體尺或標準物品(如信用卡 8.5cm)校準</li>
-          <li>• 信用卡標準尺寸: 8.56cm × 5.398cm (3.375" × 2.125")</li>
+          <li>• 信用卡標準尺寸: 8.56cm × 5.398cm (3.375&quot; × 2.125&quot;)</li>
           <li>• 不同螢幕的 DPI 可能不同,建議在使用前先校準</li>
           <li>• 全螢幕模式下測量更準確</li>
         </ul>

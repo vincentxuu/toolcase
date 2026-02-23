@@ -108,11 +108,11 @@ export default function ImageCropper({ labels }: ImageCropperProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
         <input
@@ -120,10 +120,10 @@ export default function ImageCropper({ labels }: ImageCropperProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {originalFile && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             {originalFile.name}
           </span>
         )}
@@ -149,7 +149,7 @@ export default function ImageCropper({ labels }: ImageCropperProps) {
                 step={1}
                 value={rotation}
                 onChange={(e) => setRotation(Number(e.target.value))}
-                style={{ flex: 1 }}
+                className="flex-1"
               />
             </div>
 
@@ -162,16 +162,16 @@ export default function ImageCropper({ labels }: ImageCropperProps) {
                 step={0.05}
                 value={scale}
                 onChange={(e) => setScale(Number(e.target.value))}
-                style={{ flex: 1 }}
+                className="flex-1"
               />
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button className="btn-secondary" onClick={handleReset}>
+          <div className="flex gap-2">
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleReset}>
               {l.reset}
             </button>
-            <button className="btn-primary" onClick={handleDownload}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>
               {l.download}
             </button>
           </div>

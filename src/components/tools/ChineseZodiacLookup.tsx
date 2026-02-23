@@ -98,7 +98,7 @@ export default function ChineseZodiacLookup({ labels }: ChineseZodiacLookupProps
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input Section */}
       <div style={sectionStyle}>
         <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.375rem' }}>
@@ -115,7 +115,7 @@ export default function ChineseZodiacLookup({ labels }: ChineseZodiacLookupProps
             onKeyDown={(e) => e.key === 'Enter' && handleLookup()}
             style={inputStyle}
           />
-          <button className="btn-primary" onClick={handleLookup} style={{ whiteSpace: 'nowrap' }}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleLookup} style={{ whiteSpace: 'nowrap' }}>
             {l.lookup}
           </button>
         </div>
@@ -132,7 +132,7 @@ export default function ChineseZodiacLookup({ labels }: ChineseZodiacLookupProps
           <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
             {l.animals[result.animal].name}
           </h3>
-          <div style={{ marginBottom: '1rem' }}>
+          <div className="mb-4">
             <span style={{
               ...tagStyle(ELEMENT_COLORS[result.element]),
             }}>
@@ -155,15 +155,15 @@ export default function ChineseZodiacLookup({ labels }: ChineseZodiacLookupProps
 
       {/* All Animals Reference Table */}
       <div style={sectionStyle}>
-        <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.allAnimals}</h3>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <h3 className="font-semibold mb-3">{l.allAnimals}</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{labels ? 'Animal' : '生肖'}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.traits}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.compatible}</th>
-                <th style={{ padding: '0.5rem', textAlign: 'left' }}>{l.incompatible}</th>
+                <th className="p-2 text-left">{labels ? 'Animal' : '生肖'}</th>
+                <th className="p-2 text-left">{l.traits}</th>
+                <th className="p-2 text-left">{l.compatible}</th>
+                <th className="p-2 text-left">{l.incompatible}</th>
               </tr>
             </thead>
             <tbody>

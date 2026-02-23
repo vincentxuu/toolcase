@@ -74,7 +74,7 @@ export default function TestCardGenerator({ labels }: TestCardGeneratorProps) {
   }, [selectedType])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Card type selection */}
       <div>
         <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.75rem', fontSize: '0.875rem' }}>
@@ -105,7 +105,7 @@ export default function TestCardGenerator({ labels }: TestCardGeneratorProps) {
 
       {/* Generate button */}
       <button
-        className="btn-primary"
+        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
         onClick={handleGenerate}
         style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}
       >

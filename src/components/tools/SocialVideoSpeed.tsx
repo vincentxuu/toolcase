@@ -105,7 +105,6 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ffmpegRef = useRef<any>(null)
 
   const targetSeconds = selectedPlatform === 'custom'
@@ -177,7 +176,6 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
       const { FFmpeg } = await import('@ffmpeg/ffmpeg')
       const { fetchFile } = await import('@ffmpeg/util')
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let ffmpeg: any = ffmpegRef.current
       if (!ffmpeg) {
         ffmpeg = new FFmpeg()
@@ -254,43 +252,8 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
     setProgress(0)
   }, [videoUrl, resultUrl])
 
-  const cardStyle: React.CSSProperties = {
-    padding: '1.25rem',
-    border: '1px solid var(--color-border)',
-    borderRadius: '0.75rem',
-    backgroundColor: 'var(--color-bg-secondary)',
-  }
-
-  const labelStyle: React.CSSProperties = {
-    fontWeight: 600,
-    marginBottom: '0.5rem',
-    display: 'block',
-    fontSize: '0.9rem',
-  }
-
-  const btnPrimary: React.CSSProperties = {
-    padding: '0.7rem 1.5rem',
-    border: 'none',
-    borderRadius: '0.5rem',
-    backgroundColor: 'var(--color-primary)',
-    color: '#fff',
-    cursor: 'pointer',
-    fontWeight: 600,
-    fontSize: '1rem',
-  }
-
-  const btnSecondary: React.CSSProperties = {
-    padding: '0.6rem 1.25rem',
-    border: '1px solid var(--color-border)',
-    borderRadius: '0.5rem',
-    backgroundColor: 'var(--color-bg-secondary)',
-    cursor: 'pointer',
-    fontWeight: 600,
-    fontSize: '0.9rem',
-  }
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Upload Area */}
       {!file && (
         <div
@@ -298,28 +261,18 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
           onDragLeave={() => setDragging(false)}
           onDrop={handleDrop}
           onClick={() => fileInputRef.current?.click()}
-          style={{
-            ...cardStyle,
-            padding: '3rem 2rem',
-            textAlign: 'center',
-            cursor: 'pointer',
-            borderStyle: 'dashed',
-            borderWidth: '2px',
-            borderColor: dragging ? 'var(--color-primary)' : 'var(--color-border)',
-            backgroundColor: dragging ? 'rgba(99,102,241,0.05)' : 'var(--color-bg-secondary)',
-            transition: 'border-color 0.2s, background-color 0.2s',
-          }}
+          className={`py-12 px-8 text-center cursor-pointer border-dashed border-2 rounded-xl transition-colors ${dragging ? 'border-[var(--color-primary)] bg-[rgba(99,102,241,0.05)]' : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)]'}`}
         >
-          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎬</div>
-          <div style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.25rem' }}>{l.dragDrop}</div>
-          <div style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{l.orClick}</div>
-          <div style={{ color: 'var(--color-text-secondary)', fontSize: '0.8rem' }}>MP4, WebM, MOV — {l.maxFileSize}</div>
+          <div className="text-4xl mb-3">🎬</div>
+          <div className="font-semibold text-lg mb-1">{l.dragDrop}</div>
+          <div className="text-[var(--color-text-secondary)] text-sm mb-2">{l.orClick}</div>
+          <div className="text-[var(--color-text-secondary)] text-xs">MP4, WebM, MOV — {l.maxFileSize}</div>
           <input
             ref={fileInputRef}
             type="file"
             accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov,.mkv"
             onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f) }}
-            style={{ display: 'none' }}
+            className="hidden"
           />
         </div>
       )}
@@ -334,7 +287,7 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
       {file && videoUrl && (
         <>
           {/* Original Video */}
-          <div style={cardStyle}>
+          <div className="p-5 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-secondary)]">
             <video
               ref={videoRef}
               src={videoUrl}
@@ -343,7 +296,7 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
             />
             <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
               <div>
-                <span style={{ fontWeight: 600 }}>{file.name}</span>
+                <span className="font-semibold">{file.name}</span>
                 <span style={{ color: 'var(--color-text-secondary)', marginLeft: '0.75rem', fontSize: '0.9rem' }}>
                   {(file.size / 1024 / 1024).toFixed(1)} MB
                 </span>
@@ -355,8 +308,8 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
           </div>
 
           {/* Platform Selection */}
-          <div style={cardStyle}>
-            <label style={labelStyle}>{l.platform}</label>
+          <div className="p-5 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-secondary)]">
+            <label className="font-semibold mb-2 block text-sm">{l.platform}</label>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               {PLATFORMS.map((p) => (
                 <button
@@ -401,8 +354,8 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
             </div>
 
             {selectedPlatform === 'custom' && (
-              <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>{l.targetDuration} ({l.seconds})</label>
+              <div className="mb-4">
+                <label className="font-semibold mb-2 block text-sm">{l.targetDuration} ({l.seconds})</label>
                 <input
                   type="number"
                   min={1}
@@ -432,17 +385,17 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
               border: '1px solid',
               borderColor: needsSpeedup ? 'rgba(99,102,241,0.15)' : 'rgba(34,197,94,0.15)',
             }}>
-              <div style={{ textAlign: 'center' }}>
+              <div className="text-center">
                 <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.speedMultiplier}</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{speedMultiplier.toFixed(2)}x</div>
+                <div className="text-2xl font-bold">{speedMultiplier.toFixed(2)}x</div>
               </div>
-              <div style={{ textAlign: 'center' }}>
+              <div className="text-center">
                 <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.targetDuration}</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{formatDuration(targetSeconds)}</div>
+                <div className="text-2xl font-bold">{formatDuration(targetSeconds)}</div>
               </div>
-              <div style={{ textAlign: 'center' }}>
+              <div className="text-center">
                 <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.originalDuration}</div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{formatDuration(duration)}</div>
+                <div className="text-2xl font-bold">{formatDuration(duration)}</div>
               </div>
             </div>
 
@@ -455,7 +408,7 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
 
           {/* Audio Option */}
           {needsSpeedup && (
-            <div style={cardStyle}>
+            <div className="p-5 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-secondary)]">
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer', fontSize: '0.95rem' }}>
                   <input type="radio" name="audio" checked={keepAudio} onChange={() => setKeepAudio(true)} />
@@ -474,16 +427,7 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
             <button
               onClick={processVideo}
               disabled={processing}
-              style={{
-                ...btnPrimary,
-                opacity: processing ? 0.7 : 1,
-                cursor: processing ? 'not-allowed' : 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
-                alignSelf: 'stretch',
-              }}
+              className={`py-2.5 px-6 border-0 rounded-lg bg-[var(--color-primary)] text-white font-semibold text-base flex items-center justify-center gap-2 self-stretch ${processing ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
             >
               {processing ? (
                 <>
@@ -505,8 +449,8 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
 
           {/* Result */}
           {resultUrl && (
-            <div style={cardStyle}>
-              <label style={labelStyle}>{l.preview}</label>
+            <div className="p-5 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-secondary)]">
+              <label className="font-semibold mb-2 block text-sm">{l.preview}</label>
               <video
                 src={resultUrl}
                 controls
@@ -517,15 +461,15 @@ export default function SocialVideoSpeed({ labels }: SocialVideoSpeedProps) {
                   {speedMultiplier.toFixed(2)}x — ~{formatDuration(estimatedDuration)}
                   {resultBlob && ` — ${(resultBlob.size / 1024 / 1024).toFixed(1)} MB`}
                 </span>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <button onClick={handleDownload} style={btnPrimary}>{l.download}</button>
+                <div className="flex gap-2">
+                  <button onClick={handleDownload} className="py-2.5 px-6 border-0 rounded-lg bg-[var(--color-primary)] text-white cursor-pointer font-semibold text-base">{l.download}</button>
                 </div>
               </div>
             </div>
           )}
 
           {/* Reset */}
-          <button onClick={handleReset} style={btnSecondary}>{l.reset}</button>
+          <button onClick={handleReset} className="py-2.5 px-5 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] cursor-pointer font-semibold text-sm">{l.reset}</button>
         </>
       )}
     </div>

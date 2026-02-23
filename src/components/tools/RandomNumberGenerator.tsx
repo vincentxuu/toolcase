@@ -93,7 +93,7 @@ export default function RandomNumberGenerator({ labels }: RandomNumberGeneratorP
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Inputs */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
         <div>
@@ -111,7 +111,7 @@ export default function RandomNumberGenerator({ labels }: RandomNumberGeneratorP
       </div>
 
       {/* Options */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <div style={toggleStyle(allowDuplicates)} onClick={() => setAllowDuplicates(!allowDuplicates)}>
           {l.allowDuplicates}
         </div>
@@ -141,7 +141,7 @@ export default function RandomNumberGenerator({ labels }: RandomNumberGeneratorP
 
       {/* Generate button */}
       <button
-        className="btn-primary"
+        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
         onClick={handleGenerate}
         disabled={animating}
         style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}
@@ -158,7 +158,7 @@ export default function RandomNumberGenerator({ labels }: RandomNumberGeneratorP
           <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', fontWeight: 600, marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {l.results} ({results.length})
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div className="flex flex-wrap gap-2">
             {results.map((num, i) => (
               <span key={i} style={{
                 padding: '0.5rem 0.75rem', borderRadius: '0.375rem', backgroundColor: 'var(--color-primary)',

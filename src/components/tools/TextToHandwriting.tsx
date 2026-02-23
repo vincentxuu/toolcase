@@ -146,7 +146,7 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
     }
 
     setResultUrl(canvas.toDataURL('image/png'))
-  }, [text, fontSize, inkColor, paperType])
+  }, [text, fontSize, inkColor, paperType, drawPaper])
 
   const handleDownload = useCallback(() => {
     if (!resultUrl) return
@@ -174,10 +174,10 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
   const selectStyle: React.CSSProperties = { ...inputStyle }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <label style={labelStyle}>{l.inputText}</label>
         <textarea
           value={text}
@@ -194,8 +194,8 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
         />
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.fontSize}:</label>
           <input
             type="number"
@@ -207,7 +207,7 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.inkColor}:</label>
           <input
             type="color"
@@ -217,7 +217,7 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.paperColor}:</label>
           <select value={paperType} onChange={(e) => setPaperType(e.target.value as PaperType)} style={selectStyle}>
             <option value="white">{l.paperWhite}</option>
@@ -226,18 +226,18 @@ export default function TextToHandwriting({ labels }: TextToHandwritingProps) {
           </select>
         </div>
 
-        <button className="btn-primary" onClick={handleGenerate} disabled={!text.trim()}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerate} disabled={!text.trim()}>
           {l.generate}
         </button>
       </div>
 
       {resultUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
             <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text)' }}>
               {l.preview}
             </span>
-            <button className="btn-primary" onClick={handleDownload}>{l.download}</button>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>{l.download}</button>
           </div>
           <div style={{
             border: '1px solid var(--color-border)',

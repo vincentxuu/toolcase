@@ -93,7 +93,7 @@ export default function WorldClock({ labels }: WorldClockProps) {
   const timezones = filteredTimezones.map(getTimeZoneInfo)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Search */}
       <div>
         <input
@@ -130,7 +130,7 @@ export default function WorldClock({ labels }: WorldClockProps) {
                 <div style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '0.25rem' }}>
                   {tz.city}
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                <div className="text-xs text-[var(--color-text-secondary)]">
                   {tz.offset}
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function WorldClock({ labels }: WorldClockProps) {
               {tz.time}
             </div>
 
-            <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+            <div className="text-sm text-[var(--color-text-secondary)]">
               {tz.date}
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function WorldClock({ labels }: WorldClockProps) {
 
       {filteredTimezones.length === 0 && (
         <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-secondary)' }}>
-          No cities found matching "{searchTerm}"
+          No cities found matching &quot;{searchTerm}&quot;
         </div>
       )}
     </div>

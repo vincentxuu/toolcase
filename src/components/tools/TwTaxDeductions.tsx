@@ -65,10 +65,10 @@ export default function TwTaxDeductions({ labels }: Props) {
   const sectionStyle: React.CSSProperties = { fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Basic living expense highlight */}
       <div style={{ padding: '1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)' }}>
-        <div style={{ fontSize: '0.875rem' }}>
+        <div className="text-sm">
           <strong>{l.basicLivingTitle}：</strong>2024年度每人基本生活所需費用 NT${fmt(BASIC_LIVING_EXPENSE)}。
           申報戶基本生活費總額超過免稅額+標準/列舉扣除額+特別扣除額（部分）合計數之差額，可自所得總額中減除。
         </div>
@@ -77,7 +77,7 @@ export default function TwTaxDeductions({ labels }: Props) {
       {/* Exemptions */}
       <div>
         <div style={sectionStyle}>{l.exemptionTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.item}</th>
@@ -100,7 +100,7 @@ export default function TwTaxDeductions({ labels }: Props) {
       {/* Standard deductions */}
       <div>
         <div style={sectionStyle}>{l.standardTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.item}</th>
@@ -123,8 +123,8 @@ export default function TwTaxDeductions({ labels }: Props) {
       {/* Itemized deductions */}
       <div>
         <div style={sectionStyle}>{l.itemizedTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.item}</th>
@@ -148,7 +148,7 @@ export default function TwTaxDeductions({ labels }: Props) {
       {/* Special deductions */}
       <div>
         <div style={sectionStyle}>{l.specialTitle}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <table className="w-full border-collapse text-sm">
           <thead>
             <tr>
               <th style={{ ...headerCell, textAlign: 'left' }}>{l.item}</th>

@@ -59,7 +59,7 @@ border-radius: 16px;`
   }
 
   const sliderRow = (label: string, value: number, min: number, max: number, step: number, onChange: (v: number) => void, suffix: string = '') => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+    <div className="flex flex-col gap-1">
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
         <span>{label}</span>
         <span>{value}{suffix}</span>
@@ -71,15 +71,15 @@ border-radius: 16px;`
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: '100%' }}
+        className="w-full"
       />
     </div>
   )
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Controls */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div className="flex flex-col gap-4">
         {sliderRow(l.blurAmount, blur, 0, 40, 1, setBlur, 'px')}
         {sliderRow(l.transparency, transparency, 0, 1, 0.01, setTransparency)}
         {sliderRow(l.borderOpacity, borderOpacity, 0, 1, 0.01, setBorderOpacity)}
@@ -98,7 +98,7 @@ border-radius: 16px;`
       </div>
 
       {/* Preview */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={labelStyle}>{l.preview}</span>
         <div
           style={{
@@ -145,9 +145,9 @@ border-radius: 16px;`
       </div>
 
       {/* CSS Code */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.cssCode}</span>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+        <div className="flex gap-2 items-start">
           <pre
             style={{
               flex: 1,

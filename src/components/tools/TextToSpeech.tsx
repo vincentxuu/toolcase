@@ -82,7 +82,7 @@ export default function TextToSpeech({ labels }: Props) {
   const statusColor = status === 'speaking' ? '#22c55e' : status === 'paused' ? '#f59e0b' : 'var(--color-text-secondary)'
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div>
         <label style={labelStyle}>{l.text}</label>
         <textarea style={{ ...inputStyle, minHeight: '150px', resize: 'vertical' }} value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text to read aloud..." />
@@ -96,17 +96,17 @@ export default function TextToSpeech({ labels }: Props) {
         </div>
         <div>
           <label style={labelStyle}>{l.rate}: {rate.toFixed(1)}</label>
-          <input type="range" min={0.5} max={2} step={0.1} value={rate} onChange={(e) => setRate(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={0.5} max={2} step={0.1} value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full" />
         </div>
         <div>
           <label style={labelStyle}>{l.pitch}: {pitch.toFixed(1)}</label>
-          <input type="range" min={0.5} max={2} step={0.1} value={pitch} onChange={(e) => setPitch(Number(e.target.value))} style={{ width: '100%' }} />
+          <input type="range" min={0.5} max={2} step={0.1} value={pitch} onChange={(e) => setPitch(Number(e.target.value))} className="w-full" />
         </div>
       </div>
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-        <button className="btn-primary" onClick={handlePlay} disabled={!text.trim()}>{status === 'paused' ? '▶ Resume' : `▶ ${l.play}`}</button>
-        {status === 'speaking' && <button className="btn-secondary" onClick={handlePause}>⏸ {l.pause}</button>}
-        {status !== 'ready' && <button className="btn-secondary" onClick={handleStop}>⏹ {l.stop}</button>}
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handlePlay} disabled={!text.trim()}>{status === 'paused' ? '▶ Resume' : `▶ ${l.play}`}</button>
+        {status === 'speaking' && <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handlePause}>⏸ {l.pause}</button>}
+        {status !== 'ready' && <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleStop}>⏹ {l.stop}</button>}
         <span style={{ fontSize: '0.875rem', color: statusColor, fontWeight: 500 }}>{statusLabel}</span>
       </div>
     </div>

@@ -45,9 +45,9 @@ export default function MultiplicationTable({ labels }: MultiplicationTableProps
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <label style={{ fontWeight: 600 }}>{l.range}</label>
+        <label className="font-semibold">{l.range}</label>
         <select
           value={maxNum}
           onChange={(e) => setMaxNum(Number(e.target.value))}

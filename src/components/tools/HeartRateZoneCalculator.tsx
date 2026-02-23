@@ -66,8 +66,8 @@ export default function HeartRateZoneCalculator({ labels }: HeartRateZoneCalcula
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <label style={labelStyle}>{l.age}</label>
           <input type="number" style={inputStyle} value={age} onChange={(e) => setAge(Number(e.target.value))} min={10} max={120} />
@@ -77,13 +77,13 @@ export default function HeartRateZoneCalculator({ labels }: HeartRateZoneCalcula
           <input type="number" style={inputStyle} value={restingHR} onChange={(e) => setRestingHR(Number(e.target.value))} min={30} max={120} />
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.maxHeartRate}</div>
-          <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>{result.maxHR}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.bpm}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.maxHeartRate}</div>
+          <div className="text-3xl font-bold text-[var(--color-primary)]">{result.maxHR}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.bpm}</div>
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div className="flex flex-col gap-3">
         {result.zoneData.map((z) => (
           <div key={z.key} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <div style={{ width: '120px', flexShrink: 0 }}>

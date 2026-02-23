@@ -159,10 +159,10 @@ export default function CreditCardValidator({ labels }: CreditCardValidatorProps
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input section */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.inputLabel}
         </label>
         <input
@@ -185,20 +185,18 @@ export default function CreditCardValidator({ labels }: CreditCardValidatorProps
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleValidate}
           disabled={!input.trim()}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.validate}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !result}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -218,10 +216,10 @@ export default function CreditCardValidator({ labels }: CreditCardValidatorProps
             {l.result}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div className="flex flex-col gap-3">
             {/* Validation status */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Status:</span>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-[var(--color-text-secondary)]">Status:</span>
               <span
                 style={{
                   fontSize: '0.875rem',
@@ -235,16 +233,16 @@ export default function CreditCardValidator({ labels }: CreditCardValidatorProps
             </div>
 
             {/* Card type */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.cardType}:</span>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-[var(--color-text-secondary)]">{l.cardType}:</span>
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
                 {cardTypeLabels[result.cardType] || l.unknown}
               </span>
             </div>
 
             {/* Card number */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.cardNumber}:</span>
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-[var(--color-text-secondary)]">{l.cardNumber}:</span>
               <span style={{ fontSize: '0.875rem', fontFamily: "'Fira Code', monospace" }}>
                 {input}
               </span>
@@ -265,7 +263,7 @@ export default function CreditCardValidator({ labels }: CreditCardValidatorProps
           lineHeight: 1.6,
         }}
       >
-        <strong style={{ color: 'var(--color-text)' }}>Note:</strong> This tool validates card number format using the Luhn algorithm.
+        <strong className="text-[var(--color-text)]">Note:</strong> This tool validates card number format using the Luhn algorithm.
         It does not verify if the card is active or has funds. All validation happens in your browser.
       </div>
     </div>

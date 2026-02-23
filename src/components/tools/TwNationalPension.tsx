@@ -60,17 +60,17 @@ export default function TwNationalPension({ labels }: Props) {
   const headerCell: React.CSSProperties = { ...cellStyle, fontWeight: 600, fontSize: '0.8125rem', color: 'var(--color-text-secondary)', borderBottom: '2px solid var(--color-border)' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div style={{ padding: '1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)' }}>
-        <div style={{ fontSize: '0.875rem' }}>
+        <div className="text-sm">
           <strong>適用對象：</strong>年滿25歲、未滿65歲，未參加勞保、農保、公教保、軍保的國民。包含家庭主婦、待業者等。
         </div>
       </div>
 
       {/* Basic info */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.basicInfo}</div>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.basicInfo}</div>
+        <table className="w-full border-collapse text-sm">
           <tbody>
             {NP_INFO.map((r, i) => (
               <tr key={i}>
@@ -84,9 +84,9 @@ export default function TwNationalPension({ labels }: Props) {
 
       {/* Subsidy rates by category */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.subsidyTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.subsidyTitle}</div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.category}</th>
@@ -113,9 +113,9 @@ export default function TwNationalPension({ labels }: Props) {
 
       {/* Benefits */}
       <div>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.benefitsTitle}</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+        <div className="text-base font-semibold mb-3">{l.benefitsTitle}</div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
             <thead>
               <tr>
                 <th style={{ ...headerCell, textAlign: 'left' }}>{l.type}</th>

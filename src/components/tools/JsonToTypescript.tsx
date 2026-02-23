@@ -144,12 +144,12 @@ export default function JsonToTypescript({ labels }: JsonToTypescriptProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-primary" onClick={handleConvert}>{l.convert}</button>
-        <button className="btn-secondary" onClick={handleClear}>{l.clear}</button>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleConvert}>{l.convert}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>{l.clear}</button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: 'auto' }}>
-          <label style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.rootName}:</label>
+          <label className="text-sm text-[var(--color-text-secondary)]">{l.rootName}:</label>
           <input
             type="text"
             value={rootName}
@@ -167,26 +167,25 @@ export default function JsonToTypescript({ labels }: JsonToTypescriptProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ height: '400px' }}
             placeholder={l.input}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <textarea
-            className="tool-textarea"
-            style={{ height: '400px', fontFamily: 'monospace' }}
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[400px] font-mono"
             placeholder={l.output}
             value={output}
             readOnly
           />
           {output && (
-            <div style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+            <div className="absolute top-2 right-2">
               <CopyButton text={output} label={l.copy} copiedLabel={l.copied} />
             </div>
           )}

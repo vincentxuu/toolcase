@@ -73,9 +73,9 @@ export default function PdfTools({ labels }: PdfToolsProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadPdf}
         </button>
         <input
@@ -83,7 +83,7 @@ export default function PdfTools({ labels }: PdfToolsProps) {
           type="file"
           accept="application/pdf"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
       </div>
 
@@ -108,11 +108,11 @@ export default function PdfTools({ labels }: PdfToolsProps) {
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            <button className="btn-primary" onClick={handleOpenInNewTab}>
+          <div className="flex gap-2 flex-wrap">
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleOpenInNewTab}>
               {l.openInNewTab}
             </button>
-            <button className="btn-secondary" onClick={handleDownload}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleDownload}>
               {l.download}
             </button>
           </div>

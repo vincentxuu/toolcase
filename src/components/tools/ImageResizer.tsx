@@ -151,11 +151,11 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <div className="flex flex-col gap-4">
+      <canvas ref={canvasRef} className="hidden" />
 
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+      <div className="flex gap-4 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {l.uploadImage}
         </button>
         <input
@@ -163,17 +163,17 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {originalFile && (
-          <span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+          <span className="text-sm text-[var(--color-text-secondary)]">
             {originalFile.name}
           </span>
         )}
       </div>
 
       {origWidth > 0 && (
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-4 flex-wrap">
           <div style={cardStyle}>
             <span style={labelStyle}>{l.originalDimensions}: </span>
             <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>
@@ -190,8 +190,8 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
       )}
 
       {originalFile && (
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex gap-4 items-center flex-wrap">
+          <div className="flex items-center gap-2">
             <label style={labelStyle}>{l.width}:</label>
             <input
               type="number"
@@ -202,7 +202,7 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
             />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="flex items-center gap-2">
             <label style={labelStyle}>{l.height}:</label>
             <input
               type="number"
@@ -222,14 +222,14 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
             <span style={labelStyle}>{l.lockAspectRatio}</span>
           </label>
 
-          <button className="btn-primary" onClick={handleResize}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleResize}>
             {l.resize}
           </button>
         </div>
       )}
 
       {resizedSize > 0 && (
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-4 flex-wrap">
           <div style={cardStyle}>
             <span style={labelStyle}>{l.newDimensions}: </span>
             <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>
@@ -246,12 +246,12 @@ export default function ImageResizer({ labels }: ImageResizerProps) {
       )}
 
       {resizedUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
             <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text)' }}>
               {l.preview}
             </span>
-            <button className="btn-primary" onClick={handleDownload}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleDownload}>
               {l.download}
             </button>
           </div>

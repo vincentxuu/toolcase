@@ -214,12 +214,12 @@ export default function MarkdownToHtml({ labels }: MarkdownToHtmlProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col">
           <span style={labelStyle}>{l.input}</span>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ height: '500px', fontFamily: 'monospace', fontSize: '0.875rem' }}
             placeholder={l.inputPlaceholder}
             value={input}
@@ -229,7 +229,7 @@ export default function MarkdownToHtml({ labels }: MarkdownToHtmlProps) {
         <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
           <span style={labelStyle}>{l.output}</span>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ height: '500px', fontFamily: 'monospace', fontSize: '0.875rem' }}
             value={htmlOutput}
             readOnly

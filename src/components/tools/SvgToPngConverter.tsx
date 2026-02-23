@@ -119,10 +119,10 @@ export default function SvgToPngConverter({ labels }: SvgToPngConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
         <label style={labelStyle}>{l.uploadSvg}</label>
-        <input ref={fileInputRef} type="file" accept=".svg" onChange={handleFileUpload} style={{ display: 'none' }} />
+        <input ref={fileInputRef} type="file" accept=".svg" onChange={handleFileUpload} className="hidden" />
         <button onClick={() => fileInputRef.current?.click()} style={btnStyle}>
           {l.chooseFile}
         </button>
@@ -141,7 +141,7 @@ export default function SvgToPngConverter({ labels }: SvgToPngConverterProps) {
 
       <div>
         <label style={labelStyle}>{l.scale}</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           {[1, 2, 3, 4].map((s) => (
             <button
               key={s}
@@ -168,7 +168,7 @@ export default function SvgToPngConverter({ labels }: SvgToPngConverterProps) {
       </button>
 
       {pngUrl && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div className="flex flex-col gap-4">
           <div>
             <label style={labelStyle}>PNG {l.preview}</label>
             <div style={{ padding: '1rem', border: '1px solid var(--color-border)', borderRadius: '0.5rem', backgroundColor: 'var(--color-bg-secondary)', display: 'flex', justifyContent: 'center' }}>

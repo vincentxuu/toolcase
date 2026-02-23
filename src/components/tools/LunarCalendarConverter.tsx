@@ -307,7 +307,7 @@ export default function LunarCalendarConverter({ labels }: LunarCalendarConverte
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Mode tabs */}
       <div style={{ display: 'flex', borderBottom: '1px solid var(--color-border)' }}>
         <button style={tabStyle(mode === 's2l')} onClick={() => { setMode('s2l'); setResult(null) }}>
@@ -340,8 +340,8 @@ export default function LunarCalendarConverter({ labels }: LunarCalendarConverte
             />
           </div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div className="flex flex-col gap-3">
+            <div className="flex gap-2 flex-wrap">
               <div style={{ flex: 1, minWidth: '80px' }}>
                 <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 500, color: 'var(--color-text-secondary)', marginBottom: '0.375rem' }}>
                   {l.year}
@@ -388,7 +388,7 @@ export default function LunarCalendarConverter({ labels }: LunarCalendarConverte
         )}
 
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleConvert}
           style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.75rem', marginTop: '1rem' }}
         >
@@ -404,28 +404,28 @@ export default function LunarCalendarConverter({ labels }: LunarCalendarConverte
           borderRadius: '0.75rem',
           backgroundColor: 'var(--color-bg-secondary)',
         }}>
-          <h3 style={{ fontWeight: 600, marginBottom: '0.75rem' }}>{l.result}</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <h3 className="font-semibold mb-3">{l.result}</h3>
+          <div className="flex flex-col gap-2">
             <div style={resultRowStyle}>
-              <span style={{ color: 'var(--color-text-secondary)' }}>{l.solarDate}:</span>
+              <span className="text-[var(--color-text-secondary)]">{l.solarDate}:</span>
               <span style={{ fontWeight: 500 }}>{result.solarDate}</span>
             </div>
             <div style={resultRowStyle}>
-              <span style={{ color: 'var(--color-text-secondary)' }}>{l.lunarDate}:</span>
+              <span className="text-[var(--color-text-secondary)]">{l.lunarDate}:</span>
               <span style={{ fontWeight: 500 }}>{result.lunarDate}</span>
             </div>
             {result.lunarYear && (
               <>
                 <div style={resultRowStyle}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>{l.heavenlyStem}:</span>
+                  <span className="text-[var(--color-text-secondary)]">{l.heavenlyStem}:</span>
                   <span style={{ fontWeight: 500 }}>{result.stem}</span>
                 </div>
                 <div style={resultRowStyle}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>{l.earthlyBranch}:</span>
+                  <span className="text-[var(--color-text-secondary)]">{l.earthlyBranch}:</span>
                   <span style={{ fontWeight: 500 }}>{result.branch}</span>
                 </div>
                 <div style={resultRowStyle}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>
+                  <span className="text-[var(--color-text-secondary)]">
                     {result.stem}{result.branch}年
                   </span>
                   <span style={{ fontWeight: 500, fontSize: '1.25rem' }}>

@@ -102,7 +102,7 @@ export default function Stopwatch({ labels }: StopwatchProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Time display */}
       <div style={{
         padding: '2rem 1rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)',
@@ -117,7 +117,7 @@ export default function Stopwatch({ labels }: StopwatchProps) {
       </div>
 
       {/* Controls */}
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className="flex gap-2">
         {!running ? (
           <button style={btnPrimary} onClick={handleStart}>{l.start}</button>
         ) : (

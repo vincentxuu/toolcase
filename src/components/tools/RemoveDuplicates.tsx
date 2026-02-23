@@ -85,8 +85,8 @@ export default function RemoveDuplicates({ labels }: RemoveDuplicatesProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 flex-wrap">
         <div style={toggleStyle(caseSensitive)} onClick={() => setCaseSensitive(!caseSensitive)}>
           {l.caseSensitive}
         </div>
@@ -98,17 +98,15 @@ export default function RemoveDuplicates({ labels }: RemoveDuplicatesProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <textarea
-          className="tool-textarea"
-          style={{ height: '300px' }}
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
           placeholder={l.input}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <textarea
-          className="tool-textarea"
-          style={{ height: '300px' }}
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all h-[300px]"
           placeholder={l.output}
           value={result.output}
           readOnly
@@ -119,17 +117,17 @@ export default function RemoveDuplicates({ labels }: RemoveDuplicatesProps) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
           <div style={statStyle}>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text)' }}>{result.original}</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.originalLines}</div>
+            <div className="text-xs text-[var(--color-text-secondary)]">{l.originalLines}</div>
           </div>
           <div style={statStyle}>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-primary)' }}>{result.unique}</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.uniqueLines}</div>
+            <div className="text-xs text-[var(--color-text-secondary)]">{l.uniqueLines}</div>
           </div>
           <div style={statStyle}>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: result.dupes > 0 ? '#ef4444' : 'var(--color-text)' }}>
               {result.dupes}
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.duplicatesRemoved}</div>
+            <div className="text-xs text-[var(--color-text-secondary)]">{l.duplicatesRemoved}</div>
           </div>
         </div>
       )}

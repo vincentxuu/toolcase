@@ -81,8 +81,8 @@ export default function DueDateCalculator({ labels }: DueDateCalculatorProps) {
   const trimesterLabels = [l.first, l.second, l.third]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label style={labelStyle}>{l.lastPeriod}</label>
           <input type="date" style={inputStyle} value={lmpStr} onChange={(e) => setLmpStr(e.target.value)} />
@@ -94,8 +94,8 @@ export default function DueDateCalculator({ labels }: DueDateCalculatorProps) {
       </div>
 
       <div style={{ ...cardStyle, padding: '2rem' }}>
-        <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.dueDate}</div>
-        <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>{formatDate(result.dueDate)}</div>
+        <div className="text-sm text-[var(--color-text-secondary)] mb-2">{l.dueDate}</div>
+        <div className="text-4xl font-bold text-[var(--color-primary)]">{formatDate(result.dueDate)}</div>
       </div>
 
       {/* Progress bar */}
@@ -114,19 +114,19 @@ export default function DueDateCalculator({ labels }: DueDateCalculatorProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.weeksPregnant}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.weeksPregnant}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700 }}>{result.weeksPregnant}w {result.daysExtra}d</div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.daysUntilDue}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.daysUntilDue}</div>
           <div style={{ fontSize: '1.75rem', fontWeight: 700, color: result.daysUntilDue > 0 ? 'var(--color-primary)' : 'var(--color-error)' }}>
             {result.daysUntilDue > 0 ? result.daysUntilDue : 'Due!'}
           </div>
         </div>
         <div style={cardStyle}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.conception}</div>
+          <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.conception}</div>
           <div style={{ fontSize: '1rem', fontWeight: 600 }}>{formatDate(result.conceptionDate)}</div>
         </div>
       </div>

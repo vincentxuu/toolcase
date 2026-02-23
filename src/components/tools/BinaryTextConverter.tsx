@@ -64,15 +64,15 @@ export default function BinaryTextConverter({ labels }: BinaryTextConverterProps
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2">
         <button onClick={() => setMode('t2b')} style={btnStyle(mode === 't2b')}>{l.textToBinary}</button>
         <button onClick={() => setMode('b2t')} style={btnStyle(mode === 'b2t')}>{l.binaryToText}</button>
       </div>
       <div>
-        <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{mode === 't2b' ? l.text : l.binary}</label>
+        <label className="font-semibold block mb-1">{mode === 't2b' ? l.text : l.binary}</label>
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ height: '100px' }}
           placeholder={mode === 't2b' ? l.placeholder : l.binaryPlaceholder}
           value={mode === 't2b' ? textInput : binaryInput}
@@ -80,8 +80,8 @@ export default function BinaryTextConverter({ labels }: BinaryTextConverterProps
         />
       </div>
       <div>
-        <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{mode === 't2b' ? l.binary : l.text}</label>
-        <textarea className="tool-textarea" style={{ height: '100px', fontFamily: 'monospace' }} value={output} readOnly />
+        <label className="font-semibold block mb-1">{mode === 't2b' ? l.binary : l.text}</label>
+        <textarea className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all" style={{ height: '100px', fontFamily: 'monospace' }} value={output} readOnly />
       </div>
       <button onClick={handleCopy} style={{ ...btnStyle(true), alignSelf: 'flex-start' }}>
         {copied ? l.copied : l.copy}

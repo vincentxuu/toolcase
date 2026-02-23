@@ -100,14 +100,14 @@ export default function DigitalClock({ labels }: DigitalClockProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex gap-2">
               <Button
-                variant={is24Hour ? 'default' : 'outline'}
+                variant={is24Hour ? 'primary' : 'outline'}
                 onClick={() => setIs24Hour(true)}
                 size="sm"
               >
                 {l.hour24}
               </Button>
               <Button
-                variant={!is24Hour ? 'default' : 'outline'}
+                variant={!is24Hour ? 'primary' : 'outline'}
                 onClick={() => setIs24Hour(false)}
                 size="sm"
               >

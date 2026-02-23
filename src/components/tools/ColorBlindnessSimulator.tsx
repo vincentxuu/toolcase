@@ -132,9 +132,9 @@ export default function ColorBlindnessSimulator({ labels }: ColorBlindnessSimula
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.inputColor}</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <input
@@ -174,7 +174,7 @@ export default function ColorBlindnessSimulator({ labels }: ColorBlindnessSimula
       </div>
 
       {/* Original */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="flex flex-col gap-2">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.originalColor}</span>
         <div style={{ ...swatchStyle, height: '100px', backgroundColor: hex }} />
         <span style={{ fontFamily: 'monospace', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
@@ -183,7 +183,7 @@ export default function ColorBlindnessSimulator({ labels }: ColorBlindnessSimula
       </div>
 
       {/* Simulated Colors */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div className="flex flex-col gap-3">
         <span style={{ ...labelStyle, fontWeight: 600, fontSize: '0.875rem' }}>{l.simulatedColors}</span>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem' }}>
           {simulations?.map(sim => (

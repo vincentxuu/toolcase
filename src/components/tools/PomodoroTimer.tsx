@@ -133,7 +133,7 @@ export default function PomodoroTimer({ labels }: PomodoroTimerProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
       <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.workDuration}:</label>
           <input
             type="number"
@@ -148,9 +148,9 @@ export default function PomodoroTimer({ labels }: PomodoroTimerProps) {
             style={inputStyle}
             disabled={isRunning}
           />
-          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.minutes}</span>
+          <span className="text-xs text-[var(--color-text-secondary)]">{l.minutes}</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={labelStyle}>{l.breakDuration}:</label>
           <input
             type="number"
@@ -165,7 +165,7 @@ export default function PomodoroTimer({ labels }: PomodoroTimerProps) {
             style={inputStyle}
             disabled={isRunning}
           />
-          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.minutes}</span>
+          <span className="text-xs text-[var(--color-text-secondary)]">{l.minutes}</span>
         </div>
       </div>
 
@@ -225,13 +225,13 @@ export default function PomodoroTimer({ labels }: PomodoroTimerProps) {
       </div>
 
       {/* Controls */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         {!isRunning ? (
-          <button className="btn-primary" onClick={handleStart}>{l.start}</button>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleStart}>{l.start}</button>
         ) : (
-          <button className="btn-secondary" onClick={handlePause}>{l.pause}</button>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handlePause}>{l.pause}</button>
         )}
-        <button className="btn-secondary" onClick={handleReset}>{l.reset}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleReset}>{l.reset}</button>
       </div>
 
       {/* Sessions counter */}

@@ -73,7 +73,7 @@ export default function OnlineNotepad({ labels }: OnlineNotepadProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <textarea
         style={inputStyle}
         placeholder={l.placeholder}
@@ -81,14 +81,14 @@ export default function OnlineNotepad({ labels }: OnlineNotepadProps) {
         onChange={(e) => handleChange(e.target.value)}
       />
 
-      <div style={{ display: 'flex', gap: '1rem' }}>
+      <div className="flex gap-4">
         <div style={statStyle}>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>{charCount}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.characters}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.characters}</div>
         </div>
         <div style={statStyle}>
           <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>{wordCount}</div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>{l.words}</div>
+          <div className="text-xs text-[var(--color-text-secondary)]">{l.words}</div>
         </div>
       </div>
 

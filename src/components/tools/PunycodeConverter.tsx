@@ -172,10 +172,10 @@ export default function PunycodeConverter({ labels }: PunycodeConverterProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Input */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.input}
         </label>
         <textarea
@@ -199,21 +199,21 @@ export default function PunycodeConverter({ labels }: PunycodeConverterProps) {
       {/* Buttons */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleEncode}
           disabled={!input.trim()}
         >
           {l.encode}
         </button>
         <button
-          className="btn-primary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleDecode}
           disabled={!input.trim()}
         >
           {l.decode}
         </button>
         <button
-          className="btn-secondary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!input && !output}
         >
@@ -224,7 +224,7 @@ export default function PunycodeConverter({ labels }: PunycodeConverterProps) {
       {/* Output */}
       {output && (
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontWeight: 500, fontSize: '0.875rem' }}>
               {l.result}
             </label>
@@ -255,8 +255,8 @@ export default function PunycodeConverter({ labels }: PunycodeConverterProps) {
         color: 'var(--color-text-secondary)',
         lineHeight: 1.6,
       }}>
-        <strong style={{ color: 'var(--color-text)' }}>What is Punycode?</strong> Punycode is used to encode internationalized domain names (IDN) with non-ASCII characters.
-        For example: "中文.com" becomes "xn--fiq228c.com"
+        <strong className="text-[var(--color-text)]">What is Punycode?</strong> Punycode is used to encode internationalized domain names (IDN) with non-ASCII characters.
+        For example: &quot;中文.com&quot; becomes &quot;xn--fiq228c.com&quot;
       </div>
     </div>
   )

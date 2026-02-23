@@ -98,7 +98,7 @@ export default function ElectricityCalculator({ labels }: ElectricityCalculatorP
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
         <label style={labelStyle}>{l.electricityRate}</label>
         <input type="number" style={{ ...inputStyle, maxWidth: '250px' }} value={rate} onChange={(e) => setRate(Number(e.target.value))} min={0} step={0.01} />
@@ -106,7 +106,7 @@ export default function ElectricityCalculator({ labels }: ElectricityCalculatorP
 
       {devices.map((device) => (
         <div key={device.id} style={{ padding: '1rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+          <div className="flex justify-between items-center mb-3">
             <input
               type="text"
               style={{ ...inputStyle, fontWeight: 600, border: 'none', backgroundColor: 'transparent', padding: '0', fontSize: '1rem' }}
@@ -125,7 +125,7 @@ export default function ElectricityCalculator({ labels }: ElectricityCalculatorP
               {l.remove}
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div>
               <label style={labelStyle}>{l.wattage}</label>
               <input type="number" style={inputStyle} value={device.wattage} onChange={(e) => updateDevice(device.id, 'wattage', Number(e.target.value))} min={0} />
@@ -154,28 +154,28 @@ export default function ElectricityCalculator({ labels }: ElectricityCalculatorP
       </button>
 
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>{l.totalCosts}</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+        <h3 className="text-lg font-semibold mb-3">{l.totalCosts}</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.dailyCost}</div>
-            <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.dailyCost}</div>
+            <div className="text-[1.75rem] font-bold text-[var(--color-primary)]">
               ${results.totals.dailyCost.toFixed(2)}
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>{results.totals.dailyKwh.toFixed(2)} kWh</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mt-1">{results.totals.dailyKwh.toFixed(2)} kWh</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.monthlyCost}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.monthlyCost}</div>
             <div style={{ fontSize: '1.75rem', fontWeight: 700, color: '#f59e0b' }}>
               ${results.totals.monthlyCost.toFixed(2)}
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>{results.totals.monthlyKwh.toFixed(2)} kWh</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mt-1">{results.totals.monthlyKwh.toFixed(2)} kWh</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.yearlyCost}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.yearlyCost}</div>
             <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-success)' }}>
               ${results.totals.yearlyCost.toFixed(2)}
             </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>{(results.totals.monthlyKwh * 12).toFixed(2)} kWh</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mt-1">{(results.totals.monthlyKwh * 12).toFixed(2)} kWh</div>
           </div>
         </div>
       </div>

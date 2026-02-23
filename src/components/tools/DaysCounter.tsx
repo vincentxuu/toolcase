@@ -129,10 +129,10 @@ export default function DaysCounter({ labels }: DaysCounterProps) {
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Event name */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.eventName}
         </label>
         <input
@@ -154,10 +154,10 @@ export default function DaysCounter({ labels }: DaysCounterProps) {
 
       {/* Target date */}
       <div>
-        <label style={{ display: 'block', fontWeight: 500, marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+        <label className="block font-medium mb-2 text-sm">
           {l.targetDate}
         </label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-2">
           <input
             type="date"
             value={targetDate}
@@ -173,7 +173,7 @@ export default function DaysCounter({ labels }: DaysCounterProps) {
             }}
           />
           <button
-            className="btn-secondary"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
             onClick={handleToday}
             style={{ padding: '0.75rem 1rem', whiteSpace: 'nowrap' }}
           >
@@ -183,20 +183,18 @@ export default function DaysCounter({ labels }: DaysCounterProps) {
       </div>
 
       {/* Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="flex gap-3">
         <button
-          className="btn-primary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
           onClick={handleCalculate}
           disabled={!targetDate}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.calculate}
         </button>
         <button
-          className="btn-secondary"
+          className="flex-1 justify-center inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
           onClick={handleClear}
           disabled={!eventName && !targetDate && !result}
-          style={{ flex: 1, justifyContent: 'center' }}
         >
           {l.clear}
         </button>
@@ -229,40 +227,40 @@ export default function DaysCounter({ labels }: DaysCounterProps) {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+                  <div className="text-4xl font-bold text-[var(--color-primary)]">
                     {result.days}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                  <div className="text-xs text-[var(--color-text-secondary)]">
                     {l.days}
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+                  <div className="text-4xl font-bold text-[var(--color-primary)]">
                     {result.hours}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                  <div className="text-xs text-[var(--color-text-secondary)]">
                     {l.hours}
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+                  <div className="text-4xl font-bold text-[var(--color-primary)]">
                     {result.minutes}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                  <div className="text-xs text-[var(--color-text-secondary)]">
                     {l.minutes}
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>
+                  <div className="text-4xl font-bold text-[var(--color-primary)]">
                     {result.seconds}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                  <div className="text-xs text-[var(--color-text-secondary)]">
                     {l.seconds}
                   </div>
                 </div>
               </div>
 
-              <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+              <div className="text-sm text-[var(--color-text-secondary)]">
                 {result.targetDate.toLocaleDateString('en-US', {
                   weekday: 'long',
                   year: 'numeric',

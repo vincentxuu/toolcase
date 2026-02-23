@@ -149,7 +149,7 @@ export default function JsonDiffComparator({ labels }: JsonDiffComparatorProps) 
     })
 
     return (
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text-secondary)' }}>
             {l.leftJson}
@@ -191,13 +191,13 @@ export default function JsonDiffComparator({ labels }: JsonDiffComparatorProps) 
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Controls */}
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-        <button className="btn-primary" onClick={handleCompare}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleCompare}>
           {l.compare}
         </button>
-        <button className="btn-secondary" onClick={handleClear}>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>
           {l.clear}
         </button>
 
@@ -239,20 +239,19 @@ export default function JsonDiffComparator({ labels }: JsonDiffComparatorProps) 
       </div>
 
       {/* Input Section */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>{l.leftJson}</label>
             <button
-              className="btn-secondary"
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
               onClick={() => handleFormatJson(leftInput, setLeftInput)}
             >
               {l.formatJson}
             </button>
           </div>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ minHeight: '200px', fontFamily: 'monospace', fontSize: '0.875rem' }}
             placeholder={l.leftPlaceholder}
             value={leftInput}
@@ -261,18 +260,17 @@ export default function JsonDiffComparator({ labels }: JsonDiffComparatorProps) 
         </div>
 
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div className="flex justify-between items-center mb-2">
             <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>{l.rightJson}</label>
             <button
-              className="btn-secondary"
-              style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
               onClick={() => handleFormatJson(rightInput, setRightInput)}
             >
               {l.formatJson}
             </button>
           </div>
           <textarea
-            className="tool-textarea"
+            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             style={{ minHeight: '200px', fontFamily: 'monospace', fontSize: '0.875rem' }}
             placeholder={l.rightPlaceholder}
             value={rightInput}
@@ -300,7 +298,7 @@ export default function JsonDiffComparator({ labels }: JsonDiffComparatorProps) 
       {diff.length > 0 && (
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600 }}>{l.differences}</h3>
+            <h3 className="text-lg font-semibold">{l.differences}</h3>
             <div style={{ display: 'flex', gap: '1rem', fontSize: '0.875rem' }}>
               <span style={{ color: 'rgb(34, 197, 94)' }}>
                 {l.added}: {stats.added}

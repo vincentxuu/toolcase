@@ -93,7 +93,7 @@ export default function ScreenRecorder({ labels }: ScreenRecorderProps) {
   const btnSecondary: React.CSSProperties = { padding: '0.6rem 1.25rem', border: '1px solid var(--color-border)', borderRadius: '0.5rem', backgroundColor: 'var(--color-bg-secondary)', cursor: 'pointer', fontWeight: 600, fontSize: '0.9rem' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       {!recording && !resultUrl && (
         <div style={{ textAlign: 'center', padding: '2rem', border: '1px solid var(--color-border)', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎥</div>
@@ -122,7 +122,7 @@ export default function ScreenRecorder({ labels }: ScreenRecorderProps) {
           <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.75rem', overflow: 'hidden' }}>
             <video src={resultUrl} controls style={{ width: '100%', maxHeight: '400px', display: 'block', backgroundColor: '#000' }} />
           </div>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="flex gap-2">
             <button onClick={handleDownload} style={btnPrimary}>{l.download}</button>
             <button onClick={handleReset} style={btnSecondary}>{l.reset}</button>
           </div>

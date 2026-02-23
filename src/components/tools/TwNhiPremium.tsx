@@ -106,33 +106,33 @@ export default function TwNhiPremium({ labels }: Props) {
   const cardStyle: React.CSSProperties = { padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Rate info */}
       <div style={{ padding: '1rem', borderRadius: '0.5rem', backgroundColor: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)' }}>
-        <div style={{ fontSize: '0.875rem' }}>
+        <div className="text-sm">
           <strong>{l.rateInfo}：</strong>健保費率 {(NHI_RATE * 100).toFixed(2)}%，被保險人自付 30%、雇主負擔 60%、政府補助 10%
         </div>
       </div>
 
       {/* Quick Lookup */}
-      <div style={{ padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg-secondary)' }}>
-        <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem' }}>{l.quickLookup}</div>
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.monthlySalary}</label>
+      <div className="p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <div className="text-base font-semibold mb-4">{l.quickLookup}</div>
+        <div className="mb-4">
+          <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.monthlySalary}</label>
           <input type="number" style={inputStyle} value={salary} onChange={e => setSalary(Number(e.target.value))} min={0} step={1000} />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.yourGrade}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.yourGrade}</div>
             <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>NT${fmt(matched.salary)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.monthlyPremium}</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ef4444' }}>NT${fmt(matched.premium)}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.monthlyPremium}</div>
+            <div className="text-2xl font-bold text-red-500">NT${fmt(matched.premium)}</div>
           </div>
           <div style={cardStyle}>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.annualPremium}</div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#f59e0b' }}>NT${fmt(matched.premium * 12)}</div>
+            <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.annualPremium}</div>
+            <div className="text-2xl font-bold text-amber-500">NT${fmt(matched.premium * 12)}</div>
           </div>
         </div>
       </div>

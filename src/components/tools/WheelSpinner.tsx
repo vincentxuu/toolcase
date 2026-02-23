@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -78,7 +78,7 @@ export default function WheelSpinner({ labels }: WheelSpinnerProps) {
   }
 
   // Draw wheel
-  const drawWheel = (rotation: number) => {
+  const drawWheel = useCallback((rotation: number) => {
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -140,7 +140,7 @@ export default function WheelSpinner({ labels }: WheelSpinnerProps) {
     ctx.strokeStyle = '#fff'
     ctx.lineWidth = 2
     ctx.stroke()
-  }
+  }, [options])
 
   // Spin wheel
   const spinWheel = () => {
@@ -192,11 +192,11 @@ export default function WheelSpinner({ labels }: WheelSpinnerProps) {
   // Initial draw and redraw on options change
   useEffect(() => {
     drawWheel(currentRotation)
-  }, [options])
+  }, [options, currentRotation, drawWheel])
 
   useEffect(() => {
     drawWheel(currentRotation)
-  }, [])
+  }, [currentRotation, drawWheel])
 
   return (
     <div className="mx-auto max-w-4xl space-y-6">

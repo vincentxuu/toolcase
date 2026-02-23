@@ -99,7 +99,7 @@ export default function LoremIpsumGenerator({ labels }: Props) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'end' }}>
         <div>
           <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{l.count}</label>
@@ -117,12 +117,12 @@ export default function LoremIpsumGenerator({ labels }: Props) {
           <input type="checkbox" checked={startWithLorem} onChange={(e) => setStartWithLorem(e.target.checked)} />
           {l.startWithLorem}
         </label>
-        <button className="btn-primary" onClick={generate}>{l.generate}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={generate}>{l.generate}</button>
       </div>
       {output && (
-        <div style={{ position: 'relative' }}>
+        <div className="relative">
           <textarea readOnly value={output} style={{ ...inputStyle, width: '100%', minHeight: '200px', resize: 'vertical' }} />
-          <button className="btn-secondary" onClick={handleCopy} style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] absolute top-2 right-2" onClick={handleCopy} >
             {copied ? l.copied : l.copy}
           </button>
         </div>

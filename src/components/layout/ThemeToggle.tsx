@@ -39,20 +39,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        style={{
-          padding: '0.5rem',
-          borderRadius: '0.5rem',
-          border: '1px solid var(--color-border)',
-          backgroundColor: 'var(--color-bg-secondary)',
-          color: 'var(--color-text)',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.15s',
-          width: '40px',
-          height: '40px',
-        }}
+        className="p-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] cursor-pointer flex items-center justify-center transition-all w-10 h-10"
         aria-label="切換主題"
       >
         <Sun size={20} />
@@ -63,26 +50,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      style={{
-        padding: '0.5rem',
-        borderRadius: '0.5rem',
-        border: '1px solid var(--color-border)',
-        backgroundColor: 'var(--color-bg-secondary)',
-        color: 'var(--color-text)',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transition: 'all 0.15s',
-        width: '40px',
-        height: '40px',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-border)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-bg-secondary)'
-      }}
+      className="p-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text)] cursor-pointer flex items-center justify-center transition-all w-10 h-10 hover:bg-[var(--color-border)]"
       aria-label={theme === 'light' ? '切換至深色模式' : '切換至淺色模式'}
       title={theme === 'light' ? '切換至深色模式' : '切換至淺色模式'}
     >

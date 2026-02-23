@@ -83,10 +83,10 @@ export default function IpSubnetCalculator({ labels }: IpSubnetCalculatorProps) 
   const valueStyle: React.CSSProperties = { fontFamily: 'monospace', fontWeight: 600 }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 flex-wrap">
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.ipAddress}</label>
+          <label className="font-semibold block mb-1">{l.ipAddress}</label>
           <input
             type="text"
             value={ip}
@@ -96,7 +96,7 @@ export default function IpSubnetCalculator({ labels }: IpSubnetCalculatorProps) 
           />
         </div>
         <div style={{ flex: '0 0 120px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>/{l.cidr}</label>
+          <label className="font-semibold block mb-1">/{l.cidr}</label>
           <input
             type="number"
             min={0}

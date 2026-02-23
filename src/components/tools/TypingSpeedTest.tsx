@@ -140,7 +140,7 @@ export default function TypingSpeedTest({ labels }: TypingSpeedTestProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {status === 'idle' && (
         <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
           <div style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', marginBottom: '1.5rem' }}>
@@ -152,18 +152,18 @@ export default function TypingSpeedTest({ labels }: TypingSpeedTestProps) {
 
       {status === 'running' && (
         <>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.wpm}</div>
-              <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--color-primary)' }}>{grossWpm}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.wpm}</div>
+              <div className="text-3xl font-bold text-[var(--color-primary)]">{grossWpm}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.accuracy}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.accuracy}</div>
               <div style={{ fontSize: '2rem', fontWeight: 700, color: accuracyPct >= 90 ? '#10b981' : accuracyPct >= 70 ? '#f59e0b' : '#ef4444' }}>{accuracyPct}%</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.time}</div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>{elapsed}<span style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>s</span></div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.time}</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>{elapsed}<span className="text-sm text-[var(--color-text-secondary)]">s</span></div>
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export default function TypingSpeedTest({ labels }: TypingSpeedTestProps) {
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+            <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">
               {l.typeBelow}
             </label>
             <textarea
@@ -200,35 +200,35 @@ export default function TypingSpeedTest({ labels }: TypingSpeedTestProps) {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.grossWpm}</div>
-              <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--color-primary)' }}>{grossWpm}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.grossWpm}</div>
+              <div className="text-4xl font-bold text-[var(--color-primary)]">{grossWpm}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.netWpm}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.netWpm}</div>
               <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#10b981' }}>{netWpm}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.accuracy}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.accuracy}</div>
               <div style={{ fontSize: '2.5rem', fontWeight: 700, color: accuracyPct >= 90 ? '#10b981' : accuracyPct >= 70 ? '#f59e0b' : '#ef4444' }}>{accuracyPct}%</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.time}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.time}</div>
               <div style={{ fontSize: '2.5rem', fontWeight: 700 }}>{elapsed}<span style={{ fontSize: '1rem', color: 'var(--color-text-secondary)' }}>s</span></div>
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.correctChars}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.correctChars}</div>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#10b981' }}>{correctChars}</div>
             </div>
             <div style={cardStyle}>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.totalChars}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700 }}>{totalTyped}</div>
+              <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.totalChars}</div>
+              <div className="text-2xl font-bold">{totalTyped}</div>
             </div>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
+          <div className="text-center">
             <button style={btnStyle} onClick={startTest}>{l.restart}</button>
           </div>
         </>

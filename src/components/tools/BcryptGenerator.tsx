@@ -105,7 +105,7 @@ export default function BcryptGenerator({ labels }: BcryptGeneratorProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <div>
         <label style={labelStyle}>{l.password}</label>
         <input
@@ -152,7 +152,7 @@ export default function BcryptGenerator({ labels }: BcryptGeneratorProps) {
       {useSalt && (
         <div>
           <label style={labelStyle}>{l.salt}</label>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="flex gap-2">
             <input
               type="text"
               style={{ ...inputStyle, flex: 1 }}
@@ -160,18 +160,18 @@ export default function BcryptGenerator({ labels }: BcryptGeneratorProps) {
               value={salt}
               onChange={(e) => setSalt(e.target.value)}
             />
-            <button className="btn-secondary" onClick={handleGenerateSalt} style={{ whiteSpace: 'nowrap' }}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleGenerateSalt} style={{ whiteSpace: 'nowrap' }}>
               {l.generateSalt}
             </button>
           </div>
         </div>
       )}
 
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <button className="btn-primary" onClick={handleGenerate} disabled={computing}>
+      <div className="flex gap-2">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleGenerate} disabled={computing}>
           {l.generate}
         </button>
-        <button className="btn-secondary" onClick={handleClear}>{l.clear}</button>
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>{l.clear}</button>
       </div>
 
       {useSalt && saltedInput && (

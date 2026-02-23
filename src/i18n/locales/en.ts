@@ -6,8 +6,8 @@ const en = {
   // Hero
   hero_badge: '100% Free — No signup required',
   hero_title_1: 'Online tools,',
-  hero_title_2: '150+ tools, instant & free.',
-  hero_desc: "Development, design, finance, health, image processing, text editing, unit conversion — 150+ free tools, ready to use.",
+  hero_title_2: '{count}+ tools, instant & free.',
+  hero_desc: "Development, design, finance, health, image processing, text editing, unit conversion — {count}+ free tools, ready to use.",
   stat_tools: 'Free Tools',
   stat_signup: 'Signups Needed',
   stat_load: 'Load Time',
@@ -56,6 +56,8 @@ const en = {
   tool_bmi_desc: 'Calculate your Body Mass Index instantly',
   tool_tdee: 'TDEE / BMR Calculator',
   tool_tdee_desc: 'Calculate daily calorie needs & basal metabolic rate',
+  tool_weightloss: 'Weight Loss & Running Plan',
+  tool_weightloss_desc: 'Create a personalized fat loss plan with running schedule, calorie goals & reality check',
   tool_duedate: 'Due Date Calculator',
   tool_duedate_desc: 'Estimate pregnancy due date & track progress',
   tool_percentage: 'Percentage Calculator',
@@ -384,6 +386,29 @@ const en = {
   tool_csv_editor_desc: 'Edit CSV files in a spreadsheet interface with export',
   tool_excel_formula: 'Excel Formula Generator',
   tool_excel_formula_desc: 'Browse and copy common Excel formulas with examples',
+  tool_icon_search: 'Icon Search',
+  tool_icon_search_desc: 'Search and copy Lucide React icons with customization',
+  tool_wcag_color: 'WCAG Color Checker',
+  tool_wcag_color_desc: 'Check color contrast ratios for accessibility compliance',
+  tool_font_preview: 'Font Preview',
+  tool_font_preview_desc: 'Preview Google Fonts with custom text and sizes',
+  tool_logo_generator: 'Logo Generator',
+  tool_logo_generator_desc: 'Create simple logos with text and shapes using Canvas',
+
+  tool_sunrise_sunset: 'Sunrise & Sunset Calculator',
+  tool_sunrise_sunset_desc: 'Calculate sunrise, sunset, and twilight times using astronomical formulas',
+
+  tool_math_formula: 'Math Formula Editor',
+  tool_math_formula_desc: 'Create and render mathematical formulas with KaTeX',
+
+  tool_latex_editor: 'LaTeX Editor',
+  tool_latex_editor_desc: 'Write and preview LaTeX mathematical expressions',
+
+  tool_menstrual_cycle: 'Menstrual Cycle Calculator',
+  tool_menstrual_cycle_desc: 'Calculate next period, ovulation day, and fertility window',
+
+  tool_farmer_almanac: 'Farmer Almanac',
+  tool_farmer_almanac_desc: 'Lunar calendar with auspicious and inauspicious days',
 
   // New tools - Phase 1: Quick value tools
   tool_coinflip: 'Coin Flip',
@@ -414,8 +439,8 @@ const en = {
   tool_alarm_desc: 'Multiple alarms, repeat reminders, snooze function',
   tool_mindreader: 'Mind Reader',
   tool_mindreader_desc: 'Mathematical magic game that reads your mind',
-  tool_colorblind: 'Color Blindness Test',
-  tool_colorblind_desc: 'Ishihara color blind test for vision screening',
+  tool_colorblind_test: 'Color Blindness Test',
+  tool_colorblind_test_desc: 'Ishihara color blind test for vision screening',
   tool_wheel: 'Wheel Spinner',
   tool_wheel_desc: 'Canvas animated wheel for random draws',
   tool_drawingboard: 'Drawing Board',
@@ -454,11 +479,37 @@ const en = {
   tz_working_hours: 'Good meeting times (both awake: 7AM-11PM)',
   tz_meeting_planner_desc: 'Find the best meeting time across timezones',
 
+  // Search
+  search_no_results: 'No tools found',
+  search_suggestions: 'Suggestions',
+
+  // Section Titles
+  featured_tools_title: 'Featured Tools',
+  popular_tools_title: 'Popular Tools',
+  new_tools_title: 'New Tools',
+  browse_categories_title: 'Browse by Category',
+
+  // Category & Filter
+  category_page_title: '{category} Tools',
+  filter_by_category: 'Filter by Category',
+  sort_by: 'Sort by',
+  sort_popular: 'Most Popular',
+  sort_name: 'Name (A-Z)',
+  sort_new: 'Recently Added',
+
+  // Call to Action
+  view_all: 'View All',
+  view_all_tools: 'View All Tools',
+  view_category: 'View {category}',
+
+  // Tool Metadata
+  tool_badge_new: 'New',
+  tool_badge_popular: 'Popular',
+  tool_badge_featured: 'Featured',
+  tool_count: '{count} tools',
+
   // Footer
-  footer_text: '© 2026 toolcase. Built with coffee and simplicity.',
-  footer_about: 'About',
-  footer_privacy: 'Privacy',
-  footer_terms: 'Terms',
+  footer_text: '© 2026 toolcase. Born for simplicity.',
 } as const
 
 export default en

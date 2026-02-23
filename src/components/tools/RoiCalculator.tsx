@@ -57,8 +57,8 @@ export default function RoiCalculator({ labels }: RoiCalculatorProps) {
   const cardStyle: React.CSSProperties = { padding: '1.5rem', borderRadius: '0.75rem', backgroundColor: 'var(--color-bg-secondary)', border: '1px solid var(--color-border)', textAlign: 'center' }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+    <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
           <label style={labelStyle}>{l.investmentCost}</label>
           <input type="number" style={inputStyle} value={cost} onChange={(e) => setCost(Number(e.target.value))} min={0} />
@@ -73,7 +73,7 @@ export default function RoiCalculator({ labels }: RoiCalculatorProps) {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         <div style={cardStyle}>
           <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>{l.roi}</div>
           <div style={{ fontSize: '2.5rem', fontWeight: 700, color: result.isProfit ? 'var(--color-success)' : 'var(--color-error)' }}>
@@ -89,7 +89,7 @@ export default function RoiCalculator({ labels }: RoiCalculatorProps) {
       </div>
 
       <div style={cardStyle}>
-        <div style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{l.netProfit}</div>
+        <div className="text-xs text-[var(--color-text-secondary)] mb-1">{l.netProfit}</div>
         <div style={{ fontSize: '2rem', fontWeight: 700, color: result.isProfit ? 'var(--color-success)' : 'var(--color-error)' }}>
           {result.netProfit >= 0 ? '+' : ''}{formatNumber(result.netProfit, l.currency)}
         </div>

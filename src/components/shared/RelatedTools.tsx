@@ -3,12 +3,12 @@ import { getDictionary } from '@/i18n/get-dict'
 import type { Locale } from '@/i18n/config'
 import Link from 'next/link'
 import ToolIcon from '@/components/shared/ToolIcon'
+import { getToolPath } from '@/lib/tool-url'
 
 type DictKey = keyof ReturnType<typeof getDictionary>
 
 export default function RelatedTools({ current, locale }: { current: string; locale: Locale }) {
   const t = getDictionary(locale)
-  const prefix = locale === 'en' ? '' : `/${locale}`
 
   // Find current tool's category
   const currentTool = tools.find((tool) => tool.slug === current)
@@ -26,31 +26,19 @@ export default function RelatedTools({ current, locale }: { current: string; loc
   const related = [...sameCategory, ...otherTools].slice(0, 4)
 
   return (
-    <section style={{ marginTop: '3rem' }}>
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-        {t.related_tools_title}
-      </h2>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-          gap: '0.75rem',
-        }}
-      >
+    <section className="mt-12">
+      <h2 className="text-2xl font-semibold mb-4">{t.related_tools_title}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3">
         {related.map((tool) => (
           <Link
             key={tool.slug}
-            href={`${prefix}/${tool.slug}`}
-            style={{
-              padding: '1rem',
-              borderRadius: '0.5rem',
-              border: '1px solid var(--color-border)',
-              textDecoration: 'none',
-              color: 'var(--color-text)',
-            }}
+            href={getToolPath(tool.slug, locale)}
+            className="flex items-center p-4 rounded-lg border border-[var(--color-border)] no-underline text-[var(--color-text)] transition-colors hover:border-[var(--color-primary)]"
           >
-            <span style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}><ToolIcon name={tool.icon} size={20} /></span>
-            <span style={{ fontWeight: 500 }}>{t[tool.nameKey as DictKey]}</span>
+            <span className="mr-2 inline-flex align-middle">
+              <ToolIcon name={tool.icon} size={20} />
+            </span>
+            <span className="font-medium">{t[tool.nameKey as DictKey]}</span>
           </Link>
         ))}
       </div>

@@ -334,7 +334,7 @@ export default function DrawingBoard({ labels }: DrawingBoardProps) {
               <Trash2 className="h-4 w-4" />
               {l.clear}
             </Button>
-            <Button onClick={downloadCanvas} variant="default" size="sm" className="gap-2">
+            <Button onClick={downloadCanvas} variant="primary" size="sm" className="gap-2">
               <Download className="h-4 w-4" />
               {l.download}
             </Button>

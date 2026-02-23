@@ -140,20 +140,20 @@ export default function Base64ImageConverter({ labels }: Base64ImageConverterPro
   }, [])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       {/* Upload Section */}
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+        <h3 className="text-lg font-semibold mb-3">
           {l.uploadImage}
         </h3>
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        <div className="flex gap-2 flex-wrap">
           <button
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0"
             onClick={() => fileRef.current?.click()}
           >
             {l.selectImage}
           </button>
-          <button className="btn-secondary" onClick={handleClear}>
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>
             {l.clear}
           </button>
           <input
@@ -161,25 +161,25 @@ export default function Base64ImageConverter({ labels }: Base64ImageConverterPro
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            style={{ display: 'none' }}
+            className="hidden"
           />
         </div>
       </div>
 
       {/* Base64 to Image Section */}
       <div>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+        <h3 className="text-lg font-semibold mb-3">
           {l.pasteBase64}
         </h3>
         <textarea
-          className="tool-textarea"
+          className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
           style={{ minHeight: '100px', fontFamily: 'monospace', fontSize: '0.875rem' }}
           placeholder="data:image/png;base64,iVBORw0KGgo..."
           value={base64Input}
           onChange={(e) => setBase64Input(e.target.value)}
         />
-        <div style={{ marginTop: '0.5rem' }}>
-          <button className="btn-primary" onClick={handleBase64Convert}>
+        <div className="mt-2">
+          <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handleBase64Convert}>
             {l.convert}
           </button>
         </div>
@@ -205,7 +205,7 @@ export default function Base64ImageConverter({ labels }: Base64ImageConverterPro
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
           {/* Image Preview */}
           <div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+            <h3 className="text-lg font-semibold mb-3">
               {l.imagePreview}
             </h3>
             <div
@@ -246,7 +246,7 @@ export default function Base64ImageConverter({ labels }: Base64ImageConverterPro
                 <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                   {l.imageInfo}
                 </h4>
-                <div style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+                <div className="text-sm text-[var(--color-text-secondary)]">
                   <div><strong>{l.fileName}:</strong> {imageInfo.name}</div>
                   <div><strong>{l.fileSize}:</strong> {imageInfo.size}</div>
                   <div><strong>{l.dimensions}:</strong> {imageInfo.width} × {imageInfo.height}</div>
@@ -258,13 +258,13 @@ export default function Base64ImageConverter({ labels }: Base64ImageConverterPro
           {/* Base64 Output */}
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-              <h3 style={{ fontSize: '1.125rem', fontWeight: 600 }}>
+              <h3 className="text-lg font-semibold">
                 {l.base64Output}
               </h3>
               <CopyButton text={base64Data} label={l.copy} copiedLabel={l.copied} />
             </div>
             <textarea
-              className="tool-textarea"
+              className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
               style={{
                 minHeight: '300px',
                 fontFamily: 'monospace',

@@ -114,7 +114,7 @@ export default function DigitalSignaturePad({ labels }: DigitalSignaturePadProps
   })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="flex flex-col gap-4">
       <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>{l.drawSignature}</p>
 
       <canvas
@@ -143,23 +143,23 @@ export default function DigitalSignaturePad({ labels }: DigitalSignaturePadProps
       />
 
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={{ fontWeight: 600, fontSize: '0.85rem' }}>{l.penColor}</label>
           <input type="color" value={penColor} onChange={(e) => setPenColor(e.target.value)} style={{ width: '36px', height: '30px', border: 'none', cursor: 'pointer' }} />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={{ fontWeight: 600, fontSize: '0.85rem' }}>{l.penSize}</label>
           <input type="range" min={1} max={10} value={penSize} onChange={(e) => setPenSize(Number(e.target.value))} style={{ width: '100px' }} />
           <span style={{ fontSize: '0.85rem' }}>{penSize}px</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="flex items-center gap-2">
           <label style={{ fontWeight: 600, fontSize: '0.85rem' }}>{l.backgroundColor}</label>
           <button onClick={() => setBgTransparent(true)} style={btnStyle(bgTransparent)}>{l.transparent}</button>
           <button onClick={() => setBgTransparent(false)} style={btnStyle(!bgTransparent)}>{l.white}</button>
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div className="flex gap-2">
         <button onClick={clear} style={btnStyle(false)}>{l.clear}</button>
         <button onClick={download} disabled={!hasDrawn} style={{ ...btnStyle(true), opacity: hasDrawn ? 1 : 0.5, cursor: hasDrawn ? 'pointer' : 'default' }}>{l.download}</button>
       </div>

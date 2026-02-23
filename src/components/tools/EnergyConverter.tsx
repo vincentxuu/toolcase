@@ -50,10 +50,10 @@ export default function EnergyConverter({ labels }: EnergyConverterProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 flex-wrap">
         <div style={{ flex: '1 1 150px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.value}</label>
+          <label className="font-semibold block mb-1">{l.value}</label>
           <input
             type="number"
             value={input}
@@ -63,7 +63,7 @@ export default function EnergyConverter({ labels }: EnergyConverterProps) {
           />
         </div>
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ fontWeight: 600, display: 'block', marginBottom: '0.25rem' }}>{l.from}</label>
+          <label className="font-semibold block mb-1">{l.from}</label>
           <select
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
@@ -75,7 +75,7 @@ export default function EnergyConverter({ labels }: EnergyConverterProps) {
       </div>
 
       {results && (
-        <div style={{ border: '1px solid var(--color-border)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+        <div className="border border-[var(--color-border)] rounded-lg overflow-hidden">
           <div style={{ padding: '0.5rem 0.75rem', backgroundColor: 'var(--color-bg-secondary)', fontWeight: 600, borderBottom: '1px solid var(--color-border)' }}>{l.result}</div>
           {results.map((r) => (
             <div key={r.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.6rem 0.75rem', borderBottom: '1px solid var(--color-border)' }}>

@@ -132,9 +132,9 @@ export default function ImageToPdf({ labels }: ImageToPdfProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-        <button className="btn-secondary" onClick={() => fileRef.current?.click()}>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 items-center flex-wrap">
+        <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={() => fileRef.current?.click()}>
           {images.length === 0 ? l.uploadImages : l.addImages}
         </button>
         <input
@@ -143,14 +143,14 @@ export default function ImageToPdf({ labels }: ImageToPdfProps) {
           accept="image/*"
           multiple
           onChange={handleFilesChange}
-          style={{ display: 'none' }}
+          className="hidden"
         />
         {images.length > 0 && (
           <>
-            <button className="btn-secondary" onClick={handleRemoveAll}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleRemoveAll}>
               {l.removeAll}
             </button>
-            <button className="btn-primary" onClick={handlePrint}>
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={handlePrint}>
               {l.printAsPdf}
             </button>
           </>
@@ -170,7 +170,7 @@ export default function ImageToPdf({ labels }: ImageToPdfProps) {
           {l.noImages}
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div className="flex flex-col gap-2">
           {images.map((img, index) => (
             <div
               key={img.id}
@@ -239,7 +239,7 @@ export default function ImageToPdf({ labels }: ImageToPdfProps) {
         </div>
       )}
 
-      <div ref={printRef} style={{ display: 'none' }} />
+      <div ref={printRef} className="hidden" />
     </div>
   )
 }

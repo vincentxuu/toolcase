@@ -89,7 +89,6 @@ export default function ScientificCalculator({ labels }: ScientificCalculatorPro
         return
       }
 
-      // eslint-disable-next-line no-eval
       const result = Function(`"use strict"; return (${expr})`)()
       const str = typeof result === 'number' && isFinite(result)
         ? (Number.isInteger(result) ? result.toString() : parseFloat(result.toPrecision(12)).toString())
