@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-dev",
-  "main": ".open-next/server-functions/cat-dev/index.mjs",
+  "main": "workers/worker-cat-dev.js",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat"

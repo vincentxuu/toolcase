@@ -39,7 +39,13 @@ const config: OpenNextConfig = {
       patterns: ["/api/exchange-rates*"],
     },
   },
-  edgeExternals: ["node:crypto", "node:fs", "node:path"],
+  edgeExternals: [
+    "node:crypto",
+    "node:fs",
+    "node:path",
+    "react-dom/server.browser",
+    "react-dom/server.edge"
+  ],
   middleware: {
     external: true,
     override: {

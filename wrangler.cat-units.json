@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-units",
-  "main": ".open-next/server-functions/cat-units/index.mjs",
+  "main": "workers/worker-cat-units.js",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat_v2"

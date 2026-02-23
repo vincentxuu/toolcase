@@ -1,6 +1,6 @@
 {
   "name": "toolcase-cat-health",
-  "main": ".open-next/server-functions/cat-health/index.mjs",
+  "main": "workers/worker-cat-health.js",
   "compatibility_date": "2025-01-13",
   "compatibility_flags": [
     "nodejs_compat_v2"
