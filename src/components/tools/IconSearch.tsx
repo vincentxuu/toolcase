@@ -45,9 +45,15 @@ export default function IconSearch({ labels }: IconSearchProps) {
 
   // Get all icon names from lucide-react
   const allIconNames = useMemo(() => {
-    return Object.keys(Icons || {})
-      .filter((key) => key !== 'createLucideIcon' && key !== 'default')
-      .sort()
+    try {
+      if (!Icons || typeof Icons !== 'object') return []
+      return Object.keys(Icons)
+        .filter((key) => key !== 'createLucideIcon' && key !== 'default' && typeof (Icons as any)[key] === 'function')
+        .sort()
+    } catch (error) {
+      console.error('Error loading icons:', error)
+      return []
+    }
   }, [])
 
   const filteredIcons = useMemo(() => {
@@ -73,30 +79,36 @@ export default function IconSearch({ labels }: IconSearchProps) {
 
   const handleCopySvg = useCallback((iconName: string) => {
     const IconComponent = getIconComponent(iconName)
-    if (!IconComponent) return
+    if (!IconComponent || typeof window === 'undefined') return
 
-    // Create a temporary div to render the icon
-    const div = document.createElement('div')
-    const tempRoot = document.createElement('div')
-    tempRoot.style.display = 'none'
-    document.body.appendChild(tempRoot)
+    try {
+      // Create a temporary div to render the icon
+      const tempRoot = document.createElement('div')
+      tempRoot.style.display = 'none'
+      document.body.appendChild(tempRoot)
 
-    // Render icon to get SVG
-    import('react-dom/client').then(({ createRoot }) => {
-      const root = createRoot(tempRoot)
-      root.render(
-        <IconComponent size={iconSize} strokeWidth={strokeWidth} color={iconColor} />
-      )
+      // Render icon to get SVG
+      import('react-dom/client').then(({ createRoot }) => {
+        const root = createRoot(tempRoot)
+        root.render(
+          <IconComponent size={iconSize} strokeWidth={strokeWidth} color={iconColor} />
+        )
 
-      setTimeout(() => {
-        const svg = tempRoot.querySelector('svg')
-        if (svg) {
-          navigator.clipboard.writeText(svg.outerHTML)
-        }
-        root.unmount()
+        setTimeout(() => {
+          const svg = tempRoot.querySelector('svg')
+          if (svg) {
+            navigator.clipboard.writeText(svg.outerHTML)
+          }
+          root.unmount()
+          document.body.removeChild(tempRoot)
+        }, 100)
+      }).catch((error) => {
+        console.error('Error rendering SVG:', error)
         document.body.removeChild(tempRoot)
-      }, 100)
-    })
+      })
+    } catch (error) {
+      console.error('Error copying SVG:', error)
+    }
   }, [iconSize, strokeWidth, iconColor, getIconComponent])
 
   return (
@@ -156,13 +168,7 @@ export default function IconSearch({ labels }: IconSearchProps) {
 
       {/* Icon Grid */}
       {safeFilteredIcons.length > 0 ? (
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
-            gap: '1rem',
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {safeFilteredIcons.map((iconName) => {
             const IconComponent = getIconComponent(iconName)
             if (!IconComponent) return null
@@ -170,36 +176,9 @@ export default function IconSearch({ labels }: IconSearchProps) {
             return (
               <div
                 key={iconName}
-                style={{
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '0.5rem',
-                  padding: '1rem',
-                  backgroundColor: 'var(--color-bg-secondary)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
+                className="border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-bg-secondary)] flex flex-col items-center gap-3 transition-all duration-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg"
               >
-                <div
-                  style={{
-                    width: '100%',
-                    height: '80px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
+                <div className="w-full h-20 flex items-center justify-center">
                   <IconComponent
                     size={iconSize}
                     strokeWidth={strokeWidth}
@@ -207,19 +186,11 @@ export default function IconSearch({ labels }: IconSearchProps) {
                   />
                 </div>
 
-                <div
-                  style={{
-                    fontSize: '0.75rem',
-                    fontFamily: 'monospace',
-                    color: 'var(--color-text-secondary)',
-                    textAlign: 'center',
-                    wordBreak: 'break-word',
-                  }}
-                >
+                <div className="text-xs font-mono text-[var(--color-text-secondary)] text-center break-words">
                   {iconName}
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <div className="flex gap-1 flex-wrap justify-center">
                   <CopyButton
                     text={iconName}
                     label={l.copyName}
@@ -227,7 +198,7 @@ export default function IconSearch({ labels }: IconSearchProps) {
                     size="sm"
                   />
                   <button
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)] text-xs px-2 py-1"
+                    className="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]"
                     onClick={() => handleCopyJsx(iconName)}
                   >
                     {l.copyJsx}
@@ -238,15 +209,7 @@ export default function IconSearch({ labels }: IconSearchProps) {
           })}
         </div>
       ) : (
-        <div
-          style={{
-            padding: '3rem 1rem',
-            textAlign: 'center',
-            color: 'var(--color-text-secondary)',
-            border: '2px dashed var(--color-border)',
-            borderRadius: '0.5rem',
-          }}
-        >
+        <div className="py-12 px-4 text-center text-[var(--color-text-secondary)] border-2 border-dashed border-[var(--color-border)] rounded-lg">
           {l.noResults}
         </div>
       )}
