@@ -1,0 +1,43 @@
+name: Dependency & Security Check
+
+on:
+  schedule:
+    # 每週一早上 9:00 (UTC) 執行
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  dependency-check:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for outdated dependencies
+        run: |
+          echo "## 📦 Dependency Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          pnpm outdated || echo "有套件需要更新" >> $GITHUB_STEP_SUMMARY
+
+      - name: Run audit
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔒 Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          pnpm audit --audit-level=moderate || echo "發現安全性問題,請檢查" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,6 @@
+name = "toolcase"
+compatibility_date = "2025-01-13"
+compatibility_flags = ["nodejs_compat_v2"]
+pages_build_output_dir = ".vercel/output/static"
+
+# Cloudflare Pages 會自動處理部署,所以不需要像 Workers 那樣配置多個 worker

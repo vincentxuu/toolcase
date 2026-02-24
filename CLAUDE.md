@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**toolcase** is a free online tools platform with 150+ tools for developers, designers, and general users. All tools run client-side (browser-only) to ensure user privacy. Built with Next.js 16 App Router, TypeScript, and Tailwind CSS 4, deployed on Cloudflare Workers.
+**toolcase** is a free online tools platform with 150+ tools for developers, designers, and general users. All tools run client-side (browser-only) to ensure user privacy. Built with Next.js 16 App Router, TypeScript, and Tailwind CSS 4, deployed on Cloudflare Pages.
 
 ## Core Development Commands
 
@@ -16,16 +16,19 @@ pnpm dev                       # Start Next.js dev server on localhost:3000
 
 # Building
 pnpm build                     # Standard Next.js build
-pnpm build:cf                  # Build for Cloudflare Workers deployment
+pnpm pages:build               # Build for Cloudflare Pages deployment
 pnpm postbuild                 # Generate sitemap (runs after build)
 
 # Quality
 pnpm lint                      # Run ESLint
+pnpm typecheck                 # Run TypeScript type check
+
+# Development & Preview
+pnpm preview                   # Build and run local preview with wrangler
+pnpm pages:watch               # Build with watch mode for development
 
 # Deployment
-pnpm preview                   # Build and deploy to preview environment
-pnpm deploy:preview            # Deploy to Cloudflare preview
-pnpm deploy:production         # Deploy to Cloudflare production
+pnpm pages:deploy              # Deploy to Cloudflare Pages
 
 # Package Management
 pnpm install                   # Install dependencies
@@ -263,22 +266,100 @@ export default function MyNewToolPage() {
 ### 6. Rebuild and test
 
 ```bash
-npm run dev  # Test locally
-npm run build:cf  # Build for deployment
+pnpm dev  # Test locally
+pnpm pages:build  # Build for deployment
 ```
 
 ## Deployment
 
-The project is configured for Cloudflare Workers deployment via `@opennextjs/cloudflare`.
+The project is configured for Cloudflare Pages deployment via `@cloudflare/next-on-pages`.
 
-**Configuration:** `wrangler.json`
+**Configuration:** `wrangler.toml`
 - Production: `toolcase.cc`, `www.toolcase.cc`
-- Preview: `toolcase-preview.workers.dev`
+- Preview: Automatic preview deployments on branches
 
 **Environment Variables:**
 Copy `.env.example` to `.env.local` and configure:
 - `NEXT_PUBLIC_ADSENSE_CLIENT_ID` - Google AdSense publisher ID
 - `NEXT_PUBLIC_AD_SLOT_*` - AdSense ad slot IDs
+
+**Note:** Cloudflare Pages automatically builds and deploys on git push when connected via Cloudflare dashboard.
+
+## CI/CD
+
+The project uses GitHub Actions for automated deployment and quality checks.
+
+### Workflows
+
+#### 1. **Deploy to Cloudflare Pages** (`.github/workflows/deploy.yml`)
+
+**Triggers:**
+- Push to `main` branch → Production deployment
+- Push to `develop` branch → Preview deployment
+- Manual trigger via workflow_dispatch → Choose environment
+
+**Jobs:**
+- **quality-check**: Runs ESLint and TypeScript type checking
+- **deploy**: Builds and deploys to Cloudflare Pages
+  - Builds Next.js application with `@cloudflare/next-on-pages`
+  - Deploys to Cloudflare Pages
+  - Purges cache on production deployment
+
+**Path Filtering:**
+Only triggers on changes to:
+- `src/**`
+- `public/**`
+- `package.json`, `pnpm-lock.yaml`
+- `next.config.mjs`, `wrangler.toml`
+
+**Required Secrets:**
+- `CLOUDFLARE_API_TOKEN` - Cloudflare API token with Pages deployment permission
+- `CLOUDFLARE_ACCOUNT_ID` - Cloudflare account ID
+- `CLOUDFLARE_ZONE_ID` - Zone ID for cache purging
+
+#### 2. **PR Preview Comment** (`.github/workflows/pr-preview.yml`)
+
+Automatically adds a comment to PRs with deployment information and preview instructions.
+
+#### 3. **Dependency & Security Check** (`.github/workflows/dependency-check.yml`)
+
+**Triggers:**
+- Schedule: Every Monday at 9:00 AM UTC
+- Manual trigger
+
+**Checks:**
+- Outdated dependencies (`pnpm outdated`)
+- Security vulnerabilities (`pnpm audit`)
+
+### Manual Deployment
+
+To manually deploy from local machine:
+
+```bash
+# Build for Cloudflare Pages
+pnpm pages:build
+
+# Deploy to Cloudflare Pages
+pnpm pages:deploy
+
+# Local preview
+pnpm preview
+```
+
+**Note:** It's recommended to use the Cloudflare Pages dashboard or GitHub Actions for deployments. Manual deployment is mainly for testing.
+
+### Deployment Flow
+
+```
+┌─────────────────┐
+│   Git Push      │
+└────────┬────────┘
+         │
+         ├─ main branch ──────> Production (toolcase.cc)
+         ├─ develop branch ───> Preview
+         └─ PR ──────────────> Quality checks only
+                                (no deployment)
+```
 
 ## Key Constraints
 
@@ -465,9 +546,9 @@ import CopyButton from '@/components/shared/CopyButton'
 ## Testing
 
 Currently no automated tests. Manual testing workflow:
-1. Build locally: `npm run build`
-2. Test in dev: `npm run dev`
-3. Test preview deployment: `npm run preview`
+1. Build locally: `pnpm pages:build`
+2. Test in dev: `pnpm dev`
+3. Test local preview: `pnpm preview`
 4. Verify both languages work
 5. Check mobile responsiveness
 6. Verify SEO metadata (view source)

@@ -1,0 +1,49 @@
+name: PR Preview Comment
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'next.config.mjs'
+      - 'wrangler*.json'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  preview-comment:
+    name: Add Preview Deployment Info
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add PR Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `## 🔍 Preview Deployment
+
+            這個 PR 的變更將在合併前進行品質檢查:
+
+            ✅ ESLint 檢查
+            ✅ TypeScript 類型檢查
+
+            合併到 \`main\` 分支後會自動部署到生產環境 (https://toolcase.cc)
+            合併到 \`develop\` 分支後會自動部署到預覽環境
+
+            ---
+
+            💡 **提示:** 你也可以使用 [Actions](${context.payload.repository.html_url}/actions/workflows/deploy.yml) 頁面的 "Run workflow" 按鈕手動觸發部署到指定環境。
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

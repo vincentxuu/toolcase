@@ -1,102 +1,190 @@
 {
-  "wallTime": 2,
-  "cpuTime": 1,
-  "truncated": false,
-  "executionModel": "stateless",
-  "outcome": "exception",
-  "scriptTags": [
-    "cf:service=toolcase-cat-dev",
-    "cf:environment=production"
-  ],
-  "scriptVersion": {
-    "id": "a1d64113-7c9a-4542-a20c-4b725e071ed6"
+  "message": "No such module \"server-functions/cat-finance/index.mjs\".",
+  "exception": {
+    "stack": "    at worker.js:8316:50",
+    "name": "Error",
+    "message": "No such module \"server-functions/cat-finance/index.mjs\".",
+    "timestamp": 1771820274196
   },
-  "scriptName": "toolcase-cat-dev-production",
-  "diagnosticsChannelEvents": [],
-  "exceptions": [
-    {
-      "stack": "    at .open-next/server-functions/cat-dev/node_modules/.pnpm/next@15.5.9_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/require-hook.js (worker-cat-dev.js:7365:35)\n    at __require3 (worker-cat-dev.js:18:53)\n    at .open-next/server-functions/cat-dev/node_modules/.pnpm/next@15.5.9_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/next-server.js (worker-cat-dev.js:149250:5)\n    at __require3 (worker-cat-dev.js:18:53)\n    at .open-next/server-functions/cat-dev/index.mjs (worker-cat-dev.js:154200:34)\n    at __init (worker-cat-dev.js:15:56)\n    at worker-cat-dev.js:201708:43",
-      "name": "TypeError",
-      "message": "resolve is not a function",
-      "timestamp": 1771816213557
-    }
-  ],
-  "logs": [],
-  "eventTimestamp": 1771816213557,
-  "event": {
-    "request": {
-      "url": "https://www.toolcase.cc/zh-tw/dev/text-encrypt-decrypt",
-      "method": "GET",
-      "headers": {
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-encoding": "gzip, br",
-        "accept-language": "en-US,en;q=0.9",
-        "cf-connecting-ip": "59.124.242.153",
-        "cf-ipcountry": "TW",
-        "cf-ray": "9d238766ba879cf3",
-        "cf-visitor": "{\"scheme\":\"https\"}",
-        "connection": "Keep-Alive",
-        "host": "www.toolcase.cc",
-        "priority": "u=0, i",
-        "referer": "https://www.toolcase.cc/zh-tw/category/dev",
-        "sec-fetch-dest": "document",
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-site": "same-origin",
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
-        "x-forwarded-proto": "https",
-        "x-real-ip": "59.124.242.153"
-      },
-      "cf": {
-        "httpProtocol": "HTTP/3",
-        "clientAcceptEncoding": "gzip, deflate, br",
-        "requestPriority": "",
-        "edgeRequestKeepAliveStatus": 1,
-        "requestHeaderNames": {},
-        "clientTcpRtt": 0,
-        "colo": "SIN",
-        "asn": 3462,
-        "asOrganization": "Chunghwa Telecom Co.,Ltd.",
-        "country": "TW",
-        "isEUCountry": false,
-        "city": "Taipei",
-        "continent": "AS",
-        "region": "Taiwan",
-        "regionCode": "04",
-        "timezone": "Asia/Taipei",
-        "longitude": "121.52639",
-        "latitude": "25.05306",
-        "tlsVersion": "TLSv1.3",
-        "tlsCipher": "AEAD-AES128-GCM-SHA256",
-        "tlsClientRandom": "fBIN8L5fYxuOpnb23iKxjfSYGRLzhjZq/jcigGwoxCU=",
-        "tlsClientCiphersSha1": "QuBDZLQiT2q/daip00Bsc4nsvz0=",
-        "tlsClientExtensionsSha1": "KCZZmywbbCwtRjqixRzFWmzusR0=",
-        "tlsClientExtensionsSha1Le": "",
-        "tlsClientHelloLength": "255",
-        "tlsClientAuth": {
-          "certPresented": "0",
-          "certVerified": "NONE",
-          "certRevoked": "0",
-          "certIssuerDN": "",
-          "certSubjectDN": "",
-          "certIssuerDNRFC2253": "",
-          "certSubjectDNRFC2253": "",
-          "certIssuerDNLegacy": "",
-          "certSubjectDNLegacy": "",
-          "certSerial": "",
-          "certIssuerSerial": "",
-          "certSKI": "",
-          "certIssuerSKI": "",
-          "certFingerprintSHA1": "",
-          "certFingerprintSHA256": "",
-          "certNotBefore": "",
-          "certNotAfter": ""
-        },
-        "verifiedBotCategory": ""
+  "$workers": {
+    "truncated": false,
+    "event": {
+      "request": {
+        "url": "https://www.toolcase.cc/zh-tw/finance/mortgage-calculator",
+        "method": "HEAD",
+        "path": "/zh-tw/finance/mortgage-calculator"
       }
     },
-    "response": {
-      "status": 500
-    }
+    "outcome": "exception",
+    "scriptName": "toolcase-production",
+    "eventType": "fetch",
+    "executionModel": "stateless",
+    "scriptVersion": {
+      "id": "924bc3b4-63a0-4a42-b183-677fe019e048"
+    },
+    "requestId": "9d23ea899b1ffde8"
   },
-  "id": 0
+  "$metadata": {
+    "id": "01KJ4BFMGM5CP7WT8RNSEP539F",
+    "requestId": "9d23ea899b1ffde8",
+    "trigger": "HEAD /zh-tw/finance/mortgage-calculator",
+    "service": "toolcase-production",
+    "level": "error",
+    "error": "No such module \"server-functions/cat-finance/index.mjs\".",
+    "message": "No such module \"server-functions/cat-finance/index.mjs\".",
+    "account": "1ff43f0d4c3ad3bd98ce5ab767546a68",
+    "type": "cf-worker",
+    "fingerprint": "2d818eff997819632dcc0b870faa6d31",
+    "origin": "fetch",
+    "messageTemplate": "No such module \"server-functions/cat-finance/<DOMAIN>\"."
+  }
+}
+{
+  "level": "error",
+  "message": "HEAD <https://www.toolcase.cc/zh-tw/finance/mortgage-calculator>",
+  "$workers": {
+    "event": {
+      "request": {
+        "cf": {
+          "requestHeaderNames": {},
+          "isEUCountry": false,
+          "httpProtocol": "HTTP/2",
+          "requestPriority": "weight=16;exclusive=0;group=0;group-weight=0",
+          "colo": "SIN",
+          "asOrganization": "Chunghwa Telecom Co.,Ltd.",
+          "country": "TW",
+          "city": "Taipei",
+          "continent": "AS",
+          "region": "Taiwan",
+          "regionCode": "04",
+          "timezone": "Asia/Taipei",
+          "longitude": "121.52639",
+          "latitude": "25.05306",
+          "tlsVersion": "TLSv1.3",
+          "tlsCipher": "AEAD-CHACHA20-POLY1305-SHA256",
+          "tlsClientRandom": "eQjVcCSGgXspd8QAjG/tm8OCOdfeRgtBMHA747BCKXM=",
+          "tlsClientCiphersSha1": "eDGmD1H99AwNYzOR+7eoGLo6eLU=",
+          "tlsClientExtensionsSha1": "Ub+nUmIm1U57hdNSUph0R+kx9Gc=",
+          "tlsClientExtensionsSha1Le": "NMNf2YIpLBhtroOEBooGFi+jtJ8=",
+          "tlsExportedAuthenticator": {
+            "clientHandshake": "f8d0962fdbb8bd21eea289f0f0057346abe2ee2d9d4a0ec282070ecd212da727",
+            "serverHandshake": "5ae5f6efe46c0bff191c395d54f1fc94db4ffebc293b5dd6a5e5abccfa5c5625",
+            "clientFinished": "f5bc3a697c586e23283d8515fc229644816c1248c2f8ce0eebfb7e1e417ebf6a",
+            "serverFinished": "ed19cc55ceb93f88cce59c1dd8dc5f1664e995973b537cd81384be764f69465e"
+          },
+          "tlsClientHelloLength": "316",
+          "tlsClientAuth": {
+            "certPresented": "0",
+            "certVerified": "NONE",
+            "certRevoked": "0",
+            "certIssuerDN": "",
+            "certSubjectDN": "",
+            "certIssuerDNRFC2253": "",
+            "certSubjectDNRFC2253": "",
+            "certIssuerDNLegacy": "",
+            "certSubjectDNLegacy": "",
+            "certSerial": "",
+            "certIssuerSerial": "",
+            "certSKI": "",
+            "certIssuerSKI": "",
+            "certFingerprintSHA1": "",
+            "certFingerprintSHA256": "",
+            "certNotBefore": "",
+            "certNotAfter": ""
+          },
+          "verifiedBotCategory": "",
+          "edgeRequestKeepAliveStatus": 1,
+          "clientTcpRtt": 62,
+          "asn": 3462
+        },
+        "url": "https://www.toolcase.cc/zh-tw/finance/mortgage-calculator",
+        "method": "HEAD",
+        "headers": {
+          "accept": "*/*",
+          "accept-encoding": "gzip, br",
+          "cf-connecting-ip": "59.124.242.153",
+          "cf-ipcountry": "TW",
+          "cf-ray": "9d23ea899b1ffde8",
+          "cf-visitor": "{\"scheme\":\"https\"}",
+          "connection": "Keep-Alive",
+          "host": "www.toolcase.cc",
+          "user-agent": "curl/8.7.1",
+          "x-forwarded-proto": "https",
+          "x-real-ip": "59.124.242.153"
+        },
+        "path": "/zh-tw/finance/mortgage-calculator"
+      },
+      "rayId": "9d23ea899b1ffde8",
+      "response": {
+        "status": 500
+      }
+    },
+    "diagnosticsChannelEvents": [],
+    "truncated": false,
+    "scriptName": "toolcase-production",
+    "outcome": "exception",
+    "eventType": "fetch",
+    "executionModel": "stateless",
+    "scriptVersion": {
+      "id": "924bc3b4-63a0-4a42-b183-677fe019e048"
+    },
+    "requestId": "9d23ea899b1ffde8",
+    "cpuTimeMs": 3,
+    "wallTimeMs": 4
+  },
+  "$metadata": {
+    "id": "01KJ4BFMGKY7NVV18D7GAEM6AV",
+    "requestId": "9d23ea899b1ffde8",
+    "trigger": "HEAD /zh-tw/finance/mortgage-calculator",
+    "service": "toolcase-production",
+    "level": "error",
+    "error": "HEAD <https://www.toolcase.cc/zh-tw/finance/mortgage-calculator>",
+    "message": "HEAD <https://www.toolcase.cc/zh-tw/finance/mortgage-calculator>",
+    "account": "1ff43f0d4c3ad3bd98ce5ab767546a68",
+    "type": "cf-worker-event",
+    "fingerprint": "f4918ccc6d19708941d560dad7ab004c",
+    "origin": "fetch",
+    "messageTemplate": "HEAD <https://www.toolcase.cc/zh-tw/finance/mortgage-calculator>"
+  }
+}
+{
+  "message": "No such module \"server-functions/cat-dev/index.mjs\".",
+  "exception": {
+    "stack": "    at worker.js:8316:50",
+    "name": "Error",
+    "message": "No such module \"server-functions/cat-dev/index.mjs\".",
+    "timestamp": 1771820268229
+  },
+  "$workers": {
+    "truncated": false,
+    "event": {
+      "request": {
+        "url": "https://www.toolcase.cc/zh-tw/dev/json-formatter",
+        "method": "HEAD",
+        "path": "/zh-tw/dev/json-formatter"
+      }
+    },
+    "outcome": "exception",
+    "scriptName": "toolcase-production",
+    "eventType": "fetch",
+    "executionModel": "stateless",
+    "scriptVersion": {
+      "id": "924bc3b4-63a0-4a42-b183-677fe019e048"
+    },
+    "requestId": "9d23ea63ca7740d7"
+  },
+  "$metadata": {
+    "id": "01KJ4BFEP5MM0AVVXKSNTR00X5",
+    "requestId": "9d23ea63ca7740d7",
+    "trigger": "HEAD /zh-tw/dev/json-formatter",
+    "service": "toolcase-production",
+    "level": "error",
+    "error": "No such module \"server-functions/cat-dev/index.mjs\".",
+    "message": "No such module \"server-functions/cat-dev/index.mjs\".",
+    "account": "1ff43f0d4c3ad3bd98ce5ab767546a68",
+    "type": "cf-worker",
+    "fingerprint": "5cc4071338f1d2a476b722b5f39e3b7c",
+    "origin": "fetch",
+    "messageTemplate": "No such module \"server-functions/cat-dev/<DOMAIN>\"."
+  }
 }
