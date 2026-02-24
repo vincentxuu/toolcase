@@ -164,6 +164,17 @@ export default function WeightLossPlanPage() {
             tip4: 'Track your food intake and stay consistent',
             tip5: 'If you only run without controlling diet, fat loss may be <50% effective',
             disclaimer: 'This tool provides estimates only. Consult a healthcare professional or registered dietitian before starting any weight loss program.',
+            // Additional labels
+            basicInformation: 'Basic Information',
+            perWeek: 'per week',
+            km: 'km',
+            caloriesPerWeek: 'cal/week',
+            kgPerWeek: 'kg/week',
+            runningSchedule: 'Running Schedule',
+            weeklyDeficitNeeded: 'Weekly deficit needed',
+            fromRunning: 'From running',
+            stillNeedFromDiet: 'Still need from diet control',
+            runningProvidesOnly: 'Running provides only',
           }}
         />
 

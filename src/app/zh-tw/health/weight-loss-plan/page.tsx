@@ -164,6 +164,17 @@ export default function WeightLossPlanPage() {
             tip4: '記錄飲食攝取並保持一致性',
             tip5: '只跑步不控制飲食，減脂效果可能<50%',
             disclaimer: '此工具僅提供估算值。開始任何減重計畫前，請諮詢醫療專業人員或註冊營養師。',
+            // Additional labels
+            basicInformation: '基本資料',
+            perWeek: '每週',
+            km: '公里',
+            caloriesPerWeek: '大卡/週',
+            kgPerWeek: '公斤/週',
+            runningSchedule: '跑步規劃',
+            weeklyDeficitNeeded: '每週所需赤字',
+            fromRunning: '來自跑步',
+            stillNeedFromDiet: '仍需從飲食控制',
+            runningProvidesOnly: '跑步僅提供',
           }}
         />
 

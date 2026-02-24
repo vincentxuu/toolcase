@@ -74,6 +74,17 @@ interface WeightLossPlanProps {
     tip4: string
     tip5: string
     disclaimer: string
+    // Additional labels
+    basicInformation: string
+    perWeek: string
+    km: string
+    caloriesPerWeek: string
+    kgPerWeek: string
+    runningSchedule: string
+    weeklyDeficitNeeded: string
+    fromRunning: string
+    stillNeedFromDiet: string
+    runningProvidesOnly: string
   }
 }
 
@@ -144,6 +155,16 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
     tip4: labels?.tip4 ?? 'Track your food intake and stay consistent',
     tip5: labels?.tip5 ?? 'If you only run without controlling diet, fat loss may be <50% effective',
     disclaimer: labels?.disclaimer ?? 'This tool provides estimates only. Consult a healthcare professional or registered dietitian before starting any weight loss program.',
+    basicInformation: labels?.basicInformation ?? 'Basic Information',
+    perWeek: labels?.perWeek ?? 'per week',
+    km: labels?.km ?? 'km',
+    caloriesPerWeek: labels?.caloriesPerWeek ?? 'cal/week',
+    kgPerWeek: labels?.kgPerWeek ?? 'kg/week',
+    runningSchedule: labels?.runningSchedule ?? 'Running Schedule',
+    weeklyDeficitNeeded: labels?.weeklyDeficitNeeded ?? 'Weekly deficit needed',
+    fromRunning: labels?.fromRunning ?? 'From running',
+    stillNeedFromDiet: labels?.stillNeedFromDiet ?? 'Still need from diet control',
+    runningProvidesOnly: labels?.runningProvidesOnly ?? 'Running provides only',
   }
 
   const [age, setAge] = useState(30)
@@ -248,7 +269,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
       {/* Basic Information */}
       <div className="p-6 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)]">
         <h3 className="text-lg font-semibold mb-4">
-          Basic Information
+          {l.basicInformation}
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -448,7 +469,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
               <div className="text-3xl font-bold text-blue-500">
                 {result.weeklyGoalKg} {l.kg}
               </div>
-              <div className="text-xs text-[var(--color-text-secondary)]">per week</div>
+              <div className="text-xs text-[var(--color-text-secondary)]">{l.perWeek}</div>
             </div>
 
             <div className="p-6 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-center">
@@ -495,7 +516,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
               <div className="text-3xl font-bold text-red-500">
                 {result.running.weeklyRunningBurn.toLocaleString()}
               </div>
-              <div className="text-xs text-[var(--color-text-secondary)]">{l.calories}/week</div>
+              <div className="text-xs text-[var(--color-text-secondary)]">{l.caloriesPerWeek}</div>
             </div>
 
             <div className="p-6 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-center">
@@ -505,7 +526,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
               <div className="text-3xl font-bold text-cyan-500">
                 {result.running.kmPerSession}
               </div>
-              <div className="text-xs text-[var(--color-text-secondary)]">km</div>
+              <div className="text-xs text-[var(--color-text-secondary)]">{l.km}</div>
             </div>
 
             <div className="p-6 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-center">
@@ -515,7 +536,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
               <div className="text-3xl font-bold text-purple-500">
                 {result.running.runningOnlyWeeklyLoss}
               </div>
-              <div className="text-xs text-[var(--color-text-secondary)]">{l.kg}/week</div>
+              <div className="text-xs text-[var(--color-text-secondary)]">{l.kgPerWeek}</div>
             </div>
           </div>
 
@@ -529,7 +550,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
           </div>
 
           <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-sm">
-            💡 <strong>Running Schedule:</strong> {runningDaysPerWeek} days/week × {runningDuration} minutes = ~{result.running.kmPerSession} km per session
+            💡 <strong>{l.runningSchedule}:</strong> {runningDaysPerWeek} {l.daysPerWeek} × {runningDuration} {l.minutes} = ~{result.running.kmPerSession} {l.km}
           </div>
         </div>
       )}
@@ -543,14 +564,14 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
 
           <div className="text-sm leading-7 text-[var(--color-text)]">
             <p className="mb-3">
-              <strong>Weekly deficit needed:</strong> {result.running.totalDeficitNeeded.toLocaleString()} kcal
+              <strong>{l.weeklyDeficitNeeded}:</strong> {result.running.totalDeficitNeeded.toLocaleString()} kcal
             </p>
             <p className="mb-3">
-              <strong>From running:</strong> {result.running.weeklyRunningBurn.toLocaleString()} kcal
+              <strong>{l.fromRunning}:</strong> {result.running.weeklyRunningBurn.toLocaleString()} kcal
               ({Math.round((result.running.weeklyRunningBurn / result.running.totalDeficitNeeded) * 100)}%)
             </p>
             <p className="mb-3">
-              <strong>Still need from diet control:</strong> {result.running.remainingDeficitFromDiet.toLocaleString()} kcal
+              <strong>{l.stillNeedFromDiet}:</strong> {result.running.remainingDeficitFromDiet.toLocaleString()} kcal
               ({result.running.dietContributionPct}%)
             </p>
 
@@ -558,8 +579,7 @@ export default function WeightLossPlan({ labels }: WeightLossPlanProps) {
               <strong>⚠️ {l.dietOnlyWarning}</strong>
               <br />
               {result.running.dietContributionPct > 50 && (
-                <span>Running provides only {Math.round((result.running.weeklyRunningBurn / result.running.totalDeficitNeeded) * 100)}% of the needed deficit.
-                Diet control is crucial for success.</span>
+                <span>{l.runningProvidesOnly} {Math.round((result.running.weeklyRunningBurn / result.running.totalDeficitNeeded) * 100)}%</span>
               )}
             </div>
           </div>
