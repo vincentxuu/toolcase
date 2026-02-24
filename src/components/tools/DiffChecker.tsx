@@ -63,13 +63,6 @@ export default function DiffChecker({ labels }: Props) {
     setCompared(true)
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: '100%', minHeight: '200px', padding: '0.75rem', border: '1px solid var(--color-border)',
-    borderRadius: '0.5rem', backgroundColor: 'var(--color-bg-secondary)', color: 'var(--color-text)',
-    fontSize: '0.875rem', fontFamily: "'Fira Code', monospace", resize: 'vertical',
-  }
-  const labelStyle: React.CSSProperties = { display: 'block', marginBottom: '0.375rem', fontWeight: 500, fontSize: '0.875rem', color: 'var(--color-text-secondary)' }
-
   const addedCount = diff.filter(d => d.type === 'added').length
   const removedCount = diff.filter(d => d.type === 'removed').length
 
@@ -77,33 +70,37 @@ export default function DiffChecker({ labels }: Props) {
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label style={labelStyle}>{l.original}</label>
-          <textarea style={inputStyle} value={original} onChange={(e) => setOriginal(e.target.value)} />
+          <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.original}</label>
+          <textarea className="w-full min-h-[200px] p-3 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm font-['Fira_Code',monospace] resize-y focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" value={original} onChange={(e) => setOriginal(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>{l.modified}</label>
-          <textarea style={inputStyle} value={modified} onChange={(e) => setModified(e.target.value)} />
+          <label className="block mb-1.5 font-medium text-sm text-[var(--color-text-secondary)]">{l.modified}</label>
+          <textarea className="w-full min-h-[200px] p-3 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] text-sm font-['Fira_Code',monospace] resize-y focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" value={modified} onChange={(e) => setModified(e.target.value)} />
         </div>
       </div>
-      <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0" onClick={compare} style={{ alignSelf: 'center' }}>{l.compare}</button>
+      <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-primary-hover)] border-0 self-center" onClick={compare}>{l.compare}</button>
       {compared && (
         <div>
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.75rem', fontSize: '0.875rem' }}>
-            <span style={{ color: '#22c55e' }}>+ {addedCount} {l.added}</span>
-            <span style={{ color: '#ef4444' }}>- {removedCount} {l.removed}</span>
+          <div className="flex gap-4 mb-3 text-sm">
+            <span className="text-green-500">+ {addedCount} {l.added}</span>
+            <span className="text-red-500">- {removedCount} {l.removed}</span>
           </div>
           {diff.length === 0 || (addedCount === 0 && removedCount === 0) ? (
             <p className="text-[var(--color-text-secondary)]">{l.noChanges}</p>
           ) : (
-            <div style={{ borderRadius: '0.5rem', overflow: 'hidden', border: '1px solid var(--color-border)', fontFamily: "'Fira Code', monospace", fontSize: '0.8rem' }}>
+            <div className="rounded-lg overflow-hidden border border-[var(--color-border)] font-['Fira_Code',monospace] text-[0.8rem]">
               {diff.map((d, idx) => (
-                <div key={idx} style={{
-                  padding: '0.25rem 0.75rem',
-                  backgroundColor: d.type === 'added' ? 'rgba(34,197,94,0.1)' : d.type === 'removed' ? 'rgba(239,68,68,0.1)' : 'transparent',
-                  borderLeft: `3px solid ${d.type === 'added' ? '#22c55e' : d.type === 'removed' ? '#ef4444' : 'transparent'}`,
-                  color: d.type === 'added' ? '#22c55e' : d.type === 'removed' ? '#ef4444' : 'var(--color-text)',
-                }}>
-                  <span style={{ opacity: 0.5, marginRight: '0.5rem' }}>{d.type === 'added' ? '+' : d.type === 'removed' ? '-' : ' '}</span>
+                <div
+                  key={idx}
+                  className={`py-1 px-3 ${
+                    d.type === 'added'
+                      ? 'bg-green-500/10 border-l-[3px] border-l-green-500 text-green-500'
+                      : d.type === 'removed'
+                      ? 'bg-red-500/10 border-l-[3px] border-l-red-500 text-red-500'
+                      : 'border-l-[3px] border-l-transparent text-[var(--color-text)]'
+                  }`}
+                >
+                  <span className="opacity-50 mr-2">{d.type === 'added' ? '+' : d.type === 'removed' ? '-' : ' '}</span>
                   {d.text || ' '}
                 </div>
               ))}

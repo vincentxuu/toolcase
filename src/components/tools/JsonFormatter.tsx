@@ -1,6 +1,8 @@
 'use client'
 import { useState, useCallback } from 'react'
 import CopyButton from '@/components/shared/CopyButton'
+import { Alert } from '@/components/ui/alert'
+import { Select } from '@/components/ui/select'
 
 interface JsonFormatterProps {
   labels?: {
@@ -74,29 +76,21 @@ export default function JsonFormatter({ labels }: JsonFormatterProps) {
         <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] rounded-lg font-medium cursor-pointer transition-colors hover:bg-[var(--color-border)]" onClick={handleClear}>{l.clear}</button>
         <div className="flex items-center gap-2">
           <label className="text-sm text-[var(--color-text-secondary)]">{l.tabSize}:</label>
-          <select
+          <Select
             value={tabSize}
             onChange={(e) => setTabSize(Number(e.target.value))}
-            style={{
-              padding: '0.375rem 0.5rem',
-              border: '1px solid var(--color-border)',
-              borderRadius: '0.375rem',
-              backgroundColor: 'var(--color-bg)',
-              color: 'var(--color-text)',
-            }}
           >
             <option value={2}>2</option>
             <option value={4}>4</option>
             <option value={8}>8</option>
-          </select>
+          </Select>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <textarea
-            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
-            style={{ height: '400px' }}
+            className="w-full h-[400px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             placeholder={l.input}
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -104,8 +98,7 @@ export default function JsonFormatter({ labels }: JsonFormatterProps) {
         </div>
         <div className="relative">
           <textarea
-            className="w-full min-h-[200px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
-            style={{ height: '400px' }}
+            className="w-full h-[400px] p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] font-mono text-sm resize-y focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-blue-600/10 transition-all"
             placeholder={l.output}
             value={output}
             readOnly
@@ -119,32 +112,15 @@ export default function JsonFormatter({ labels }: JsonFormatterProps) {
       </div>
 
       {error && (
-        <div
-          style={{
-            padding: '0.75rem 1rem',
-            borderRadius: '0.5rem',
-            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-            color: 'var(--color-error)',
-            fontSize: '0.875rem',
-            fontFamily: 'monospace',
-          }}
-        >
+        <Alert variant="error">
           {l.invalid}: {error}
-        </div>
+        </Alert>
       )}
 
       {output && !error && (
-        <div
-          style={{
-            padding: '0.75rem 1rem',
-            borderRadius: '0.5rem',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-            color: 'var(--color-success)',
-            fontSize: '0.875rem',
-          }}
-        >
+        <Alert variant="success">
           {l.valid}
-        </div>
+        </Alert>
       )}
     </div>
   )

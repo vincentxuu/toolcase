@@ -1,6 +1,7 @@
 'use client'
 import { useState, useCallback } from 'react'
 import CopyButton from '@/components/shared/CopyButton'
+import { Alert } from '@/components/ui/alert'
 
 interface YamlJsonConverterProps {
   labels?: {
@@ -298,18 +299,9 @@ export default function YamlJsonConverter({ labels }: YamlJsonConverterProps) {
       </div>
 
       {error && (
-        <div
-          style={{
-            padding: '0.75rem 1rem',
-            borderRadius: '0.5rem',
-            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-            color: 'var(--color-error)',
-            fontSize: '0.875rem',
-            fontFamily: 'monospace',
-          }}
-        >
+        <Alert variant="error">
           {error}
-        </div>
+        </Alert>
       )}
     </div>
   )
