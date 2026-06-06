@@ -1,0 +1,39 @@
+name: Scrape KFC Coupons
+
+on:
+  schedule:
+    - cron: '0 18 * * *'  # 每天台灣時間 02:00（UTC 18:00 前一天）
+  workflow_dispatch:        # 手動觸發
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Run scraper
+        run: pnpm tsx scripts/scrape-kfc.ts
+
+      - name: Commit updated coupon data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/kfc-coupons.json
+          git diff --staged --quiet || git commit -m "chore: update KFC coupon data [skip ci]"
+          git push
